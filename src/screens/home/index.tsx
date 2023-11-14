@@ -2,12 +2,17 @@ import { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 
 import { Button } from "../../components/Button";
+import { ModalChooseClub } from "../../components/Modal";
 
 import { Clube, emptyClub } from "../../Model/Clube";
+import { ModeGame } from "../../Model/ModeGame";
 
 import {
   ButtonClube,
+  CardButton,
+  CardButtonText,
   Container,
+  ContainerModeGame,
   DivClubes,
   Game,
   Info,
@@ -17,11 +22,12 @@ import {
   NameClube,
   Safe,
   Staduim,
+  SubTitle,
   Title,
   VS,
   ViewClube
 } from "./styles";
-import { ModalChooseClub } from "../../components/Modal";
+
 
 export function Home() {
   const { navigate } = useNavigation();
@@ -30,9 +36,14 @@ export function Home() {
   const [awayClub, setAwayClub] = useState<Clube>(emptyClub);
   const [showModalChooseClubHome, setShowModalChooseClubHome] = useState(false)
   const [showModalChooseClubAway, setShowModalChooseClubAway] = useState(false)
+  const [modeGame, setModeGame] = useState<ModeGame>('Normal')
 
   function goGameCurrent() {
-    navigate('game', { home: homeClub, away: awayClub })
+    navigate('game', { home: homeClub, away: awayClub, modeGame })
+  }
+
+  function handleChooseModeGame(modeG: ModeGame) {
+    setModeGame(modeG)
   }
 
   const stadium = homeClub.stadium || 'A definir'
@@ -59,6 +70,27 @@ export function Home() {
             <NameClube>{awayClub.name}</NameClube>
           </ButtonClube>
         </DivClubes>
+        <SubTitle>Modo de Partida</SubTitle>
+        <ContainerModeGame>
+          <CardButton
+            onPress={() => handleChooseModeGame('Normal')}
+            activeOpacity={0.7}
+            selected={modeGame === 'Normal'}>
+            <CardButtonText>Normal</CardButtonText>
+          </CardButton>
+          <CardButton
+            onPress={() => handleChooseModeGame('Mata-Mata')}
+            activeOpacity={0.7}
+            selected={modeGame === 'Mata-Mata'}>
+            <CardButtonText>Mata-Mata</CardButtonText>
+          </CardButton>
+          <CardButton
+            onPress={() => handleChooseModeGame('Volta')}
+            activeOpacity={0.7}
+            selected={modeGame === 'Volta'}>
+            <CardButtonText>Partida de Volta</CardButtonText>
+          </CardButton>
+        </ContainerModeGame>
 
         <Info>
           <Title>Jogo a seguir</Title>

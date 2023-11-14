@@ -10,7 +10,7 @@ export const Container = styled.View`
   padding: 20px;
   flex: 1;
   align-items: center;
-  gap: 20px;
+  gap: 16px;
   justify-content: center;
 `;
 
@@ -20,9 +20,14 @@ export const Title = styled.Text`
   color: ${props => props.theme.colors.white};
 `;
 
+export const SubTitle = styled.Text`
+  font-size: 20px;
+  font-family: ${props => props.theme.fonts.medium};
+  color: ${props => props.theme.colors.gray_100};
+`;
+
 export const DivClubes = styled.View`
   flex-direction: row;
-  margin-top: 20px;
   width: 100%;
   justify-content: space-between;
 `;
@@ -62,6 +67,7 @@ export const Staduim = styled.Text`
   font-size: 20px;
   font-family: ${props => props.theme.fonts.medium};
   color: ${props => props.theme.colors.white};
+  line-height: 22px;
 `;
 
 export const Game = styled.View`
@@ -71,9 +77,10 @@ export const Game = styled.View`
 
 export const VS = styled.Text`
   font-size: 16px;
-  padding: 10px;
+  padding: 4px;
   font-family: ${props => props.theme.fonts.bold};
   color: ${props => props.theme.colors.white};
+  line-height: 16px;
 `;
 
 interface ViewClubeProps {
@@ -99,3 +106,29 @@ export const Logo = styled.Image`
   object-fit: contain;
 `;
 
+export const ContainerModeGame = styled.View`
+  flex-direction: row;
+  gap: 16px;
+  width: 100%;
+`;
+
+interface CardButtonProps {
+  selected: boolean;
+}
+
+export const CardButton = styled.TouchableOpacity<CardButtonProps>`
+  background-color: ${props => props.selected ? props.theme.colors.green : props.theme.colors.gray_300};
+  padding: 6px 10px;
+  border-radius: 8px;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const CardButtonText = styled.Text`
+  text-align: center;
+  font-size: 16px;
+  font-family: ${props => props.theme.fonts.bold};
+  color: ${props => props.theme.colors.white};
+  line-height: 18px;
+`;

@@ -10,7 +10,7 @@ export const Container = styled.View`
 
 export const Minute = styled.Text`
   padding: 10px 12px;
-  width: 40px;
+  width: 45px;
   text-align: center;
   font-family: ${({ theme }) => theme.fonts.bold};
   color: ${props => props.theme.colors.white};
