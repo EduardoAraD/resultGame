@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { FlatList, ScrollView } from "react-native";
+import { ScrollView } from "react-native";
 import { useNavigation, useRoute } from "@react-navigation/native";
 
 import { Container, ContentImage, ContentInfo, LogoClube, Safe, Title } from "./styles";
@@ -75,6 +75,9 @@ export function GameCurrent() {
         homeOrAway: 'game',
       }
 
+      setDomainHome(state => ({...state, domain: 50 }))
+      setDomainAway(state => ({...state, domain: 50 }))
+
       setMoments(state => [...state, obj]);
       setMomentsPrimary(state => [...state, obj]);
     }
@@ -87,6 +90,8 @@ export function GameCurrent() {
         homeOrAway: 'game',
       }
 
+      setDomainHome(state => ({...state, domain: 50 }))
+      setDomainAway(state => ({...state, domain: 50 }))
       setMoments(state => [...state, obj]);
       setMomentsPrimary(state => [...state, obj]);
     } else {
@@ -320,15 +325,7 @@ export function GameCurrent() {
   }, [passMinutPenal, minutesMomentPenal, minutesCurrentPenal])
 
   const listMoments = useMemo(() => {
-    const list = [...moments].reverse();
-    // [...momentsPrimary].reverse().forEach(item => {
-    //   const has = list.find(i => i.minute === item.minute)
-    //   if(!has) {
-    //     list.push(item);
-    //   }
-    // })
-
-    return list;
+    return [...moments].reverse();
   }, [moments, momentsPrimary])
 
   const listMomentsPrimary = useMemo(() => {
@@ -373,19 +370,6 @@ export function GameCurrent() {
               moments={listMomentsPrimary}
             />
           </ScrollView>
-
-          {/* <FlatList
-            data={listMoments}
-            keyExtractor={item => `${item.minute}-${item.id}`}
-            renderItem={({ item }) => (
-              <MomentGame
-                min={item.minute}
-                text={item.narracao}
-              />
-            )}
-            showsVerticalScrollIndicator={false}
-            contentContainerStyle={{ height: 160, backgroundColor: 'green' }}
-          /> */}
         </ContentInfo>
         <Button disabled={disabledContinue} onPress={goHome} />
       </Container>

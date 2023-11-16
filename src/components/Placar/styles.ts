@@ -12,10 +12,10 @@ export const Container = styled.View<ContainerProps>`
 
 export const Text = styled.Text`
   font-family: ${props => props.theme.fonts.bold};
-  font-size: 50px;
+  font-size: 45px;
   color: ${({ theme }) => theme.colors.white};
-  width: 54px;
-`
+  width: 48px;
+`;
 
 export const Line = styled.View`
   margin-top: 10px;
@@ -33,8 +33,8 @@ export const ContainerPenalts = styled.View`
 
 export const SubText = styled.Text`
   font-family: ${props => props.theme.fonts.medium};
-  font-size: 22px;
-  width: 23px;
+  font-size: 20px;
+  width: 21px;
   color: ${({ theme }) => theme.colors.white};
   text-align: center;
 `;

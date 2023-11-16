@@ -1,7 +1,22 @@
-import { Fragment, useState } from "react";
+import { Fragment } from "react";
 import { Moment } from "../../Model/Moment";
-import { Bold, Bool, Container, ContainerMoment, ContentIntervalo, Line, LineHor, Minute, MomentInfo, Text, TextGol, TextPlacar, ViewPlacar } from "./styles";
 import { IconBall } from "../IconBall";
+
+import {
+  Bold,
+  Bool,
+  Container,
+  ContainerMoment,
+  ContentIntervalo,
+  Line,
+  LineHor,
+  Minute,
+  MomentInfo,
+  Text,
+  TextGol,
+  TextPlacar,
+  ViewPlacar
+} from "./styles";
 
 interface MomentsGameProps {
   moments: Moment[];
@@ -152,44 +167,7 @@ export function MomentsGame({ moments }: MomentsGameProps) {
         <Fragment key={`${item.minute}-${item.id}`}>
           {renderMoment(item)}
         </Fragment>
-        )}
-      {/* <Text>Final de Jogo</Text>
-      <Bool>
-        <Minute>90</Minute>
-      </Bool>
-      <Line />
-      {moments.map(item => (
-        <>
-          <ContainerMoment>
-            <MomentInfo style={{ alignItems: 'flex-end' }}>
-              <ViewPlacar>
-                <TextPlacar><Bold>1</Bold> - 0</TextPlacar>
-                <LineHor />
-              </ViewPlacar>
-              <TextGol>GOOOOOLLL</TextGol>
-            </MomentInfo>
-            <Bool>
-              <Minute>{item.minute}</Minute>
-            </Bool>
-            <MomentInfo style={{ alignItems: 'flex-start' }}>
-              <ViewPlacar>
-                <LineHor />
-                <TextPlacar>1 - <Bold>0</Bold></TextPlacar>
-              </ViewPlacar>
-              <TextGol>GOOOOOLLL</TextGol>
-            </MomentInfo>
-          </ContainerMoment>
-          <Line />
-        </>
-      ))}
-      <ContentIntervalo>
-        <Text style={{ marginTop: 0 }}>Intervalo</Text>
-      </ContentIntervalo>
-      <Line />
-      <Bool>
-        <Minute>1</Minute>
-      </Bool>
-      <Text>Início de Jogo</Text> */}
+      )}
     </Container>
   )
 }

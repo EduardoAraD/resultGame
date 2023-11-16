@@ -204,7 +204,7 @@ export function chanceDeGolPenalt(
   } else {
     const moment: Moment = {
       minute: 90,
-      narracao: `Gool do ${nameClube}`,
+      narracao: `Gol de Penalti`,
       id: 2,
       goal: true,
       penalt: true,

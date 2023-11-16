@@ -22,7 +22,7 @@ export const Bool = styled.View`
   border-radius: 999px;
   justify-content: center;
   align-items: center;
-  elevation: 10;
+  /* elevation: 10; */
   align-self: center;
 `;
 

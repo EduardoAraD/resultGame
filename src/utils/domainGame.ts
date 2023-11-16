@@ -13,20 +13,12 @@ export function domainGame({ home, away }: DomainGame): DomainGame {
   const variantDomain = 40;
 
   const domainHomeInPorcentage = (variantDomain * homeOverrallReajust) / over;
-  // const domainAwayInPorcentage = (variantDomain * awayOverrallReajust) / over;
-  // console.log('-----------------------')
-  // console.log(homeOverrallReajust, awayOverrallReajust);
-  // console.log('VAria', variantDomain)
-  // console.log('DOMIN', domainHomeInPorcentage);
 
   const numberRandomInDomain = Math.floor(Math.random() * variantDomain);
   const changeDomainHome = domainHomeInPorcentage - numberRandomInDomain;
 
-  // console.log('NUMBER RANDOM -> ', numberRandomInDomain);
   const finalDomainHome = home.domain + changeDomainHome;
   const finalDomainAway = away.domain - changeDomainHome;
-
-  // console.log(finalDomainHome, finalDomainAway);
 
   if(finalDomainHome < 20){
     return {

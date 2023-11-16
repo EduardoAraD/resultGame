@@ -28,7 +28,6 @@ import {
   ViewClube
 } from "./styles";
 
-
 export function Home() {
   const { navigate } = useNavigation();
 
