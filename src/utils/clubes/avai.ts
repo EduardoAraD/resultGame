@@ -9,5 +9,7 @@ export const avai: Clube = {
   star: 2.5,
   logo,
 }
-
+// cores: #00679a, #ffffff
+// Avaí Futebol Clube
+// Santa Catarina - SC
 // Avaí                    S2.5  69.5

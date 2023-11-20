@@ -9,5 +9,7 @@ export const goias: Clube = {
   star: 73,
   logo,
 }
+// cores: #045c4c,#FFFFFF
 // Goiás Esporte Clube
+// Goiás - GO
 // Goiás                   S3.0  73

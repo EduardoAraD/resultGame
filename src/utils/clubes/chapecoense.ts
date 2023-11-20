@@ -9,5 +9,7 @@ export const chapecoense: Clube = {
   star: 2.5,
   logo,
 }
-
+// cores: #177e22,#fefefe
+// Associação Chapecoense de Futebol
+// Santa Catarina - SC
 // Chapecoense             S2.5  70

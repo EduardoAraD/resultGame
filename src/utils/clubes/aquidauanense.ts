@@ -9,5 +9,7 @@ export const aquidauanense: Clube = {
   star: 0.5,
   logo,
 }
-
+// cores: #183883, #ffffff
+// Aquidauanense Futebol Clube
+// Mato Grosso do Sul - MS
 // Aquidauanense-MS        S0.5  59

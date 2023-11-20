@@ -9,5 +9,7 @@ export const ferroviaria: Clube = {
   star: 0.5,
   logo,
 }
+// cores: #7a3c3d, #FFFFFF
 // Associação Ferroviária de Esportes
+// São Paulo - SP
 // Ferroviária             S0.5  61

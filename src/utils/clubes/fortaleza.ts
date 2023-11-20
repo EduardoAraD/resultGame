@@ -9,5 +9,7 @@ export const fortaleza: Clube = {
   star: 3.5,
   logo,
 }
+// cores: #2966a5,#d13411,#f2f9f9
 // Fortaleza Esporte Clube
+// Ceará - CE
 // Fortaleza               S3.5  75

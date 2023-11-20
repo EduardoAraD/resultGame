@@ -9,5 +9,7 @@ export const ipora: Clube = {
   star: 0.5,
   logo,
 }
+// cores: #ebe642,#06a7eb
 // Iporá Esporte Clube
+// Goiás - GO
 // Iporá                   S0.5  60

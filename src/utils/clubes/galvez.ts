@@ -9,5 +9,7 @@ export const galvez: Clube = {
   star: 0.5,
   logo,
 }
+// cores: #f3ee08,#077452
 // Galvez Esporte Clube
+// Acre - AC
 // Galvez                  S0.5  56

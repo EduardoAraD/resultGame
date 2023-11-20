@@ -9,5 +9,7 @@ export const crb: Clube = {
   star: 2.5,
   logo,
 }
-
+// cores:  #ce2b2e,#ffffff
+// Clube de Regatas Brasil
+// Alagoas - AL
 // CRB                     S2.5  70

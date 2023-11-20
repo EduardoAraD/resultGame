@@ -9,5 +9,7 @@ export const anapolis: Clube = {
   star: 0.5,
   logo,
 }
-
+// cores: #ee1a1f, #1c1718, #ffffff
+// Anápolis Futebol Clube
+// Goiás - GO
 // Anápolis                S0.5  60

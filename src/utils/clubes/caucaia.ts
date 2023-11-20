@@ -9,5 +9,7 @@ export const caucaia: Clube = {
   star: 0.5,
   logo,
 }
-
-// Caucaia                 S0.5  60 
+// cores:#dc2117,#000000,#f6f6fd
+// Caucaia Esporte Clube
+// Ceará
+// Caucaia                 S0.5  60

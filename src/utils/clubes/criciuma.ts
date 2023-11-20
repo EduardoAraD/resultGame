@@ -9,5 +9,7 @@ export const criciuma: Clube = {
   star: 2.5,
   logo,
 }
-
+// cores: #fdd20f,#3a3025
+// Criciúma Esporte Clube
+// Santa Catarina - SC
 // Criciúma                S2.5  71

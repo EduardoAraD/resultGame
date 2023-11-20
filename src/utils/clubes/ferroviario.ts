@@ -9,5 +9,7 @@ export const ferroviario: Clube = {
   star: 1,
   logo,
 }
-
+// cores: #FFFFFF,#fc0404,#040404
+// Ferroviário Atlético Clube
+// Ceará - CE
 // Ferroviário             S1.0  63

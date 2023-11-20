@@ -9,5 +9,7 @@ export const csa: Clube = {
   star: 1.5,
   logo,
 }
-
+// cores: #021c5b,#fbfbfc
+// Centro Sportivo Alagoano
+// Alagoas - AL
 // CSA                     S1.5  65

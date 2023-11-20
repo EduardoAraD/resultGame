@@ -9,5 +9,7 @@ export const cianorte: Clube = {
   star: 0.5,
   logo,
 }
-
+// cores: #1d2357,#ffffff
+// Cianorte Futebol Clube
+// Paraná - PR
 // Cianorte                S0.5  60

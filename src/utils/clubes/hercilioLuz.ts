@@ -9,5 +9,7 @@ export const hercilioLuz: Clube = {
   star: 1,
   logo,
 }
+// cores: #bd160f,#FFFFFF
 // Hercílio Luz Futebol Clube
+// Santa Catarina - SC
 // Hercílio Luz            S1.0  63

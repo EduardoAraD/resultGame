@@ -9,5 +9,7 @@ export const americaMG: Clube = {
   star: 3.5,
   logo,
 }
-
+// cores:  #106739, #ffffff
+// América Futebol Clube
+// Minas Gerais - MG
 // América MG              S3.5  74

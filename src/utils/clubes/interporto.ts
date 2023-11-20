@@ -9,5 +9,7 @@ export const interporto: Clube = {
   star: 0.5,
   logo,
 }
+// cores: #dea309,#262e89
 // Interporto Futebol Clube
+// Tocantins - TO
 // Interporto              S0.5  59

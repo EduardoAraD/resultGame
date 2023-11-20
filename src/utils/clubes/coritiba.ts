@@ -9,5 +9,7 @@ export const coritiba: Clube = {
   star: 3.5,
   logo,
 }
-
+// cores: #00524b,#ffffff,#000000
+// Coritiba Foot Ball Club
+// Paraná
 // Coritiba                S3.5  73.5

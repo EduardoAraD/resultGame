@@ -9,5 +9,7 @@ export const bangu: Clube = {
   star: 0.5,
   logo,
 }
-
+// cores: #e30013,#ffffff
+// Bangu Atlético Clube
+// Rio de Janeiro - RJ
 // Bangu                   S0.5  61.5

@@ -9,5 +9,7 @@ export const floresta: Clube = {
   star: 1,
   logo,
 }
+// cores: #047035,#FFFFFF
 // Floresta Esporte Clube
+// Ceará - CE
 // Floresta                S1.0  62.5

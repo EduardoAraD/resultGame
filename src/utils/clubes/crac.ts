@@ -9,5 +9,7 @@ export const crac: Clube = {
   star: 0.5,
   logo,
 }
-
+// cores: #11aae4,#feffff
+// Clube Recreativo e Atlético Catalano
+// Goiás - GO
 // CRAC                    S0.5  61

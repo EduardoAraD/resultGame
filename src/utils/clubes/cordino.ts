@@ -9,5 +9,7 @@ export const cordino: Clube = {
   star: 0.5,
   logo,
 }
-
+// cores: #f3f036,#3b953b,#ffffff
+// Cordino Esporte Clube
+// Maranhão - MA
 // Cordino                 S0.5  59

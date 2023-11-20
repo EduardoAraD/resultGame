@@ -9,5 +9,7 @@ export const ituano: Clube = {
   star: 2,
   logo,
 }
+// cores: #fb0404,#040404,#fefefe
 // Ituano Futebol Clube
+// São Paulo - SP
 // Ituano                  S2.0  67

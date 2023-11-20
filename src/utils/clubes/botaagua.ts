@@ -9,5 +9,7 @@ export const botaagua: Clube = {
   star: 0.5,
   logo,
 }
-
+// cores: #0100d1,#ffff00
+// Botaagua Futebol Clube
+// Ceará - CE
 // Botaagua FC-CE          S0.5  60 - Portuguesa Santista

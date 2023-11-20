@@ -9,5 +9,7 @@ export const athleticClub: Clube = {
   star: 0.5,
   logo,
 }
-
+// cores: #000000, #ffffff
+// Athletic Club
+// Minas Gerais
 // Athletic Club           S0.5  61

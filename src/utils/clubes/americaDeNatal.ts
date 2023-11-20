@@ -9,5 +9,7 @@ export const americaDeNatal: Clube = {
   star: 1,
   logo,
 }
-
+// cores: #e41920,  #ffffff
+// América Futebol Clube
+// Rio Grande do Norte - RN
 // América de Natal        S1.0  63

@@ -9,5 +9,7 @@ export const campinense: Clube = {
   star: 0.5,
   logo,
 }
-
+// cores: #da1f1a,#1f1a17,#ffffff
+// Campinense Clube
+// Paraíba - PB
 // Campinense              S0.5  60

@@ -5,9 +5,11 @@ import logo from '../../assets/logos/brasiliense.png'
 export const brasiliense: Clube = {
   name: 'Brasiliense FC',
   overall: 63,
-  stadium: 'Estádio Elmo Serejo Farias (Serejão)',
+  stadium: 'Estádio Elmo Serejo Farias - Serejão',
   star: 1,
   logo,
 }
-
+// cores: #ffde00,#fdfdfc
+// Brasiliense Futebol Clube
+// Distrito Federal - DF
 // Brasiliense             S1.0  63

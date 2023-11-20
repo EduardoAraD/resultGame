@@ -9,5 +9,7 @@ export const guarani: Clube = {
   star: 2.5,
   logo,
 }
+// cores: #046c54,#FFFFFF
 // Guarani Futebol Clube
+// São Paulo - SP
 // Guarani                 S2.5  70

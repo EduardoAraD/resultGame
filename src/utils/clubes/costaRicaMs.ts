@@ -9,5 +9,7 @@ export const costaRicaMS: Clube = {
   star: 0.5,
   logo,
 }
-
+// cores: #ffffff,#0e0656
+// Costa Rica Esporte Clube
+// Mato Grosso do Sul - MS
 // Costa Rica-MS           S0.5  57

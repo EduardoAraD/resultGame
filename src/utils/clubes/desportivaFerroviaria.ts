@@ -9,5 +9,7 @@ export const desportivaFerroviaria: Clube = {
   star: 0.5,
   logo,
 }
-
+// cores: #640b23, #FFFFFF
+// Associação Desportiva Ferroviária
+// Espírito Santo - ES
 // Desportiva Ferroviária  S0.5  57

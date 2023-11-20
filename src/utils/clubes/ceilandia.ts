@@ -9,5 +9,7 @@ export const ceilandia: Clube = {
   star: 0.5,
   logo,
 }
-
+// cores: #fefefe, #151517
+// Ceilândia Esporte Clube
+// Distrito Federal - DF
 // Ceilândia               S0.5  59

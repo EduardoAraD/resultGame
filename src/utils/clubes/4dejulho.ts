@@ -9,5 +9,7 @@ export const quatroDeJulho: Clube = {
   star: 0.5,
   logo,
 }
-
+// cores: #ed3237, #fefefe
+// 4 de Julho Esporte Clube
+// Piauí - PI
 // 4 de Julho              S0.5  57

@@ -9,5 +9,7 @@ export const brusque: Clube = {
   star: 1.5,
   logo,
 }
-
+// cores: #ffe712, #2f9751, #ef4124
+// Brusque Futebol Clube
+// Santa Catarina - SC
 // Brusque                 S1.5  64.5
