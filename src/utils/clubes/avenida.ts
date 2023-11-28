@@ -3,13 +3,14 @@ import { Clube } from "../../Model/Clube";
 import logo from '../../assets/logos/avenida.png'
 
 export const avenida: Clube = {
+  id: 25,
   name: 'Avenida',
+  sigla: 'AVE',
+  nameComplete: 'Esporte Clube Avenida',
   overall: 57,
   stadium: 'Estádio dos Eucaliptos',
-  star: 0.5,
+  // star: 0.5,
   logo,
+  state: 'RS',
+  colors: ['#00ac4d','#ffffff']
 }
-// cores: #00ac4d,#ffffff
-// Esporte Clube Avenida
-// Rio Grande do Sul - RS
-// Avenida                 S0.5  57

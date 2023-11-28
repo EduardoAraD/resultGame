@@ -3,13 +3,14 @@ import { Clube } from "../../Model/Clube";
 import logo from '../../assets/logos/itabaiana.png'
 
 export const itabaiana: Clube = {
+  id: 95,
   name: 'Itabaiana',
-  overall: 62,
+  sigla: 'ITA',
+  nameComplete: 'Associação Olímpica de Itabaiana',
+  overall: 61, // 62
   stadium: 'Estádio Etelvino Mendonça - Mendoção',
-  star: 0.5,
+  // star: 0.5,
   logo,
+  state: 'SE',
+  colors: ['#0e0ece','#f20505','#fefeff']
 }
-// cores: #0e0ece,#f20505,#fefeff
-// Associação Olímpica de Itabaiana
-// Sergipe - SE
-// Itabaiana-SE            S0.5  62

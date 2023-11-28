@@ -3,11 +3,14 @@ import { Clube } from "../../Model/Clube";
 import logo from '../../assets/logos/trem_ap.png'
 
 export const tremAp: Clube = {
-  name: 'Trem DC-AP',
+  id: 175,
+  name: 'Trem-AP',
+  sigla: 'TRE',
+  nameComplete: 'Trem Desportivo Clube',
   overall: 59,
-  stadium: 'Zerão',
-  star: 0.5,
+  stadium: 'Estádio Milton de Souza Corrêa - Zerão',
+  // star: 0.5,
   logo,
+  state: 'AP',
+  colors: ['#dc0000','#000000']
 }
-// Trem Desportivo Clube
-// Trem-AP                 S0.5  59

@@ -3,13 +3,14 @@ import { Clube } from "../../Model/Clube";
 import logo from '../../assets/logos/icasa.png'
 
 export const icasa: Clube = {
+  id: 87,
   name: 'Icasa',
+  sigla: 'ICA',
+  nameComplete: 'Associação Desportiva Recreativa Cultural Icasa',
   overall: 59,
   stadium: 'Arena Romeirão',
-  star: 0.5,
+  // star: 0.5,
   logo,
+  state: 'CE',
+  colors: ['#046c34','#fefefe']
 }
-// cores: #046c34,#fefefe
-// Associação Desportiva Recreativa Cultural Icasa
-// Ceará - CE
-// Icasa                   S0.5  59

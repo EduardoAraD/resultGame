@@ -3,11 +3,14 @@ import { Clube } from "../../Model/Clube";
 import logo from '../../assets/logos/nova_venecia.png'
 
 export const novaVenecia: Clube = {
+  id: 122,
   name: 'Nova Venécia FC',
+  sigla: 'NVE',
+  nameComplete: 'Nova Venécia Futebol Clube',
   overall: 60,
   stadium: 'Estádio Zenor Pedrosa Rocha',
-  star: 0.5,
+  // star: 0.5,
   logo,
+  state: 'ES',
+  colors: ['#ffcd00','#008478','#fffeff']
 }
-// Nova Venécia Futebol Clube
-// Nova Venécia            S0.5  60

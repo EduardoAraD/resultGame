@@ -3,13 +3,14 @@ import { Clube } from "../../Model/Clube";
 import logo from '../../assets/logos/cianorte.png'
 
 export const cianorte: Clube = {
+  id: 50,
   name: 'Cianorte FC',
-  overall: 60,
-  stadium: 'Estadio Municipal Olímpico Albino Turbay',
-  star: 0.5,
+  sigla: 'CIA',
+  nameComplete: 'Cianorte Futebol Clube',
+  overall: 59,
+  stadium: 'Estadio Olímpico Albino Turbay',
+  // star: 0.5,
   logo,
+  state: 'PR',
+  colors: ['#1d2357','#ffffff']
 }
-// cores: #1d2357,#ffffff
-// Cianorte Futebol Clube
-// Paraná - PR
-// Cianorte                S0.5  60

@@ -3,11 +3,14 @@ import { Clube } from "../../Model/Clube";
 import logo from '../../assets/logos/volta_redonda.png'
 
 export const voltaRedonda: Clube = {
-  name: 'Volta Redonda FC',
-  overall: 64.5,
-  stadium: 'Estádio Municipal Sylvio Raulino de Oliveira',
-  star: 1.5,
+  id: 186,
+  name: 'Volta Redonda',
+  sigla: 'VRE',
+  nameComplete: 'Volta Redonda Futebol Clube',
+  overall: 65, // 64.5
+  stadium: 'Estádio Sylvio Raulino de Oliveira',
+  // star: 1.5,
   logo,
+  state: 'RJ',
+  colors: ['#000000','#fec459']
 }
-// Volta Redonda Futebol Clube
-// Volta Redonda           S1.5  64.5

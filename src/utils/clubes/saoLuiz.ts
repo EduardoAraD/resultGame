@@ -3,11 +3,14 @@ import { Clube } from "../../Model/Clube";
 import logo from '../../assets/logos/sao_luiz.png'
 
 export const saoLuizRS: Clube = {
-  name: 'EC São Luiz-RS',
+  id: 164,
+  name: 'São Luiz-RS',
+  sigla: 'SLU',
+  nameComplete: 'Esporte Clube São Luiz',
   overall: 57,
   stadium: 'Estádio 19 de Outubro',
-  star: 0.5,
+  // star: 0.5,
   logo,
+  state: 'RS',
+  colors: ['#ee353a','#fefefe']
 }
-// Esporte Clube São Luiz
-// São Luiz-RS             S0.5  57

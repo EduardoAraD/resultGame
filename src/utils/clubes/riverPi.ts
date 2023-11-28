@@ -3,11 +3,14 @@ import { Clube } from "../../Model/Clube";
 import logo from '../../assets/logos/river_pi.png'
 
 export const riverPI: Clube = {
-  name: 'River AC-PI',
+  id: 151,
+  name: 'River-PI',
+  sigla: 'RIV',
+  nameComplete: 'River Atlético Clube',
   overall: 59,
   stadium: 'Estádio De Futebol Albertão',
-  star: 0.5,
+  // star: 0.5,
   logo,
+  state: 'PI',
+  colors: ['#ffffff','#1f1a17','#ce271f']
 }
-// River Atlético Clube
-// River-PI                S0.5  59

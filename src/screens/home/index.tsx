@@ -107,7 +107,11 @@ export function Home() {
           </Game>
         </Info>
 
-        <Button disabled={disabledButton} onPress={goGameCurrent} />
+        <Button
+          disabled={disabledButton}
+          onPress={goGameCurrent}
+          title="Continuar"
+        />
       </Container>
       <ModalChooseClub
         visible={showModalChooseClubHome}

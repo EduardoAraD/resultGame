@@ -1,12 +1,16 @@
 import { TouchableOpacityProps } from "react-native";
-import { Touch, TouchText } from "./styles";
 
-interface ButtonProps extends TouchableOpacityProps {}
+import { ButtonTypeColor, Touch, TouchText } from "./styles";
 
-export function Button({ ...rest }: ButtonProps) {
+interface ButtonProps extends TouchableOpacityProps {
+  title: string;
+  type?: ButtonTypeColor
+}
+
+export function Button({ title, type = 'Primary', ...rest }: ButtonProps) {
   return (
-    <Touch activeOpacity={0.7} {...rest}>
-      <TouchText>Continuar</TouchText>
+    <Touch activeOpacity={0.7} type={type} {...rest}>
+      <TouchText type={type}>{title}</TouchText>
     </Touch>
   )
 }

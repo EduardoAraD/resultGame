@@ -3,13 +3,14 @@ import { Clube } from "../../Model/Clube";
 import logo from '../../assets/logos/costa_rica_ms.png'
 
 export const costaRicaMS: Clube = {
+  id: 56,
   name: 'Costa Rica EC-MS',
+  sigla: 'CSR',
+  nameComplete: 'Costa Rica Esporte Clube',
   overall: 57,
   stadium: 'Estádio Laerte Paes Coelho - Laertão',
-  star: 0.5,
+  // star: 0.5,
   logo,
+  state: 'MS',
+  colors: ['#ffffff','#0e0656']
 }
-// cores: #ffffff,#0e0656
-// Costa Rica Esporte Clube
-// Mato Grosso do Sul - MS
-// Costa Rica-MS           S0.5  57

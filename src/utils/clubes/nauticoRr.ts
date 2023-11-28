@@ -3,11 +3,14 @@ import { Clube } from "../../Model/Clube";
 import logo from '../../assets/logos/nautico_rr.png'
 
 export const nauticoRR: Clube = {
+  id: 120,
   name: 'Náutico FC-RR',
+  sigla: 'NRR',
+  nameComplete: 'Náutico Futebol Clube',
   overall: 56,
   stadium: 'Estádio Flamarion Vasconcelos',
-  star: 0.5,
+  // star: 0.5,
   logo,
+  state: 'RR',
+  colors: ['#d8231a','#ffffff']
 }
-// Náutico Futebol Clube
-// Náutico-RR              S0.5  56

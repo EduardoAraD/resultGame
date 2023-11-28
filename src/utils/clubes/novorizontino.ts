@@ -3,11 +3,14 @@ import { Clube } from "../../Model/Clube";
 import logo from '../../assets/logos/novorizontino.png'
 
 export const novorizontino: Clube = {
-  name: 'G Novorizontino',
+  id: 124,
+  name: 'Novorizontino',
+  sigla: 'NOV',
+  nameComplete: 'Grêmio Novorizontino',
   overall: 70,
-  stadium: 'Jorge Ismael de Biasi',
-  star: 2.5,
+  stadium: 'Estádio Jorge Ismael de Biasi',
+  // star: 2.5,
   logo,
+  state: 'SP',
+  colors: ['#faec24','#000000']
 }
-// Grêmio Novorizontino
-// Novorizontino           S2.5  70

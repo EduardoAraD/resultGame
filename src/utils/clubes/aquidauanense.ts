@@ -3,13 +3,14 @@ import { Clube } from "../../Model/Clube";
 import logo from '../../assets/logos/aquidauanense.png'
 
 export const aquidauanense: Clube = {
-  name: 'Aquidauanense FC-MS',
+  id: 14,
+  name: 'Aquidauanense-MS',
+  sigla: 'AQU',
+  nameComplete: 'Aquidauanense Futebol Clube',
   overall: 59,
-  stadium: 'Estádio Municipal Mário Pinto de Souza',
-  star: 0.5,
+  stadium: 'Estádio Mário Pinto de Souza',
+  // star: 0.5,
   logo,
+  state: 'MS',
+  colors: ['#183883','#ffffff']
 }
-// cores: #183883, #ffffff
-// Aquidauanense Futebol Clube
-// Mato Grosso do Sul - MS
-// Aquidauanense-MS        S0.5  59

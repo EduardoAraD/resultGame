@@ -3,11 +3,14 @@ import { Clube } from "../../Model/Clube";
 import logo from '../../assets/logos/vasco.png'
 
 export const vasco: Clube = {
-  name: 'CR Vasco da Gama',
+  id: 181,
+  name: 'Vasco da Gama',
+  sigla: 'VAS',
+  nameComplete: 'Club de Regatas Vasco da Gama',
   overall: 75,
-  stadium: 'São Januário',
-  star: 3.5,
+  stadium: 'Estádio São Januário',
+  // star: 3.5,
   logo,
+  state: 'RJ',
+  colors: ['#000000','#ffffff']
 }
-// Club de Regatas Vasco da Gama
-// Vasco                   S3.5  75

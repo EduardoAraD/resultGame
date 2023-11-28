@@ -3,13 +3,14 @@ import { Clube } from "../../Model/Clube";
 import logo from '../../assets/logos/democrata.png'
 
 export const democrata: Clube = {
+  id: 66,
   name: 'Democrata',
+  sigla: 'DEM',
+  nameComplete: 'Esporte Clube Democrata',
   overall: 61,
-  stadium: 'Estádio Mamudão',
-  star: 0.5,
+  stadium: 'Estádio José Mammoud Abbas - Mamudão',
+  // star: 0.5,
   logo,
+  state: 'MG',
+  colors: ['#040404','#FEFEFE']
 }
-// cores: #040404,#FEFEFE
-// Esporte Clube Democrata
-// Minas Gerais - MG
-// Democrata               S0.5  61

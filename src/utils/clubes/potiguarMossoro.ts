@@ -3,11 +3,14 @@ import { Clube } from "../../Model/Clube";
 import logo from '../../assets/logos/potiguar_mossoro.png'
 
 export const potiguarDeMossoro: Clube = {
-  name: 'ACD Potiguar de Mossoró',
+  id: 139,
+  name: 'Potiguar de Mossoró',
+  sigla: 'POT',
+  nameComplete: 'Associação Cultural e Desportiva Potiguar',
   overall: 57,
-  stadium: 'Nogueirão',
-  star: 0.5,
+  stadium: ' Estádio Manoel Leonardo Nogueira - Nogueirão',
+  // star: 0.5,
   logo,
+  state: 'RN',
+  colors: ['#ff0000','#ffffff']
 }
-// Associação Cultural e Desportiva Potiguar
-// Potiguar de Mossoró     S0.5  57

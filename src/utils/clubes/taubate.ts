@@ -3,11 +3,14 @@ import { Clube } from "../../Model/Clube";
 import logo from '../../assets/logos/taubate.png'
 
 export const taubate: Clube = {
-  name: 'EC Taubaté',
+  id: 172,
+  name: 'Taubaté',
+  sigla: 'TAU',
+  nameComplete: 'Esporte Clube Taubaté',
   overall: 57,
-  stadium: 'Joaquinzão',
-  star: 0.5,
+  stadium: 'Estádio Joaquim de Morais Filho - Joaquinzão',
+  // star: 0.5,
   logo,
+  state: 'SP',
+  colors: ['#012c61','#ffffff']
 }
-// Esporte Clube Taubaté
-// Taubaté                 S0.5  57

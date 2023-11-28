@@ -3,13 +3,14 @@ import { Clube } from "../../Model/Clube";
 import logo from '../../assets/logos/goias.png'
 
 export const goias: Clube = {
+  id: 80,
   name: 'Goiás EC',
+  sigla: 'GOI',
+  nameComplete: 'Goiás Esporte Clube',
   overall: 73,
   stadium: 'Estádio Hailé Pinheiro - Serrinha',
-  star: 73,
+  // star: 73,
   logo,
+  state: 'GO',
+  colors: ['#045c4c','#FFFFFF']
 }
-// cores: #045c4c,#FFFFFF
-// Goiás Esporte Clube
-// Goiás - GO
-// Goiás                   S3.0  73

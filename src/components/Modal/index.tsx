@@ -3,8 +3,9 @@ import { FlatList, Modal } from 'react-native';
 import { Clube } from '../../Model/Clube';
 import { CardClub } from '../CardClub';
 
-import { CloseButton, Container, Line, ModalView, Title } from './styles';
+import { CloseButton, Container, Input, Line, ModalView, Title } from './styles';
 import { clubes } from '../../utils/clubes';
+import { useMemo, useState } from 'react';
 
 interface ModalChooseClubProps {
   visible: boolean;
@@ -17,10 +18,19 @@ export function ModalChooseClub ({
   onClose,
   onSelectedClub,
 }: ModalChooseClubProps) {
+  const [search, setSearch] = useState('');
+
   function selectedCard(club: Clube) {
     onSelectedClub(club);
+    setSearch('');
     onClose();
   }
+
+  const listClubs = useMemo(() => {
+    const searchLow = search.toLowerCase();
+    return clubes.filter(club =>
+      club.name.toLocaleLowerCase().includes(searchLow));
+  }, [search]);
 
   return (
     <Modal
@@ -35,8 +45,13 @@ export function ModalChooseClub ({
             <Title>X</Title>
           </CloseButton>
           <Title>Escolha o clube</Title>
+          <Input
+            placeholder='Filtrar clube'
+            value={search}
+            onChangeText={setSearch}
+          />
           <FlatList
-            data={clubes}
+            data={listClubs}
             keyExtractor={item => `${item.name}-${item.overall}`}
             renderItem={({ item }) => (
               <CardClub

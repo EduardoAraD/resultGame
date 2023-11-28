@@ -3,11 +3,14 @@ import { Clube } from "../../Model/Clube";
 import logo from '../../assets/logos/uniao_rondonopolis.png'
 
 export const uniaoRondonopolis: Clube = {
+  id: 179,
   name: 'União Rondonópolis',
+  sigla: 'UNI',
+  nameComplete: 'União Esporte Clube',
   overall: 60.5,
-  stadium: 'Luthero Lopes',
-  star: 0.5,
+  stadium: 'Estádio Luthero Lopes',
+  // star: 0.5,
   logo,
+  state: 'MT',
+  colors: ['#e0191e','#ffffff']
 }
-// União Esporte Clube
-// União Rondonópolis      S0.5  60.5

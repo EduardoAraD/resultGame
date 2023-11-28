@@ -3,13 +3,14 @@ import { Clube } from "../../Model/Clube";
 import logo from '../../assets/logos/esportivo.png'
 
 export const esportivo: Clube = {
+  id: 68,
   name: 'Esportivo BG',
+  sigla: 'ESP',
+  nameComplete: 'Clube Esportivo Bento Gonçalves',
   overall: 60,
   stadium: 'Estádio Montanha dos Vinhedos',
-  star: 0.5,
+  // star: 0.5,
   logo,
+  state: 'RS',
+  colors: ['#04449c','#ffffff']
 }
-// cores: #04449c,#ffffff
-// Clube Esportivo Bento Gonçalves
-// Rio Grande do Sul - RS
-// Esportivo-RS            S0.5  60

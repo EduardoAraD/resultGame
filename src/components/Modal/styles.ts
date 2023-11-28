@@ -7,6 +7,7 @@ export const Container = styled.View`
   background: #00000055;
   padding: 40px 0px;
 `;
+
 export const ModalView = styled.View`
   margin: 20px;
   background-color: ${props => props.theme.colors.blue_200};
@@ -39,4 +40,16 @@ export const Line = styled.View`
   background-color: ${props => props.theme.colors.gray_300};
   margin: 3px;
   align-self: center;
+`;
+
+export const Input = styled.TextInput`
+  height: 40px;
+  margin: 10px;
+  margin-top: 20px;
+  padding: 4px 10px;
+  background-color: ${props => props.theme.colors.white};
+  border-radius: 10px;
+
+  color: ${props => props.theme.colors.gray_700};
+  font-family: ${props => props.theme.fonts.medium};
 `;

@@ -3,13 +3,14 @@ import { Clube } from "../../Model/Clube";
 import logo from '../../assets/logos/ceara.png'
 
 export const ceara: Clube = {
+  id: 47,
   name: 'Ceará SC',
+  sigla: 'CEA',
+  nameComplete: 'Ceará Sporting Club',
   overall: 71.5,
   stadium: 'Arena Castelão',
-  star: 3,
+  // star: 3,
   logo,
+  state: 'CE',
+  colors: ['#000000','#ffffff']
 }
-// cores: #000000,#FFFFFF
-// Ceará Sporting Club
-// Ceará - CE
-// Ceará                   S3.0  71.5

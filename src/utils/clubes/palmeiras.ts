@@ -3,11 +3,14 @@ import { Clube } from "../../Model/Clube";
 import logo from '../../assets/logos/palmeiras.png'
 
 export const palmeiras: Clube = {
-  name: 'SE Palmeiras',
+  id: 130,
+  name: 'Palmeiras',
+  sigla: 'PAL',
+  nameComplete: 'Sociedade Esportiva Palmeiras',
   overall: 78,
-  stadium: 'Allianz Parque',
-  star: 4,
+  stadium: 'Arena Allianz Parque',
+  // star: 4,
   logo,
+  state: 'SP',
+  colors: ['#006434','#ffffff']
 }
-// Sociedade Esportiva Palmeiras
-// Palmeiras               S4.0  78

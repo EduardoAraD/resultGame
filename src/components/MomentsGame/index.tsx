@@ -1,5 +1,5 @@
 import { Fragment } from "react";
-import { Moment } from "../../Model/Moment";
+import { Moment, MomentComplete } from "../../Model/Moment";
 import { IconBall } from "../IconBall";
 
 import {
@@ -19,7 +19,7 @@ import {
 } from "./styles";
 
 interface MomentsGameProps {
-  moments: Moment[];
+  moments: MomentComplete[];
 }
 
 export function MomentsGame({ moments }: MomentsGameProps) {

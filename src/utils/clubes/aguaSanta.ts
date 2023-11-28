@@ -3,13 +3,14 @@ import { Clube } from "../../Model/Clube";
 import logo from '../../assets/logos/agua_santa.png'
 
 export const aguaSanta: Clube = {
+  id: 5,
   name: 'Água Santa',
+  sigla: 'AGS',
+  nameComplete: 'Esporte Clube Água Santa',
   overall: 60,
   stadium: 'Arena Inamar - Diadema',
-  star: 0.5,
+  // star: 0.5,
   logo,
+  state: 'SP',
+  colors: ['#fffffe','#17121f', '#e8ad28']
 }
-// cores: #fffffe, #17121f, #e8ad28
-// Esporte Clube Água Santa
-// São Paulo - SP
-// Água Santa              S0.5  60

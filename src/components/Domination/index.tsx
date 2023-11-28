@@ -11,11 +11,11 @@ export function Domination({ domainAway, domainHome, minute }: DominationProps) 
   const widthHome = domainHome / (domainTotal) * 100
   const widthAway = domainAway / (domainTotal) * 100
 
-  const half = minute > 45 ? 2 : 1
+  // const half = minute > 45 ? 2 : 1
 
   return (
     <>
-      <Text>{minute}º {half}T</Text>
+      <Text>{minute}'</Text>
       <Container>
         <DomainHome style={{ width: `${widthHome}%` }} />
         <DomainAway style={{ width: `${widthAway}%` }} />

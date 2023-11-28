@@ -3,13 +3,14 @@ import { Clube } from "../../Model/Clube";
 import logo from '../../assets/logos/athletic_club.png'
 
 export const athleticClub: Clube = {
+  id: 16,
   name: 'Athletic Club',
-  overall: 61,
+  sigla: 'ATC',
+  nameComplete: 'Athletic Club',
+  overall: 62, // 61
   stadium: 'Estádio Joaquim Portugal',
-  star: 0.5,
+  // star: 0.5,
   logo,
+  state: 'MG',
+  colors: ['#000000','#ffffff']
 }
-// cores: #000000, #ffffff
-// Athletic Club
-// Minas Gerais
-// Athletic Club           S0.5  61

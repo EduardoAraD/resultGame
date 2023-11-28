@@ -3,13 +3,14 @@ import { Clube } from "../../Model/Clube";
 import logo from '../../assets/logos/amazonas.png'
 
 export const amazonas: Clube = {
+  id: 9,
   name: 'Amazonas FC',
-  overall: 62.5,
-  stadium: 'Estádio Municipal Carlos Zamith',
-  star: 1,
+  sigla: 'AMA',
+  nameComplete: 'Amazonas Futebol Clube',
+  overall: 64, // 62.5
+  stadium: 'Estádio Carlos Zamith',
+  // star: 1,
   logo,
+  state: 'AM',
+  colors: ['#ffac00','#130c15']
 }
-// cores: #ffac00, #130c15
-// Amazonas Futebol Clube
-// Amazonas - AM
-// Amazonas                S1.0  62.5

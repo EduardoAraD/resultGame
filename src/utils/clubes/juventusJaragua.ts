@@ -3,11 +3,14 @@ import { Clube } from "../../Model/Clube";
 import logo from '../../assets/logos/juventus_jaragua.png'
 
 export const juventusDeJaragua: Clube = {
-  name: 'GE Juventus de Jaraguá',
+  id: 102,
+  name: 'Juventus de Jaraguá',
+  sigla: 'JJA',
+  nameComplete: 'Grêmio Esportivo Juventus',
   overall: 58,
-  stadium: 'João Marcatto',
-  star: 0.5,
+  stadium: 'Estádio João Marcatto',
+  // star: 0.5,
   logo,
+  state: 'SC',
+  colors: ['#b4473f','#ffffff']
 }
-// Grêmio Esportivo Juventus
-// Juventus de Jaraguá     S0.5  58

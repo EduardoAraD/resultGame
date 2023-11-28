@@ -3,11 +3,14 @@ import { Clube } from "../../Model/Clube";
 import logo from '../../assets/logos/vila_nova_mg.png'
 
 export const vilaNovaMG: Clube = {
-  name: 'Villa Nova AC-MG',
+  id: 183,
+  name: 'Villa Nova-MG',
+  sigla: 'VMG',
+  nameComplete: 'Villa Nova Atlético Clube',
   overall: 57.5,
-  stadium: 'Castor Cifuentes',
-  star: 0.5,
+  stadium: 'Estádio Castor Cifuentes',
+  // star: 0.5,
   logo,
+  state: 'MG',
+  colors: ['#d20001','#ffffff']
 }
-// Villa Nova Atlético Clube
-// Vila Nova-MG            S0.5  57.5

@@ -4,7 +4,6 @@ export const Safe = styled.SafeAreaView`
   width: 100%;
   height: 100%;
   background-color: ${props => props.theme.colors.blue_100};
-  margin-top: 10px;
 `;
 
 export const Container = styled.View`

@@ -3,13 +3,14 @@ import { Clube } from "../../Model/Clube";
 import logo from '../../assets/logos/humaita.png'
 
 export const humaita: Clube = {
+  id: 85,
   name: 'Humaitá',
+  sigla: 'HUM',
+  nameComplete: 'Sport Clube Humaitá',
   overall: 58,
   stadium: 'Arena da Floresta',
-  star: 0.5,
+  // star: 0.5,
   logo,
+  state: 'AC',
+  colors: ['#FFFFFF','#ea2324','#04a44c']
 }
-// cores: #FFFFFF,#ea2324,#04a44c
-// Sport Clube Humaitá
-// Acre - AC
-// Humaitá                 S0.5  58

@@ -3,13 +3,14 @@ import { Clube } from "../../Model/Clube";
 import logo from '../../assets/logos/interporto.png'
 
 export const interporto: Clube = {
+  id: 92,
   name: 'Interporto FC',
+  sigla: 'ITP',
+  nameComplete: 'Interporto Futebol Clube',
   overall: 59,
   stadium: 'Estádio General Sampaio',
-  star: 0.5,
+  // star: 0.5,
   logo,
+  state: 'TO',
+  colors: ['#dea309','#262e89']
 }
-// cores: #dea309,#262e89
-// Interporto Futebol Clube
-// Tocantins - TO
-// Interporto              S0.5  59

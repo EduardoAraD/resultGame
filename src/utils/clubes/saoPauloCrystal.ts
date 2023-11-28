@@ -3,11 +3,14 @@ import { Clube } from "../../Model/Clube";
 import logo from '../../assets/logos/sao_paulo_crystal.png'
 
 export const saoPauloCrystal: Clube = {
-  name: 'São Paulo Crystal FC',
+  id: 166,
+  name: 'São Paulo Crystal',
+  sigla: 'SPC',
+  nameComplete: 'São Paulo Crystal Futebol Clube',
   overall: 55,
-  stadium: 'Carneirão',
-  star: 0.5,
+  stadium: 'Estádio Carneirão',
+  // star: 0.5,
   logo,
+  state: 'PB',
+  colors: ['#cc0000','#ffffff','#000000']
 }
-// São Paulo Crystal Futebol Clube
-// São Paulo Crystal       S0.5  55

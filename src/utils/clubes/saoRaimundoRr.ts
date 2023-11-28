@@ -3,11 +3,14 @@ import { Clube } from "../../Model/Clube";
 import logo from '../../assets/logos/sao_raimundo_rr.png'
 
 export const saoRaimundoRr: Clube = {
-  name: 'São Raimundo EC-RR',
+  id: 168,
+  name: 'São Raimundo-RR',
+  sigla: 'SRR',
+  nameComplete: 'São Raimundo Esporte Clube',
   overall: 58.5,
   stadium: 'Estádio Flamarion Vasconcelos',
-  star: 0.5,
+  // star: 0.5,
   logo,
+  state: 'RR',
+  colors: ['#0e318f','#fefefe']
 }
-// São Raimundo Esporte Clube
-// São Raimundo-RR         S0.5  58.5

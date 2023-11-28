@@ -3,13 +3,14 @@ import { Clube } from "../../Model/Clube";
 import logo from '../../assets/logos/anapolis.png'
 
 export const anapolis: Clube = {
+  id: 12,
   name: 'Anápolis FC',
+  sigla: 'ANA',
+  nameComplete: 'Anápolis Futebol Clube',
   overall: 60,
   stadium: 'Estádio Jonas Duarte',
-  star: 0.5,
+  // star: 0.5,
   logo,
+  state: 'GO',
+  colors: ['#ee1a1f','#1c1718','#ffffff']
 }
-// cores: #ee1a1f, #1c1718, #ffffff
-// Anápolis Futebol Clube
-// Goiás - GO
-// Anápolis                S0.5  60

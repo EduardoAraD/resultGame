@@ -1,3 +1,4 @@
+import { ArrowLeft } from "phosphor-react-native";
 import styled from "styled-components/native";
 
 export const Safe = styled.View`
@@ -11,7 +12,7 @@ export const Container = styled.View`
   padding: 20px;
   flex: 1;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 `;
 
 export const Title = styled.Text`
@@ -36,7 +37,13 @@ export const LogoClube = styled.Image`
 `;
 
 export const ContentInfo = styled.View`
-  margin-top: 30px;
+  margin-top: 12px;
   flex: 1;
   width: 100%;
+`;
+
+export const DivAction = styled.View`
+  flex-direction: row;
+  width: 100%;
+  gap: 8px;
 `;

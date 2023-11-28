@@ -3,13 +3,14 @@ import { Clube } from "../../Model/Clube";
 import logo from '../../assets/logos/acao.png'
 
 export const acao: Clube = {
+  id: 3,
   name: 'Ação F',
-  overall: 63,
-  stadium: 'Estádio Raimundão',
-  star: 1,
+  sigla: 'ACA',
+  nameComplete: 'Sociedade Ação Futebol',
+  overall: 60, // 63
+  stadium: 'Estádio Cândido Raimundo Honorato - Raimundão',
+  // star: 1,
   logo,
+  state: 'MT',
+  colors: ['#ffffff','#c80000', '#000000']
 }
-// cores:  #ffffff,  #c80000,  #000000
-// Sociedade Ação Futebol
-// Mato Grosso - MT
-// Ação                    S1.0  63

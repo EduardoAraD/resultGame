@@ -6,11 +6,11 @@ interface DomainGame {
 }
 
 export function domainGame({ home, away }: DomainGame): DomainGame {
-  const homeOverrallReajust = 2*(home.overrall) - 70;
-  const awayOverrallReajust = 2*(away.overrall) - 70;
+  const homeOverrallReajust = 2*(home.overrall) - 50;
+  const awayOverrallReajust = 2*(away.overrall) - 50;
 
   const over = homeOverrallReajust + awayOverrallReajust;
-  const variantDomain = 40;
+  const variantDomain = 50;
 
   const domainHomeInPorcentage = (variantDomain * homeOverrallReajust) / over;
 

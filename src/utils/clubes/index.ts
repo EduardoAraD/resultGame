@@ -49,6 +49,7 @@ import { caxias } from './caxias';
 import { ceara } from './ceara';
 import { ceilandia } from './ceilandia';
 import { chapecoense } from './chapecoense';
+import { cianorte } from './cianorte';
 import { concordia } from './concordia';
 import { confianca } from './confianca';
 import { cordino } from './cordino';
@@ -186,7 +187,6 @@ import { vitoriaES } from './vitoriaEs';
 import { voltaRedonda } from './voltaRedonda';
 import { xvDePiracicaba } from './xvDePiracicaba';
 import { ypiranga } from './ypiranga';
-import { cianorte } from './cianorte';
 import { saoPauloCrystal } from './saoPauloCrystal';
 
 export const clubes: Clube[] = [

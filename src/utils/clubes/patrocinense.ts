@@ -3,11 +3,14 @@ import { Clube } from "../../Model/Clube";
 import logo from '../../assets/logos/patrocinense.png'
 
 export const patrocinense: Clube = {
-  name: 'CA Patrocinense',
+  id: 133,
+  name: 'Patrocinense',
+  sigla: 'PAT',
+  nameComplete: 'Clube Atlético Patrocinense',
   overall: 61,
-  stadium: 'Pedro Alves',
-  star: 0.5,
+  stadium: 'Estádio Pedro Alves',
+  // star: 0.5,
   logo,
+  state: 'MG',
+  colors: ['#7c2e2e','#fefefe']
 }
-// Clube Atlético Patrocinense
-// Patrocinense            S0.5  61

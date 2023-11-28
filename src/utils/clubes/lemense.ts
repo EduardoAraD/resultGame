@@ -3,11 +3,14 @@ import { Clube } from "../../Model/Clube";
 import logo from '../../assets/logos/lemense.png'
 
 export const lemense: Clube = {
-  name: 'EC Lemense',
+  id: 105,
+  name: 'Lemense',
+  sigla: 'LEM',
+  nameComplete: 'Esporte Clube Lemense',
   overall: 60,
-  stadium: 'Bruno Lazzarini',
-  star: 0.5,
+  stadium: 'Estádio Bruno Lazzarini',
+  // star: 0.5,
   logo,
+  state: 'SP',
+  colors: ['#2f4492','#fefefe']
 }
-// Esporte Clube Lemense
-// Lemense                 S0.5  60

@@ -3,11 +3,14 @@ import { Clube } from "../../Model/Clube";
 import logo from '../../assets/logos/retro.png'
 
 export const retro: Clube = {
-  name: 'Retrô FCB',
+  id: 148,
+  name: 'Retrô FC',
+  sigla: 'RET',
+  nameComplete: 'Retrô Futebol Clube Brasil',
   overall: 62,
   stadium: 'Itaipava Arena Pernambuco',
-  star: 0.5,
+  // star: 0.5,
   logo,
+  state: 'PE',
+  colors: ['#232350','#deaa24']
 }
-// Retrô Futebol Clube Brasil
-// Retrô                   S0.5  62

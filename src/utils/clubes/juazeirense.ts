@@ -3,11 +3,14 @@ import { Clube } from "../../Model/Clube";
 import logo from '../../assets/logos/juazeirense.png'
 
 export const juazeirense: Clube = {
-  name: 'SD Juazeirense',
+  id: 99,
+  name: 'Juazeirense',
+  sigla: 'JUA',
+  nameComplete: 'Sociedade Desportiva Juazeirense',
   overall: 57,
   stadium: 'Estádio Adauto Moraes',
-  star: 0.5,
+  // star: 0.5,
   logo,
+  state: 'BA',
+  colors: ['#ff0000','#ffff00']
 }
-// Sociedade Desportiva Juazeirense
-// Juazeirense             S0.5  57

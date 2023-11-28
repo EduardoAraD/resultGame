@@ -3,13 +3,14 @@ import { Clube } from "../../Model/Clube";
 import logo from '../../assets/logos/botaagua.png'
 
 export const botaagua: Clube = {
+  id: 31,
   name: 'Botaagua FC',
-  overall: 60,
+  sigla: 'BTA',
+  nameComplete: 'Botaagua Futebol Clube',
+  overall: 62, // 60
   stadium: 'Arena Pabussú',
-  star: 0.5,
+  // star: 0.5,
   logo,
+  state: 'CE',
+  colors: ['#1D2766','#dddd00']
 }
-// cores: #0100d1,#ffff00
-// Botaagua Futebol Clube
-// Ceará - CE
-// Botaagua FC-CE          S0.5  60 - Portuguesa Santista

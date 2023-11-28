@@ -3,11 +3,14 @@ import { Clube } from "../../Model/Clube";
 import logo from '../../assets/logos/sao_joseense.png'
 
 export const saoJoseense: Clube = {
-  name: 'IF São Joseense',
-  overall: 62,
+  id: 163,
+  name: 'São Joseense',
+  sigla: 'SJS',
+  nameComplete: 'Independente Futebol São Joseense',
+  overall: 61.5, // 62
   stadium: 'Estádio do Pinhão',
-  star: 0.5,
+  // star: 0.5,
   logo,
+  state: 'PR',
+  colors: ['#2e549f','#fdda34']
 }
-// Independente Futebol São Joseense
-// São Joseense            S0.5  62

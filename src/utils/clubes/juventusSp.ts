@@ -3,11 +3,14 @@ import { Clube } from "../../Model/Clube";
 import logo from '../../assets/logos/juventus_sp.png'
 
 export const juventusSp: Clube = {
-  name: 'CA Juventus-SP',
+  id: 103,
+  name: 'Juventus-SP',
+  sigla: 'JSP',
+  nameComplete: 'Clube Atlético Juventus',
   overall: 58,
   stadium: 'Estádio Conde Rodolfo Crespi',
-  star: 0.5,
+  // star: 0.5,
   logo,
+  state: 'SP',
+  colors: ['#7a003b','#ffffff']
 }
-// Clube Atlético Juventus
-// Juventus-SP             S0.5  58

@@ -3,13 +3,14 @@ import { Clube } from "../../Model/Clube";
 import logo from '../../assets/logos/aparecidense.png'
 
 export const aparecidense: Clube = {
-  name: 'AA Aparecidense',
+  id: 13,
+  name: 'Aparecidense',
+  sigla: 'APA',
+  nameComplete: 'Associação Atlética Aparecidense',
   overall: 62.5,
   stadium: 'Estádio Anníbal Batista de Toledo',
-  star: 1,
+  // star: 1,
   logo,
+  state: 'GO',
+  colors: ['#10284b','#dabf50']
 }
-// cores: #10284b,#dabf50
-// Associação Atlética Aparecidense
-// Goiás - GO
-// Aparecidense            S1.0  62.5

@@ -3,11 +3,14 @@ import { Clube } from "../../Model/Clube";
 import logo from '../../assets/logos/sousa.png'
 
 export const sousa: Clube = {
+  id: 170,
   name: 'Sousa EC',
-  overall: 57,
+  sigla: 'SOU',
+  nameComplete: 'Sousa Esporte Clube',
+  overall: 60, // 57
   stadium: 'Estádio Antonio Mariz',
-  star: 0.5,
+  // star: 0.5,
   logo,
+  state: 'PB',
+  colors: ['#ffffff','#007120']
 }
-// Sousa Esporte Clube
-// Sousa                   S0.5  57

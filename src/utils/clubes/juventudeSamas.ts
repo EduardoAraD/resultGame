@@ -3,11 +3,14 @@ import { Clube } from "../../Model/Clube";
 import logo from '../../assets/logos/juventude_samas.png'
 
 export const juventudeSamas: Clube = {
-  name: 'SE Juventude Samas',
+  id: 101,
+  name: 'Juventude Samas',
+  sigla: 'JSA',
+  nameComplete: 'Sociedade Esportiva Juventude',
   overall: 57,
-  stadium: 'Pinheirão',
-  star: 0.5,
+  stadium: 'Estádio Marcos Pinheiro Neto - Pinheirão',
+  // star: 0.5,
   logo,
+  state: 'MA',
+  colors: ['#da0000','#000000','#ffffff']
 }
-// Sociedade Esportiva Juventude
-// Juventude Samas         S0.5  57
