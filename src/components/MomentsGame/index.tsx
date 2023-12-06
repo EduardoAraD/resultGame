@@ -1,5 +1,7 @@
-import { Fragment } from "react";
+import Animated, { SlideInRight, FadeIn, SlideInLeft } from "react-native-reanimated";
+
 import { Moment, MomentComplete } from "../../Model/Moment";
+
 import { IconBall } from "../IconBall";
 
 import {
@@ -53,7 +55,9 @@ export function MomentsGame({ moments }: MomentsGameProps) {
           <ContainerMoment>
             <MomentInfo style={{ alignItems: 'flex-end' }}>
               {isHomePenalt && (
-                <>
+                <Animated.View
+                  entering={SlideInLeft.delay(100)}
+                >
                   <ViewPlacar>
                     <TextPlacar>
                       <Bold>{goalHomePenaltCurrent}</Bold> - {goalAwayPenaltCurrent}
@@ -61,7 +65,7 @@ export function MomentsGame({ moments }: MomentsGameProps) {
                     <LineHor />
                   </ViewPlacar>
                   <TextGol>{moment.narracao}</TextGol>
-                </>
+                </Animated.View>
               )}
             </MomentInfo>
             <Bool>
@@ -69,7 +73,9 @@ export function MomentsGame({ moments }: MomentsGameProps) {
             </Bool>
             <MomentInfo style={{ alignItems: 'flex-start' }}>
               {!isHomePenalt && (
-                <>
+                <Animated.View
+                  entering={SlideInRight.delay(100)}
+                >
                   <ViewPlacar>
                     <LineHor />
                     <TextPlacar>
@@ -77,7 +83,7 @@ export function MomentsGame({ moments }: MomentsGameProps) {
                     </TextPlacar>
                   </ViewPlacar>
                   <TextGol>{moment.narracao}</TextGol>
-                </>
+                </Animated.View>
               )}
             </MomentInfo>
           </ContainerMoment>
@@ -97,7 +103,9 @@ export function MomentsGame({ moments }: MomentsGameProps) {
           <ContainerMoment>
             <MomentInfo style={{ alignItems: 'flex-end' }}>
               {isGoalHome && (
-                <>
+                <Animated.View
+                  entering={SlideInLeft.delay(100)}
+                >
                   <ViewPlacar>
                     <TextPlacar>
                       <Bold>{goalHomeCurrent}</Bold> - {goalAwayCurrent}
@@ -105,7 +113,7 @@ export function MomentsGame({ moments }: MomentsGameProps) {
                     <LineHor />
                   </ViewPlacar>
                   <TextGol>GOOOOOLLL</TextGol>
-                </>
+                </Animated.View>
               )}
             </MomentInfo>
             <Bool>
@@ -113,7 +121,9 @@ export function MomentsGame({ moments }: MomentsGameProps) {
             </Bool>
             <MomentInfo style={{ alignItems: 'flex-start' }}>
               {!isGoalHome && (
-                <>
+                <Animated.View
+                  entering={SlideInRight.delay(100)}
+                >
                   <ViewPlacar>
                     <LineHor />
                     <TextPlacar>
@@ -121,7 +131,7 @@ export function MomentsGame({ moments }: MomentsGameProps) {
                     </TextPlacar>
                   </ViewPlacar>
                   <TextGol>GOOOOOLLL</TextGol>
-                </>
+                </Animated.View>
               )}
             </MomentInfo>
           </ContainerMoment>
@@ -164,9 +174,12 @@ export function MomentsGame({ moments }: MomentsGameProps) {
   return (
     <Container>
       {moments.map(item => 
-        <Fragment key={`${item.minute}-${item.id}`}>
+        <Animated.View
+          key={`${item.minute}-${item.id}`}
+          entering={FadeIn}
+        >
           {renderMoment(item)}
-        </Fragment>
+        </Animated.View>
       )}
     </Container>
   )

@@ -3,6 +3,12 @@ import styled from "styled-components/native";
 
 export const Container = styled.View``;
 
+export const ImageBall = styled.Image`
+  height: 28px;
+  width: 28px;
+  object-fit: contain;
+`;
+
 // export const Ball = styled(SoccerBall).attrs(({ theme }) => ({
 //   color: theme.colors.white,
 //   size: 28,

@@ -1,27 +1,32 @@
-import { FlatList, Modal } from 'react-native';
+import { useMemo, useState } from 'react';
+import { FlatList } from 'react-native';
+import Animated, { SlideInDown, SlideInRight, SlideOutDown, SlideOutRight } from 'react-native-reanimated';
 
 import { Clube } from '../../Model/Clube';
 import { CardClub } from '../CardClub';
 
-import { CloseButton, Container, Input, Line, ModalView, Title } from './styles';
 import { clubes } from '../../utils/clubes';
-import { useMemo, useState } from 'react';
+import { CloseButton, Container, Input, Line, ModalView, Title } from './styles';
+
+export type HomeOrAway = 'home'|'away';
 
 interface ModalChooseClubProps {
   visible: boolean;
   onClose: () => void;
-  onSelectedClub: (club: Clube) => void;
+  onSelectedClub: (club: Clube, homeOrAway: HomeOrAway) => void;
+  homeOrAway: HomeOrAway;
 }
 
 export function ModalChooseClub ({
   visible,
   onClose,
   onSelectedClub,
+  homeOrAway
 }: ModalChooseClubProps) {
   const [search, setSearch] = useState('');
 
   function selectedCard(club: Clube) {
-    onSelectedClub(club);
+    onSelectedClub(club, homeOrAway);
     setSearch('');
     onClose();
   }
@@ -33,12 +38,11 @@ export function ModalChooseClub ({
   }, [search]);
 
   return (
-    <Modal
-      animationType="slide"
-      style={{ flex: 1 }}
-      transparent={true}
-      visible={visible}
-      onRequestClose={onClose}>
+    <Animated.View
+      entering={SlideInDown}
+      exiting={SlideOutDown}
+      style={{ position: 'absolute', width: '100%', height: '100%' }}
+    >
       <Container>
         <ModalView>
           <CloseButton activeOpacity={0.7} onPress={onClose}>
@@ -54,10 +58,15 @@ export function ModalChooseClub ({
             data={listClubs}
             keyExtractor={item => `${item.name}-${item.overall}`}
             renderItem={({ item }) => (
-              <CardClub
-                club={item}
-                onPress={() => selectedCard(item)}
-              />
+              <Animated.View
+                entering={SlideInRight}
+                exiting={SlideOutRight}
+              >
+                <CardClub
+                  club={item}
+                  onPress={() => selectedCard(item)}
+                />
+              </Animated.View>
             )}
             contentContainerStyle={{
               padding: 10,
@@ -67,6 +76,6 @@ export function ModalChooseClub ({
           />
         </ModalView>
       </Container>
-    </Modal>
+    </Animated.View>
   );
 };

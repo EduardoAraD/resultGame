@@ -309,9 +309,7 @@ export function GameCurrent() {
     if(modeGame !== 'Normal') {
       const goalHomeClub = momentsToGame.filter(i => i.goal && i.homeOrAway === 'home').length;
       const goalAwayClub = momentsToGame.filter(i => i.goal && i.homeOrAway === 'away').length;
-      console.log('PENALTS', goalHomeClub, goalAwayClub);
       if(goalHomeClub === goalAwayClub) {
-        console.log('TEVE PENALT')
         const momentsPenal = gamePenalts();
         momentsPenal.forEach(mon => momentsToGame.push({
           ...mon,
@@ -333,11 +331,10 @@ export function GameCurrent() {
     let posseHome = 0;
     let posseAway = 0;
     // const statsAwayMinute: Stats = emptyStats;
-    console.log(indexMomentCurrent);
+    setDomainHome(state => ({ ...state, domain: objMoment.domainHome }));
+    setDomainAway(state => ({ ...state, domain: objMoment.domainAway }));
     if(objMoment.minute !== minuteGame){
       setMinuteGame(objMoment.minute);
-      setDomainHome(state => ({ ...state, domain: objMoment.domainHome }));
-      setDomainAway(state => ({ ...state, domain: objMoment.domainAway }));
       if(objMoment.minute !== 1 && objMoment.minute !== 45 && objMoment.minute !== 90) {
         posseAway = objMoment.domainAway;
         posseHome = objMoment.domainHome;
@@ -469,7 +466,7 @@ export function GameCurrent() {
 
         <ContentInfo>
           <Domination
-            minute={minuteGame + 1}
+            minute={minuteGame}
             domainHome={domainHome.domain}
             domainAway={domainAway.domain}
           />

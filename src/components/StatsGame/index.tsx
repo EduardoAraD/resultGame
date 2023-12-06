@@ -28,7 +28,6 @@ export function StatsGame({
   goalPenalHome,
   hasPenalt,
 }: StatsGameProps) {
-  console.log(statsAway.posse,statsHome.posse);
   const chutesHome = statsHome.chutesBloqueado + statsHome.chutesFora + statsHome.chutesNoAlvo;
   const chutesAway = statsAway.chutesBloqueado + statsAway.chutesFora + statsAway.chutesNoAlvo;
 

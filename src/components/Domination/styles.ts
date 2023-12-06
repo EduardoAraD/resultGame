@@ -1,3 +1,4 @@
+import Animated from "react-native-reanimated";
 import styled from "styled-components/native";
 
 export const Container = styled.View`
@@ -10,7 +11,7 @@ export const Container = styled.View`
   margin-bottom: 10px;
 `;
 
-export const DomainHome = styled.View`
+export const DomainHomeAnimated = styled(Animated.View)`
   height: 20px;
   background-color: ${({ theme }) => theme.colors.green};
 `;
@@ -18,6 +19,7 @@ export const DomainHome = styled.View`
 export const DomainAway = styled.View`
   height: 20px;
   background-color: ${({ theme }) => theme.colors.red};
+  width: 100%;
 `;
 
 export const Text = styled.Text`
