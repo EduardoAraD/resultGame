@@ -1,4 +1,4 @@
-import { Clube } from "../../Model/Clube";
+import { Clube } from '../../Model/Clube'
 
 import logo from '../../assets/logos/america_de_natal.png'
 
@@ -12,5 +12,5 @@ export const americaDeNatal: Clube = {
   // star: 1,
   logo,
   state: 'RN',
-  colors: ['#e41920','#ffffff']
+  colors: ['#e41920', '#ffffff'],
 }

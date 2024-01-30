@@ -1,4 +1,4 @@
-import { Clube } from "../../Model/Clube";
+import { Clube } from '../../Model/Clube'
 
 import logo from '../../assets/logos/vila_nova_mg.png'
 
@@ -12,5 +12,5 @@ export const vilaNovaMG: Clube = {
   // star: 0.5,
   logo,
   state: 'MG',
-  colors: ['#d20001','#ffffff']
+  colors: ['#d20001', '#ffffff'],
 }

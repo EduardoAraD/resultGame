@@ -1,4 +1,4 @@
-import { Clube } from "../../Model/Clube";
+import { Clube } from '../../Model/Clube'
 
 import logo from '../../assets/logos/icasa.png'
 
@@ -12,5 +12,5 @@ export const icasa: Clube = {
   // star: 0.5,
   logo,
   state: 'CE',
-  colors: ['#046c34','#fefefe']
+  colors: ['#046c34', '#fefefe'],
 }

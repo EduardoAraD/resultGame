@@ -1,4 +1,4 @@
-import { Clube } from "../../Model/Clube";
+import { Clube } from '../../Model/Clube'
 
 import logo from '../../assets/logos/tocantinopolis.png'
 
@@ -12,5 +12,5 @@ export const tocantinopolis: Clube = {
   // star: 0.5,
   logo,
   state: 'TO',
-  colors: ['#008934','#ffffff']
+  colors: ['#008934', '#ffffff'],
 }

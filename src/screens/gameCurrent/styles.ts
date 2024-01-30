@@ -1,25 +1,25 @@
-import { SafeAreaView } from "react-native-safe-area-context";
-import styled from "styled-components/native";
+import { SafeAreaView } from 'react-native-safe-area-context'
+import styled from 'styled-components/native'
 
 export const Safe = styled(SafeAreaView)`
   width: 100%;
   height: 100%;
-  background-color: ${props => props.theme.colors.blue_100};
-`;
+  background-color: ${(props) => props.theme.colors.blue_100};
+`
 
 export const Container = styled.View`
   padding: 20px;
   flex: 1;
   align-items: center;
   margin-bottom: 30px;
-`;
+`
 
 export const Title = styled.Text`
   font-size: 20px;
-  font-family: ${props => props.theme.fonts.bold};
-  color: ${props => props.theme.colors.white};
+  font-family: ${(props) => props.theme.fonts.bold};
+  color: ${(props) => props.theme.colors.white};
   text-align: center;
-`;
+`
 
 export const ContentImage = styled.View`
   flex-direction: row;
@@ -27,22 +27,22 @@ export const ContentImage = styled.View`
   width: 100%;
   justify-content: space-between;
   align-items: flex-end;
-`;
+`
 
 export const LogoClube = styled.Image`
   height: 75px;
   width: 75px;
   object-fit: contain;
-`;
+`
 
 export const ContentInfo = styled.View`
   margin-top: 12px;
   flex: 1;
   width: 100%;
-`;
+`
 
 export const DivAction = styled.View`
   flex-direction: row;
   width: 100%;
   gap: 8px;
-`;
+`

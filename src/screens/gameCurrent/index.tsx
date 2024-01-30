@@ -1,79 +1,98 @@
-import { useCallback, useEffect, useMemo, useState } from "react";
-import { useNavigation, useRoute } from "@react-navigation/native";
+import { useCallback, useEffect, useMemo, useState } from 'react'
+import { useNavigation, useRoute } from '@react-navigation/native'
 
-import { Clube } from "../../Model/Clube";
-import { DomainClube } from "../../Model/DomainClube";
-import { ModeGame } from "../../Model/ModeGame";
-import { Moment, MomentComplete } from "../../Model/Moment";
-import { Stats, emptyStats } from "../../Model/Stats";
+import { Clube } from '../../Model/Clube'
+import { DomainClube } from '../../Model/DomainClube'
+import { ModeGame } from '../../Model/ModeGame'
+import { Moment, MomentComplete } from '../../Model/Moment'
+import { Stats, emptyStats } from '../../Model/Stats'
 
-import { Button } from "../../components/Button";
-import { Domination } from "../../components/Domination";
-import { Placar } from "../../components/Placar";
-import { ViewGame } from "../../components/ViewGame";
+import { Button } from '../../components/Button'
+import { Domination } from '../../components/Domination'
+import { Placar } from '../../components/Placar'
+import { ViewGame } from '../../components/ViewGame'
 
-import { chanceDeGol, chanceDeGolPenalt } from "../../utils/chanceDeGol";
-import { domainGame } from "../../utils/domainGame";
+import { chanceDeGol, chanceDeGolPenalt } from '../../utils/chanceDeGol'
+import { domainGame } from '../../utils/domainGame'
 
-import { Container, ContentImage, ContentInfo, DivAction, LogoClube, Safe, Title } from "./styles";
+import {
+  Container,
+  ContentImage,
+  ContentInfo,
+  DivAction,
+  LogoClube,
+  Safe,
+  Title,
+} from './styles'
 
 export interface GameCurrentProps {
-  home: Clube;
-  away: Clube;
+  home: Clube
+  away: Clube
   modeGame: ModeGame
 }
 
 export function GameCurrent() {
-  const { navigate, goBack } = useNavigation();
-  const params = useRoute().params as GameCurrentProps;
+  const { navigate, goBack } = useNavigation()
+  const params = useRoute().params as GameCurrentProps
 
-  const logoHome = params.home.logo;
-  const logoAway = params.away.logo;
+  const durationMomentGame = 900 // 900 milisegundos
+
+  const logoHome = params.home.logo
+  const logoAway = params.away.logo
   const { modeGame } = params
 
-  const [goalHome, setGoalHome] = useState(0);
-  const [goalAway, setGoalAway] = useState(0);
-  const [homePenalt, setHomePenalt] = useState(0);
-  const [awayPenalt, setAwayPenalt] = useState(0);
-  
-  const [allMoments, setAllMoments] = useState<MomentComplete[]>([]);
+  const [goalHome, setGoalHome] = useState(0)
+  const [goalAway, setGoalAway] = useState(0)
+  const [homePenalt, setHomePenalt] = useState(0)
+  const [awayPenalt, setAwayPenalt] = useState(0)
+  const [velocityGame, setVelocityGame] = useState(1)
 
-  const [momentsNarration, setMomentsNarration] = useState<MomentComplete[]>([]);
-  const [momentsHighlight, setMomentsHighlight] = useState<MomentComplete[]>([]);
-  const [indexMomentCurrent, setIndexMomentCurrent] = useState(0);
-  const [hasPenalts, setHasPenalts] = useState(false);
-  const [minuteGame, setMinuteGame] = useState(0);
+  const [allMoments, setAllMoments] = useState<MomentComplete[]>([])
 
-  const [statsHome, setStatsHome] = useState<Stats>(emptyStats);
-  const [statsAway, setStatsAway] = useState<Stats>(emptyStats);
+  const [momentsNarration, setMomentsNarration] = useState<MomentComplete[]>([])
+  const [momentsHighlight, setMomentsHighlight] = useState<MomentComplete[]>([])
+  const [indexMomentCurrent, setIndexMomentCurrent] = useState(0)
+  const [hasPenalts, setHasPenalts] = useState(false)
+  const [minuteGame, setMinuteGame] = useState(0)
+
+  const [statsHome, setStatsHome] = useState<Stats>(emptyStats)
+  const [statsAway, setStatsAway] = useState<Stats>(emptyStats)
 
   const [domainHome, setDomainHome] = useState<DomainClube>({
     domain: 50,
     overrall: 0,
-    nameClube: ''
+    nameClube: '',
   })
   const [domainAway, setDomainAway] = useState<DomainClube>({
     domain: 50,
     overrall: 0,
-    nameClube: ''
+    nameClube: '',
   })
 
   function goHome() {
-    navigate('home');
+    navigate('home')
   }
 
-  function momentsTheGame (
+  function handleUpdateVelocityGame() {
+    if (velocityGame === 3) {
+      setVelocityGame(1)
+    } else {
+      setVelocityGame((state) => state + 1)
+    }
+  }
+
+  function momentsTheGame(
     min: number,
     domHome: DomainClube,
     domAway: DomainClube,
     goalHomeClub: number,
     goalAwayClub: number,
   ): {
-    domHome: DomainClube,
-    domAway: DomainClube,
-    moments: Moment[],
+    domHome: DomainClube
+    domAway: DomainClube
+    moments: Moment[]
   } {
-    if(min === 1) {
+    if (min === 1) {
       const newMoment: Moment = {
         minute: min,
         narracao: 'Início de Jogo.',
@@ -84,9 +103,9 @@ export function GameCurrent() {
         domHome: { ...domHome, domain: 50 },
         domAway: { ...domAway, domain: 50 },
         moments: [newMoment],
-      };
+      }
     }
-    if(min === 45) {
+    if (min === 45) {
       const newMoment: Moment = {
         minute: min,
         narracao: 'Intervalo de jogo.',
@@ -97,10 +116,10 @@ export function GameCurrent() {
         domHome: { ...domHome, domain: 50 },
         domAway: { ...domAway, domain: 50 },
         moments: [newMoment],
-      };
+      }
     }
-    if(min === 90) {
-      const notIsFinal = modeGame !== 'Normal' && goalHomeClub === goalAwayClub;
+    if (min === 90) {
+      const notIsFinal = modeGame !== 'Normal' && goalHomeClub === goalAwayClub
       const newMoment: Moment = {
         minute: min,
         narracao: notIsFinal ? 'Vamos para os Penaltis' : 'Final de Jogo.',
@@ -111,23 +130,23 @@ export function GameCurrent() {
         domHome: { ...domHome, domain: 50 },
         domAway: { ...domAway, domain: 50 },
         moments: [newMoment],
-      };
+      }
     } else {
       const { home, away } = domainGame({
         home: domHome,
         away: domAway,
-      });
+      })
 
-      if(home.domain >= 70 || away.domain >= 70) {
-        const howClubAttack = home.domain >= 70 ? 'home' : 'away';
+      if (home.domain >= 70 || away.domain >= 70) {
+        const howClubAttack = home.domain >= 70 ? 'home' : 'away'
         const nameClub = home.domain >= 70 ? home.nameClube : away.nameClube
-        const resultChance = chanceDeGol(min, howClubAttack, nameClub);
+        const resultChance = chanceDeGol(min, howClubAttack, nameClub)
 
         return {
           domHome: { ...home },
           domAway: { ...away },
           moments: resultChance,
-        };
+        }
       }
 
       const newMoment: Moment = {
@@ -140,94 +159,113 @@ export function GameCurrent() {
         domHome: { ...home },
         domAway: { ...away },
         moments: [newMoment],
-      };
+      }
     }
   }
 
   function PenaltsOver(
-    goalPenalHome: number, RemainingPenalHome: number,
-    goalPenalAway: number, RemainingPenalAway: number): boolean{
-    return goalPenalAway > RemainingPenalHome + goalPenalHome ||
-      goalPenalHome > RemainingPenalAway + goalPenalAway;
+    goalPenalHome: number,
+    RemainingPenalHome: number,
+    goalPenalAway: number,
+    RemainingPenalAway: number,
+  ): boolean {
+    return (
+      goalPenalAway > RemainingPenalHome + goalPenalHome ||
+      goalPenalHome > RemainingPenalAway + goalPenalAway
+    )
   }
 
   const gamePenalts = useCallback(() => {
-    const numberPenalt = 5;
-    let momentsPen: Moment[] = [];
-    const overrallHome = params.home.overall;
-    const nameClubHome = params.home.name;
-    let homeGoalPen = 0;
-    const overrallAway = params.away.overall;
-    const nameClubAway = params.away.name;
-    let awayGoalPen = 0;
-    const overrallAllClub = overrallHome + overrallAway;
-    let itsOver = false;
+    const numberPenalt = 5
+    let momentsPen: Moment[] = []
+    const overrallHome = params.home.overall
+    const nameClubHome = params.home.name
+    let homeGoalPen = 0
+    const overrallAway = params.away.overall
+    const nameClubAway = params.away.name
+    let awayGoalPen = 0
+    const overrallAllClub = overrallHome + overrallAway
+    let itsOver = false
 
-    const arrayNumberPenalt = Array.from({ length: numberPenalt });
+    const arrayNumberPenalt = Array.from({ length: numberPenalt })
     // cobranças iniciais
     arrayNumberPenalt.forEach((_, i) => {
-      if(!itsOver) {
+      if (!itsOver) {
         const penaltHomeMoment = chanceDeGolPenalt(
           overrallHome,
           overrallAllClub,
           nameClubHome,
           'home',
           i + 1,
-        );
-        momentsPen = [...momentsPen, ...penaltHomeMoment];
+        )
+        momentsPen = [...momentsPen, ...penaltHomeMoment]
 
-        const hasHomeGoal = penaltHomeMoment.find(i => i.goal);
+        const hasHomeGoal = penaltHomeMoment.find((i) => i.goal)
         homeGoalPen = homeGoalPen + (hasHomeGoal ? 1 : 0)
-        if(PenaltsOver(homeGoalPen, numberPenalt - (i + 1), awayGoalPen, numberPenalt - i)) {
-          itsOver = true;
+        if (
+          PenaltsOver(
+            homeGoalPen,
+            numberPenalt - (i + 1),
+            awayGoalPen,
+            numberPenalt - i,
+          )
+        ) {
+          itsOver = true
         }
 
-        if(!itsOver) {
+        if (!itsOver) {
           const penaltAwayMoment = chanceDeGolPenalt(
             overrallAway,
             overrallAllClub,
             nameClubAway,
             'away',
             i + 1,
-          );
-          momentsPen = [...momentsPen, ...penaltAwayMoment];
+          )
+          momentsPen = [...momentsPen, ...penaltAwayMoment]
 
-          const hasAwayGoal = penaltAwayMoment.find(i => i.goal);
-          awayGoalPen = awayGoalPen + (hasAwayGoal ? 1 : 0);
-          if(PenaltsOver(homeGoalPen, numberPenalt - (i + 1), awayGoalPen, numberPenalt - (i + 1) )) {
-            itsOver = true;
+          const hasAwayGoal = penaltAwayMoment.find((i) => i.goal)
+          awayGoalPen = awayGoalPen + (hasAwayGoal ? 1 : 0)
+          if (
+            PenaltsOver(
+              homeGoalPen,
+              numberPenalt - (i + 1),
+              awayGoalPen,
+              numberPenalt - (i + 1),
+            )
+          ) {
+            itsOver = true
           }
         }
       }
-    });
+    })
 
     let numberAlternadas = 1
-    if(homeGoalPen === awayGoalPen) {
+    if (homeGoalPen === awayGoalPen) {
       // Alternadas
-      while(homeGoalPen === awayGoalPen) {
+      while (homeGoalPen === awayGoalPen) {
         const penaltHomeMoment = chanceDeGolPenalt(
           overrallHome,
           overrallAllClub,
           nameClubHome,
           'home',
-          numberPenalt + numberAlternadas
-        );
-        momentsPen = [...momentsPen, ...penaltHomeMoment];
+          numberPenalt + numberAlternadas,
+        )
+        momentsPen = [...momentsPen, ...penaltHomeMoment]
 
-        const hasHomeGoal = penaltHomeMoment.find(i => i.goal);
-        homeGoalPen = homeGoalPen + (hasHomeGoal ? 1 : 0);
+        const hasHomeGoal = penaltHomeMoment.find((i) => i.goal)
+        homeGoalPen = homeGoalPen + (hasHomeGoal ? 1 : 0)
 
         const penaltAwayMoment = chanceDeGolPenalt(
           overrallAway,
           overrallAllClub,
           nameClubAway,
           'away',
-          numberPenalt + numberAlternadas
-        );
-        momentsPen = [...momentsPen, ...penaltAwayMoment];
+          numberPenalt + numberAlternadas,
+        )
+        momentsPen = [...momentsPen, ...penaltAwayMoment]
 
-        const hasAwayGoal = penaltAwayMoment.find(i => i.goal);
-        awayGoalPen = awayGoalPen + (hasAwayGoal ? 1 : 0);
+        const hasAwayGoal = penaltAwayMoment.find((i) => i.goal)
+        awayGoalPen = awayGoalPen + (hasAwayGoal ? 1 : 0)
 
         numberAlternadas = numberAlternadas + 1
       }
@@ -238,17 +276,22 @@ export function GameCurrent() {
       narracao: 'Final de jogo.',
       homeOrAway: 'game',
       stats: emptyStats,
-    } 
+    }
     momentsPen.push(objFinal)
 
-    return momentsPen;
-  }, [params.home.overall, params.home.name, params.away.overall, params.away.name]);
+    return momentsPen
+  }, [
+    params.home.overall,
+    params.home.name,
+    params.away.overall,
+    params.away.name,
+  ])
 
   const buildGame = useCallback(() => {
-    const numberMinutesGame = 90;
-    const multiHomeOverall = modeGame === 'Mata-Mata' ? 1 : 1.05;
-    const arrayMinutes = Array.from({ length: numberMinutesGame });
-    const { home, away } = params;
+    const numberMinutesGame = 90
+    const multiHomeOverall = modeGame === 'Mata-Mata' ? 1 : 1.05
+    const arrayMinutes = Array.from({ length: numberMinutesGame })
+    const { home, away } = params
     const domainHomeClub: DomainClube = {
       domain: 50,
       overrall: home.overall * multiHomeOverall,
@@ -259,35 +302,37 @@ export function GameCurrent() {
       overrall: away.overall,
       nameClube: away.name,
     }
-    const momentsToGame: MomentComplete[] = [];
-    let goalHomeClub = 0;
-    let goalAwayClub = 0;
+    const momentsToGame: MomentComplete[] = []
+    let goalHomeClub = 0
+    let goalAwayClub = 0
 
-    arrayMinutes.forEach((_,indexMinute) => {
-      const minuteNow = indexMinute + 1;
+    arrayMinutes.forEach((_, indexMinute) => {
+      const minuteNow = indexMinute + 1
       const { domAway, domHome, moments } = momentsTheGame(
         minuteNow,
         domainHomeClub,
         domainAwayClub,
         goalHomeClub,
         goalAwayClub,
-      );
+      )
 
-      domainHomeClub.domain = domHome.domain;
-      domainAwayClub.domain = domAway.domain;
-      moments.forEach(mon => momentsToGame.push({
-        ...mon,
-        domainAway: domAway.domain,
-        domainHome: domHome.domain,
-        id: 0,
-      }));
+      domainHomeClub.domain = domHome.domain
+      domainAwayClub.domain = domAway.domain
+      moments.forEach((mon) =>
+        momentsToGame.push({
+          ...mon,
+          domainAway: domAway.domain,
+          domainHome: domHome.domain,
+          id: 0,
+        }),
+      )
 
-      const momentGoal = moments.find(i => i.goal);
-      if(!!momentGoal) {
-        if(momentGoal.homeOrAway === 'home') {
-          goalHomeClub += 1;
+      const momentGoal = moments.find((i) => i.goal)
+      if (momentGoal) {
+        if (momentGoal.homeOrAway === 'home') {
+          goalHomeClub += 1
         } else {
-          goalAwayClub += 1;
+          goalAwayClub += 1
         }
 
         const newMoment: MomentComplete = {
@@ -300,112 +345,124 @@ export function GameCurrent() {
           stats: emptyStats,
         }
 
-        domainHomeClub.domain = 50;
-        domainAwayClub.domain = 50;
-        momentsToGame.push(newMoment);
+        domainHomeClub.domain = 50
+        domainAwayClub.domain = 50
+        momentsToGame.push(newMoment)
       }
-    });
+    })
 
-    if(modeGame !== 'Normal') {
-      const goalHomeClub = momentsToGame.filter(i => i.goal && i.homeOrAway === 'home').length;
-      const goalAwayClub = momentsToGame.filter(i => i.goal && i.homeOrAway === 'away').length;
-      if(goalHomeClub === goalAwayClub) {
-        const momentsPenal = gamePenalts();
-        momentsPenal.forEach(mon => momentsToGame.push({
-          ...mon,
-          domainAway: 50,
-          domainHome: 50,
-          id: 0,
-        }));
+    if (modeGame !== 'Normal') {
+      const goalHomeClub = momentsToGame.filter(
+        (i) => i.goal && i.homeOrAway === 'home',
+      ).length
+      const goalAwayClub = momentsToGame.filter(
+        (i) => i.goal && i.homeOrAway === 'away',
+      ).length
+      if (goalHomeClub === goalAwayClub) {
+        const momentsPenal = gamePenalts()
+        momentsPenal.forEach((mon) =>
+          momentsToGame.push({
+            ...mon,
+            domainAway: 50,
+            domainHome: 50,
+            id: 0,
+          }),
+        )
       }
     }
 
-    setAllMoments(momentsToGame);
-  }, [params, gamePenalts]);
+    setAllMoments(momentsToGame)
+  }, [params, gamePenalts])
 
   const passMinuteGame = useCallback(() => {
     const objMoment: MomentComplete = {
       ...allMoments[indexMomentCurrent],
       id: indexMomentCurrent,
     }
-    let posseHome = 0;
-    let posseAway = 0;
+    let posseHome = 0
+    let posseAway = 0
     // const statsAwayMinute: Stats = emptyStats;
-    setDomainHome(state => ({ ...state, domain: objMoment.domainHome }));
-    setDomainAway(state => ({ ...state, domain: objMoment.domainAway }));
-    if(objMoment.minute !== minuteGame){
-      setMinuteGame(objMoment.minute);
-      if(objMoment.minute !== 1 && objMoment.minute !== 45 && objMoment.minute !== 90) {
-        posseAway = objMoment.domainAway;
-        posseHome = objMoment.domainHome;
+    setDomainHome((state) => ({ ...state, domain: objMoment.domainHome }))
+    setDomainAway((state) => ({ ...state, domain: objMoment.domainAway }))
+    if (objMoment.minute !== minuteGame) {
+      setMinuteGame(objMoment.minute)
+      if (
+        objMoment.minute !== 1 &&
+        objMoment.minute !== 45 &&
+        objMoment.minute !== 90
+      ) {
+        posseAway = objMoment.domainAway
+        posseHome = objMoment.domainHome
       }
     }
 
-    if(objMoment.narracao !== '') {
-      if(objMoment.homeOrAway === 'game') {
-        setMomentsHighlight(state => [...state, objMoment]);
-        if(objMoment.minute === 90 && objMoment.narracao.includes('Vamos')) {
-          setHasPenalts(true);
+    if (objMoment.narracao !== '') {
+      if (objMoment.homeOrAway === 'game') {
+        setMomentsHighlight((state) => [...state, objMoment])
+        if (objMoment.minute === 90 && objMoment.narracao.includes('Vamos')) {
+          setHasPenalts(true)
         }
       } else {
-        if(objMoment.penalt) {
-          setMomentsHighlight(state => [...state, objMoment]);
-          if(objMoment.goal && objMoment.homeOrAway === 'home') {
-            setHomePenalt(state => state + 1);
-          } else if(objMoment.goal && objMoment.homeOrAway === 'away') {
-            setAwayPenalt(state => state + 1);
+        if (objMoment.penalt) {
+          setMomentsHighlight((state) => [...state, objMoment])
+          if (objMoment.goal && objMoment.homeOrAway === 'home') {
+            setHomePenalt((state) => state + 1)
+          } else if (objMoment.goal && objMoment.homeOrAway === 'away') {
+            setAwayPenalt((state) => state + 1)
           }
-        } else if(objMoment.goal) {
-          setMomentsHighlight(state => [...state, objMoment]);
-          if(objMoment.homeOrAway === 'home') {
-            setGoalHome(state => state + 1);
+        } else if (objMoment.goal) {
+          setMomentsHighlight((state) => [...state, objMoment])
+          if (objMoment.homeOrAway === 'home') {
+            setGoalHome((state) => state + 1)
           } else {
-            setGoalAway(state => state + 1);
+            setGoalAway((state) => state + 1)
           }
         }
       }
-      setMomentsNarration(state => [...state, objMoment]);
+      setMomentsNarration((state) => [...state, objMoment])
     }
 
-    if(objMoment.homeOrAway === 'home') {
-      setStatsHome(state => ({
+    if (objMoment.homeOrAway === 'home') {
+      setStatsHome((state) => ({
         posse: state.posse + posseHome,
-        chutesBloqueado: state.chutesBloqueado + objMoment.stats.chutesBloqueado,
+        chutesBloqueado:
+          state.chutesBloqueado + objMoment.stats.chutesBloqueado,
         chutesFora: state.chutesFora + objMoment.stats.chutesFora,
         chutesNoAlvo: state.chutesNoAlvo + objMoment.stats.chutesNoAlvo,
         golEsperado: state.golEsperado + objMoment.stats.golEsperado,
         qtdPenalt: state.qtdPenalt + objMoment.stats.qtdPenalt,
-      }));
-      setStatsAway(state => ({
+      }))
+      setStatsAway((state) => ({
         ...state,
         posse: state.posse + posseAway,
-      }));
-    } else if(objMoment.homeOrAway === 'away') {
-      setStatsAway(state => ({
+      }))
+    } else if (objMoment.homeOrAway === 'away') {
+      setStatsAway((state) => ({
         posse: state.posse + posseAway,
-        chutesBloqueado: state.chutesBloqueado + objMoment.stats.chutesBloqueado,
+        chutesBloqueado:
+          state.chutesBloqueado + objMoment.stats.chutesBloqueado,
         chutesFora: state.chutesFora + objMoment.stats.chutesFora,
         chutesNoAlvo: state.chutesNoAlvo + objMoment.stats.chutesNoAlvo,
         golEsperado: state.golEsperado + objMoment.stats.golEsperado,
         qtdPenalt: state.qtdPenalt + objMoment.stats.qtdPenalt,
-      }));
-      setStatsHome(state => ({
+      }))
+      setStatsHome((state) => ({
         ...state,
         posse: state.posse + posseHome,
-      }));
+      }))
     } else {
-      setStatsHome(state => ({
+      setStatsHome((state) => ({
         ...state,
         posse: state.posse + posseHome,
-      }));
-      setStatsAway(state => ({
+      }))
+      setStatsAway((state) => ({
         ...state,
         posse: state.posse + posseAway,
-      }));
+      }))
     }
-    
-    setIndexMomentCurrent(state => state + 1);
-  }, [allMoments, indexMomentCurrent]);
+
+    setIndexMomentCurrent((state) => state + 1)
+  }, [allMoments, indexMomentCurrent])
 
   useEffect(() => {
     const { home, away } = params
@@ -413,45 +470,52 @@ export function GameCurrent() {
       overrall: home.overall, // * multiHomeOverall,
       domain: 50,
       nameClube: home.name,
-    });
+    })
     setDomainAway({
       overrall: away.overall,
       domain: 50,
       nameClube: away.name,
-    });
-    buildGame();
-  }, [params, modeGame, buildGame]);
+    })
+    buildGame()
+  }, [params, modeGame, buildGame])
 
   useEffect(() => {
-    const qtdMoments = allMoments.length;
+    const qtdMoments = allMoments.length
+    const duration = durationMomentGame / velocityGame
 
-    if(qtdMoments === 0 || indexMomentCurrent < 0 || indexMomentCurrent >= qtdMoments) {
-      return ;
+    if (
+      qtdMoments === 0 ||
+      indexMomentCurrent < 0 ||
+      indexMomentCurrent >= qtdMoments
+    ) {
+      return
     }
 
     const interval = setTimeout(() => {
-      passMinuteGame();
-    }, 1000)
+      passMinuteGame()
+    }, duration)
 
     return () => {
       clearTimeout(interval)
     }
-  }, [indexMomentCurrent, allMoments, passMinuteGame]);
+  }, [indexMomentCurrent, allMoments, passMinuteGame, velocityGame])
 
   const listNarration = useMemo(() => {
-    return [...momentsNarration].reverse();
-  }, [momentsNarration]);
+    return [...momentsNarration].reverse()
+  }, [momentsNarration])
 
   const listMomentsHighlight = useMemo(() => {
-    return [...momentsHighlight].reverse();
-  }, [momentsHighlight]);
+    return [...momentsHighlight].reverse()
+  }, [momentsHighlight])
 
-  const disabledContinue = indexMomentCurrent < allMoments.length;
+  const disabledContinue = indexMomentCurrent < allMoments.length
 
   return (
     <Safe>
       <Container>
-        <Title>{domainHome.nameClube} x {domainAway.nameClube}</Title>
+        <Title>
+          {domainHome.nameClube} x {domainAway.nameClube}
+        </Title>
         <ContentImage>
           <LogoClube source={logoHome} />
           <Placar
@@ -460,6 +524,8 @@ export function GameCurrent() {
             hasPenalts={hasPenalts}
             penaltHome={homePenalt}
             penaltAway={awayPenalt}
+            logoAway={logoAway}
+            logoHome={logoHome}
           />
           <LogoClube source={logoAway} />
         </ContentImage>
@@ -469,6 +535,8 @@ export function GameCurrent() {
             minute={minuteGame}
             domainHome={domainHome.domain}
             domainAway={domainAway.domain}
+            velocityGame={velocityGame}
+            updateVelocityGame={handleUpdateVelocityGame}
           />
           <Title>{params.home.stadium}</Title>
           <ViewGame
@@ -490,7 +558,7 @@ export function GameCurrent() {
             style={{ flex: 1 }}
             onPress={goBack}
             title="Voltar"
-            type='Cancel'
+            type="Cancel"
           />
           <Button
             style={{ flex: 1 }}
@@ -499,7 +567,6 @@ export function GameCurrent() {
             title="Continuar"
           />
         </DivAction>
-        
       </Container>
     </Safe>
   )

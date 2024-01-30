@@ -1,4 +1,4 @@
-import { Clube } from "../../Model/Clube";
+import { Clube } from '../../Model/Clube'
 
 import logo from '../../assets/logos/taubate.png'
 
@@ -12,5 +12,5 @@ export const taubate: Clube = {
   // star: 0.5,
   logo,
   state: 'SP',
-  colors: ['#012c61','#ffffff']
+  colors: ['#012c61', '#ffffff'],
 }

@@ -1,4 +1,4 @@
-import { Clube } from "../../Model/Clube";
+import { Clube } from '../../Model/Clube'
 
 import logo from '../../assets/logos/patrocinense.png'
 
@@ -12,5 +12,5 @@ export const patrocinense: Clube = {
   // star: 0.5,
   logo,
   state: 'MG',
-  colors: ['#7c2e2e','#fefefe']
+  colors: ['#7c2e2e', '#fefefe'],
 }

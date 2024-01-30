@@ -1,4 +1,4 @@
-import { Clube } from "../../Model/Clube";
+import { Clube } from '../../Model/Clube'
 
 import logo from '../../assets/logos/caruaru_city.png'
 
@@ -12,5 +12,5 @@ export const caruaruCity: Clube = {
   // star: 0.5,
   logo,
   state: 'PE',
-  colors: ['#00358c','#f0f40b']
+  colors: ['#00358c', '#f0f40b'],
 }

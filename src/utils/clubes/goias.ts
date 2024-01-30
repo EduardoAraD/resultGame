@@ -1,4 +1,4 @@
-import { Clube } from "../../Model/Clube";
+import { Clube } from '../../Model/Clube'
 
 import logo from '../../assets/logos/goias.png'
 
@@ -12,5 +12,5 @@ export const goias: Clube = {
   // star: 73,
   logo,
   state: 'GO',
-  colors: ['#045c4c','#FFFFFF']
+  colors: ['#045c4c', '#FFFFFF'],
 }

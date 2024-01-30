@@ -1,4 +1,4 @@
-import { Clube } from "../../Model/Clube";
+import { Clube } from '../../Model/Clube'
 
 import logo from '../../assets/logos/remo.png'
 
@@ -12,5 +12,5 @@ export const remo: Clube = {
   // star: 1.5,
   logo,
   state: 'PA',
-  colors: ['#060c19','#ffffff']
+  colors: ['#060c19', '#ffffff'],
 }

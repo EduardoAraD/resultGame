@@ -1,4 +1,4 @@
-import { Clube } from "../../Model/Clube";
+import { Clube } from '../../Model/Clube'
 
 import logo from '../../assets/logos/afogados.png'
 
@@ -12,5 +12,5 @@ export const afogados: Clube = {
   // star: 0.5,
   logo,
   state: 'PE',
-  colors: ['#0000a9','#da251c', '#ffffff']
+  colors: ['#0000a9', '#da251c', '#ffffff'],
 }

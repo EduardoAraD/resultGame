@@ -1,4 +1,4 @@
-import { Clube } from "../../Model/Clube";
+import { Clube } from '../../Model/Clube'
 
 import logo from '../../assets/logos/manaus.png'
 
@@ -12,5 +12,5 @@ export const manaus: Clube = {
   // star: 1,
   logo,
   state: 'AM',
-  colors: ['#3fa650','#040708']
+  colors: ['#3fa650', '#040708'],
 }

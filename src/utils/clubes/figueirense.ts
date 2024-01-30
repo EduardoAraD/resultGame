@@ -1,4 +1,4 @@
-import { Clube } from "../../Model/Clube";
+import { Clube } from '../../Model/Clube'
 
 import logo from '../../assets/logos/figueirense.png'
 
@@ -12,5 +12,5 @@ export const figueirense: Clube = {
   // star: 1.5,
   logo,
   state: 'SC',
-  colors: ['#2b2b2b','#FFFFFF']
+  colors: ['#2b2b2b', '#FFFFFF'],
 }

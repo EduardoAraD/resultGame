@@ -1,4 +1,4 @@
-import { Clube } from "../../Model/Clube";
+import { Clube } from '../../Model/Clube'
 
 import logo from '../../assets/logos/uniao_cacoalense.png'
 
@@ -12,5 +12,5 @@ export const uniaoCacoalense: Clube = {
   // star: 0.5,
   logo,
   state: 'RO',
-  colors: ['#003c10','#fdfdfd','#0069b5'],
+  colors: ['#003c10', '#fdfdfd', '#0069b5'],
 }

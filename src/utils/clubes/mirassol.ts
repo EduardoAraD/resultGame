@@ -1,4 +1,4 @@
-import { Clube } from "../../Model/Clube";
+import { Clube } from '../../Model/Clube'
 
 import logo from '../../assets/logos/mirassol.png'
 
@@ -12,5 +12,5 @@ export const mirassol: Clube = {
   // star: 2.5,
   logo,
   state: 'SP',
-  colors: ['#ffe31b','#009e55']
+  colors: ['#ffe31b', '#009e55'],
 }

@@ -1,4 +1,4 @@
-import { Clube } from "../../Model/Clube";
+import { Clube } from '../../Model/Clube'
 
 import logo from '../../assets/logos/ipora.png'
 
@@ -12,5 +12,5 @@ export const ipora: Clube = {
   // star: 0.5,
   logo,
   state: 'GO',
-  colors: ['#ebe642','#06a7eb']
+  colors: ['#ebe642', '#06a7eb'],
 }

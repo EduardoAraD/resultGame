@@ -1,7 +1,7 @@
 export const theme = {
   colors: {
     white: '#FFFFFF',
-    
+
     blue_100: '#0E1647',
     blue_200: '#1D2766',
     blue_500: '#3D5796',
@@ -22,5 +22,5 @@ export const theme = {
     regular: 'Rajdhani_400Regular',
     medium: 'Rajdhani_500Medium',
     bold: 'Rajdhani_700Bold',
-  }
-};
+  },
+}

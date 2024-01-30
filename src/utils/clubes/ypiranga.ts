@@ -1,4 +1,4 @@
-import { Clube } from "../../Model/Clube";
+import { Clube } from '../../Model/Clube'
 
 import logo from '../../assets/logos/ypiranga.png'
 
@@ -12,5 +12,5 @@ export const ypiranga: Clube = {
   // star: 1,
   logo,
   state: 'RS',
-  colors: ['#11974a','#f0ec2b']
+  colors: ['#11974a', '#f0ec2b'],
 }

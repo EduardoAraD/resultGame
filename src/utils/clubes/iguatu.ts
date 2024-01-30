@@ -1,4 +1,4 @@
-import { Clube } from "../../Model/Clube";
+import { Clube } from '../../Model/Clube'
 
 import logo from '../../assets/logos/iguatu.png'
 
@@ -12,5 +12,5 @@ export const iguatu: Clube = {
   // star: 0.5,
   logo,
   state: 'CE',
-  colors: ['#0716c6','#FFFFFF']
+  colors: ['#0716c6', '#FFFFFF'],
 }

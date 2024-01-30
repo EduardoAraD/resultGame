@@ -1,4 +1,4 @@
-import { Clube } from "../../Model/Clube";
+import { Clube } from '../../Model/Clube'
 
 import logo from '../../assets/logos/criciuma.png'
 
@@ -12,5 +12,5 @@ export const criciuma: Clube = {
   // star: 2.5,
   logo,
   state: 'SC',
-  colors: ['#fdd20f','#3a3025']
+  colors: ['#fdd20f', '#3a3025'],
 }

@@ -1,4 +1,4 @@
-import { Clube } from "../../Model/Clube";
+import { Clube } from '../../Model/Clube'
 
 import logo from '../../assets/logos/crato.png'
 
@@ -12,5 +12,5 @@ export const crato: Clube = {
   // star: 0.5,
   logo,
   state: 'CE',
-  colors: ['#2223aa','#ffffff']
+  colors: ['#2223aa', '#ffffff'],
 }

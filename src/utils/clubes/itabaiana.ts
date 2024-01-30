@@ -1,4 +1,4 @@
-import { Clube } from "../../Model/Clube";
+import { Clube } from '../../Model/Clube'
 
 import logo from '../../assets/logos/itabaiana.png'
 
@@ -12,5 +12,5 @@ export const itabaiana: Clube = {
   // star: 0.5,
   logo,
   state: 'SE',
-  colors: ['#0e0ece','#f20505','#fefeff']
+  colors: ['#0e0ece', '#f20505', '#fefeff'],
 }

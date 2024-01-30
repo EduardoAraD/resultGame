@@ -1,4 +1,4 @@
-import { Clube } from "../../Model/Clube";
+import { Clube } from '../../Model/Clube'
 
 import logo from '../../assets/logos/river_pi.png'
 
@@ -12,5 +12,5 @@ export const riverPI: Clube = {
   // star: 0.5,
   logo,
   state: 'PI',
-  colors: ['#ffffff','#1f1a17','#ce271f']
+  colors: ['#ffffff', '#1f1a17', '#ce271f'],
 }

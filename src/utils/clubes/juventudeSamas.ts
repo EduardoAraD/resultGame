@@ -1,4 +1,4 @@
-import { Clube } from "../../Model/Clube";
+import { Clube } from '../../Model/Clube'
 
 import logo from '../../assets/logos/juventude_samas.png'
 
@@ -12,5 +12,5 @@ export const juventudeSamas: Clube = {
   // star: 0.5,
   logo,
   state: 'MA',
-  colors: ['#da0000','#000000','#ffffff']
+  colors: ['#da0000', '#000000', '#ffffff'],
 }

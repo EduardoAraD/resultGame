@@ -1,4 +1,4 @@
-import { Clube } from "../../Model/Clube";
+import { Clube } from '../../Model/Clube'
 
 import logo from '../../assets/logos/tuna_luso.png'
 
@@ -12,5 +12,5 @@ export const tunaLuso: Clube = {
   // star: 0.5,
   logo,
   state: 'PA',
-  colors: ['#ffffff','#00963e','#fe0000']
+  colors: ['#ffffff', '#00963e', '#fe0000'],
 }

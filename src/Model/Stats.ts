@@ -1,10 +1,10 @@
 export interface Stats {
-  posse: number;
-  chutesNoAlvo: number;
-  chutesBloqueado: number;
-  chutesFora: number;
-  golEsperado: number;
-  qtdPenalt: number;
+  posse: number
+  chutesNoAlvo: number
+  chutesBloqueado: number
+  chutesFora: number
+  golEsperado: number
+  qtdPenalt: number
 }
 
 export const emptyStats: Stats = {

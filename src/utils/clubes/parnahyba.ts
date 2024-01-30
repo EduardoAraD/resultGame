@@ -1,4 +1,4 @@
-import { Clube } from "../../Model/Clube";
+import { Clube } from '../../Model/Clube'
 
 import logo from '../../assets/logos/parnahyba.png'
 
@@ -12,5 +12,5 @@ export const parnahyba: Clube = {
   // star: 0.5,
   logo,
   state: 'PI',
-  colors: ['#13245a','#ffffff']
+  colors: ['#13245a', '#ffffff'],
 }

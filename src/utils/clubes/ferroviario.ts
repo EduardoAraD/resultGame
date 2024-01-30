@@ -1,4 +1,4 @@
-import { Clube } from "../../Model/Clube";
+import { Clube } from '../../Model/Clube'
 
 import logo from '../../assets/logos/ferroviario.png'
 
@@ -12,5 +12,5 @@ export const ferroviario: Clube = {
   // star: 1,
   logo,
   state: 'CE',
-  colors: ['#FFFFFF','#fc0404','#040404']
+  colors: ['#FFFFFF', '#fc0404', '#040404'],
 }

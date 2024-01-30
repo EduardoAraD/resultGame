@@ -1,4 +1,4 @@
-import { Clube } from "../../Model/Clube";
+import { Clube } from '../../Model/Clube'
 
 import logo from '../../assets/logos/costa_rica_ms.png'
 
@@ -12,5 +12,5 @@ export const costaRicaMS: Clube = {
   // star: 0.5,
   logo,
   state: 'MS',
-  colors: ['#ffffff','#0e0656']
+  colors: ['#ffffff', '#0e0656'],
 }

@@ -1,4 +1,4 @@
-import { Clube } from "../../Model/Clube";
+import { Clube } from '../../Model/Clube'
 
 import logo from '../../assets/logos/caucaia.png'
 
@@ -12,5 +12,5 @@ export const caucaia: Clube = {
   // star: 0.5,
   logo,
   state: 'CE',
-  colors: ['#dc2117','#000000','#f6f6fd']
+  colors: ['#dc2117', '#000000', '#f6f6fd'],
 }

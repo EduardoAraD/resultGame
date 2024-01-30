@@ -1,4 +1,4 @@
-import { Clube } from "../../Model/Clube";
+import { Clube } from '../../Model/Clube'
 
 import logo from '../../assets/logos/prospera.png'
 
@@ -12,5 +12,5 @@ export const prospera: Clube = {
   // star: 0.5,
   logo,
   state: 'SC',
-  colors: ['#ea2c2a','#005d4f','#ffffff']
+  colors: ['#ea2c2a', '#005d4f', '#ffffff'],
 }

@@ -1,15 +1,23 @@
 import { useEffect } from "react";
 import { useAnimatedStyle, useSharedValue, withTiming } from "react-native-reanimated";
 
-import { Container, DomainAway, DomainHomeAnimated, Text } from "./styles";
+import { Container, ContentIcon, DomainAway, DomainHomeAnimated, Icon, Text, Touch } from "./styles";
 
 interface DominationProps {
   domainHome: number;
   domainAway: number;
-  minute: number
+  minute: number;
+  velocityGame: number;
+  updateVelocityGame(): void;
 }
 
-export function Domination({ domainAway, domainHome, minute }: DominationProps) {
+export function Domination({
+  domainAway,
+  domainHome,
+  minute,
+  velocityGame,
+  updateVelocityGame,
+}: DominationProps) {
   const domainTotal = domainHome + domainAway;
   // const widthHome = domainHome / (domainTotal) * 100
   // const widthAway = domainAway / (domainTotal) * 100
@@ -32,6 +40,14 @@ export function Domination({ domainAway, domainHome, minute }: DominationProps) 
   return (
     <>
       <Text>{minute}'</Text>
+      <Touch activeOpacity={0.7} onPress={updateVelocityGame}>
+        <Text>{velocityGame}x</Text>
+        <ContentIcon>
+          <Icon />
+          <Icon disable={velocityGame <= 1} />
+          <Icon disable={velocityGame <= 2} />
+        </ContentIcon>
+      </Touch>
       <Container>
         <DomainHomeAnimated style={styledAnimated} />
         <DomainAway />

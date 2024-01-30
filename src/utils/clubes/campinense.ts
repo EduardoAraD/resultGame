@@ -1,4 +1,4 @@
-import { Clube } from "../../Model/Clube";
+import { Clube } from '../../Model/Clube'
 
 import logo from '../../assets/logos/campinense.png'
 
@@ -12,5 +12,5 @@ export const campinense: Clube = {
   // star: 0.5,
   logo,
   state: 'PB',
-  colors: ['#da1f1a','#1f1a17','#ffffff']
+  colors: ['#da1f1a', '#1f1a17', '#ffffff'],
 }

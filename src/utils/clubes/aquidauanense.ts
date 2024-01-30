@@ -1,4 +1,4 @@
-import { Clube } from "../../Model/Clube";
+import { Clube } from '../../Model/Clube'
 
 import logo from '../../assets/logos/aquidauanense.png'
 
@@ -12,5 +12,5 @@ export const aquidauanense: Clube = {
   // star: 0.5,
   logo,
   state: 'MS',
-  colors: ['#183883','#ffffff']
+  colors: ['#183883', '#ffffff'],
 }

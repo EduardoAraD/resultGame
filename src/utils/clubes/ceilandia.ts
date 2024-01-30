@@ -1,4 +1,4 @@
-import { Clube } from "../../Model/Clube";
+import { Clube } from '../../Model/Clube'
 
 import logo from '../../assets/logos/ceilandia.png'
 
@@ -12,5 +12,5 @@ export const ceilandia: Clube = {
   // star: 0.5,
   logo,
   state: 'DF',
-  colors: ['#fefefe','#151517']
+  colors: ['#fefefe', '#151517'],
 }

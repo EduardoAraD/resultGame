@@ -1,8 +1,9 @@
-import 'styled-components/native';
+import 'styled-components/native'
 import theme from '../theme/theme'
 
 declare module 'styled-components/native' {
-  type ThemeType = typeof theme;
+  type ThemeType = typeof theme
 
-  export interface DefaultTheme extends ThemeType { }
+  // eslint-disable-next-line
+  export interface DefaultTheme extends ThemeType {}
 }

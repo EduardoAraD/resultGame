@@ -1,4 +1,4 @@
-import { Clube } from "../../Model/Clube";
+import { Clube } from '../../Model/Clube'
 
 import logo from '../../assets/logos/athletico_pr.png'
 
@@ -12,5 +12,5 @@ export const athleticoParanaense: Clube = {
   // star: 3.5,
   logo,
   state: 'PR',
-  colors: ['#aa0f16','#000000']
+  colors: ['#aa0f16', '#000000'],
 }

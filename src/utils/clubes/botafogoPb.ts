@@ -1,4 +1,4 @@
-import { Clube } from "../../Model/Clube";
+import { Clube } from '../../Model/Clube'
 
 import logo from '../../assets/logos/botafogo_pb.png'
 
@@ -12,5 +12,5 @@ export const botafogoPB: Clube = {
   // star: 1.5,
   logo,
   state: 'PB',
-  colors: ['#000000','#ffffff','#ff0000']
+  colors: ['#000000', '#ffffff', '#ff0000'],
 }

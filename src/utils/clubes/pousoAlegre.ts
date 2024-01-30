@@ -1,4 +1,4 @@
-import { Clube } from "../../Model/Clube";
+import { Clube } from '../../Model/Clube'
 
 import logo from '../../assets/logos/pouso_alegre.png'
 
@@ -12,5 +12,5 @@ export const pousoAlegre: Clube = {
   // star: 1,
   logo,
   state: 'MG',
-  colors: ['#d9232e','#000000']
+  colors: ['#d9232e', '#000000'],
 }

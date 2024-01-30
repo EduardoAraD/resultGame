@@ -1,4 +1,4 @@
-import { Clube } from "../../Model/Clube";
+import { Clube } from '../../Model/Clube'
 
 import logo from '../../assets/logos/resende.png'
 
@@ -12,5 +12,5 @@ export const resende: Clube = {
   // star: 0.5,
   logo,
   state: 'RJ',
-  colors: ['#ffffff','#010101','#013e86','#cc2030']
+  colors: ['#ffffff', '#010101', '#013e86', '#cc2030'],
 }

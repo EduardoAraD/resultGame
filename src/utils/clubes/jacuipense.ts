@@ -1,4 +1,4 @@
-import { Clube } from "../../Model/Clube";
+import { Clube } from '../../Model/Clube'
 
 import logo from '../../assets/logos/jacuipense.png'
 
@@ -12,5 +12,5 @@ export const jacuipense: Clube = {
   // star: 0.5,
   logo,
   state: 'BA',
-  colors: ['#7d050d','#fefefe']
+  colors: ['#7d050d', '#fefefe'],
 }

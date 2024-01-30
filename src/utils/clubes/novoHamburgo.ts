@@ -1,4 +1,4 @@
-import { Clube } from "../../Model/Clube";
+import { Clube } from '../../Model/Clube'
 
 import logo from '../../assets/logos/novo_hamburgo.png'
 
@@ -12,5 +12,5 @@ export const novoHamburgo: Clube = {
   // star: 0.5,
   logo,
   state: 'RS',
-  colors: ['#328ecc','#ffffff']
+  colors: ['#328ecc', '#ffffff'],
 }

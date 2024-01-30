@@ -1,17 +1,17 @@
-import { ImageSourcePropType } from "react-native";
+import { ImageSourcePropType } from 'react-native'
 
-import logo from '../assets/logos/escudo_cinza.png';
+import logo from '../assets/logos/escudo_cinza.png'
 
 export interface Clube {
-  id: number;
-  name: string;
-  sigla: string;
-  nameComplete: string;
-  overall: number;
+  id: number
+  name: string
+  sigla: string
+  nameComplete: string
+  overall: number
   // star: number;
-  state: string;
-  stadium: string;
-  logo: ImageSourcePropType;
+  state: string
+  stadium: string
+  logo: ImageSourcePropType
   colors: string[]
 }
 

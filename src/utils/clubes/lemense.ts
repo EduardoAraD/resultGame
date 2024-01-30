@@ -1,4 +1,4 @@
-import { Clube } from "../../Model/Clube";
+import { Clube } from '../../Model/Clube'
 
 import logo from '../../assets/logos/lemense.png'
 
@@ -12,5 +12,5 @@ export const lemense: Clube = {
   // star: 0.5,
   logo,
   state: 'SP',
-  colors: ['#2f4492','#fefefe']
+  colors: ['#2f4492', '#fefefe'],
 }

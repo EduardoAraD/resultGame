@@ -1,4 +1,4 @@
-import { Clube } from "../../Model/Clube";
+import { Clube } from '../../Model/Clube'
 
 import logo from '../../assets/logos/asa.png'
 
@@ -12,5 +12,5 @@ export const asa: Clube = {
   // star: 0.5,
   logo,
   state: 'AL',
-  colors: ['#000000','#ffffff']
+  colors: ['#000000', '#ffffff'],
 }

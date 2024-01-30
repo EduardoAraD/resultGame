@@ -1,4 +1,4 @@
-import { Clube } from "../../Model/Clube";
+import { Clube } from '../../Model/Clube'
 
 import logo from '../../assets/logos/paysandu.png'
 
@@ -12,5 +12,5 @@ export const paysandu: Clube = {
   // star: 1.5,
   logo,
   state: 'PA',
-  colors: ['#0092d2','#ffffff']
+  colors: ['#0092d2', '#ffffff'],
 }

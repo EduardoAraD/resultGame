@@ -1,4 +1,4 @@
-import { Clube } from "../../Model/Clube";
+import { Clube } from '../../Model/Clube'
 
 import logo from '../../assets/logos/aguia_de_maraba.png'
 
@@ -12,5 +12,5 @@ export const aguiaDeMaraba: Clube = {
   // star: 0.5,
   logo,
   state: 'PA',
-  colors: ['#006cb5','#fefefe', '#e31e24']
+  colors: ['#006cb5', '#fefefe', '#e31e24'],
 }

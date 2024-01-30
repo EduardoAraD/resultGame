@@ -1,4 +1,4 @@
-import { Clube } from "../../Model/Clube";
+import { Clube } from '../../Model/Clube'
 
 import logo from '../../assets/logos/ituano.png'
 
@@ -12,5 +12,5 @@ export const ituano: Clube = {
   // star: 2,
   logo,
   state: 'SP',
-  colors: ['#fb0404','#040404','#fefefe']
+  colors: ['#fb0404', '#040404', '#fefefe'],
 }

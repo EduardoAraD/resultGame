@@ -1,4 +1,4 @@
-import { Clube } from "../../Model/Clube";
+import { Clube } from '../../Model/Clube'
 
 import logo from '../../assets/logos/camboriu.png'
 
@@ -12,5 +12,5 @@ export const camboriu: Clube = {
   // star: 0.5,
   logo,
   state: 'SC',
-  colors: ['#e85121','#171815','#ffffff']
+  colors: ['#e85121', '#171815', '#ffffff'],
 }

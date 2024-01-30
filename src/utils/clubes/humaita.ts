@@ -1,4 +1,4 @@
-import { Clube } from "../../Model/Clube";
+import { Clube } from '../../Model/Clube'
 
 import logo from '../../assets/logos/humaita.png'
 
@@ -12,5 +12,5 @@ export const humaita: Clube = {
   // star: 0.5,
   logo,
   state: 'AC',
-  colors: ['#FFFFFF','#ea2324','#04a44c']
+  colors: ['#FFFFFF', '#ea2324', '#04a44c'],
 }

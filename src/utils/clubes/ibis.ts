@@ -1,4 +1,4 @@
-import { Clube } from "../../Model/Clube";
+import { Clube } from '../../Model/Clube'
 
 import logo from '../../assets/logos/ibis.png'
 
@@ -12,5 +12,5 @@ export const ibis: Clube = {
   // star: 0.5,
   logo,
   state: 'PE',
-  colors: ['#eb2424','#251c24']
+  colors: ['#eb2424', '#251c24'],
 }

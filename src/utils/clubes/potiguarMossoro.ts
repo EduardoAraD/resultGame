@@ -1,4 +1,4 @@
-import { Clube } from "../../Model/Clube";
+import { Clube } from '../../Model/Clube'
 
 import logo from '../../assets/logos/potiguar_mossoro.png'
 
@@ -12,5 +12,5 @@ export const potiguarDeMossoro: Clube = {
   // star: 0.5,
   logo,
   state: 'RN',
-  colors: ['#ff0000','#ffffff']
+  colors: ['#ff0000', '#ffffff'],
 }

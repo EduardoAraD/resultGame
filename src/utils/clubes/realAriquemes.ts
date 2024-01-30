@@ -1,4 +1,4 @@
-import { Clube } from "../../Model/Clube";
+import { Clube } from '../../Model/Clube'
 
 import logo from '../../assets/logos/real_ariquemes.png'
 
@@ -12,5 +12,5 @@ export const realAriquemes: Clube = {
   // star: 0.5,
   logo,
   state: 'RO',
-  colors: ['#bc0000','#000000','#ffffff']
+  colors: ['#bc0000', '#000000', '#ffffff'],
 }

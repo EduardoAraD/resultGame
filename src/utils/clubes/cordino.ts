@@ -1,4 +1,4 @@
-import { Clube } from "../../Model/Clube";
+import { Clube } from '../../Model/Clube'
 
 import logo from '../../assets/logos/cordino.png'
 
@@ -12,5 +12,5 @@ export const cordino: Clube = {
   // star: 0.5,
   logo,
   state: 'MA',
-  colors: ['#f3f036','#3b953b','#ffffff']
+  colors: ['#f3f036', '#3b953b', '#ffffff'],
 }

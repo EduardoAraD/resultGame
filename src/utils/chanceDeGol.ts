@@ -1,35 +1,34 @@
-import { Moment } from "../Model/Moment";
-import { emptyStats } from "../Model/Stats";
+import { Moment } from '../Model/Moment'
+import { emptyStats } from '../Model/Stats'
 
 export function chanceDeGol(
   minute: number,
   homeOrAway: 'home' | 'away',
   nameClube: string,
 ) {
-  const goalDeClube = `Gooooooooll do ${nameClube}`;
-  const momentsNow: Moment[] = [];
+  const goalDeClube = `Gooooooooll do ${nameClube}`
+  const momentsNow: Moment[] = []
 
-  const numberRandom = Math.floor(Math.random() * 100);
-  if(numberRandom < 20) {
+  const numberRandom = Math.floor(Math.random() * 100)
+  if (numberRandom < 20) {
     const obj: Moment = {
       minute,
       narracao: `O ${nameClube} chega ao ataque, mas é parado pela defesa.`,
       homeOrAway,
       stats: emptyStats,
     }
-    momentsNow.push(obj);
-  }
-  else if(numberRandom > 50) {
+    momentsNow.push(obj)
+  } else if (numberRandom > 50) {
     const obj: Moment = {
       minute,
       narracao: `O ${nameClube} chega ao ataque, acha um espaço e busca o arremate.`,
       homeOrAway,
       stats: emptyStats,
     }
-    momentsNow.push(obj);
+    momentsNow.push(obj)
 
-    const numberRandom2 = Math.floor(Math.random() * 100);
-    if(numberRandom2 < 40) {
+    const numberRandom2 = Math.floor(Math.random() * 100)
+    if (numberRandom2 < 40) {
       const obj: Moment = {
         minute,
         narracao: `Mas a defesa chega para bloquear o chute.`,
@@ -37,22 +36,22 @@ export function chanceDeGol(
         stats: {
           ...emptyStats,
           chutesBloqueado: 1,
-        }
+        },
       }
-      momentsNow.push(obj);
+      momentsNow.push(obj)
     } else {
       // 85 - 100
-      if(numberRandom2 > 85) {
+      if (numberRandom2 > 85) {
         const obj: Moment = {
           minute,
           narracao: `O atacante chuta no gol.`,
           homeOrAway,
           stats: emptyStats,
         }
-        momentsNow.push(obj);
+        momentsNow.push(obj)
 
-        const numberRandom3 = Math.floor(Math.random() * 100);
-        if(numberRandom3 > 50) {
+        const numberRandom3 = Math.floor(Math.random() * 100)
+        if (numberRandom3 > 50) {
           const obj: Moment = {
             minute,
             narracao: goalDeClube,
@@ -62,10 +61,10 @@ export function chanceDeGol(
               ...emptyStats,
               chutesNoAlvo: 1,
               golEsperado: 0.5,
-            }
+            },
           }
-          momentsNow.push(obj);
-        } else if(numberRandom3 > 30) {
+          momentsNow.push(obj)
+        } else if (numberRandom3 > 30) {
           const obj: Moment = {
             minute,
             narracao: 'Chutou mal, chutou para fora.',
@@ -74,9 +73,9 @@ export function chanceDeGol(
               ...emptyStats,
               chutesFora: 1,
               golEsperado: 0.5,
-            }
+            },
           }
-          momentsNow.push(obj);
+          momentsNow.push(obj)
         } else {
           const obj: Moment = {
             minute,
@@ -86,9 +85,9 @@ export function chanceDeGol(
               ...emptyStats,
               chutesNoAlvo: 1,
               golEsperado: 0.5,
-            }
+            },
           }
-          momentsNow.push(obj);
+          momentsNow.push(obj)
         }
       } else {
         // 40 - 85
@@ -98,10 +97,10 @@ export function chanceDeGol(
           homeOrAway,
           stats: emptyStats,
         }
-        momentsNow.push(obj);
+        momentsNow.push(obj)
 
-        const numberRandom3 = Math.floor(Math.random() * 100);
-        if(numberRandom3 < 40) {
+        const numberRandom3 = Math.floor(Math.random() * 100)
+        if (numberRandom3 < 40) {
           const obj: Moment = {
             minute,
             narracao: `Chuta longe do gol.`,
@@ -110,10 +109,10 @@ export function chanceDeGol(
               ...emptyStats,
               chutesFora: 1,
               golEsperado: 0.05,
-            }
+            },
           }
-          momentsNow.push(obj);
-        } else if(numberRandom3 < 70) {
+          momentsNow.push(obj)
+        } else if (numberRandom3 < 70) {
           const obj: Moment = {
             minute,
             narracao: `O goleiro espalma para longe.`,
@@ -122,10 +121,10 @@ export function chanceDeGol(
               ...emptyStats,
               chutesNoAlvo: 1,
               golEsperado: 0.05,
-            }
+            },
           }
-          momentsNow.push(obj);
-        } else if(numberRandom3 <= 95) {
+          momentsNow.push(obj)
+        } else if (numberRandom3 <= 95) {
           const obj: Moment = {
             minute,
             narracao: `O goleiro espalma mal para dentro da área.`,
@@ -134,19 +133,19 @@ export function chanceDeGol(
               ...emptyStats,
               chutesNoAlvo: 1,
               golEsperado: 0.05,
-            }
+            },
           }
-          momentsNow.push(obj);
-          
-          const numberRandom4 = Math.floor(Math.random() * 100);
-          if(numberRandom4 <= 30) {
+          momentsNow.push(obj)
+
+          const numberRandom4 = Math.floor(Math.random() * 100)
+          if (numberRandom4 <= 30) {
             const obj: Moment = {
               minute,
               narracao: `O zagueiro corta a bola pra longe.`,
               homeOrAway,
               stats: emptyStats,
             }
-            momentsNow.push(obj);
+            momentsNow.push(obj)
           } else {
             const obj: Moment = {
               minute,
@@ -154,10 +153,10 @@ export function chanceDeGol(
               homeOrAway,
               stats: emptyStats,
             }
-            momentsNow.push(obj);
+            momentsNow.push(obj)
 
-            const numberRandom5 = Math.floor(Math.random() * 100);
-            if(numberRandom5 < 60) {
+            const numberRandom5 = Math.floor(Math.random() * 100)
+            if (numberRandom5 < 60) {
               const obj: Moment = {
                 minute,
                 narracao: goalDeClube,
@@ -167,10 +166,10 @@ export function chanceDeGol(
                   ...emptyStats,
                   chutesNoAlvo: 1,
                   golEsperado: 0.6,
-                }
+                },
               }
-              momentsNow.push(obj);
-            } else if(numberRandom5 < 65) {
+              momentsNow.push(obj)
+            } else if (numberRandom5 < 65) {
               const obj: Moment = {
                 minute,
                 narracao: 'Perdeu!!! Inacreditável o gol que perde.',
@@ -179,10 +178,10 @@ export function chanceDeGol(
                   ...emptyStats,
                   chutesFora: 1,
                   golEsperado: 0.6,
-                }
+                },
               }
-              momentsNow.push(obj);
-            } else if( numberRandom5 < 85) {
+              momentsNow.push(obj)
+            } else if (numberRandom5 < 85) {
               const obj: Moment = {
                 minute,
                 narracao: `O zagueiro bloqueia o chute e a bola sai.`,
@@ -191,9 +190,9 @@ export function chanceDeGol(
                   ...emptyStats,
                   chutesBloqueado: 1,
                   golEsperado: 0.6,
-                }
+                },
               }
-              momentsNow.push(obj);
+              momentsNow.push(obj)
             } else {
               const obj: Moment = {
                 minute,
@@ -203,9 +202,9 @@ export function chanceDeGol(
                   ...emptyStats,
                   chutesNoAlvo: 1,
                   golEsperado: 0.6,
-                }
+                },
               }
-              momentsNow.push(obj);
+              momentsNow.push(obj)
             }
           }
         } else {
@@ -218,9 +217,9 @@ export function chanceDeGol(
               ...emptyStats,
               chutesNoAlvo: 1,
               golEsperado: 0.05,
-            }
+            },
           }
-          momentsNow.push(obj);
+          momentsNow.push(obj)
         }
       }
     }
@@ -229,12 +228,12 @@ export function chanceDeGol(
       minute,
       narracao: `O ${nameClube} mantém a posse de bola.`,
       homeOrAway,
-      stats: emptyStats
+      stats: emptyStats,
     }
-    momentsNow.push(obj);
+    momentsNow.push(obj)
   }
 
-  return momentsNow;
+  return momentsNow
 }
 
 export function chanceDeGolPenalt(
@@ -244,7 +243,7 @@ export function chanceDeGolPenalt(
   homeOrAway: 'home' | 'away',
   numberOfPenalt: number,
 ) {
-  const moments: Moment[] = [];
+  const moments: Moment[] = []
 
   const momentInicio: Moment = {
     minute: 90,
@@ -252,11 +251,11 @@ export function chanceDeGolPenalt(
     homeOrAway,
     stats: emptyStats,
   }
-  moments.push(momentInicio);
+  moments.push(momentInicio)
 
-  const golPorcentage = (overallClub / overallAll) * 100;
-  const numberRandom = Math.floor(Math.random() * 100);
-  if(numberRandom > golPorcentage) {
+  const golPorcentage = (overallClub / overallAll) * 100
+  const numberRandom = Math.floor(Math.random() * 100)
+  if (numberRandom > golPorcentage) {
     const moment: Moment = {
       minute: 90,
       narracao: 'Perdeu o Penalti',
@@ -265,9 +264,9 @@ export function chanceDeGolPenalt(
       stats: {
         ...emptyStats,
         qtdPenalt: 1,
-      }
+      },
     }
-    moments.push(moment);
+    moments.push(moment)
   } else {
     const moment: Moment = {
       minute: 90,
@@ -278,10 +277,10 @@ export function chanceDeGolPenalt(
       stats: {
         ...emptyStats,
         qtdPenalt: 1,
-      }
+      },
     }
-    moments.push(moment);
+    moments.push(moment)
   }
 
-  return moments;
+  return moments
 }

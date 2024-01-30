@@ -1,4 +1,4 @@
-import { Clube } from "../../Model/Clube";
+import { Clube } from '../../Model/Clube'
 
 import logo from '../../assets/logos/inter_de_limeira.png'
 
@@ -12,5 +12,5 @@ export const interDeLimeira: Clube = {
   // star: 1,
   logo,
   state: 'SP',
-  colors: ['#23201c','#fefefe']
+  colors: ['#23201c', '#fefefe'],
 }

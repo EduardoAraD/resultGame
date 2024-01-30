@@ -1,4 +1,4 @@
-import { Clube } from "../../Model/Clube";
+import { Clube } from '../../Model/Clube'
 
 import logo from '../../assets/logos/caxias.png'
 
@@ -12,5 +12,5 @@ export const caxias: Clube = {
   // star: 0.5,
   logo,
   state: 'RS',
-  colors: ['#8d0050','#0072bd','#ffffff']
+  colors: ['#8d0050', '#0072bd', '#ffffff'],
 }

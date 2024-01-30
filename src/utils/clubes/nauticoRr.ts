@@ -1,4 +1,4 @@
-import { Clube } from "../../Model/Clube";
+import { Clube } from '../../Model/Clube'
 
 import logo from '../../assets/logos/nautico_rr.png'
 
@@ -12,5 +12,5 @@ export const nauticoRR: Clube = {
   // star: 0.5,
   logo,
   state: 'RR',
-  colors: ['#d8231a','#ffffff']
+  colors: ['#d8231a', '#ffffff'],
 }

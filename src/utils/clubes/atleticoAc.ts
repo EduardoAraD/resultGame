@@ -1,4 +1,4 @@
-import { Clube } from "../../Model/Clube";
+import { Clube } from '../../Model/Clube'
 
 import logo from '../../assets/logos/atletico_acreano.png'
 
@@ -12,5 +12,5 @@ export const atleticoAC: Clube = {
   // star: 0.5,
   logo,
   state: 'AC',
-  colors: ['#ffffff','#07077e']
+  colors: ['#ffffff', '#07077e'],
 }

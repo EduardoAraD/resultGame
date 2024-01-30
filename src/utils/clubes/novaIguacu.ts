@@ -1,4 +1,4 @@
-import { Clube } from "../../Model/Clube";
+import { Clube } from '../../Model/Clube'
 
 import logo from '../../assets/logos/nova_iguacu.png'
 
@@ -12,5 +12,5 @@ export const novaIguacu: Clube = {
   // star: 0.5,
   logo,
   state: 'RJ',
-  colors: ['#ff9500','#1f191a']
+  colors: ['#ff9500', '#1f191a'],
 }

@@ -1,4 +1,4 @@
-import { Clube } from "../../Model/Clube";
+import { Clube } from '../../Model/Clube'
 
 import logo from '../../assets/logos/londrina.png'
 
@@ -12,5 +12,5 @@ export const londrina: Clube = {
   // star: 2.5,
   logo,
   state: 'PR',
-  colors: ['#0096dc','#ffffff']
+  colors: ['#0096dc', '#ffffff'],
 }

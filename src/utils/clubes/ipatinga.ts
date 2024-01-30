@@ -1,4 +1,4 @@
-import { Clube } from "../../Model/Clube";
+import { Clube } from '../../Model/Clube'
 
 import logo from '../../assets/logos/ipatinga.png'
 
@@ -12,5 +12,5 @@ export const ipatinga: Clube = {
   // star: 0.5,
   logo,
   state: 'MG',
-  colors: ['#4c6d76','#eb3636','#FFFFFF']
+  colors: ['#4c6d76', '#eb3636', '#FFFFFF'],
 }

@@ -1,4 +1,4 @@
-import { Clube } from "../../Model/Clube";
+import { Clube } from '../../Model/Clube'
 
 import logo from '../../assets/logos/4_de_Julho.png'
 
@@ -12,5 +12,5 @@ export const quatroDeJulho: Clube = {
   // star: 0.5,
   logo,
   state: 'PI',
-  colors: ['#ed3237','#fefefe']
+  colors: ['#ed3237', '#fefefe'],
 }

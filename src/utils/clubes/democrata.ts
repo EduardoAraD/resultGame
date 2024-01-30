@@ -1,4 +1,4 @@
-import { Clube } from "../../Model/Clube";
+import { Clube } from '../../Model/Clube'
 
 import logo from '../../assets/logos/democrata.png'
 
@@ -12,5 +12,5 @@ export const democrata: Clube = {
   // star: 0.5,
   logo,
   state: 'MG',
-  colors: ['#040404','#FEFEFE']
+  colors: ['#040404', '#FEFEFE'],
 }

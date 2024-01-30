@@ -1,4 +1,4 @@
-import { Clube } from "../../Model/Clube";
+import { Clube } from '../../Model/Clube'
 
 import logo from '../../assets/logos/sampaio_correa.png'
 
@@ -12,5 +12,5 @@ export const sampaioCorrea: Clube = {
   // star: 1.5,
   logo,
   state: 'MA',
-  colors: ['#fff212','#00a859','#ed3237']
+  colors: ['#fff212', '#00a859', '#ed3237'],
 }

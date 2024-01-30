@@ -1,4 +1,4 @@
-import { Clube } from "../../Model/Clube";
+import { Clube } from '../../Model/Clube'
 
 import logo from '../../assets/logos/rb_bragantino.png'
 
@@ -12,5 +12,5 @@ export const bragantino: Clube = {
   // star: 3.5,
   logo,
   state: 'SP',
-  colors: ['#ffffff','#d61e3f','#000000']
+  colors: ['#ffffff', '#d61e3f', '#000000'],
 }

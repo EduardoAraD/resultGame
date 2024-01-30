@@ -1,4 +1,4 @@
-import { Clube } from "../../Model/Clube";
+import { Clube } from '../../Model/Clube'
 
 import logo from '../../assets/logos/juventus_sp.png'
 
@@ -12,5 +12,5 @@ export const juventusSp: Clube = {
   // star: 0.5,
   logo,
   state: 'SP',
-  colors: ['#7a003b','#ffffff']
+  colors: ['#7a003b', '#ffffff'],
 }

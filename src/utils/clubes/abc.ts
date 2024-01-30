@@ -1,5 +1,5 @@
-import { Clube } from "../../Model/Clube";
-import logo from '../../assets/logos/abc.png';
+import { Clube } from '../../Model/Clube'
+import logo from '../../assets/logos/abc.png'
 
 export const abc: Clube = {
   id: 2,
@@ -11,5 +11,5 @@ export const abc: Clube = {
   // star: 2,
   logo,
   state: 'RN',
-  colors: ['#010101','#ffffff']
+  colors: ['#010101', '#ffffff'],
 }

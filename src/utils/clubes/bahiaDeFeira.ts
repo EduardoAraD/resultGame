@@ -1,4 +1,4 @@
-import { Clube } from "../../Model/Clube";
+import { Clube } from '../../Model/Clube'
 
 import logo from '../../assets/logos/bahia_de_feira.png'
 
@@ -12,5 +12,5 @@ export const bahiaDeFeira: Clube = {
   // star: 0.5,
   logo,
   state: 'BA',
-  colors: ['#ffffff','#022851','#c30710']
+  colors: ['#ffffff', '#022851', '#c30710'],
 }

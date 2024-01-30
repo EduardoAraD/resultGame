@@ -1,4 +1,4 @@
-import { Clube } from "../../Model/Clube";
+import { Clube } from '../../Model/Clube'
 
 import logo from '../../assets/logos/botaagua.png'
 
@@ -12,5 +12,5 @@ export const botaagua: Clube = {
   // star: 0.5,
   logo,
   state: 'CE',
-  colors: ['#1D2766','#dddd00']
+  colors: ['#1D2766', '#dddd00'],
 }

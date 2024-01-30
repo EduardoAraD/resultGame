@@ -1,4 +1,4 @@
-import { Clube } from "../../Model/Clube";
+import { Clube } from '../../Model/Clube'
 
 import logo from '../../assets/logos/crb.png'
 
@@ -12,5 +12,5 @@ export const crb: Clube = {
   // star: 2.5,
   logo,
   state: 'AL',
-  colors: ['#ce2b2e','#ffffff']
+  colors: ['#ce2b2e', '#ffffff'],
 }

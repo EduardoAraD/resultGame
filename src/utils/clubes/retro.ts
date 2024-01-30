@@ -1,4 +1,4 @@
-import { Clube } from "../../Model/Clube";
+import { Clube } from '../../Model/Clube'
 
 import logo from '../../assets/logos/retro.png'
 
@@ -12,5 +12,5 @@ export const retro: Clube = {
   // star: 0.5,
   logo,
   state: 'PE',
-  colors: ['#232350','#deaa24']
+  colors: ['#232350', '#deaa24'],
 }

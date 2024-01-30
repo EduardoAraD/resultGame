@@ -1,4 +1,4 @@
-import { Clube } from "../../Model/Clube";
+import { Clube } from '../../Model/Clube'
 
 import logo from '../../assets/logos/pacajus.png'
 
@@ -12,5 +12,5 @@ export const pacajus: Clube = {
   // star: 0.5,
   logo,
   state: 'CE',
-  colors: ['#f8f8f8','#19a356','#ffd323']
+  colors: ['#f8f8f8', '#19a356', '#ffd323'],
 }

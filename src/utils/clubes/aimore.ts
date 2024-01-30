@@ -1,4 +1,4 @@
-import { Clube } from "../../Model/Clube";
+import { Clube } from '../../Model/Clube'
 
 import logo from '../../assets/logos/aimore.png'
 
@@ -12,5 +12,5 @@ export const aimore: Clube = {
   // star: 0.5,
   logo,
   state: 'RS',
-  colors: ['#003192','#ffffff']
+  colors: ['#003192', '#ffffff'],
 }

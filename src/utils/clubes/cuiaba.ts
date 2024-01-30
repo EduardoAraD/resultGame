@@ -1,4 +1,4 @@
-import { Clube } from "../../Model/Clube";
+import { Clube } from '../../Model/Clube'
 
 import logo from '../../assets/logos/cuiaba.png'
 
@@ -12,5 +12,5 @@ export const cuiaba: Clube = {
   // star: 3.5,
   logo,
   state: 'MT',
-  colors: ['#086334','#f9e31b']
+  colors: ['#086334', '#f9e31b'],
 }

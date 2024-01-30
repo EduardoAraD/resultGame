@@ -1,4 +1,4 @@
-import { Clube } from "../../Model/Clube";
+import { Clube } from '../../Model/Clube'
 
 import logo from '../../assets/logos/castanhal.png'
 
@@ -12,5 +12,5 @@ export const castanhal: Clube = {
   // star: 0.5,
   logo,
   state: 'PA',
-  colors: ['#fbdc00','#000000']
+  colors: ['#fbdc00', '#000000'],
 }

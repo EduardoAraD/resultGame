@@ -1,4 +1,4 @@
-import { Clube } from "../../Model/Clube";
+import { Clube } from '../../Model/Clube'
 
 import logo from '../../assets/logos/globo.png'
 
@@ -12,5 +12,5 @@ export const globoFc: Clube = {
   // star: 0.5,
   logo,
   state: 'RN',
-  colors: ['#fefefe','#eac337','#080704','#921f11']
+  colors: ['#fefefe', '#eac337', '#080704', '#921f11'],
 }

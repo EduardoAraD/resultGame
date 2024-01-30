@@ -1,4 +1,4 @@
-import { Clube } from "../../Model/Clube";
+import { Clube } from '../../Model/Clube'
 
 import logo from '../../assets/logos/guarani.png'
 
@@ -12,5 +12,5 @@ export const guarani: Clube = {
   // star: 2.5,
   logo,
   state: 'SP',
-  colors: ['#046c54','#FFFFFF']
+  colors: ['#046c54', '#FFFFFF'],
 }

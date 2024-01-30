@@ -1,4 +1,4 @@
-import { Clube } from "../../Model/Clube";
+import { Clube } from '../../Model/Clube'
 
 import logo from '../../assets/logos/confianca.png'
 
@@ -12,5 +12,5 @@ export const confianca: Clube = {
   // star: 1,
   logo,
   state: 'SE',
-  colors: ['#0454ac','#fcfcfd']
+  colors: ['#0454ac', '#fcfcfd'],
 }

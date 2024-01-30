@@ -1,4 +1,4 @@
-import { Clube } from "../../Model/Clube";
+import { Clube } from '../../Model/Clube'
 
 import logo from '../../assets/logos/trem_ap.png'
 
@@ -12,5 +12,5 @@ export const tremAp: Clube = {
   // star: 0.5,
   logo,
   state: 'AP',
-  colors: ['#dc0000','#000000']
+  colors: ['#dc0000', '#000000'],
 }

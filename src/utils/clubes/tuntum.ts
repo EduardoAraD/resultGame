@@ -1,4 +1,4 @@
-import { Clube } from "../../Model/Clube";
+import { Clube } from '../../Model/Clube'
 
 import logo from '../../assets/logos/tuntum.png'
 
@@ -12,5 +12,5 @@ export const tuntum: Clube = {
   // star: 0.5,
   logo,
   state: 'MA',
-  colors: ['#0057b0','#fefefe']
+  colors: ['#0057b0', '#fefefe'],
 }

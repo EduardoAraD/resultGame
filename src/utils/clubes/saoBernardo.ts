@@ -1,4 +1,4 @@
-import { Clube } from "../../Model/Clube";
+import { Clube } from '../../Model/Clube'
 
 import logo from '../../assets/logos/sao_bernardo.png'
 
@@ -12,5 +12,5 @@ export const saoBernardo: Clube = {
   // star: 1.5,
   logo,
   state: 'SP',
-  colors: ['#fddb00','#000000']
+  colors: ['#fddb00', '#000000'],
 }

@@ -1,4 +1,4 @@
-import { Clube } from "../../Model/Clube";
+import { Clube } from '../../Model/Clube'
 
 import logo from '../../assets/logos/flamengo.png'
 
@@ -12,5 +12,5 @@ export const flamengo: Clube = {
   // star: 4,
   logo,
   state: 'RJ',
-  colors: ['#c42c1d','#04040b']
+  colors: ['#c42c1d', '#04040b'],
 }

@@ -1,4 +1,4 @@
-import { Clube } from "../../Model/Clube";
+import { Clube } from '../../Model/Clube'
 
 import logo from '../../assets/logos/atletico_go.png'
 
@@ -12,5 +12,5 @@ export const atleticoGO: Clube = {
   // star: 3.0,
   logo,
   state: 'GO',
-  colors: ['#ff0a0a','#000000','#fefefe']
+  colors: ['#ff0a0a', '#000000', '#fefefe'],
 }

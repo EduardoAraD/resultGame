@@ -1,4 +1,4 @@
-import { Clube } from "../../Model/Clube";
+import { Clube } from '../../Model/Clube'
 
 import logo from '../../assets/logos/gremio.png'
 
@@ -12,5 +12,5 @@ export const gremio: Clube = {
   // star: 76,
   logo,
   state: 'RS',
-  colors: ['#2bbbfc','#080808','#FFFFFF']
+  colors: ['#2bbbfc', '#080808', '#FFFFFF'],
 }

@@ -1,4 +1,4 @@
-import { Clube } from "../../Model/Clube";
+import { Clube } from '../../Model/Clube'
 
 import logo from '../../assets/logos/concordia.png'
 
@@ -12,5 +12,5 @@ export const concordia: Clube = {
   // star: 0.5,
   logo,
   state: 'SC',
-  colors: ['#980e13','#00664f','#ffffff']
+  colors: ['#980e13', '#00664f', '#ffffff'],
 }

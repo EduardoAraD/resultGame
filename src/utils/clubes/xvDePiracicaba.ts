@@ -1,4 +1,4 @@
-import { Clube } from "../../Model/Clube";
+import { Clube } from '../../Model/Clube'
 
 import logo from '../../assets/logos/xv_de_piracicaba.png'
 
@@ -12,5 +12,5 @@ export const xvDePiracicaba: Clube = {
   // star: 1,
   logo,
   state: 'SP',
-  colors: ['#000000','#ffffff']
+  colors: ['#000000', '#ffffff'],
 }

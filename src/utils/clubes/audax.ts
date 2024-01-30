@@ -1,4 +1,4 @@
-import { Clube } from "../../Model/Clube";
+import { Clube } from '../../Model/Clube'
 
 import logo from '../../assets/logos/audax.png'
 
@@ -12,5 +12,5 @@ export const audax: Clube = {
   // star: 0.5,
   logo,
   state: 'RJ',
-  colors: ['#05376c','#f48221']
+  colors: ['#05376c', '#f48221'],
 }

@@ -1,4 +1,4 @@
-import { Clube } from "../../Model/Clube";
+import { Clube } from '../../Model/Clube'
 
 import logo from '../../assets/logos/cianorte.png'
 
@@ -12,5 +12,5 @@ export const cianorte: Clube = {
   // star: 0.5,
   logo,
   state: 'PR',
-  colors: ['#1d2357','#ffffff']
+  colors: ['#1d2357', '#ffffff'],
 }

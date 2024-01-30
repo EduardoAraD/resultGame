@@ -1,4 +1,4 @@
-import { Clube } from "../../Model/Clube";
+import { Clube } from '../../Model/Clube'
 
 import logo from '../../assets/logos/cascavel.png'
 
@@ -12,5 +12,5 @@ export const cascavel: Clube = {
   // star: 0.5,
   logo,
   state: 'PR',
-  colors: ['#f7eb00','#1d1d1b']
+  colors: ['#f7eb00', '#1d1d1b'],
 }

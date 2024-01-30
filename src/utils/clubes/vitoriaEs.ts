@@ -1,4 +1,4 @@
-import { Clube } from "../../Model/Clube";
+import { Clube } from '../../Model/Clube'
 
 import logo from '../../assets/logos/vitoria_es.png'
 
@@ -12,5 +12,5 @@ export const vitoriaES: Clube = {
   // star: 0.5,
   logo,
   state: 'ES',
-  colors: ['#002b7b','#fefefe']
+  colors: ['#002b7b', '#fefefe'],
 }

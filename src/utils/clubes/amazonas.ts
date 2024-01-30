@@ -1,4 +1,4 @@
-import { Clube } from "../../Model/Clube";
+import { Clube } from '../../Model/Clube'
 
 import logo from '../../assets/logos/amazonas.png'
 
@@ -12,5 +12,5 @@ export const amazonas: Clube = {
   // star: 1,
   logo,
   state: 'AM',
-  colors: ['#ffac00','#130c15']
+  colors: ['#ffac00', '#130c15'],
 }

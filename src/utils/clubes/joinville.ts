@@ -1,4 +1,4 @@
-import { Clube } from "../../Model/Clube";
+import { Clube } from '../../Model/Clube'
 
 import logo from '../../assets/logos/joinville.png'
 
@@ -12,5 +12,5 @@ export const joinville: Clube = {
   // star: 0.5,
   logo,
   state: 'SC',
-  colors: ['#ef3035','#343232','#ffffff']
+  colors: ['#ef3035', '#343232', '#ffffff'],
 }

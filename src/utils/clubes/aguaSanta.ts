@@ -1,4 +1,4 @@
-import { Clube } from "../../Model/Clube";
+import { Clube } from '../../Model/Clube'
 
 import logo from '../../assets/logos/agua_santa.png'
 
@@ -12,5 +12,5 @@ export const aguaSanta: Clube = {
   // star: 0.5,
   logo,
   state: 'SP',
-  colors: ['#fffffe','#17121f', '#e8ad28']
+  colors: ['#fffffe', '#17121f', '#e8ad28'],
 }

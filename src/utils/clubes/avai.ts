@@ -1,4 +1,4 @@
-import { Clube } from "../../Model/Clube";
+import { Clube } from '../../Model/Clube'
 
 import logo from '../../assets/logos/avai.png'
 
@@ -12,5 +12,5 @@ export const avai: Clube = {
   // star: 2.5,
   logo,
   state: 'SC',
-  colors: ['#00679a','#ffffff']
+  colors: ['#00679a', '#ffffff'],
 }

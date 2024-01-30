@@ -1,4 +1,4 @@
-import { Clube } from "../../Model/Clube";
+import { Clube } from '../../Model/Clube'
 
 import logo from '../../assets/logos/acao.png'
 
@@ -12,5 +12,5 @@ export const acao: Clube = {
   // star: 1,
   logo,
   state: 'MT',
-  colors: ['#ffffff','#c80000', '#000000']
+  colors: ['#ffffff', '#c80000', '#000000'],
 }

@@ -1,4 +1,4 @@
-import { Clube } from "../../Model/Clube";
+import { Clube } from '../../Model/Clube'
 
 import logo from '../../assets/logos/rio_branco_pr.png'
 
@@ -12,5 +12,5 @@ export const rioBrancoPR: Clube = {
   // star: 0.5,
   logo,
   state: 'PR',
-  colors: ['#ed3237','#fefefe']
+  colors: ['#ed3237', '#fefefe'],
 }

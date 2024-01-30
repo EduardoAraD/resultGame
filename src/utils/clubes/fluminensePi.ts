@@ -1,4 +1,4 @@
-import { Clube } from "../../Model/Clube";
+import { Clube } from '../../Model/Clube'
 
 import logo from '../../assets/logos/fluminense_pi.png'
 
@@ -12,5 +12,5 @@ export const fluminensePi: Clube = {
   // star: 0.5,
   logo,
   state: 'PI',
-  colors: ['#7e0a20','#046a3b','#FFFFFF']
+  colors: ['#7e0a20', '#046a3b', '#FFFFFF'],
 }

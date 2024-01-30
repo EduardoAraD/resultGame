@@ -1,4 +1,4 @@
-import { Clube } from "../../Model/Clube";
+import { Clube } from '../../Model/Clube'
 
 import logo from '../../assets/logos/uniao_rondonopolis.png'
 
@@ -12,5 +12,5 @@ export const uniaoRondonopolis: Clube = {
   // star: 0.5,
   logo,
   state: 'MT',
-  colors: ['#e0191e','#ffffff']
+  colors: ['#e0191e', '#ffffff'],
 }

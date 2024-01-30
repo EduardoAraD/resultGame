@@ -1,4 +1,4 @@
-import { Clube } from "../../Model/Clube";
+import { Clube } from '../../Model/Clube'
 
 import logo from '../../assets/logos/caldense.png'
 
@@ -12,5 +12,5 @@ export const caldense: Clube = {
   // star: 0.5,
   logo,
   state: 'MG',
-  colors: ['#00693f','#fafbfb']
+  colors: ['#00693f', '#fafbfb'],
 }

@@ -1,4 +1,4 @@
-import { Clube } from "../../Model/Clube";
+import { Clube } from '../../Model/Clube'
 
 import logo from '../../assets/logos/ponte_preta.png'
 
@@ -12,5 +12,5 @@ export const pontePreta: Clube = {
   // star: 2,
   logo,
   state: 'SP',
-  colors: ['#000000','#ffffff']
+  colors: ['#000000', '#ffffff'],
 }

@@ -1,4 +1,4 @@
-import { Clube } from "../../Model/Clube";
+import { Clube } from '../../Model/Clube'
 
 import logo from '../../assets/logos/nacional_de_patos.png'
 
@@ -12,5 +12,5 @@ export const nacionalDePatos: Clube = {
   // star: 0.5,
   logo,
   state: 'PB',
-  colors: ['#006647','#ffffff']
+  colors: ['#006647', '#ffffff'],
 }

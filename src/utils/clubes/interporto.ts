@@ -1,4 +1,4 @@
-import { Clube } from "../../Model/Clube";
+import { Clube } from '../../Model/Clube'
 
 import logo from '../../assets/logos/interporto.png'
 
@@ -12,5 +12,5 @@ export const interporto: Clube = {
   // star: 0.5,
   logo,
   state: 'TO',
-  colors: ['#dea309','#262e89']
+  colors: ['#dea309', '#262e89'],
 }
