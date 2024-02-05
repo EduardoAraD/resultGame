@@ -20,14 +20,15 @@ interface OptionGameProps {
 export const OptionGame = styled.TouchableOpacity<OptionGameProps>`
   flex: 1;
   background-color: ${(props) =>
-    props.selected ? props.theme.colors.green : props.theme.colors.gray_400};
+    props.selected ? props.theme.colors.green : props.theme.colors.gray_500};
   justify-content: center;
   align-items: center;
 `
 
-export const TextOptionGame = styled.Text`
+export const TextOptionGame = styled.Text<OptionGameProps>`
   font-size: 16px;
-  font-family: ${(props) => props.theme.fonts.medium};
+  font-family: ${({ theme, selected }) =>
+    selected ? theme.fonts.bold : theme.fonts.regular};
   color: ${(props) => props.theme.colors.white};
 `
 

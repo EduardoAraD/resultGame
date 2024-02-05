@@ -1,9 +1,9 @@
-import { Container, Text, Title } from "./styles";
+import { Container, Text, Title } from './styles'
 
 interface ItemStatsProps {
-  valueHome: string;
-  valueAway: string;
-  title: string;
+  valueHome: string
+  valueAway: string
+  title: string
 }
 
 export function ItemStats({ valueAway, valueHome, title }: ItemStatsProps) {

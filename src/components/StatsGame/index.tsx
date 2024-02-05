@@ -1,20 +1,20 @@
-import { ImageSourcePropType } from "react-native";
+import { ImageSourcePropType } from 'react-native'
 
-import { Stats } from "../../Model/Stats";
-import { ItemStats } from "../ItemStats";
+import { Stats } from '../../Model/Stats'
+import { ItemStats } from '../ItemStats'
 
-import { Container, Content, DivLogos, LogoAway, LogoHome } from "./styles";
+import { Container, Content, DivLogos, LogoAway, LogoHome } from './styles'
 
 interface StatsGameProps {
-  goalHome: number;
-  goalAway: number;
-  statsHome: Stats;
-  statsAway: Stats;
-  logoHome: ImageSourcePropType;
-  logoAway: ImageSourcePropType;
-  hasPenalt: boolean;
-  goalPenalHome: number;
-  goalPenalAway: number;
+  goalHome: number
+  goalAway: number
+  statsHome: Stats
+  statsAway: Stats
+  logoHome: ImageSourcePropType
+  logoAway: ImageSourcePropType
+  hasPenalt: boolean
+  goalPenalHome: number
+  goalPenalAway: number
 }
 
 export function StatsGame({
@@ -28,24 +28,42 @@ export function StatsGame({
   goalPenalHome,
   hasPenalt,
 }: StatsGameProps) {
-  const chutesHome = statsHome.chutesBloqueado + statsHome.chutesFora + statsHome.chutesNoAlvo;
-  const chutesAway = statsAway.chutesBloqueado + statsAway.chutesFora + statsAway.chutesNoAlvo;
+  const chutesHome =
+    statsHome.chutesBloqueado + statsHome.chutesFora + statsHome.chutesNoAlvo
+  const chutesAway =
+    statsAway.chutesBloqueado + statsAway.chutesFora + statsAway.chutesNoAlvo
 
-  const efficiencyHome = goalHome === 0 ? 0 : (goalHome / statsHome.chutesNoAlvo) * 100;
-  const efficiencyAway = goalAway === 0 ? 0 : (goalAway / statsAway.chutesNoAlvo) * 100;
-  const efficiencyPenaltHome = goalPenalHome === 0 ? 0 : (goalPenalHome / statsHome.qtdPenalt) * 100;
-  const efficiencyPenaltAway = goalPenalAway === 0 ? 0 : (goalPenalAway / statsAway.qtdPenalt) * 100;
+  const efficiencyHome =
+    goalHome === 0 ? 0 : (goalHome / statsHome.chutesNoAlvo) * 100
+  const efficiencyAway =
+    goalAway === 0 ? 0 : (goalAway / statsAway.chutesNoAlvo) * 100
+  const efficiencyPenaltHome =
+    goalPenalHome === 0 ? 0 : (goalPenalHome / statsHome.qtdPenalt) * 100
+  const efficiencyPenaltAway =
+    goalPenalAway === 0 ? 0 : (goalPenalAway / statsAway.qtdPenalt) * 100
 
-  const posseTotal = statsHome.posse + statsAway.posse;
-  const posseHome = ((statsHome.posse / posseTotal)* 100).toFixed(1);
-  const posseAway = ((statsAway.posse / posseTotal)* 100).toFixed(1);
+  const posseTotal = statsHome.posse + statsAway.posse
+  const posseHome = ((statsHome.posse / posseTotal) * 100).toFixed(1)
+  const posseAway = ((statsAway.posse / posseTotal) * 100).toFixed(1)
 
   return (
     <Container>
       <Content>
-        <ItemStats title="Gols" valueHome={String(goalHome)} valueAway={String(goalAway)} />
-        <ItemStats title="Posse de Bola" valueHome={`${posseHome}%`} valueAway={`${posseAway}%`} />
-        <ItemStats title="Chutes" valueHome={String(chutesHome)} valueAway={String(chutesAway)} />
+        <ItemStats
+          title="Gols"
+          valueHome={String(goalHome)}
+          valueAway={String(goalAway)}
+        />
+        <ItemStats
+          title="Posse de Bola"
+          valueHome={`${posseHome}%`}
+          valueAway={`${posseAway}%`}
+        />
+        <ItemStats
+          title="Chutes"
+          valueHome={String(chutesHome)}
+          valueAway={String(chutesAway)}
+        />
         <ItemStats
           title="Chutes para Fora"
           valueHome={String(statsHome.chutesFora)}
@@ -91,7 +109,6 @@ export function StatsGame({
         <LogoHome source={logoHome} />
         <LogoAway source={logoAway} />
       </DivLogos>
-      
     </Container>
   )
 }

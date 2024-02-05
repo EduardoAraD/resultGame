@@ -1,4 +1,5 @@
-import { Clube } from '../../Model/Clube'
+import { Clube } from '../../Model/Club'
+
 import logo from '../../assets/logos/abc.png'
 
 export const abc: Clube = {

@@ -8,14 +8,14 @@ export const Container = styled.View`
 `
 
 export const Title = styled.Text`
-  font-size: 18px;
+  font-size: 16px;
   font-family: ${(props) => props.theme.fonts.medium};
   color: ${(props) => props.theme.colors.white};
 `
 
 export const Text = styled.Text`
   flex: 1;
-  font-size: 18px;
+  font-size: 16px;
   font-family: ${(props) => props.theme.fonts.bold};
   color: ${(props) => props.theme.colors.white};
 `

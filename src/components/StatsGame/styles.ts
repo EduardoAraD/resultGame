@@ -3,8 +3,8 @@ import styled from 'styled-components/native'
 export const Container = styled.View``
 
 export const Content = styled.View`
-  padding: 4px 10px;
-  gap: 4px;
+  padding: 10px;
+  gap: 2px;
 `
 
 export const DivLogos = styled.View`

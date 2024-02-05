@@ -1,4 +1,4 @@
-import { Clube } from '../../Model/Clube'
+import { Clube } from '../../Model/Club'
 
 import { quatroDeJulho } from './4dejulho'
 import { abc } from './abc'

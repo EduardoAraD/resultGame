@@ -1,22 +1,22 @@
-import { SafeAreaView } from 'react-native-safe-area-context'
+import { Platform } from 'react-native'
 import styled from 'styled-components/native'
-
-export const Safe = styled(SafeAreaView)`
-  width: 100%;
-  height: 100%;
-  background-color: ${(props) => props.theme.colors.blue_100};
-`
 
 export const Container = styled.View`
   padding: 20px;
   flex: 1;
-  align-items: center;
-  margin-bottom: 30px;
+  padding-bottom: ${Platform.OS === 'ios' ? '0' : '20'}px;
 `
 
 export const Title = styled.Text`
   font-size: 20px;
   font-family: ${(props) => props.theme.fonts.bold};
+  color: ${(props) => props.theme.colors.white};
+  text-align: center;
+`
+
+export const Stadium = styled.Text`
+  font-size: 16px;
+  font-family: ${(props) => props.theme.fonts.regular};
   color: ${(props) => props.theme.colors.white};
   text-align: center;
 `
@@ -36,7 +36,7 @@ export const LogoClube = styled.Image`
 `
 
 export const ContentInfo = styled.View`
-  margin-top: 12px;
+  margin-top: 4px;
   flex: 1;
   width: 100%;
 `
@@ -45,4 +45,5 @@ export const DivAction = styled.View`
   flex-direction: row;
   width: 100%;
   gap: 8px;
+  margin-top: 20px;
 `

@@ -1,25 +1,33 @@
-import { useState } from "react"
-import { Content, DivActionGame, OptionGame, Scroll, TextOptionGame } from "./styles"
-import { ImageSourcePropType } from "react-native"
-import { MomentGame } from "../MomentGame"
-import { MomentsGame } from "../MomentsGame"
-import { MomentComplete } from "../../Model/Moment"
-import { StatsGame } from "../StatsGame"
-import { Stats } from "../../Model/Stats"
+import { useState } from 'react'
+import { ImageSourcePropType } from 'react-native'
 
-type OptionGameType = 'narration'|'highlight'|'stats';
+import { MomentComplete } from '../../Model/Moment'
+import { Stats } from '../../Model/Stats'
+import { MomentGame } from '../MomentGame'
+import { MomentsGame } from '../MomentsGame'
+import { StatsGame } from '../StatsGame'
+
+import {
+  Content,
+  DivActionGame,
+  OptionGame,
+  Scroll,
+  TextOptionGame,
+} from './styles'
+
+type OptionGameType = 'narration' | 'highlight' | 'stats'
 interface ViewGameProps {
-  listNarration: MomentComplete[];
-  listMomentsHighlight: MomentComplete[];
-  logoHome: ImageSourcePropType;
-  logoAway: ImageSourcePropType;
-  goalHome: number;
-  goalAway: number;
-  statsHome: Stats;
-  statsAway: Stats;
-  hasPenalt: boolean;
-  goalPenalHome: number;
-  goalPenalAway: number;
+  listNarration: MomentComplete[]
+  listMomentsHighlight: MomentComplete[]
+  logoHome: ImageSourcePropType
+  logoAway: ImageSourcePropType
+  goalHome: number
+  goalAway: number
+  statsHome: Stats
+  statsAway: Stats
+  hasPenalt: boolean
+  goalPenalHome: number
+  goalPenalAway: number
 }
 
 export function ViewGame({
@@ -35,10 +43,11 @@ export function ViewGame({
   goalPenalAway,
   goalPenalHome,
 }: ViewGameProps) {
-  const [optionViewGame, setOptionViewGame] = useState<OptionGameType>('highlight')
+  const [optionViewGame, setOptionViewGame] =
+    useState<OptionGameType>('highlight')
 
   function handleUpdateOptionViewGame(value: OptionGameType) {
-    setOptionViewGame(value);
+    setOptionViewGame(value)
   }
 
   return (
@@ -49,26 +58,32 @@ export function ViewGame({
           activeOpacity={0.8}
           onPress={() => handleUpdateOptionViewGame('narration')}
         >
-          <TextOptionGame>Narração</TextOptionGame>
+          <TextOptionGame selected={optionViewGame === 'narration'}>
+            Narração
+          </TextOptionGame>
         </OptionGame>
         <OptionGame
           selected={optionViewGame === 'highlight'}
           activeOpacity={0.8}
           onPress={() => handleUpdateOptionViewGame('highlight')}
         >
-          <TextOptionGame>Destaques</TextOptionGame>
+          <TextOptionGame selected={optionViewGame === 'highlight'}>
+            Destaques
+          </TextOptionGame>
         </OptionGame>
         <OptionGame
           selected={optionViewGame === 'stats'}
           activeOpacity={0.8}
           onPress={() => handleUpdateOptionViewGame('stats')}
         >
-          <TextOptionGame>Estatísticas</TextOptionGame>
+          <TextOptionGame selected={optionViewGame === 'stats'}>
+            Estatísticas
+          </TextOptionGame>
         </OptionGame>
       </DivActionGame>
       <Scroll showsVerticalScrollIndicator={false}>
-        {optionViewGame === 'narration' && (
-          listNarration.map(item => (
+        {optionViewGame === 'narration' &&
+          listNarration.map((item) => (
             <MomentGame
               key={`${item.minute}-${item.id}`}
               min={item.minute}
@@ -76,12 +91,9 @@ export function ViewGame({
               isPrimary={item.goal}
               logo={item.homeOrAway === 'home' ? logoHome : logoAway}
             />
-          ))
-        )}
-        {optionViewGame ==='highlight' && (
-          <MomentsGame
-            moments={listMomentsHighlight}
-          />
+          ))}
+        {optionViewGame === 'highlight' && (
+          <MomentsGame moments={listMomentsHighlight} />
         )}
         {optionViewGame === 'stats' && (
           <StatsGame

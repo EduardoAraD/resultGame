@@ -7,13 +7,14 @@ interface ContainerProps {
 
 export const Container = styled(Animated.View)<ContainerProps>`
   flex-direction: row;
+  height: 70px;
   align-items: center;
   gap: ${(props) => (props.hasPenalts ? 0 : 6)}px;
 `
 
 export const Text = styled.Text`
   font-family: ${(props) => props.theme.fonts.bold};
-  font-size: 45px;
+  font-size: 42px;
   color: ${({ theme }) => theme.colors.white};
   width: 48px;
 `
@@ -21,21 +22,22 @@ export const Text = styled.Text`
 export const Line = styled.View`
   margin-top: 10px;
   height: 6px;
-  width: 14px;
-  border-radius: 4px;
+  width: 12px;
+  border-radius: 3px;
   background-color: ${({ theme }) => theme.colors.white};
 `
 
 export const ContainerPenalts = styled.View`
   justify-content: center;
   align-items: center;
+  margin-top: -18px;
   gap: -12px;
 `
 
 export const SubText = styled.Text`
-  font-family: ${(props) => props.theme.fonts.medium};
-  font-size: 20px;
-  width: 21px;
+  font-family: ${(props) => props.theme.fonts.bold};
+  font-size: 16px;
+  width: 18px;
   color: ${({ theme }) => theme.colors.white};
   text-align: center;
 `

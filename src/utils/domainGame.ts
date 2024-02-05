@@ -1,4 +1,4 @@
-import { DomainClube } from '../Model/DomainClube'
+import { DomainClube } from '../Model/DomainClub'
 
 interface DomainGame {
   home: DomainClube

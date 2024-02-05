@@ -10,7 +10,7 @@ export const Container = styled.View`
 
 export const ModalView = styled.View`
   margin: 20px;
-  background-color: ${(props) => props.theme.colors.blue_200};
+  background-color: ${(props) => props.theme.colors.gray_600};
   flex: 1;
   width: 80%;
   border-radius: 16px;
@@ -28,8 +28,8 @@ export const CloseButton = styled.TouchableOpacity`
 `
 
 export const Title = styled.Text`
-  font-size: 28px;
-  font-family: ${(props) => props.theme.fonts.medium};
+  font-size: 20px;
+  font-family: ${(props) => props.theme.fonts.bold};
   color: ${(props) => props.theme.colors.white};
   text-align: center;
 `
@@ -37,7 +37,7 @@ export const Title = styled.Text`
 export const Line = styled.View`
   height: 3px;
   width: 100px;
-  background-color: ${(props) => props.theme.colors.gray_300};
+  /* background-color: ${(props) => props.theme.colors.gray_300}; */
   margin: 3px;
   align-self: center;
 `

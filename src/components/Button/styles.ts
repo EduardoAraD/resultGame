@@ -6,8 +6,7 @@ interface TouchProps {
 }
 
 export const Touch = styled.TouchableOpacity<TouchProps>`
-  margin-top: 18px;
-  height: 48px;
+  height: 50px;
   width: 100%;
   background-color: ${(props) =>
     props.type === 'Primary'
@@ -27,8 +26,8 @@ export const Touch = styled.TouchableOpacity<TouchProps>`
 `
 
 export const TouchText = styled.Text<TouchProps>`
-  font-size: 18px;
-  font-family: ${(props) => props.theme.fonts.medium};
+  font-size: 14px;
+  font-family: ${(props) => props.theme.fonts.bold};
   color: ${(props) =>
     props.type === 'Secundary'
       ? props.theme.colors.gray_700

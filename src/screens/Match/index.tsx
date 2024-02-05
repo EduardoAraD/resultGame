@@ -1,12 +1,14 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { useNavigation, useRoute } from '@react-navigation/native'
 
-import { Clube } from '../../Model/Clube'
-import { DomainClube } from '../../Model/DomainClube'
-import { ModeGame } from '../../Model/ModeGame'
+import { MatchRoutesNavigationProps } from '../../routes/routes/match.routes'
+
+import { ClubComplete } from '../../Model/Club'
+import { DomainClube } from '../../Model/DomainClub'
+import { ModeMatch } from '../../Model/ModeMatch'
 import { Moment, MomentComplete } from '../../Model/Moment'
 import { Stats, emptyStats } from '../../Model/Stats'
-
+import { Background } from '../../components/Background'
 import { Button } from '../../components/Button'
 import { Domination } from '../../components/Domination'
 import { Placar } from '../../components/Placar'
@@ -21,19 +23,19 @@ import {
   ContentInfo,
   DivAction,
   LogoClube,
-  Safe,
+  Stadium,
   Title,
 } from './styles'
 
-export interface GameCurrentProps {
-  home: Clube
-  away: Clube
-  modeGame: ModeGame
+export interface MatchRouteProps {
+  home: ClubComplete
+  away: ClubComplete
+  modeGame: ModeMatch
 }
 
-export function GameCurrent() {
-  const { navigate, goBack } = useNavigation()
-  const params = useRoute().params as GameCurrentProps
+export function Match() {
+  const { navigate, goBack } = useNavigation<MatchRoutesNavigationProps>()
+  const params = useRoute().params as MatchRouteProps
 
   const durationMomentGame = 900 // 900 milisegundos
 
@@ -70,7 +72,7 @@ export function GameCurrent() {
   })
 
   function goHome() {
-    navigate('home')
+    navigate('homeMatch')
   }
 
   function handleUpdateVelocityGame() {
@@ -81,87 +83,91 @@ export function GameCurrent() {
     }
   }
 
-  function momentsTheGame(
-    min: number,
-    domHome: DomainClube,
-    domAway: DomainClube,
-    goalHomeClub: number,
-    goalAwayClub: number,
-  ): {
-    domHome: DomainClube
-    domAway: DomainClube
-    moments: Moment[]
-  } {
-    if (min === 1) {
-      const newMoment: Moment = {
-        minute: min,
-        narracao: 'Início de Jogo.',
-        homeOrAway: 'game',
-        stats: emptyStats,
+  const momentsTheGame = useCallback(
+    (
+      min: number,
+      domHome: DomainClube,
+      domAway: DomainClube,
+      goalHomeClub: number,
+      goalAwayClub: number,
+    ): {
+      domHome: DomainClube
+      domAway: DomainClube
+      moments: Moment[]
+    } => {
+      if (min === 1) {
+        const newMoment: Moment = {
+          minute: min,
+          narracao: 'Início de Jogo.',
+          homeOrAway: 'game',
+          stats: emptyStats,
+        }
+        return {
+          domHome: { ...domHome, domain: 50 },
+          domAway: { ...domAway, domain: 50 },
+          moments: [newMoment],
+        }
       }
-      return {
-        domHome: { ...domHome, domain: 50 },
-        domAway: { ...domAway, domain: 50 },
-        moments: [newMoment],
+      if (min === 45) {
+        const newMoment: Moment = {
+          minute: min,
+          narracao: 'Intervalo de jogo.',
+          homeOrAway: 'game',
+          stats: emptyStats,
+        }
+        return {
+          domHome: { ...domHome, domain: 50 },
+          domAway: { ...domAway, domain: 50 },
+          moments: [newMoment],
+        }
       }
-    }
-    if (min === 45) {
-      const newMoment: Moment = {
-        minute: min,
-        narracao: 'Intervalo de jogo.',
-        homeOrAway: 'game',
-        stats: emptyStats,
-      }
-      return {
-        domHome: { ...domHome, domain: 50 },
-        domAway: { ...domAway, domain: 50 },
-        moments: [newMoment],
-      }
-    }
-    if (min === 90) {
-      const notIsFinal = modeGame !== 'Normal' && goalHomeClub === goalAwayClub
-      const newMoment: Moment = {
-        minute: min,
-        narracao: notIsFinal ? 'Vamos para os Penaltis' : 'Final de Jogo.',
-        homeOrAway: 'game',
-        stats: emptyStats,
-      }
-      return {
-        domHome: { ...domHome, domain: 50 },
-        domAway: { ...domAway, domain: 50 },
-        moments: [newMoment],
-      }
-    } else {
-      const { home, away } = domainGame({
-        home: domHome,
-        away: domAway,
-      })
+      if (min === 90) {
+        const notIsFinal =
+          modeGame !== 'Normal' && goalHomeClub === goalAwayClub
+        const newMoment: Moment = {
+          minute: min,
+          narracao: notIsFinal ? 'Vamos para os Penaltis' : 'Final de Jogo.',
+          homeOrAway: 'game',
+          stats: emptyStats,
+        }
+        return {
+          domHome: { ...domHome, domain: 50 },
+          domAway: { ...domAway, domain: 50 },
+          moments: [newMoment],
+        }
+      } else {
+        const { home, away } = domainGame({
+          home: domHome,
+          away: domAway,
+        })
 
-      if (home.domain >= 70 || away.domain >= 70) {
-        const howClubAttack = home.domain >= 70 ? 'home' : 'away'
-        const nameClub = home.domain >= 70 ? home.nameClube : away.nameClube
-        const resultChance = chanceDeGol(min, howClubAttack, nameClub)
+        if (home.domain >= 70 || away.domain >= 70) {
+          const howClubAttack = home.domain >= 70 ? 'home' : 'away'
+          const nameClub = home.domain >= 70 ? home.nameClube : away.nameClube
+          const resultChance = chanceDeGol(min, howClubAttack, nameClub)
 
+          return {
+            domHome: { ...home },
+            domAway: { ...away },
+            moments: resultChance,
+          }
+        }
+
+        const newMoment: Moment = {
+          minute: min,
+          narracao: '',
+          homeOrAway: 'game',
+          stats: emptyStats,
+        }
         return {
           domHome: { ...home },
           domAway: { ...away },
-          moments: resultChance,
+          moments: [newMoment],
         }
       }
-
-      const newMoment: Moment = {
-        minute: min,
-        narracao: '',
-        homeOrAway: 'game',
-        stats: emptyStats,
-      }
-      return {
-        domHome: { ...home },
-        domAway: { ...away },
-        moments: [newMoment],
-      }
-    }
-  }
+    },
+    [modeGame],
+  )
 
   function PenaltsOver(
     goalPenalHome: number,
@@ -372,7 +378,7 @@ export function GameCurrent() {
     }
 
     setAllMoments(momentsToGame)
-  }, [params, gamePenalts])
+  }, [gamePenalts, modeGame, momentsTheGame, params])
 
   const passMinuteGame = useCallback(() => {
     const objMoment: MomentComplete = {
@@ -462,7 +468,7 @@ export function GameCurrent() {
     }
 
     setIndexMomentCurrent((state) => state + 1)
-  }, [allMoments, indexMomentCurrent])
+  }, [allMoments, indexMomentCurrent, minuteGame])
 
   useEffect(() => {
     const { home, away } = params
@@ -477,7 +483,7 @@ export function GameCurrent() {
       nameClube: away.name,
     })
     buildGame()
-  }, [params, modeGame, buildGame])
+  }, [buildGame, params])
 
   useEffect(() => {
     const qtdMoments = allMoments.length
@@ -498,7 +504,7 @@ export function GameCurrent() {
     return () => {
       clearTimeout(interval)
     }
-  }, [indexMomentCurrent, allMoments, passMinuteGame, velocityGame])
+  }, [allMoments.length, indexMomentCurrent, passMinuteGame, velocityGame])
 
   const listNarration = useMemo(() => {
     return [...momentsNarration].reverse()
@@ -511,7 +517,7 @@ export function GameCurrent() {
   const disabledContinue = indexMomentCurrent < allMoments.length
 
   return (
-    <Safe>
+    <Background>
       <Container>
         <Title>
           {domainHome.nameClube} x {domainAway.nameClube}
@@ -538,7 +544,7 @@ export function GameCurrent() {
             velocityGame={velocityGame}
             updateVelocityGame={handleUpdateVelocityGame}
           />
-          <Title>{params.home.stadium}</Title>
+          <Stadium>{params.home.stadium}</Stadium>
           <ViewGame
             listNarration={listNarration}
             listMomentsHighlight={listMomentsHighlight}
@@ -568,6 +574,6 @@ export function GameCurrent() {
           />
         </DivAction>
       </Container>
-    </Safe>
+    </Background>
   )
 }

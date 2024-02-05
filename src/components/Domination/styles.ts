@@ -26,17 +26,16 @@ export const DomainAway = styled.View`
 export const Text = styled.Text`
   font-family: ${(props) => props.theme.fonts.bold};
   font-size: 16px;
-  color: ${({ theme }) => theme.colors.white};
+  color: ${({ theme }) => theme.colors.gray_700};
   text-align: center;
 `
 
 export const Touch = styled.TouchableOpacity`
-  background-color: ${(props) => props.theme.colors.blue_500};
+  background-color: ${(props) => props.theme.colors.white};
   border-radius: 6px;
   position: absolute;
   right: 0;
-  padding: 4px 8px;
-  margin-top: -8px;
+  padding: 0px 10px;
   flex-direction: row;
   align-items: center;
   gap: 2px;
@@ -58,6 +57,6 @@ export const Icon = styled(CaretRight).attrs<IconProps>(
   ({ theme, disable }) => ({
     size: 16,
     weight: 'bold',
-    color: disable ? theme.colors.gray_500 : theme.colors.white,
+    color: disable ? theme.colors.gray_200 : theme.colors.gray_700,
   }),
 )``

@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
-import { ImageSourcePropType } from "react-native";
-import LottieView from 'lottie-react-native';
+import { useEffect, useState } from 'react'
+import { ImageSourcePropType } from 'react-native'
+import { FadeIn, FadeOut } from 'react-native-reanimated'
+import LottieView from 'lottie-react-native'
 
-import goalAnimated from '../../assets/goal.json';
+import goalAnimated from '../../assets/goal.json'
 import {
   Container,
   ContainerPenalts,
@@ -10,18 +11,17 @@ import {
   ImageBack,
   Line,
   SubText,
-  Text
-} from "./styles";
-import { FadeIn, FadeOut } from "react-native-reanimated";
+  Text,
+} from './styles'
 
 interface PlacarProps {
-  goalHome: number;
-  goalAway: number;
-  logoHome: ImageSourcePropType;
-  logoAway: ImageSourcePropType;
-  hasPenalts: boolean;
-  penaltHome: number;
-  penaltAway: number;
+  goalHome: number
+  goalAway: number
+  logoHome: ImageSourcePropType
+  logoAway: ImageSourcePropType
+  hasPenalts: boolean
+  penaltHome: number
+  penaltAway: number
 }
 
 export function Placar({
@@ -33,27 +33,27 @@ export function Placar({
   logoAway,
   logoHome,
 }: PlacarProps) {
-  const [isGoal, setIsGoal] = useState<''|'home'|'away'>('');
+  const [isGoal, setIsGoal] = useState<'' | 'home' | 'away'>('')
 
   useEffect(() => {
-    if(goalAway !== 0) {
+    if (goalAway !== 0) {
       setIsGoal('away')
       const intervalAway = setInterval(() => {
-        setIsGoal('');
-      }, 2500);
-      return () => clearInterval(intervalAway);
+        setIsGoal('')
+      }, 2500)
+      return () => clearInterval(intervalAway)
     }
-  }, [goalAway]);
+  }, [goalAway])
 
   useEffect(() => {
-    if(goalHome !== 0) {
-      setIsGoal('home');
+    if (goalHome !== 0) {
+      setIsGoal('home')
       const intervalHome = setInterval(() => {
-        setIsGoal('');
-      }, 2500);
-      return () => clearInterval(intervalHome);
+        setIsGoal('')
+      }, 2500)
+      return () => clearInterval(intervalHome)
     }
-  }, [goalHome]);
+  }, [goalHome])
 
   return isGoal !== '' ? (
     <ContentAnimated>
@@ -69,10 +69,7 @@ export function Placar({
       />
     </ContentAnimated>
   ) : (
-    <Container
-      exiting={FadeOut}
-      entering={FadeIn}
-      hasPenalts={hasPenalts}>
+    <Container exiting={FadeOut} entering={FadeIn} hasPenalts={hasPenalts}>
       <Text style={{ textAlign: 'right' }}>{goalHome}</Text>
       {hasPenalts && (
         <SubText style={{ textAlign: 'right' }}>{penaltHome}</SubText>

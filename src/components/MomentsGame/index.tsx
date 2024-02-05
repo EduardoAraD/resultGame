@@ -1,8 +1,11 @@
-import Animated, { SlideInRight, FadeIn, SlideInLeft } from "react-native-reanimated";
+import Animated, {
+  SlideInRight,
+  FadeIn,
+  SlideInLeft,
+} from 'react-native-reanimated'
 
-import { Moment, MomentComplete } from "../../Model/Moment";
-
-import { IconBall } from "../IconBall";
+import { Moment, MomentComplete } from '../../Model/Moment'
+import { IconBall } from '../IconBall'
 
 import {
   Bold,
@@ -17,50 +20,49 @@ import {
   Text,
   TextGol,
   TextPlacar,
-  ViewPlacar
-} from "./styles";
+  ViewPlacar,
+} from './styles'
 
 interface MomentsGameProps {
-  moments: MomentComplete[];
+  moments: MomentComplete[]
 }
 
 export function MomentsGame({ moments }: MomentsGameProps) {
-  let homeGoalCurrentSUM = moments.filter(item =>
-    item.goal && item.homeOrAway === 'home' && !item.penalt)
-    .length;
-  let awayGoalCurrentSUM = moments
-    .filter(item => item.goal && item.homeOrAway === 'away' && !item.penalt)
-    .length;
+  let homeGoalCurrentSUM = moments.filter(
+    (item) => item.goal && item.homeOrAway === 'home' && !item.penalt,
+  ).length
+  let awayGoalCurrentSUM = moments.filter(
+    (item) => item.goal && item.homeOrAway === 'away' && !item.penalt,
+  ).length
 
-  let homeGoalPenaltCurrentSUM = moments
-    .filter(item => item.goal && item.homeOrAway === 'home' && item.penalt)
-    .length;
-  let awayGoalPenaltCurrentSUM = moments
-    .filter(item => item.goal && item.homeOrAway === 'away' && item.penalt)
-    .length;
+  let homeGoalPenaltCurrentSUM = moments.filter(
+    (item) => item.goal && item.homeOrAway === 'home' && item.penalt,
+  ).length
+  let awayGoalPenaltCurrentSUM = moments.filter(
+    (item) => item.goal && item.homeOrAway === 'away' && item.penalt,
+  ).length
 
   function renderMoment(moment: Moment) {
-    if(moment.penalt) {
-      const isHomePenalt = moment.homeOrAway === 'home';
-      const isGoal = !!moment.goal;
+    if (moment.penalt) {
+      const isHomePenalt = moment.homeOrAway === 'home'
+      const isGoal = !!moment.goal
 
-      const goalHomePenaltCurrent = homeGoalPenaltCurrentSUM;
-      homeGoalPenaltCurrentSUM -= (isHomePenalt && isGoal) ? 1 : 0;
-      
-      const goalAwayPenaltCurrent = awayGoalPenaltCurrentSUM;
-      awayGoalPenaltCurrentSUM -= (!isHomePenalt && isGoal) ? 1 : 0;
+      const goalHomePenaltCurrent = homeGoalPenaltCurrentSUM
+      homeGoalPenaltCurrentSUM -= isHomePenalt && isGoal ? 1 : 0
+
+      const goalAwayPenaltCurrent = awayGoalPenaltCurrentSUM
+      awayGoalPenaltCurrentSUM -= !isHomePenalt && isGoal ? 1 : 0
 
       return (
         <>
           <ContainerMoment>
             <MomentInfo style={{ alignItems: 'flex-end' }}>
               {isHomePenalt && (
-                <Animated.View
-                  entering={SlideInLeft.delay(100)}
-                >
+                <Animated.View entering={SlideInLeft.delay(100)}>
                   <ViewPlacar>
                     <TextPlacar>
-                      <Bold>{goalHomePenaltCurrent}</Bold> - {goalAwayPenaltCurrent}
+                      <Bold>{goalHomePenaltCurrent}</Bold> -{' '}
+                      {goalAwayPenaltCurrent}
                     </TextPlacar>
                     <LineHor />
                   </ViewPlacar>
@@ -73,13 +75,12 @@ export function MomentsGame({ moments }: MomentsGameProps) {
             </Bool>
             <MomentInfo style={{ alignItems: 'flex-start' }}>
               {!isHomePenalt && (
-                <Animated.View
-                  entering={SlideInRight.delay(100)}
-                >
+                <Animated.View entering={SlideInRight.delay(100)}>
                   <ViewPlacar>
                     <LineHor />
                     <TextPlacar>
-                      {goalHomePenaltCurrent} - <Bold>{goalAwayPenaltCurrent}</Bold>
+                      {goalHomePenaltCurrent} -{' '}
+                      <Bold>{goalAwayPenaltCurrent}</Bold>
                     </TextPlacar>
                   </ViewPlacar>
                   <TextGol>{moment.narracao}</TextGol>
@@ -89,23 +90,21 @@ export function MomentsGame({ moments }: MomentsGameProps) {
           </ContainerMoment>
           <Line />
         </>
-      );
-    } else if(moment.goal) {
-      const isGoalHome = moment.homeOrAway === 'home';
-      const goalHomeCurrent = homeGoalCurrentSUM;
-      homeGoalCurrentSUM -= isGoalHome ? 1 : 0;
-      
-      const goalAwayCurrent = awayGoalCurrentSUM;
-      awayGoalCurrentSUM -= isGoalHome ? 0 : 1;
+      )
+    } else if (moment.goal) {
+      const isGoalHome = moment.homeOrAway === 'home'
+      const goalHomeCurrent = homeGoalCurrentSUM
+      homeGoalCurrentSUM -= isGoalHome ? 1 : 0
+
+      const goalAwayCurrent = awayGoalCurrentSUM
+      awayGoalCurrentSUM -= isGoalHome ? 0 : 1
 
       return (
         <>
           <ContainerMoment>
             <MomentInfo style={{ alignItems: 'flex-end' }}>
               {isGoalHome && (
-                <Animated.View
-                  entering={SlideInLeft.delay(100)}
-                >
+                <Animated.View entering={SlideInLeft.delay(100)}>
                   <ViewPlacar>
                     <TextPlacar>
                       <Bold>{goalHomeCurrent}</Bold> - {goalAwayCurrent}
@@ -121,9 +120,7 @@ export function MomentsGame({ moments }: MomentsGameProps) {
             </Bool>
             <MomentInfo style={{ alignItems: 'flex-start' }}>
               {!isGoalHome && (
-                <Animated.View
-                  entering={SlideInRight.delay(100)}
-                >
+                <Animated.View entering={SlideInRight.delay(100)}>
                   <ViewPlacar>
                     <LineHor />
                     <TextPlacar>
@@ -138,8 +135,8 @@ export function MomentsGame({ moments }: MomentsGameProps) {
           <Line />
         </>
       )
-    } else if(moment.homeOrAway === 'game') {
-      if(moment.minute === 1) {
+    } else if (moment.homeOrAway === 'game') {
+      if (moment.minute === 1) {
         return (
           <>
             <Bool>
@@ -148,7 +145,7 @@ export function MomentsGame({ moments }: MomentsGameProps) {
             <Text>Início de Jogo</Text>
           </>
         )
-      } else if(moment.minute === 45) {
+      } else if (moment.minute === 45) {
         return (
           <>
             <ContentIntervalo>
@@ -158,29 +155,26 @@ export function MomentsGame({ moments }: MomentsGameProps) {
           </>
         )
       } else {
-          return (
-            <>
-              <Text>{moment.narracao}</Text>
-              <Bool>
-                <Minute>90</Minute>
-              </Bool>
-              <Line />
-            </>
-          )
+        return (
+          <>
+            <Text>{moment.narracao}</Text>
+            <Bool>
+              <Minute>90</Minute>
+            </Bool>
+            <Line />
+          </>
+        )
       }
     }
   }
 
   return (
     <Container>
-      {moments.map(item => 
-        <Animated.View
-          key={`${item.minute}-${item.id}`}
-          entering={FadeIn}
-        >
+      {moments.map((item) => (
+        <Animated.View key={`${item.minute}-${item.id}`} entering={FadeIn}>
           {renderMoment(item)}
         </Animated.View>
-      )}
+      ))}
     </Container>
   )
 }

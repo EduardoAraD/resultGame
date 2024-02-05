@@ -1,16 +1,25 @@
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import {
+  NativeStackNavigationProp,
+  createNativeStackNavigator,
+} from '@react-navigation/native-stack'
 
-import { Home } from '../screens/home';
-import { GameCurrent } from '../screens/gameCurrent';
-import { List } from '../screens/list';
+import { Init } from '../screens/Init'
+import { TabRoutes } from './tab.routes'
 
-const { Navigator, Screen } = createNativeStackNavigator();
+const { Navigator, Screen } = createNativeStackNavigator()
+
+type AppRoutesProps = {
+  init: undefined
+  home: undefined
+}
+
+export type AppRoutesNavigationProps = NativeStackNavigationProp<AppRoutesProps>
 
 export function AppRoutes() {
   return (
     <Navigator screenOptions={{ headerShown: false }}>
-      <Screen name='home' component={Home} />
-      <Screen name='game' component={GameCurrent} />
+      <Screen name="init" component={Init} />
+      <Screen name="home" component={TabRoutes} />
     </Navigator>
   )
 }

@@ -9,15 +9,15 @@ export const Container = styled.View`
 
 export const Text = styled.Text`
   text-align: center;
-  font-size: 20px;
+  font-size: 16px;
   color: ${(props) => props.theme.colors.white};
   margin-top: 6px;
   font-family: ${(props) => props.theme.fonts.bold};
 `
 
 export const Bool = styled.View`
-  height: 54px;
-  width: 54px;
+  height: 42px;
+  width: 42px;
   background-color: ${(props) => props.theme.colors.blue_200};
   border-radius: 999px;
   justify-content: center;
@@ -27,21 +27,21 @@ export const Bool = styled.View`
 `
 
 export const Minute = styled.Text`
-  font-size: 28px;
+  font-size: 20px;
   color: ${(props) => props.theme.colors.white};
-  font-family: ${(props) => props.theme.fonts.medium};
+  font-family: ${(props) => props.theme.fonts.regular};
 `
 
 export const Line = styled.View`
-  width: 4px;
+  width: 2px;
   height: 20px;
   background-color: ${(props) => props.theme.colors.gray_300};
   align-self: center;
 `
 
 export const LineHor = styled.View`
-  width: 60px;
-  height: 4px;
+  width: 70px;
+  height: 2px;
   background-color: ${(props) => props.theme.colors.gray_100};
   align-self: center;
   margin: -1px;
@@ -63,27 +63,28 @@ export const ViewPlacar = styled.View`
 `
 
 export const TextPlacar = styled.Text`
-  font-size: 18px;
+  font-size: 16px;
   color: ${(props) => props.theme.colors.white};
-  font-family: ${(props) => props.theme.fonts.medium};
+  font-family: ${(props) => props.theme.fonts.regular};
 `
 
-export const Bold = styled.Text`
+export const Bold = styled(TextPlacar)`
   font-family: ${(props) => props.theme.fonts.bold};
 `
 
 export const TextGol = styled.Text`
-  font-size: 16px;
+  font-size: 12px;
   color: ${(props) => props.theme.colors.gray_100};
   text-align: center;
   font-family: ${(props) => props.theme.fonts.regular};
   align-self: center;
+  margin-top: -6px;
 `
 
 export const ContentIntervalo = styled.View`
   width: 210px;
   align-self: center;
-  border: ${(props) => props.theme.colors.blue_200};
+  border: ${(props) => props.theme.colors.white};
   border-width: 0px;
   border-top-width: 2px;
   border-bottom-width: 2px;

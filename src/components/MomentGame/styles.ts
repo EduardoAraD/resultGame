@@ -7,7 +7,7 @@ interface ContainerProps {
 export const Container = styled.View<ContainerProps>`
   background-color: ${(props) =>
     props.isPrimary
-      ? props.theme.colors.blue_500
+      ? props.theme.colors.blue_300
       : props.theme.colors.blue_200};
   margin-bottom: 4px;
   border-radius: 6px;
@@ -17,10 +17,11 @@ export const Container = styled.View<ContainerProps>`
 `
 
 export const Minute = styled.Text`
-  padding: 10px 12px;
+  padding: 10px 10px;
   width: 45px;
   text-align: center;
   font-family: ${({ theme }) => theme.fonts.bold};
+  font-size: 16px;
   color: ${(props) => props.theme.colors.white};
   background-color: ${(props) => props.theme.colors.gray_700};
 `
@@ -28,13 +29,14 @@ export const Minute = styled.Text`
 export const Text = styled.Text`
   padding: 10px;
   flex: 1;
-  font-family: ${({ theme }) => theme.fonts.medium};
+  font-family: ${({ theme }) => theme.fonts.regular};
+  font-size: 16px;
   color: ${(props) => props.theme.colors.white};
 `
 
 export const Logo = styled.Image`
-  height: 70px;
-  width: 70px;
+  height: 80px;
+  width: 80px;
   position: absolute;
   opacity: 0.7;
   top: -10px;
