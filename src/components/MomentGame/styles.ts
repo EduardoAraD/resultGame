@@ -17,7 +17,7 @@ export const Container = styled.View<ContainerProps>`
 `
 
 export const Minute = styled.Text`
-  padding: 10px 10px;
+  padding: 8px;
   width: 45px;
   text-align: center;
   font-family: ${({ theme }) => theme.fonts.bold};
@@ -27,10 +27,10 @@ export const Minute = styled.Text`
 `
 
 export const Text = styled.Text`
-  padding: 10px;
+  padding: 8px;
   flex: 1;
   font-family: ${({ theme }) => theme.fonts.regular};
-  font-size: 16px;
+  font-size: 14px;
   color: ${(props) => props.theme.colors.white};
 `
 

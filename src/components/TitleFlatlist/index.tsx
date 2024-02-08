@@ -1,13 +1,19 @@
+import { ViewProps } from 'react-native'
+
 import { Container, Title } from './styles'
 
-interface TitleFlatlistProps {
+interface TitleFlatlistProps extends ViewProps {
   title: string
   quantity: number | string
 }
 
-export function TitleFlatlist({ title, quantity }: TitleFlatlistProps) {
+export function TitleFlatlist({
+  title,
+  quantity,
+  ...rest
+}: TitleFlatlistProps) {
   return (
-    <Container>
+    <Container {...rest}>
       <Title>{title}</Title>
       <Title>{quantity}</Title>
     </Container>

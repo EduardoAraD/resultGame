@@ -4,7 +4,7 @@ import logo from '../../assets/logos/operario_ms.png'
 
 export const operarioMS: Clube = {
   id: 126,
-  name: 'Operário FC-MS',
+  name: 'Operário FC MS',
   sigla: 'OMS',
   nameComplete: 'Operário Futebol Clube',
   overall: 59.5,

@@ -4,7 +4,7 @@ import logo from '../../assets/logos/rio_branco_pr.png'
 
 export const rioBrancoPR: Clube = {
   id: 150,
-  name: 'Rio Branco-PR',
+  name: 'Rio Branco PR',
   sigla: 'RPR',
   nameComplete: 'Rio Branco Sport Club',
   overall: 56.5,

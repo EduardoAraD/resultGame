@@ -4,7 +4,7 @@ import logo from '../../assets/logos/rio_branco_ac.png'
 
 export const rioBrancoAC: Clube = {
   id: 149,
-  name: 'Rio Branco-AC',
+  name: 'Rio Branco AC',
   sigla: 'RBR',
   nameComplete: 'Rio Branco Football Club',
   overall: 57,

@@ -4,7 +4,7 @@ import logo from '../../assets/logos/river_pi.png'
 
 export const riverPI: Clube = {
   id: 151,
-  name: 'River-PI',
+  name: 'River PI',
   sigla: 'RIV',
   nameComplete: 'River Atlético Clube',
   overall: 59,

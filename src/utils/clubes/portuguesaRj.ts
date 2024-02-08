@@ -4,7 +4,7 @@ import logo from '../../assets/logos/portuguesa_rj.png'
 
 export const portuguesaRJ: Clube = {
   id: 138,
-  name: 'Portuguesa-RJ',
+  name: 'Portuguesa RJ',
   sigla: 'PRJ',
   nameComplete: 'Associação Atlética Portuguesa',
   overall: 61.5,

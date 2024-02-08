@@ -4,7 +4,7 @@ import logo from '../../assets/logos/costa_rica_ms.png'
 
 export const costaRicaMS: Clube = {
   id: 56,
-  name: 'Costa Rica EC-MS',
+  name: 'Costa Rica MS',
   sigla: 'CSR',
   nameComplete: 'Costa Rica Esporte Clube',
   overall: 57,

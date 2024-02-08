@@ -4,7 +4,7 @@ import logo from '../../assets/logos/atletico_ce.png'
 
 export const atleticoCE: Clube = {
   id: 20,
-  name: 'Atlético-CE',
+  name: 'Atlético CE',
   sigla: 'ACE',
   nameComplete: 'Futebol Clube Atlético Cearense',
   overall: 60,

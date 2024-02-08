@@ -8,28 +8,29 @@ import { ClubComplete, ClubShort } from '../../Model/Club'
 import { clubes } from '../../utils/clubes'
 
 async function createdClubs() {
-  const clubsComplete: ClubComplete[] = clubes.map((club) => {
+  // const clubs = clubes.filter((_, index) => index <= 10)
+  const clubsComplete: ClubComplete[] = clubes.map((clube) => {
     const id = Crypto.randomUUID()
     const clubComplete: ClubComplete = {
-      name: club.name,
-      nameComplete: club.nameComplete,
-      logo: club.logo,
+      name: clube.name,
+      nameComplete: clube.nameComplete,
+      logo: clube.logo,
       id,
       disabled: false,
-      sigla: club.sigla,
-      overall: club.overall,
-      stadium: club.stadium,
+      sigla: clube.sigla,
+      overall: clube.overall,
+      stadium: clube.stadium,
       createdForUser: false,
     }
     return clubComplete
   })
 
-  const clubsShort: ClubShort[] = clubsComplete.map((i) => ({
-    name: i.name,
-    logo: i.logo,
-    id: i.id,
-    createdForUser: i.createdForUser,
-    disabled: i.disabled,
+  const clubsShort: ClubShort[] = clubsComplete.map((club) => ({
+    name: club.name,
+    logo: club.logo,
+    id: club.id,
+    createdForUser: club.createdForUser,
+    disabled: club.disabled,
   }))
 
   await Promise.all([
@@ -43,7 +44,7 @@ async function createdClubs() {
 export async function getClubsShort(): Promise<ClubShort[]> {
   const clubsJSON = await AsyncStorage.getItem(KEY_CLUB)
   if (!clubsJSON) {
-    const clubs = createdClubs()
+    const clubs = await createdClubs()
     return clubs
   } else {
     const clubs: ClubShort[] = JSON.parse(clubsJSON)
@@ -76,8 +77,8 @@ export async function saveClub(club: ClubComplete) {
     name: club.name,
     logo: club.logo,
     id: club.id,
-    disabled: false,
-    createdForUser: false,
+    disabled: club.disabled,
+    createdForUser: club.createdForUser,
   }
   const clubsShort = await getClubsShort()
   clubsShort.push(clubShort)
@@ -87,7 +88,7 @@ export async function saveClub(club: ClubComplete) {
 async function removeClubShort(idClub: string) {
   const clubs = await getClubsShort()
   const newClubs: ClubShort[] = clubs.map((i) =>
-    i.id === idClub ? { ...i, disabled: true } : i,
+    i.id === idClub ? { ...i, disabled: !i.disabled } : i,
   )
   await saveClubsShort(newClubs)
 }
@@ -95,10 +96,38 @@ async function removeClubShort(idClub: string) {
 async function removeClubComplete(idClub: string) {
   const clubComplete = await getClubComplete(idClub)
   if (clubComplete) {
-    await saveClubComplete({ ...clubComplete, disabled: true })
+    await saveClubComplete({
+      ...clubComplete,
+      disabled: !clubComplete.disabled,
+    })
   }
 }
 
 export async function removeClub(idClub: string) {
   await Promise.all([removeClubShort(idClub), removeClubComplete(idClub)])
+}
+
+export async function updateClubDB(idClub: string, newClub: ClubComplete) {
+  const clubShort: ClubShort = {
+    name: newClub.name,
+    logo: newClub.logo,
+    id: idClub,
+    disabled: newClub.disabled,
+    createdForUser: newClub.createdForUser,
+  }
+  const clubsShort = await getClubsShort()
+  const newListClubsShort = clubsShort.map((club) =>
+    club.id === idClub ? clubShort : club,
+  )
+  await saveClubsShort(newListClubsShort)
+  await saveClubComplete({ ...newClub, id: idClub })
+}
+
+export async function removeAllClubs() {
+  const clubs = await getClubsShort()
+  await Promise.all(
+    clubs.map((club) => AsyncStorage.removeItem(`${KEY_CLUB}/${club.id}`)),
+  )
+
+  await AsyncStorage.removeItem(KEY_CLUB)
 }

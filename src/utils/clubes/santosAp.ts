@@ -4,7 +4,7 @@ import logo from '../../assets/logos/santos_ap.png'
 
 export const santosAp: Clube = {
   id: 157,
-  name: 'Santos FC-AP',
+  name: 'Santos AP',
   sigla: 'SAP',
   nameComplete: 'Santos Futebol Clube',
   overall: 58,

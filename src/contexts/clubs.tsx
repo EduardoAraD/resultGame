@@ -6,7 +6,13 @@ import {
   useState,
 } from 'react'
 
-import { getClubsShort } from '../lib/asyncstorage/clubs'
+import {
+  getClubsShort,
+  // removeAllClubs,
+  removeClub as removeClubAS,
+  saveClub,
+  updateClubDB,
+} from '../lib/asyncstorage/clubs'
 
 import { ClubComplete, ClubShort } from '../Model/Club'
 
@@ -16,6 +22,9 @@ interface ClubsProviderProps {
 
 type ClubsContextDataProps = {
   clubs: ClubShort[]
+  addClub: (club: ClubComplete) => Promise<void>
+  removeClub: (idClub: string) => Promise<void>
+  updateClub: (idClub: string, newClub: ClubComplete) => Promise<void>
 }
 
 export const ClubsContext = createContext<ClubsContextDataProps>(
@@ -25,19 +34,29 @@ export const ClubsContext = createContext<ClubsContextDataProps>(
 export function ClubsProvider({ children }: ClubsProviderProps) {
   const [clubs, setClubs] = useState<ClubShort[]>([])
 
-  function addClub(club: ClubComplete) {
-    console.log('ADD')
+  async function addClub(club: ClubComplete) {
+    await saveClub(club)
+
+    await loadClubs()
   }
 
-  function removePlayer(idClub: string): void {
-    console.log('DESATIVE')
+  async function removeClub(idClub: string): Promise<void> {
+    await removeClubAS(idClub)
+
+    await loadClubs()
   }
 
-  function updateClub(idClub: string, newClub: ClubComplete): void {
-    console.log('UPDATE')
+  async function updateClub(
+    idClub: string,
+    newClub: ClubComplete,
+  ): Promise<void> {
+    await updateClubDB(idClub, newClub)
+
+    await loadClubs()
   }
 
   const loadClubs = useCallback(async () => {
+    // await removeAllClubs()
     const listClubs = await getClubsShort()
     setClubs(listClubs)
   }, [])
@@ -50,6 +69,9 @@ export function ClubsProvider({ children }: ClubsProviderProps) {
     <ClubsContext.Provider
       value={{
         clubs,
+        addClub,
+        removeClub,
+        updateClub,
       }}
     >
       {children}

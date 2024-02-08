@@ -4,7 +4,7 @@ import logo from '../../assets/logos/fluminense_pi.png'
 
 export const fluminensePi: Clube = {
   id: 76,
-  name: 'Fluminense EC-PI',
+  name: 'Fluminense PI',
   sigla: 'FPI',
   nameComplete: 'Fluminense Esporte Clube',
   overall: 60,

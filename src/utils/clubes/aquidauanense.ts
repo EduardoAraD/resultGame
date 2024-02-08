@@ -4,7 +4,7 @@ import logo from '../../assets/logos/aquidauanense.png'
 
 export const aquidauanense: Clube = {
   id: 14,
-  name: 'Aquidauanense-MS',
+  name: 'Aquidauanense MS',
   sigla: 'AQU',
   nameComplete: 'Aquidauanense Futebol Clube',
   overall: 59,

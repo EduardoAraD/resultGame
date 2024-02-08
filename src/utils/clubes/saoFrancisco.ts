@@ -4,7 +4,7 @@ import logo from '../../assets/logos/sao_francisco_ac.png'
 
 export const saoFrancisco: Clube = {
   id: 161,
-  name: 'São Francisco-AC',
+  name: 'São Francisco AC',
   sigla: 'SFR',
   nameComplete: 'São Francisco Futebol Clube',
   overall: 61,

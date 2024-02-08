@@ -60,7 +60,7 @@ export function Placar({
       <ImageBack source={isGoal === 'home' ? logoHome : logoAway} />
       <LottieView
         autoPlay
-        loop
+        loop={false}
         style={{
           height: 90,
           marginBottom: -15,

@@ -18,7 +18,11 @@ export function Button({
 }: ButtonProps) {
   return (
     <Touch activeOpacity={0.8} type={type} {...rest}>
-      {loading ? <Loading /> : <TouchText type={type}>{title}</TouchText>}
+      {loading ? (
+        <Loading colorActive={type === 'Secundary' ? 'gray_700' : 'white'} />
+      ) : (
+        <TouchText type={type}>{title}</TouchText>
+      )}
     </Touch>
   )
 }

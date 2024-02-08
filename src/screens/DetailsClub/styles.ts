@@ -55,3 +55,9 @@ export const ViewOver = styled.View`
 export const TextOver = styled(Title)`
   font-size: 64px;
 `
+
+export const Actions = styled.View`
+  flex-direction: row;
+  gap: 20px;
+  margin-top: 40px;
+`

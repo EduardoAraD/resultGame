@@ -4,7 +4,7 @@ import logo from '../../assets/logos/cruzeiro_al.png'
 
 export const cruzeiroAl: Clube = {
   id: 62,
-  name: 'Cruzeiro-AL',
+  name: 'Cruzeiro AL',
   sigla: 'CRZ',
   nameComplete: 'Esporte Clube Cruzeiro',
   overall: 58.5,

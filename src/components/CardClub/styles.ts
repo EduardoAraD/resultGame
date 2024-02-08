@@ -50,7 +50,7 @@ export const CircleSlow = styled.View`
 `
 
 export const ViewCreated = styled.View`
-  border-radius: 100%;
+  border-radius: 13px;
   height: 26px;
   width: 26px;
   justify-content: center;
@@ -63,4 +63,12 @@ export const TextCreated = styled.Text`
   font-size: 16px;
   font-family: ${({ theme }) => theme.fonts.bold};
   color: ${(props) => props.theme.colors.white};
+`
+
+export const TextDesabled = styled(Name)`
+  font-size: 8px;
+  color: ${(props) => props.theme.colors.white};
+  position: absolute;
+  bottom: 1px;
+  right: 5px;
 `

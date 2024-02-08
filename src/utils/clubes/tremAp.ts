@@ -4,7 +4,7 @@ import logo from '../../assets/logos/trem_ap.png'
 
 export const tremAp: Clube = {
   id: 175,
-  name: 'Trem-AP',
+  name: 'Trem AP',
   sigla: 'TRE',
   nameComplete: 'Trem Desportivo Clube',
   overall: 59,

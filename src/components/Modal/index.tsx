@@ -40,9 +40,9 @@ export function ModalChooseClub({
 
   const listClubs = useMemo(() => {
     const searchLow = search.toLowerCase()
-    return clubs.filter((club) =>
-      club.name.toLocaleLowerCase().includes(searchLow),
-    )
+    return clubs
+      .filter((i) => !i.disabled)
+      .filter((club) => club.name.toLocaleLowerCase().includes(searchLow))
   }, [clubs, search])
 
   return (

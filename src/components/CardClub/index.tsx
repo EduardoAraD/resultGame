@@ -1,5 +1,10 @@
 import { TouchableOpacityProps } from 'react-native'
-import Animated, { BounceIn, FlipOutEasyY } from 'react-native-reanimated'
+import Animated, {
+  BounceIn,
+  FlipOutEasyY,
+  SlideInRight,
+  SlideOutLeft,
+} from 'react-native-reanimated'
 
 import { ClubShort } from '../../Model/Club'
 
@@ -10,6 +15,7 @@ import {
   Image,
   Name,
   TextCreated,
+  TextDesabled,
   ViewCreated,
 } from './styles'
 
@@ -26,25 +32,28 @@ export function CardClub({
   ...rest
 }: CardClubProps) {
   return (
-    <Card activeOpacity={0.7} isSelected={isSelected} {...rest}>
-      {showCheck && (
-        <Circle isSelected={isSelected}>
-          {isSelected && (
-            <Animated.View entering={BounceIn} exiting={FlipOutEasyY}>
-              <CircleSlow />
-            </Animated.View>
-          )}
-        </Circle>
-      )}
-      <Image source={club.logo} alt="" />
-      <Name isSelected={isSelected} style={{ flex: 1 }}>
-        {club.name}
-      </Name>
-      {club.createdForUser && (
-        <ViewCreated>
-          <TextCreated>C</TextCreated>
-        </ViewCreated>
-      )}
-    </Card>
+    <Animated.View entering={SlideInRight} exiting={SlideOutLeft}>
+      <Card activeOpacity={0.7} isSelected={isSelected} {...rest}>
+        {showCheck && (
+          <Circle isSelected={isSelected}>
+            {isSelected && (
+              <Animated.View entering={BounceIn} exiting={FlipOutEasyY}>
+                <CircleSlow />
+              </Animated.View>
+            )}
+          </Circle>
+        )}
+        <Image source={club.logo} alt="" />
+        <Name isSelected={isSelected} style={{ flex: 1 }}>
+          {club.name}
+        </Name>
+        {club.createdForUser && (
+          <ViewCreated>
+            <TextCreated>C</TextCreated>
+          </ViewCreated>
+        )}
+        {club.disabled && <TextDesabled>Desabilitado</TextDesabled>}
+      </Card>
+    </Animated.View>
   )
 }
