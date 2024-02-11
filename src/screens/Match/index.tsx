@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { useNavigation, useRoute } from '@react-navigation/native'
 
+import { CupRoutesNavigationProps } from '../../routes/routes/cup.routes'
 import { MatchRoutesNavigationProps } from '../../routes/routes/match.routes'
 
 import { ClubComplete } from '../../Model/Club'
@@ -31,10 +32,13 @@ export interface MatchRouteProps {
   home: ClubComplete
   away: ClubComplete
   modeGame: ModeMatch
+  idMatch?: string
+  idCup?: string
 }
 
 export function Match() {
   const { navigate, goBack } = useNavigation<MatchRoutesNavigationProps>()
+  const navigateCup = useNavigation<CupRoutesNavigationProps>()
   const params = useRoute().params as MatchRouteProps
 
   const durationMomentGame = 900 // 900 milisegundos
@@ -73,6 +77,29 @@ export function Match() {
 
   function goHome() {
     navigate('homeMatch')
+  }
+
+  function handleFinishedMatch() {
+    if (params.idMatch && params.idCup) {
+      const { home, away, idMatch, modeGame, idCup } = params
+
+      navigateCup.navigate('resultMatch', {
+        stats: {
+          id: idMatch,
+          goalAway,
+          goalAwayPenal: awayPenalt,
+          goalHome,
+          goalHomePenal: homePenalt,
+          type: modeGame,
+          status: 'finished',
+        },
+        homeId: home.id,
+        awayId: away.id,
+        idCup,
+      })
+    } else {
+      goHome()
+    }
   }
 
   function handleUpdateVelocityGame() {
@@ -569,7 +596,7 @@ export function Match() {
           <Button
             style={{ flex: 1 }}
             disabled={disabledContinue}
-            onPress={goHome}
+            onPress={handleFinishedMatch}
             title="Continuar"
           />
         </DivAction>

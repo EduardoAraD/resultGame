@@ -5,10 +5,10 @@ import { useTheme } from 'styled-components/native'
 import { TextInput } from './styles'
 
 type InputProps = TextInputProps & {
-  invalid: boolean
+  invalid?: boolean
 }
 
-export function Input({ ...rest }: InputProps) {
+export function Input({ invalid = false, ...rest }: InputProps) {
   const {
     colors: { gray_300 },
   } = useTheme()
@@ -28,6 +28,7 @@ export function Input({ ...rest }: InputProps) {
       onBlur={handleBlur}
       focus={focusInput}
       placeholderTextColor={gray_300}
+      invalid={invalid}
       {...rest}
     />
   )

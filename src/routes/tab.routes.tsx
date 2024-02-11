@@ -4,11 +4,11 @@ import {
 } from '@react-navigation/bottom-tabs'
 import { Feather } from '@expo/vector-icons'
 import { SoccerBall, Trophy } from 'phosphor-react-native'
-
-import theme from '../theme'
+import { useTheme } from 'styled-components/native'
 
 import { ClubRoutes } from './routes/club.routes'
 import { MatchRoutes } from './routes/match.routes'
+import { CupRoutes } from './routes/cup.routes'
 
 const Tab = createBottomTabNavigator()
 
@@ -20,14 +20,19 @@ export type TabRoutes = {
 export type TabNavigatorRoutesProps = BottomTabNavigationProp<TabRoutes>
 
 export function TabRoutes() {
+  const { colors, fonts } = useTheme()
+
   return (
     <Tab.Navigator
       screenOptions={{
         headerShown: false,
-        tabBarActiveTintColor: theme.colors.white,
-        tabBarInactiveTintColor: theme.colors.gray_300,
+        tabBarActiveTintColor: colors.white,
+        tabBarInactiveTintColor: colors.gray_300,
         tabBarStyle: {
-          backgroundColor: theme.colors.blue_200,
+          backgroundColor: colors.blue_200,
+        },
+        tabBarLabelStyle: {
+          fontFamily: fonts.bold,
         },
       }}
     >
@@ -41,16 +46,14 @@ export function TabRoutes() {
           tabBarLabel: 'Clubes',
         }}
       />
-      {/* <Tab.Screen
+      <Tab.Screen
         name="cupTab"
-        component={CupTab}
+        component={CupRoutes}
         options={{
-          tabBarIcon: ({ color, size }) => (
-            <Trophy size={size} color={color} />
-          ),
-          tabBarLabel: 'Campeonato',
+          tabBarIcon: ({ color, size }) => <Trophy size={size} color={color} />,
+          tabBarLabel: 'Campeonatos',
         }}
-      /> */}
+      />
       <Tab.Screen
         name="matchsTab"
         component={MatchRoutes}

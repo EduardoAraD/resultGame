@@ -21,6 +21,7 @@ interface ModalChooseClubProps {
   onClose: () => void
   onSelectedClub: (club: ClubShort, homeOrAway: HomeOrAway) => void
   homeOrAway: HomeOrAway
+  clubsBlocked?: ClubShort[]
 }
 
 export function ModalChooseClub({
@@ -28,6 +29,7 @@ export function ModalChooseClub({
   onClose,
   onSelectedClub,
   homeOrAway,
+  clubsBlocked = [],
 }: ModalChooseClubProps) {
   const { clubs } = useClubs()
   const [search, setSearch] = useState('')
@@ -41,9 +43,13 @@ export function ModalChooseClub({
   const listClubs = useMemo(() => {
     const searchLow = search.toLowerCase()
     return clubs
+      .filter(
+        (club) =>
+          !clubsBlocked.find((clubBlocked) => club.id === clubBlocked.id),
+      )
       .filter((i) => !i.disabled)
       .filter((club) => club.name.toLocaleLowerCase().includes(searchLow))
-  }, [clubs, search])
+  }, [clubs, clubsBlocked, search])
 
   return (
     visible && (
@@ -62,6 +68,7 @@ export function ModalChooseClub({
               placeholder="Filtrar clube"
               value={search}
               onChangeText={setSearch}
+              blurOnSubmit={false}
             />
             <FlatList
               data={listClubs}

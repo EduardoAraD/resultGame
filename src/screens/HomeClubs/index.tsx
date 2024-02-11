@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react'
 import { FlatList, KeyboardAvoidingView, Platform, View } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import { ShieldPlus, ShieldSlash } from 'phosphor-react-native'
+import { useTheme } from 'styled-components/native'
 
 import { useClubs } from '../../hook/useClubs'
 import { ClubRoutesNavigationProps } from '../../routes/routes/club.routes'
@@ -14,7 +15,6 @@ import { Input } from '../../components/Input'
 import { TitleFlatlist } from '../../components/TitleFlatlist'
 
 import { Actions, Container, Title, Touch } from './styles'
-import { useTheme } from 'styled-components/native'
 
 export function HomeClubs() {
   const {
@@ -90,8 +90,8 @@ export function HomeClubs() {
             ItemSeparatorComponent={() => <View style={{ height: 6 }} />}
             contentContainerStyle={{ paddingBottom: 40 }}
           />
-          <ButtonIconOver icon={ShieldPlus} onPress={handleToCreateClub} />
         </KeyboardAvoidingView>
+        <ButtonIconOver icon={ShieldPlus} onPress={handleToCreateClub} />
       </Container>
     </Background>
   )
