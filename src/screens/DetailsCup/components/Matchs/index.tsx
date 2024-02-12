@@ -3,6 +3,7 @@ import { CaretLeft, CaretRight } from 'phosphor-react-native'
 import { useTheme } from 'styled-components/native'
 import { useNavigation } from '@react-navigation/native'
 
+import { useMatch } from '../../../../hook/useMatch'
 import { CupRoutesNavigationProps } from '../../../../routes/routes/cup.routes'
 
 import { MatchComplete } from '../../../../Model/Match'
@@ -31,6 +32,7 @@ export function Matchs({
   const {
     colors: { white, gray_400 },
   } = useTheme()
+  const { saveMatch } = useMatch()
 
   function handleUpdateRound(value: number) {
     const newRound = round + value
@@ -40,19 +42,8 @@ export function Matchs({
   }
 
   function handleGoStartMatch(match: MatchComplete) {
-    navigate('startMatchCup', {
-      match: {
-        idMatch: match.id,
-        awayId: match.away.id,
-        homeId: match.home.id,
-        mode: match.type,
-      },
-      cup: {
-        id: idCup,
-        name: nameCup,
-        numberRound: round,
-      },
-    })
+    saveMatch(match, { id: idCup, name: nameCup, round })
+    navigate('matchCup')
   }
 
   return (

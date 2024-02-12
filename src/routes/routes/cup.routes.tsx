@@ -10,21 +10,16 @@ import {
   ChooseClubsInCupRouteParams,
 } from '../../screens/ChooseClubsInCup'
 import { DetailsCup, DetailsCupRouteParams } from '../../screens/DetailsCup'
-import {
-  StartMatchCup,
-  StartMatchCupRouteProps,
-} from '../../screens/StartMatchCup'
+import { MatchResultCup } from '../../screens/MatchResultCup'
 import { Match, MatchRouteProps } from '../../screens/Match'
-import { ResultMatch, ResultMatchRouteParams } from '../../screens/ResultMatch'
 
 type CupRoutesProps = {
   homeCup: undefined
   createCup: undefined
   chooseClubs: ChooseClubsInCupRouteParams
   detailsCup: DetailsCupRouteParams
-  startMatchCup: StartMatchCupRouteProps
+  matchCup: undefined
   match: MatchRouteProps
-  resultMatch: ResultMatchRouteParams
 }
 
 export type CupRoutesNavigationProps = NativeStackNavigationProp<CupRoutesProps>
@@ -38,9 +33,8 @@ export function CupRoutes() {
       <Screen name="createCup" component={CupCreate} />
       <Screen name="chooseClubs" component={ChooseClubsInCup} />
       <Screen name="detailsCup" component={DetailsCup} />
-      <Screen name="startMatchCup" component={StartMatchCup} />
+      <Screen name="matchCup" component={MatchResultCup} />
       <Screen name="match" component={Match} />
-      <Screen name="resultMatch" component={ResultMatch} />
     </Navigator>
   )
 }

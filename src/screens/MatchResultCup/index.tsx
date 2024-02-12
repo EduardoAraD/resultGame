@@ -1,11 +1,12 @@
 import { useCallback, useEffect, useState } from 'react'
-import { useNavigation, useRoute } from '@react-navigation/native'
+import { useNavigation } from '@react-navigation/native'
 
+import { useMatch } from '../../hook/useMatch'
 import { getClubComplete } from '../../lib/asyncstorage/clubs'
 import { CupRoutesNavigationProps } from '../../routes/routes/cup.routes'
 
 import { ClubComplete, emptyClubComplete } from '../../Model/Club'
-import { ModeMatch } from '../../Model/ModeMatch'
+import { MatchStats, emptyMatchStats } from '../../Model/Match'
 import { Background } from '../../components/Background'
 import { Button } from '../../components/Button'
 import { TitleWithTouchBack } from '../../components/TitleWithTouchBack'
@@ -15,44 +16,37 @@ import {
   Container,
   Content,
   Game,
+  Goal,
   InfoClub,
   InfoMatch,
   LogoMatch,
   Name,
   Opacity,
+  Placar,
   Stadium,
   VS,
   ViewClube,
 } from './styles'
 
-export interface StartMatchCupRouteProps {
-  match: {
-    homeId: string
-    awayId: string
-    idMatch: string
-    mode: ModeMatch
-  }
-  cup: {
-    id: string
-    name: string
-    numberRound: number
-  }
-}
-
-export function StartMatchCup() {
+export function MatchResultCup() {
   const { navigate, goBack } = useNavigation<CupRoutesNavigationProps>()
-  const { match, cup } = useRoute().params as StartMatchCupRouteProps
+  const { match } = useMatch()
 
   const [homeClub, setHomeClub] = useState<ClubComplete>(emptyClubComplete)
   const [awayClub, setAwayClub] = useState<ClubComplete>(emptyClubComplete)
+  const [stats, setStats] = useState<MatchStats>(emptyMatchStats)
   const [loading, setLoading] = useState(false)
 
   const loadMatch = useCallback(async () => {
     try {
+      if (!match) {
+        return
+      }
       setLoading(true)
+      setStats(match)
       const [homeClubComplete, awayClubComplete] = await Promise.all([
-        getClubComplete(match.homeId),
-        getClubComplete(match.awayId),
+        getClubComplete(match.home.id),
+        getClubComplete(match.away.id),
       ])
 
       if (homeClubComplete !== undefined && awayClubComplete !== undefined) {
@@ -67,16 +61,19 @@ export function StartMatchCup() {
     } finally {
       setLoading(false)
     }
-  }, [goBack, match.awayId, match.homeId])
+  }, [goBack, match])
 
   async function goGameCurrent() {
-    navigate('match', {
-      home: homeClub,
-      away: awayClub,
-      modeGame: match.mode,
-      idMatch: match.idMatch,
-      idCup: cup.id,
-    })
+    if (stats.status === 'start' && !!match) {
+      navigate('match', {
+        home: homeClub,
+        away: awayClub,
+        modeGame: match.type,
+        idMatch: match.id,
+      })
+    } else {
+      goBack()
+    }
   }
 
   useEffect(() => {
@@ -90,10 +87,11 @@ export function StartMatchCup() {
 
         <Content>
           <InfoClub>
-            <Name>{cup.name}</Name>
-            <Name>{cup.numberRound}° rodada</Name>
+            <Name>{match ? match.cup.name : ''}</Name>
+            <Name>{match ? match.cup.round : 0}° rodada</Name>
           </InfoClub>
           <CardMatch>
+            {stats.status === 'finished' && <Name>Final</Name>}
             <Stadium>{homeClub.stadium}</Stadium>
             <Game>
               <Opacity>
@@ -104,7 +102,11 @@ export function StartMatchCup() {
                 <ViewClube position="flex-start">
                   <Name>{homeClub.name}</Name>
                 </ViewClube>
-                <VS>vs</VS>
+                <Placar>
+                  {stats.status === 'finished' && <Goal>{stats.goalHome}</Goal>}
+                  <VS>vs</VS>
+                  {stats.status === 'finished' && <Goal>{stats.goalAway}</Goal>}
+                </Placar>
                 <ViewClube position="flex-end">
                   <Name>{awayClub.name}</Name>
                 </ViewClube>
@@ -116,7 +118,11 @@ export function StartMatchCup() {
         <Button
           disabled={loading}
           onPress={goGameCurrent}
-          title="Iniciar partida"
+          title={
+            stats.status === 'finished'
+              ? 'Voltar para o campeonato'
+              : 'Iniciar partida'
+          }
           loading={loading}
         />
       </Container>

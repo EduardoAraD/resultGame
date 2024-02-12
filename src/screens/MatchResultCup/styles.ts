@@ -1,10 +1,8 @@
-import { Platform } from 'react-native'
 import styled from 'styled-components/native'
 
 export const Container = styled.View`
   padding: 20px;
   flex: 1;
-  padding-bottom: ${Platform.OS === 'ios' ? 0 : 20}px;
 `
 
 export const Content = styled.View`
@@ -45,7 +43,7 @@ export const VS = styled.Text`
 `
 
 interface ViewClubeProps {
-  position: 'flex-start' | 'flex-end' | 'center'
+  position: 'flex-start' | 'flex-end'
 }
 
 export const ViewClube = styled.View<ViewClubeProps>`
@@ -65,7 +63,7 @@ export const Name = styled.Text`
 
 export const Opacity = styled.View`
   position: absolute;
-  /* margin-top: -25px; */
+  margin-top: -25px;
   flex-direction: row;
   justify-content: space-between;
   align-self: center;

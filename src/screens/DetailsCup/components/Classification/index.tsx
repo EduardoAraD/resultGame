@@ -1,4 +1,4 @@
-import { FlatList } from 'react-native'
+import { ScrollView } from 'react-native'
 
 import {
   ItemClassification,
@@ -40,43 +40,41 @@ export function Classification({
 
   return (
     <Container>
-      <Border>
-        <Content>
-          <Text>POS</Text>
-          <Text style={{ flex: 1 }}>Name</Text>
-          <Text>P</Text>
-          <Text>J</Text>
-          <Text>V</Text>
-          <Text>SG</Text>
-          <Text>GF</Text>
-        </Content>
-
-        <FlatList
-          data={listItemClass}
-          keyExtractor={(item) => item.club.id}
-          renderItem={({ item, index }) => (
+      <ScrollView contentContainerStyle={{ paddingTop: 10, paddingBottom: 30 }}>
+        <Border>
+          <Content>
+            <Text>POS</Text>
+            <Text style={{ flex: 1 }}>Name</Text>
+            <Text>P</Text>
+            <Text>J</Text>
+            <Text>V</Text>
+            <Text>SG</Text>
+            <Text>GF</Text>
+          </Content>
+          {listItemClass.map((itemClass, index) => (
             <ItemClass
-              item={item}
+              key={itemClass.club.id}
+              item={itemClass}
               pos={index + 1}
               typeItem={onTypeItemClass(index)}
             />
-          )}
-        />
-        <Content style={{ justifyContent: 'center' }}>
-          <ViewPoint>
-            <Point type="Promotion" />
-            <TextPoint>Promoção</TextPoint>
-          </ViewPoint>
-          <ViewPoint>
-            <Point type="Normal" />
-            <TextPoint>Sem acesso</TextPoint>
-          </ViewPoint>
-          <ViewPoint>
-            <Point type="Relegation" />
-            <TextPoint>Rebaixado</TextPoint>
-          </ViewPoint>
-        </Content>
-      </Border>
+          ))}
+          <Content style={{ justifyContent: 'center' }}>
+            <ViewPoint>
+              <Point type="Promotion" />
+              <TextPoint>Promoção</TextPoint>
+            </ViewPoint>
+            <ViewPoint>
+              <Point type="Normal" />
+              <TextPoint>Sem acesso</TextPoint>
+            </ViewPoint>
+            <ViewPoint>
+              <Point type="Relegation" />
+              <TextPoint>Rebaixado</TextPoint>
+            </ViewPoint>
+          </Content>
+        </Border>
+      </ScrollView>
     </Container>
   )
 }

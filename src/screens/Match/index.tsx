@@ -1,7 +1,6 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { useNavigation, useRoute } from '@react-navigation/native'
 
-import { CupRoutesNavigationProps } from '../../routes/routes/cup.routes'
 import { MatchRoutesNavigationProps } from '../../routes/routes/match.routes'
 
 import { ClubComplete } from '../../Model/Club'
@@ -27,19 +26,19 @@ import {
   Stadium,
   Title,
 } from './styles'
+import { useMatch } from '../../hook/useMatch'
 
 export interface MatchRouteProps {
   home: ClubComplete
   away: ClubComplete
   modeGame: ModeMatch
   idMatch?: string
-  idCup?: string
 }
 
 export function Match() {
   const { navigate, goBack } = useNavigation<MatchRoutesNavigationProps>()
-  const navigateCup = useNavigation<CupRoutesNavigationProps>()
   const params = useRoute().params as MatchRouteProps
+  const { updateStatsMatch } = useMatch()
 
   const durationMomentGame = 900 // 900 milisegundos
 
@@ -79,24 +78,20 @@ export function Match() {
     navigate('homeMatch')
   }
 
-  function handleFinishedMatch() {
-    if (params.idMatch && params.idCup) {
-      const { home, away, idMatch, modeGame, idCup } = params
-
-      navigateCup.navigate('resultMatch', {
-        stats: {
-          id: idMatch,
-          goalAway,
-          goalAwayPenal: awayPenalt,
-          goalHome,
-          goalHomePenal: homePenalt,
-          type: modeGame,
-          status: 'finished',
-        },
-        homeId: home.id,
-        awayId: away.id,
-        idCup,
+  async function handleFinishedMatch() {
+    if (params.idMatch) {
+      const { idMatch, modeGame } = params
+      await updateStatsMatch({
+        id: idMatch,
+        goalHome,
+        goalAway,
+        goalHomePenal: homePenalt,
+        goalAwayPenal: awayPenalt,
+        type: modeGame,
+        status: 'finished',
       })
+
+      goBack()
     } else {
       goHome()
     }

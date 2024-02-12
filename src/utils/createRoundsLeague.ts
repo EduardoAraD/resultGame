@@ -3,7 +3,6 @@ import { ClubShort } from '../Model/Club'
 interface MatchLeague {
   home: ClubShort
   away: ClubShort
-  indexRound: number
 }
 
 interface RoundLeague {
@@ -11,78 +10,78 @@ interface RoundLeague {
   matchs: MatchLeague[]
 }
 
-interface Match extends MatchLeague {
-  option: number
+interface Sequence {
+  home: number
+  away: number
+}
+
+function roundRobin(numberClubs: number): number[][][] {
+  // eslint-disable-next-line
+  const robin = require('roundrobin')
+
+  return robin(numberClubs)
+}
+
+function invertedMatch(sequence: Sequence, sequence2: Sequence) {
+  if (sequence.home >= 2) return true
+  if (sequence2.away >= 2) return true
+  if (sequence.home >= 1 || sequence2.away >= 1) return true
+
+  return false
 }
 
 export function createRoundsLeague(clubs: ClubShort[]): RoundLeague[] {
-  let matchs: Match[] = []
   const numberClubs = clubs.length
-  let inverted = false
 
-  for (let i = 0; i < numberClubs; i++) {
-    for (let j = i + 1; j < numberClubs; j++) {
+  const roundsInNumbers = roundRobin(numberClubs)
+  const clubsWithOptions = clubs.map((club) => ({
+    club,
+    sequence: {
+      home: 0,
+      away: 0,
+    },
+  }))
+
+  const rounds: RoundLeague[] = roundsInNumbers.map((matchs, index) => {
+    const matchsLeagueInRound: MatchLeague[] = matchs.map(([home, away]) => {
+      const homeClub = clubsWithOptions[home - 1]
+      const awayClub = clubsWithOptions[away - 1]
+      const inverted = invertedMatch(homeClub.sequence, awayClub.sequence)
       if (inverted) {
-        const m: Match = {
-          home: clubs[j],
-          away: clubs[i],
-          indexRound: 0,
-          option: 0,
+        clubsWithOptions[home - 1].sequence = {
+          home: 0,
+          away: homeClub.sequence.away + 1,
         }
-        matchs.push(m)
-        inverted = false
+        clubsWithOptions[away - 1].sequence = {
+          home: awayClub.sequence.home + 1,
+          away: 0,
+        }
+        return {
+          home: awayClub.club,
+          away: homeClub.club,
+        }
       } else {
-        const m: Match = {
-          home: clubs[i],
-          away: clubs[j],
-          indexRound: 0,
-          option: 0,
+        clubsWithOptions[home - 1].sequence = {
+          home: homeClub.sequence.home + 1,
+          away: 0,
         }
-        matchs.push(m)
-        inverted = true
-      }
-    }
-  }
-  const numberOfMatchs = matchs.length
-
-  const numberMatchsOfRound = Math.floor(numberClubs / 2)
-  const numberRound = numberOfMatchs / numberMatchsOfRound
-  const rounds: RoundLeague[] = []
-  Array.from({ length: numberRound }).forEach((i, index) => {
-    const rod: RoundLeague = {
-      index,
-      matchs: [],
-    }
-    rounds.push(rod)
-  })
-
-  for (let m = 0; m < matchs.length; m++) {
-    const match = matchs[m]
-    const filterOptionRound = rounds.filter((rod) => {
-      let clubsAreInRound = false
-      for (const mat of rod.matchs) {
-        if (mat.home === match.home || mat.home === match.away) {
-          clubsAreInRound = true
-          break
-        } else if (mat.away === match.home || mat.away === match.away) {
-          clubsAreInRound = true
-          break
+        clubsWithOptions[away - 1].sequence = {
+          home: 0,
+          away: awayClub.sequence.away + 1,
+        }
+        return {
+          home: homeClub.club,
+          away: awayClub.club,
         }
       }
-      return !clubsAreInRound
     })
-    if (filterOptionRound.length > match.option) {
-      const findRound = filterOptionRound[match.option].index
-      match.indexRound = findRound
-      rounds[findRound].matchs.push(match)
-      matchs = matchs.map((i, index) => (index > m ? { ...i, option: 0 } : i))
-    } else {
-      const indexRodada = matchs[m - 1].indexRound
-      matchs[m - 1].option += 1
-      rounds[indexRodada].matchs.pop()
-      m = m - 2
+
+    const roundLeague: RoundLeague = {
+      index,
+      matchs: matchsLeagueInRound,
     }
-  }
+    return roundLeague
+  })
 
   return rounds
 }
