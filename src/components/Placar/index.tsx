@@ -8,6 +8,7 @@ import {
   Container,
   ContainerPenalts,
   ContentAnimated,
+  DivMatchTrip,
   ImageBack,
   Line,
   SubText,
@@ -22,6 +23,10 @@ interface PlacarProps {
   hasPenalts: boolean
   penaltHome: number
   penaltAway: number
+  placarMatchTrip?: {
+    goalHome: number
+    goalAway: number
+  }
 }
 
 export function Placar({
@@ -32,6 +37,7 @@ export function Placar({
   hasPenalts,
   logoAway,
   logoHome,
+  placarMatchTrip = undefined,
 }: PlacarProps) {
   const [isGoal, setIsGoal] = useState<'' | 'home' | 'away'>('')
 
@@ -86,6 +92,13 @@ export function Placar({
         <SubText style={{ textAlign: 'left' }}>{penaltAway}</SubText>
       )}
       <Text style={{ textAlign: 'left' }}>{goalAway}</Text>
+      {placarMatchTrip !== undefined && (
+        <DivMatchTrip>
+          <SubText>{placarMatchTrip.goalHome}</SubText>
+          <SubText>-</SubText>
+          <SubText>{placarMatchTrip.goalAway}</SubText>
+        </DivMatchTrip>
+      )}
     </Container>
   )
 }

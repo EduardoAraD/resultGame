@@ -1,1 +1,1 @@
-export type ModeMatch = 'Normal' | 'Mata-Mata' | 'Volta'
+export type ModeMatch = 'Normal' | 'Mata-Mata' | 'Ida' | 'Volta'

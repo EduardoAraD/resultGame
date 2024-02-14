@@ -56,3 +56,10 @@ export const Image = styled.Image`
   opacity: 0.2;
   top: -25px;
 `
+
+export const TextGoalMult = styled(Penal)`
+  text-align: center;
+  font-family: ${({ theme }) => theme.fonts.bold};
+  font-size: 14px;
+  width: 16px;
+`

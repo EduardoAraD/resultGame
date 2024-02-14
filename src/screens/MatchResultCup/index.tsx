@@ -1,5 +1,6 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 import { useNavigation } from '@react-navigation/native'
+import { ScrollView } from 'react-native'
 
 import { useMatch } from '../../hook/useMatch'
 import { getClubComplete } from '../../lib/asyncstorage/clubs'
@@ -22,6 +23,7 @@ import {
   LogoMatch,
   Name,
   Opacity,
+  Penal,
   Placar,
   Stadium,
   VS,
@@ -35,6 +37,7 @@ export function MatchResultCup() {
   const [homeClub, setHomeClub] = useState<ClubComplete>(emptyClubComplete)
   const [awayClub, setAwayClub] = useState<ClubComplete>(emptyClubComplete)
   const [stats, setStats] = useState<MatchStats>(emptyMatchStats)
+  const [statsTrip, setStatsTrip] = useState<MatchStats | undefined>(undefined)
   const [loading, setLoading] = useState(false)
 
   const loadMatch = useCallback(async () => {
@@ -43,7 +46,8 @@ export function MatchResultCup() {
         return
       }
       setLoading(true)
-      setStats(match)
+      setStats(match.stats)
+      setStatsTrip(match.statsTrip)
       const [homeClubComplete, awayClubComplete] = await Promise.all([
         getClubComplete(match.home.id),
         getClubComplete(match.away.id),
@@ -56,7 +60,7 @@ export function MatchResultCup() {
         goBack()
       }
     } catch (error) {
-      console.log(false)
+      console.log(error)
       goBack()
     } finally {
       setLoading(false)
@@ -64,13 +68,31 @@ export function MatchResultCup() {
   }, [goBack, match])
 
   async function goGameCurrent() {
-    if (stats.status === 'start' && !!match) {
-      navigate('match', {
-        home: homeClub,
-        away: awayClub,
-        modeGame: match.type,
-        idMatch: match.id,
-      })
+    if (match) {
+      if (statsTrip !== undefined && statsTrip.status === 'start') {
+        navigate('match', {
+          home: awayClub,
+          away: homeClub,
+          modeGame: statsTrip.type,
+          idMatch: statsTrip.id,
+        })
+      } else if (stats.status !== 'finished') {
+        navigate('match', {
+          home: homeClub,
+          away: awayClub,
+          modeGame: match.stats.type,
+          idMatch: match.stats.id,
+          placarMatchTrip:
+            statsTrip !== undefined
+              ? {
+                  goalHome: statsTrip.goalAway,
+                  goalAway: statsTrip.goalHome,
+                }
+              : undefined,
+        })
+      } else {
+        goBack()
+      }
     } else {
       goBack()
     }
@@ -80,49 +102,99 @@ export function MatchResultCup() {
     loadMatch()
   }, [loadMatch])
 
+  const titleButton = useMemo(() => {
+    if (statsTrip !== undefined) {
+      if (statsTrip.status === 'start') {
+        return 'Iniciar partida de ida'
+      }
+
+      return stats.status === 'finished'
+        ? 'Voltar para o campeonato'
+        : 'Iniciar partida de volta'
+    } else {
+      return stats.status === 'finished'
+        ? 'Voltar para o campeonato'
+        : 'Iniciar partida'
+    }
+  }, [stats.status, statsTrip])
+
+  const hasPenal = stats.goalAwayPenal > 0 || stats.goalHomePenal > 0
+
   return (
     <Background>
       <Container>
-        <TitleWithTouchBack title="Confronto" />
+        <TitleWithTouchBack title={match ? match.cup.name : 'Confronto'} />
 
-        <Content>
-          <InfoClub>
-            <Name>{match ? match.cup.name : ''}</Name>
-            <Name>{match ? match.cup.round : 0}° rodada</Name>
-          </InfoClub>
-          <CardMatch>
-            {stats.status === 'finished' && <Name>Final</Name>}
-            <Stadium>{homeClub.stadium}</Stadium>
-            <Game>
-              <Opacity>
-                <LogoMatch source={homeClub.logo} alt="" />
-                <LogoMatch source={awayClub.logo} alt="" />
-              </Opacity>
-              <InfoMatch>
-                <ViewClube position="flex-start">
-                  <Name>{homeClub.name}</Name>
-                </ViewClube>
-                <Placar>
-                  {stats.status === 'finished' && <Goal>{stats.goalHome}</Goal>}
-                  <VS>vs</VS>
-                  {stats.status === 'finished' && <Goal>{stats.goalAway}</Goal>}
-                </Placar>
-                <ViewClube position="flex-end">
-                  <Name>{awayClub.name}</Name>
-                </ViewClube>
-              </InfoMatch>
-            </Game>
-          </CardMatch>
-        </Content>
+        <ScrollView>
+          <Content>
+            <InfoClub>
+              <Name>{match ? match.round.name : ''}</Name>
+            </InfoClub>
+            {statsTrip !== undefined && (
+              <CardMatch>
+                <Stadium>{awayClub.stadium}</Stadium>
+                <Game>
+                  <Opacity>
+                    <LogoMatch source={awayClub.logo} alt="" />
+                    <LogoMatch source={homeClub.logo} alt="" />
+                  </Opacity>
+                  <InfoMatch
+                    style={{ gap: statsTrip.status === 'start' ? 10 : 0 }}
+                  >
+                    <ViewClube position="flex-start">
+                      <Name>{awayClub.name}</Name>
+                    </ViewClube>
+                    <Placar>
+                      {statsTrip.status === 'finished' && (
+                        <Goal>{statsTrip.goalHome}</Goal>
+                      )}
+                      <VS>vs</VS>
+                      {statsTrip.status === 'finished' && (
+                        <Goal>{statsTrip.goalAway}</Goal>
+                      )}
+                    </Placar>
+                    <ViewClube position="flex-end">
+                      <Name>{homeClub.name}</Name>
+                    </ViewClube>
+                  </InfoMatch>
+                </Game>
+              </CardMatch>
+            )}
 
+            <CardMatch>
+              <Stadium>{homeClub.stadium}</Stadium>
+              <Game>
+                <Opacity>
+                  <LogoMatch source={homeClub.logo} alt="" />
+                  <LogoMatch source={awayClub.logo} alt="" />
+                </Opacity>
+                <InfoMatch style={{ gap: stats.status === 'start' ? 10 : 0 }}>
+                  <ViewClube position="flex-start">
+                    <Name>{homeClub.name}</Name>
+                  </ViewClube>
+                  <Placar>
+                    {stats.status === 'finished' && (
+                      <Goal>{stats.goalHome}</Goal>
+                    )}
+                    {hasPenal && <Penal>{stats.goalHomePenal}</Penal>}
+                    <VS>vs</VS>
+                    {hasPenal && <Penal>{stats.goalAwayPenal}</Penal>}
+                    {stats.status === 'finished' && (
+                      <Goal>{stats.goalAway}</Goal>
+                    )}
+                  </Placar>
+                  <ViewClube position="flex-end">
+                    <Name>{awayClub.name}</Name>
+                  </ViewClube>
+                </InfoMatch>
+              </Game>
+            </CardMatch>
+          </Content>
+        </ScrollView>
         <Button
           disabled={loading}
           onPress={goGameCurrent}
-          title={
-            stats.status === 'finished'
-              ? 'Voltar para o campeonato'
-              : 'Iniciar partida'
-          }
+          title={titleButton}
           loading={loading}
         />
       </Container>

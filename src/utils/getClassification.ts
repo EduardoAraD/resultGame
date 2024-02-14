@@ -31,18 +31,18 @@ export function getClassification(
       (itemC) => itemC.club.id === gameDB.away.id,
     )
     if (findIndexAway !== -1 && findIndexHome !== -1) {
-      itemClassClubs[findIndexHome].goalsScored += gameDB.goalHome
-      itemClassClubs[findIndexHome].goalsConceded += gameDB.goalAway
+      itemClassClubs[findIndexHome].goalsScored += gameDB.stats.goalHome
+      itemClassClubs[findIndexHome].goalsConceded += gameDB.stats.goalAway
       itemClassClubs[findIndexHome].games += 1
-      itemClassClubs[findIndexAway].goalsScored += gameDB.goalAway
-      itemClassClubs[findIndexAway].goalsConceded += gameDB.goalHome
+      itemClassClubs[findIndexAway].goalsScored += gameDB.stats.goalAway
+      itemClassClubs[findIndexAway].goalsConceded += gameDB.stats.goalHome
       itemClassClubs[findIndexAway].games += 1
 
-      if (gameDB.goalHome > gameDB.goalAway) {
+      if (gameDB.stats.goalHome > gameDB.stats.goalAway) {
         itemClassClubs[findIndexHome].points += points.win
         itemClassClubs[findIndexHome].win += 1
         itemClassClubs[findIndexAway].points += points.loss
-      } else if (gameDB.goalHome === gameDB.goalAway) {
+      } else if (gameDB.stats.goalHome === gameDB.stats.goalAway) {
         itemClassClubs[findIndexHome].points += points.draw
         itemClassClubs[findIndexAway].points += points.draw
       } else {

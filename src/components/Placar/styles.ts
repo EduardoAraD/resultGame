@@ -54,3 +54,12 @@ export const ImageBack = styled.Image`
   opacity: 0.5;
   top: -10px;
 `
+
+export const DivMatchTrip = styled.View`
+  flex-direction: row;
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  bottom: -2px;
+`

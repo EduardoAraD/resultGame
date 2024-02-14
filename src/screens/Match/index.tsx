@@ -33,6 +33,10 @@ export interface MatchRouteProps {
   away: ClubComplete
   modeGame: ModeMatch
   idMatch?: string
+  placarMatchTrip?: {
+    goalHome: number
+    goalAway: number
+  }
 }
 
 export function Match() {
@@ -44,7 +48,7 @@ export function Match() {
 
   const logoHome = params.home.logo
   const logoAway = params.away.logo
-  const { modeGame } = params
+  const { modeGame, placarMatchTrip } = params
 
   const [goalHome, setGoalHome] = useState(0)
   const [goalAway, setGoalAway] = useState(0)
@@ -144,8 +148,17 @@ export function Match() {
         }
       }
       if (min === 90) {
+        const goalHomeAll =
+          (placarMatchTrip !== undefined ? placarMatchTrip.goalHome : 0) +
+          goalHomeClub
+        const goalAwayAll =
+          (placarMatchTrip !== undefined ? placarMatchTrip.goalAway : 0) +
+          goalAwayClub
+
         const notIsFinal =
-          modeGame !== 'Normal' && goalHomeClub === goalAwayClub
+          modeGame !== 'Normal' &&
+          modeGame !== 'Ida' &&
+          goalHomeAll === goalAwayAll
         const newMoment: Moment = {
           minute: min,
           narracao: notIsFinal ? 'Vamos para os Penaltis' : 'Final de Jogo.',
@@ -188,7 +201,7 @@ export function Match() {
         }
       }
     },
-    [modeGame],
+    [modeGame, placarMatchTrip],
   )
 
   function PenaltsOver(
@@ -379,14 +392,22 @@ export function Match() {
       }
     })
 
-    if (modeGame !== 'Normal') {
+    if (modeGame !== 'Normal' && modeGame !== 'Ida') {
       const goalHomeClub = momentsToGame.filter(
         (i) => i.goal && i.homeOrAway === 'home',
       ).length
       const goalAwayClub = momentsToGame.filter(
         (i) => i.goal && i.homeOrAway === 'away',
       ).length
-      if (goalHomeClub === goalAwayClub) {
+
+      const goalHomeAllMatchs =
+        goalHomeClub +
+        (placarMatchTrip !== undefined ? placarMatchTrip.goalHome : 0)
+      const goalAwayAllMatchs =
+        (placarMatchTrip !== undefined ? placarMatchTrip.goalAway : 0) +
+        goalAwayClub
+
+      if (goalHomeAllMatchs === goalAwayAllMatchs) {
         const momentsPenal = gamePenalts()
         momentsPenal.forEach((mon) =>
           momentsToGame.push({
@@ -400,7 +421,7 @@ export function Match() {
     }
 
     setAllMoments(momentsToGame)
-  }, [gamePenalts, modeGame, momentsTheGame, params])
+  }, [gamePenalts, modeGame, momentsTheGame, params, placarMatchTrip])
 
   const passMinuteGame = useCallback(() => {
     const objMoment: MomentComplete = {
@@ -554,6 +575,7 @@ export function Match() {
             penaltAway={awayPenalt}
             logoAway={logoAway}
             logoHome={logoHome}
+            placarMatchTrip={placarMatchTrip}
           />
           <LogoClube source={logoAway} />
         </ContentImage>

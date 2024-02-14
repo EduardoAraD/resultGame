@@ -5,6 +5,8 @@ export interface Match {
   homeIdClub: string
   awayIdClub: string
   idStats: string
+  idStatsTrip: string | undefined // jogo de volta
+  numberMatch: number
 }
 
 export interface MatchStats {
@@ -17,14 +19,11 @@ export interface MatchStats {
   status: 'start' | 'finished'
 }
 
-export interface MatchComplete extends MatchStats {
+export interface MatchComplete {
   home: ClubShort
   away: ClubShort
-}
-
-export interface Round {
-  numberRound: number
-  matchs: Match[]
+  stats: MatchStats
+  statsTrip?: MatchStats
 }
 
 export const emptyMatchStats: MatchStats = {

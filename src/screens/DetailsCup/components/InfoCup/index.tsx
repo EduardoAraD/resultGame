@@ -15,6 +15,7 @@ import {
 interface InfoCupProps {
   type: TypeCup
   hasTripRound: boolean
+  hasThirdPlace: boolean
   hasAwayGoal: boolean
   pointsToWin: number
   pointsToDraw: number
@@ -26,6 +27,7 @@ interface InfoCupProps {
 export function InfoCup({
   type,
   hasTripRound,
+  hasThirdPlace,
   pointsToDraw,
   pointsToLoss,
   pointsToWin,
@@ -41,6 +43,12 @@ export function InfoCup({
           <Text>Partidas</Text>
           <ValueText>{hasTripRound ? 'Ida e volta' : 'Somente ida'}</ValueText>
         </ContentLine>
+        {type === 'Cup' && (
+          <ContentLine>
+            <Text>Disputa de terceiro lugar</Text>
+            <ValueText>{hasThirdPlace ? 'Válido' : 'Inválido'}</ValueText>
+          </ContentLine>
+        )}
 
         {type === 'League' && (
           <>

@@ -6,8 +6,9 @@ export const Container = styled.View`
 `
 
 export const Content = styled.View`
-  flex: 1;
+  margin-top: 20px;
   justify-content: center;
+  gap: 20px;
   margin-bottom: 40px;
 `
 
@@ -24,7 +25,6 @@ export const InfoClub = styled.View`
 
 export const CardMatch = styled.View`
   align-items: center;
-  margin-top: 80px;
 `
 
 export const Game = styled.View`
@@ -63,7 +63,7 @@ export const Name = styled.Text`
 
 export const Opacity = styled.View`
   position: absolute;
-  margin-top: -25px;
+  margin-top: -15px;
   flex-direction: row;
   justify-content: space-between;
   align-self: center;
@@ -79,7 +79,6 @@ export const LogoMatch = styled.Image`
 
 export const InfoMatch = styled.View`
   padding: 10px 30px;
-  gap: 10px;
 `
 
 export const Placar = styled.View`
@@ -92,5 +91,11 @@ export const Placar = styled.View`
 export const Goal = styled.Text`
   font-size: 64px;
   font-family: ${({ theme }) => theme.fonts.bold};
+  color: ${({ theme }) => theme.colors.white};
+`
+
+export const Penal = styled.Text`
+  font-size: 24px;
+  font-family: ${({ theme }) => theme.fonts.medium};
   color: ${({ theme }) => theme.colors.white};
 `

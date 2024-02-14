@@ -21,6 +21,8 @@ import { ViewOption } from '../../components/ViewOption'
 import { getClassification } from '../../utils/getClassification'
 
 import { Container } from './styles'
+import { ModeMatch } from '../../Model/ModeMatch'
+import { useMatch } from '../../hook/useMatch'
 
 export interface DetailsCupRouteParams {
   idCup: string
@@ -34,6 +36,7 @@ interface RoundMatch {
 
 export function DetailsCup() {
   const { clubs } = useClubs()
+  const { removeMatch } = useMatch()
   const { idCup } = useRoute().params as DetailsCupRouteParams
 
   const [loading, setLoading] = useState(false)
@@ -45,12 +48,15 @@ export function DetailsCup() {
   const loadCup = useCallback(async () => {
     try {
       setLoading(true)
+
       const cup = await getCupComplete(idCup)
       if (!cup) {
         console.log('Not Cup')
         return
       }
       setCup(cup)
+      removeMatch()
+
       const rounds = await getRoundsCup(idCup)
       const clubsCup = clubs.filter((club) =>
         cup.idsClubs.find((id) => id === club.id),
@@ -63,6 +69,9 @@ export function DetailsCup() {
           const matchs: MatchComplete[] = await Promise.all(
             rd.matchs.map(async (match) => {
               const stats = await getMatchStats(match.idStats)
+              const statsTrip = match.idStatsTrip
+                ? await getMatchStats(match.idStatsTrip)
+                : undefined
               const clubHome = clubsCup.find(
                 (club) => club.id === match.homeIdClub,
               )
@@ -70,11 +79,25 @@ export function DetailsCup() {
                 (club) => club.id === match.awayIdClub,
               )
 
+              const typeStats: ModeMatch =
+                cup.type === 'Cup'
+                  ? cup.roundTrip
+                    ? 'Volta'
+                    : 'Mata-Mata'
+                  : 'Normal'
+
               const matchCompleted: MatchComplete = {
                 home: clubHome || emptyClub,
                 away: clubAway || emptyClub,
-                ...stats,
+                stats: { ...stats, type: typeStats },
+                statsTrip:
+                  statsTrip !== undefined
+                    ? { ...statsTrip, type: 'Ida' }
+                    : undefined,
               }
+              console.log(
+                `${matchCompleted.home.name} x ${matchCompleted.away.name} -> ${typeStats}`,
+              )
               if (stats.status === 'finished' && !hasMatchFinished) {
                 hasMatchFinished = true
               } else if (stats.status === 'start' && allMatchsFinished) {
@@ -116,7 +139,7 @@ export function DetailsCup() {
     const matchsFinished: MatchComplete[] = []
     rounds.forEach((round) => {
       round.matchs.forEach((match) => {
-        if (match.status === 'finished') {
+        if (match.stats.status === 'finished') {
           matchsFinished.push(match)
         }
       })
@@ -141,15 +164,15 @@ export function DetailsCup() {
   ])
 
   const matchsRound = useMemo(() => {
-    const roundFind = rounds.find(
-      (round) => round.numberRound === roundSelected,
-    )
+    const roundSelec =
+      cup.type === 'Cup' ? rounds.length - roundSelected + 1 : roundSelected
+    const roundFind = rounds.find((round) => round.numberRound === roundSelec)
     if (roundFind) {
       return roundFind.matchs
     } else {
       return []
     }
-  }, [roundSelected, rounds])
+  }, [cup.type, roundSelected, rounds])
 
   return (
     <Background>
@@ -167,6 +190,7 @@ export function DetailsCup() {
             <InfoCup
               type={cup.type}
               hasTripRound={cup.roundTrip}
+              hasThirdPlace={cup.hasThirdPlace}
               pointsToWin={cup.winPoints}
               pointsToDraw={cup.drawPoints}
               pointsToLoss={cup.lossPoints}
@@ -187,6 +211,8 @@ export function DetailsCup() {
               onRound={setRoundSelected}
               matchs={matchsRound}
               nameCup={cup.name}
+              hasThirdPlace={cup.hasThirdPlace}
+              typeCup={cup.type}
               idCup={cup.id}
             />
           )}

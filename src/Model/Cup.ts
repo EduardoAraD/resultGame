@@ -13,6 +13,7 @@ export interface CupShort {
 export interface CupComplete extends CupShort {
   roundTrip: boolean // ida e volta
   hasAwayGoal: boolean // gol fora
+  hasThirdPlace: boolean
   winPoints: number
   drawPoints: number
   lossPoints: number
@@ -29,6 +30,7 @@ export const emptyCupComplete: CupComplete = {
   id: '',
   roundTrip: false,
   hasAwayGoal: false,
+  hasThirdPlace: false,
   winPoints: 0,
   drawPoints: 0,
   lossPoints: 0,

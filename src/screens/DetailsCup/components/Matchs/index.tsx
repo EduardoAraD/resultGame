@@ -6,10 +6,20 @@ import { useNavigation } from '@react-navigation/native'
 import { useMatch } from '../../../../hook/useMatch'
 import { CupRoutesNavigationProps } from '../../../../routes/routes/cup.routes'
 
-import { MatchComplete } from '../../../../Model/Match'
+import {
+  MatchComplete,
+  MatchStats,
+  emptyMatchStats,
+} from '../../../../Model/Match'
 import { CardMatch } from '../../../../components/CardMatch'
 
 import { Actions, Container, Round, Touch } from './styles'
+import { useCallback, useMemo } from 'react'
+import { TypeCup } from '../../../../Model/Cup'
+import {
+  getRoundsCup,
+  saveRoundsInCup,
+} from '../../../../lib/asyncstorage/matchs'
 
 interface MatchsProps {
   onRound: (round: number) => void
@@ -17,6 +27,8 @@ interface MatchsProps {
   round: number
   matchs: MatchComplete[]
   nameCup: string
+  typeCup: TypeCup
+  hasThirdPlace: boolean
   idCup: string
 }
 
@@ -26,6 +38,8 @@ export function Matchs({
   round,
   matchs,
   nameCup,
+  typeCup,
+  hasThirdPlace,
   idCup,
 }: MatchsProps) {
   const { navigate } = useNavigation<CupRoutesNavigationProps>()
@@ -41,10 +55,49 @@ export function Matchs({
     }
   }
 
-  function handleGoStartMatch(match: MatchComplete) {
-    saveMatch(match, { id: idCup, name: nameCup, round })
+  async function handleGoStartMatch(match: MatchComplete) {
+    saveMatch(
+      match,
+      {
+        id: idCup,
+        typeCup,
+        name: nameCup,
+      },
+      {
+        name: roundText,
+        numberRound: round,
+        maxRound,
+      },
+    )
+
     navigate('matchCup')
   }
+
+  const getRoundCupText = useCallback(() => {
+    switch (round) {
+      case maxRound:
+        return 'Final'
+      case maxRound - 1:
+        return hasThirdPlace ? 'Terceiro Lugar' : 'Semi-Final'
+      case maxRound - 2:
+        return hasThirdPlace ? 'Semi-Final' : 'Quartas de Final'
+      case maxRound - 3:
+        return hasThirdPlace ? 'Quartas de Final' : 'Oitavas de Final'
+      case maxRound - 4:
+        return hasThirdPlace
+          ? 'Oitavas de Final'
+          : `Eliminatória ${maxRound - round + 1}`
+      default:
+        return `Eliminatória ${maxRound - round + 1}`
+    }
+  }, [hasThirdPlace, maxRound, round])
+
+  const roundText = useMemo(() => {
+    if (typeCup === 'Cup') {
+      return getRoundCupText()
+    }
+    return `${round}° Rodada`
+  }, [getRoundCupText, round, typeCup])
 
   return (
     <Container>
@@ -60,7 +113,7 @@ export function Matchs({
             weight="bold"
           />
         </Touch>
-        <Round>{round}° Rodada</Round>
+        <Round>{roundText}</Round>
         <Touch
           activeOpacity={0.7}
           disabled={round >= maxRound}
@@ -76,7 +129,7 @@ export function Matchs({
 
       <FlatList
         data={matchs}
-        keyExtractor={(item) => item.id}
+        keyExtractor={(item) => item.stats.id}
         renderItem={({ item }) => (
           <CardMatch match={item} onPress={() => handleGoStartMatch(item)} />
         )}

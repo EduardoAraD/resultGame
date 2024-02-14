@@ -17,6 +17,7 @@ interface InfoCupProps {
   typeCup: TypeCup | ''
   hasTripMatch: boolean
   hasAwayGoal: boolean
+  hasThirdPlace: boolean
   pointsWin: number
   pointsDraw: number
   pointsLoss: number
@@ -24,6 +25,7 @@ interface InfoCupProps {
   clubRelegation: number
   onHasTripMatch: (value: boolean) => void
   onHasAwayGoal: (value: boolean) => void
+  onHasThirdPlace: (value: boolean) => void
   onPointsWin: (points: number) => void
   onPointsDraw: (points: number) => void
   onPointsLoss: (points: number) => void
@@ -47,6 +49,8 @@ export function InfoCup({
   onPointsDraw,
   onPointsLoss,
   onPointsWin,
+  hasThirdPlace,
+  onHasThirdPlace,
 }: InfoCupProps) {
   return (
     <Container>
@@ -60,6 +64,15 @@ export function InfoCup({
             onPress={() => onHasTripMatch(!hasTripMatch)}
           />
         </ContentLine>
+        {typeCup === 'Cup' && (
+          <ContentLine>
+            <Text>Disputa de Terceiro Lugar</Text>
+            <ButtonRadio
+              selected={hasThirdPlace}
+              onPress={() => onHasThirdPlace(!hasThirdPlace)}
+            />
+          </ContentLine>
+        )}
 
         {typeCup === 'League' && (
           <>

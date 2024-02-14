@@ -2,7 +2,8 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 
 import { KEY_MATCH, KEY_ROUND } from './dataStorage'
 
-import { MatchStats, Round, emptyMatchStats } from '../../Model/Match'
+import { MatchStats, emptyMatchStats } from '../../Model/Match'
+import { Round } from '../../Model/Round'
 
 export async function saveRoundsInCup(rounds: Round[], idCup: string) {
   await AsyncStorage.setItem(`${KEY_ROUND}/${idCup}`, JSON.stringify(rounds))

@@ -22,15 +22,16 @@ import {
   ViewImage,
 } from './styles'
 import trophyLeague from '../../assets/trophy_league.png'
-// import trophyCup from '../../assets/trophy_cup.png'
+import trophyCup from '../../assets/trophy_cup.png'
 
 export function CupCreate() {
   const { navigate } = useNavigation<CupRoutesNavigationProps>()
 
   const [name, setName] = useState('')
-  const [typeCup, setTypeCup] = useState<TypeCup | ''>('League')
+  const [typeCup, setTypeCup] = useState<TypeCup | ''>('')
   const [hasTripMatch, setHasTripMatch] = useState(false)
   const [hasAwayGoal, setHasAwayGoal] = useState(false)
+  const [hasThirdPlace, setHasThirdPlace] = useState(false)
   const [pointsWin, setPointsWin] = useState(3)
   const [pointsDraw, setPointsDraw] = useState(1)
   const [pointsLoss, setPointsLoss] = useState(0)
@@ -48,6 +49,7 @@ export function CupCreate() {
       type: typeCup,
       roundTrip: hasTripMatch,
       hasAwayGoal,
+      hasThirdPlace,
       winPoints: pointsWin,
       lossPoints: pointsLoss,
       drawPoints: pointsDraw,
@@ -89,7 +91,7 @@ export function CupCreate() {
               editable={true}
             />
             <SubTitle>Tipo do campeonato</SubTitle>
-            <Actions style={{ justifyContent: 'center' }}>
+            <Actions>
               <TouchTypeCup
                 activeOpacity={0.7}
                 onPress={() => setTypeCup('League')}
@@ -99,7 +101,7 @@ export function CupCreate() {
                 </ViewImage>
                 <TouchText>Liga</TouchText>
               </TouchTypeCup>
-              {/* <TouchTypeCup
+              <TouchTypeCup
                 activeOpacity={0.7}
                 onPress={() => setTypeCup('Cup')}
               >
@@ -107,7 +109,7 @@ export function CupCreate() {
                   <Image source={trophyCup} alt="Copa" />
                 </ViewImage>
                 <TouchText>Copa</TouchText>
-              </TouchTypeCup> */}
+              </TouchTypeCup>
             </Actions>
 
             <InfoCup
@@ -116,6 +118,7 @@ export function CupCreate() {
               clubRelegation={clubsRelegation}
               hasAwayGoal={hasAwayGoal}
               hasTripMatch={hasTripMatch}
+              hasThirdPlace={hasThirdPlace}
               pointsDraw={pointsDraw}
               pointsLoss={pointsLoss}
               pointsWin={pointsWin}
@@ -123,6 +126,7 @@ export function CupCreate() {
               onClubRelegation={setClubsRelegation}
               onHasAwayGoal={setHasAwayGoal}
               onHasTripMatch={setHasTripMatch}
+              onHasThirdPlace={setHasThirdPlace}
               onPointsDraw={setPointsDraw}
               onPointsLoss={setPointsLoss}
               onPointsWin={setPointsWin}
