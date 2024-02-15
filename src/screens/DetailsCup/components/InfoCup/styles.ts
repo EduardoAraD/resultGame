@@ -2,7 +2,6 @@ import styled from 'styled-components/native'
 
 export const Content = styled.View`
   background-color: ${({ theme }) => theme.colors.gray_600};
-  padding: 10px;
   gap: 10px;
 `
 
@@ -43,4 +42,14 @@ export const ValueView = styled.View`
 
 export const ValueText = styled(Text)`
   font-family: ${({ theme }) => theme.fonts.bold};
+`
+
+export const Container = styled.View`
+  flex: 1;
+  padding: 10px;
+`
+
+export const Actions = styled.View`
+  flex-direction: row;
+  gap: 20px;
 `

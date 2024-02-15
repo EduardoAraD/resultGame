@@ -18,6 +18,29 @@ export async function getRoundsCup(idCup: string) {
   return []
 }
 
+export async function removeAllRoundsByCup(idCup: string) {
+  const roundCup = await getRoundsCup(idCup)
+  if (roundCup.length > 0) {
+    await Promise.all(
+      roundCup.map(
+        async (round) =>
+          await Promise.all(
+            round.matchs.map(async (match) => {
+              if (match.idStatsTrip !== undefined) {
+                await Promise.all([
+                  removeMatchStats(match.idStats),
+                  removeMatchStats(match.idStatsTrip),
+                ])
+              } else {
+                await removeMatchStats(match.idStats)
+              }
+            }),
+          ),
+      ),
+    )
+  }
+}
+
 export async function getMatchStats(idMatch: string): Promise<MatchStats> {
   const matchDB = await AsyncStorage.getItem(`${KEY_MATCH}/${idMatch}`)
   if (matchDB) {
@@ -34,10 +57,6 @@ export async function saveMatchStats(newMatch: MatchStats) {
   )
 }
 
-// export async function createMatchStats(newMatch: MatchStats) {
-//   await saveMatchStats(newMatch)
-// }
-
-// export async function updateMatchStats(newMatch: MatchStats, idMatch: string) {
-//   await saveMatchStats({ ...newMatch, id: idMatch })
-// }
+async function removeMatchStats(idMatch: string) {
+  await AsyncStorage.removeItem(`${KEY_MATCH}/${idMatch}`)
+}

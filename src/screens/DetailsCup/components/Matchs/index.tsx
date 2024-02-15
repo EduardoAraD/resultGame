@@ -1,3 +1,4 @@
+import { useMemo } from 'react'
 import { FlatList, View } from 'react-native'
 import { CaretLeft, CaretRight } from 'phosphor-react-native'
 import { useTheme } from 'styled-components/native'
@@ -6,20 +7,13 @@ import { useNavigation } from '@react-navigation/native'
 import { useMatch } from '../../../../hook/useMatch'
 import { CupRoutesNavigationProps } from '../../../../routes/routes/cup.routes'
 
-import {
-  MatchComplete,
-  MatchStats,
-  emptyMatchStats,
-} from '../../../../Model/Match'
+import { TypeCup } from '../../../../Model/Cup'
+import { MatchComplete } from '../../../../Model/Match'
 import { CardMatch } from '../../../../components/CardMatch'
 
+import { getNameRoundCup } from '../../../../utils/functions/getNameRoundCup'
+
 import { Actions, Container, Round, Touch } from './styles'
-import { useCallback, useMemo } from 'react'
-import { TypeCup } from '../../../../Model/Cup'
-import {
-  getRoundsCup,
-  saveRoundsInCup,
-} from '../../../../lib/asyncstorage/matchs'
 
 interface MatchsProps {
   onRound: (round: number) => void
@@ -73,31 +67,12 @@ export function Matchs({
     navigate('matchCup')
   }
 
-  const getRoundCupText = useCallback(() => {
-    switch (round) {
-      case maxRound:
-        return 'Final'
-      case maxRound - 1:
-        return hasThirdPlace ? 'Terceiro Lugar' : 'Semi-Final'
-      case maxRound - 2:
-        return hasThirdPlace ? 'Semi-Final' : 'Quartas de Final'
-      case maxRound - 3:
-        return hasThirdPlace ? 'Quartas de Final' : 'Oitavas de Final'
-      case maxRound - 4:
-        return hasThirdPlace
-          ? 'Oitavas de Final'
-          : `Eliminatória ${maxRound - round + 1}`
-      default:
-        return `Eliminatória ${maxRound - round + 1}`
-    }
-  }, [hasThirdPlace, maxRound, round])
-
   const roundText = useMemo(() => {
     if (typeCup === 'Cup') {
-      return getRoundCupText()
+      return getNameRoundCup(round, maxRound, hasThirdPlace)
     }
     return `${round}° Rodada`
-  }, [getRoundCupText, round, typeCup])
+  }, [hasThirdPlace, maxRound, round, typeCup])
 
   return (
     <Container>

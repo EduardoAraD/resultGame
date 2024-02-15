@@ -2,6 +2,7 @@ import { useCallback, useEffect, useMemo, useState } from 'react'
 import { useNavigation, useRoute } from '@react-navigation/native'
 
 import { MatchRoutesNavigationProps } from '../../routes/routes/match.routes'
+import { useMatch } from '../../hook/useMatch'
 
 import { ClubComplete } from '../../Model/Club'
 import { DomainClube } from '../../Model/DomainClub'
@@ -26,7 +27,6 @@ import {
   Stadium,
   Title,
 } from './styles'
-import { useMatch } from '../../hook/useMatch'
 
 export interface MatchRouteProps {
   home: ClubComplete

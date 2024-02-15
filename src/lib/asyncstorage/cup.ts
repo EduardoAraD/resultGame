@@ -4,6 +4,8 @@ import { KEY_CUP } from './dataStorage'
 
 import { CupComplete, CupShort } from '../../Model/Cup'
 
+import { removeAllRoundsByCup } from './matchs'
+
 export async function getListCup(): Promise<CupShort[]> {
   const list = await AsyncStorage.getItem(KEY_CUP)
   if (list) {
@@ -61,4 +63,21 @@ export async function updateCup(cup: CupComplete) {
   }
   const newList = listCup.map((i) => (i.id === cupShort.id ? cupShort : i))
   await Promise.all([saveListShort(newList), createCupComplete(cup)])
+}
+
+async function removeCupComplete(idCup: string) {
+  await AsyncStorage.removeItem(`${KEY_CUP}/${idCup}`)
+}
+
+export async function removeCup(idCup: string) {
+  const listCup = await getListCup()
+  const cup = listCup.find((cupDB) => cupDB.id === idCup)
+  if (cup !== undefined) {
+    const filterListCup = listCup.filter((item) => item.id !== idCup)
+    await Promise.all([
+      saveListShort(filterListCup),
+      removeCupComplete(idCup),
+      removeAllRoundsByCup(idCup),
+    ])
+  }
 }

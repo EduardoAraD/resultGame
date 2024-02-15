@@ -1,19 +1,21 @@
 import { useEffect, useState } from 'react'
 import { ImageSourcePropType } from 'react-native'
-import { FadeIn, FadeOut } from 'react-native-reanimated'
-import LottieView from 'lottie-react-native'
+import { FadeIn, FadeOut, SlideInUp, PinwheelIn } from 'react-native-reanimated'
 
-import goalAnimated from '../../assets/goal.json'
 import {
   Container,
   ContainerPenalts,
+  Content,
   ContentAnimated,
   DivMatchTrip,
   ImageBack,
+  ImageBall,
   Line,
   SubText,
   Text,
+  TextAnimated,
 } from './styles'
+import ballPng from '../../assets/ball.png'
 
 interface PlacarProps {
   goalHome: number
@@ -62,18 +64,27 @@ export function Placar({
   }, [goalHome])
 
   return isGoal !== '' ? (
-    <ContentAnimated>
+    <Content>
       <ImageBack source={isGoal === 'home' ? logoHome : logoAway} />
-      <LottieView
-        autoPlay
-        loop={false}
-        style={{
-          height: 90,
-          marginBottom: -15,
-        }}
-        source={goalAnimated}
-      />
-    </ContentAnimated>
+      <ContentAnimated entering={PinwheelIn.duration(500)}>
+        <TextAnimated entering={SlideInUp.duration(500).delay(150)}>
+          G
+        </TextAnimated>
+        <ImageBall source={ballPng} alt="" />
+        <TextAnimated entering={SlideInUp.duration(500).delay(150)}>
+          O
+        </TextAnimated>
+        <TextAnimated entering={SlideInUp.duration(500).delay(300)}>
+          O
+        </TextAnimated>
+        <TextAnimated entering={SlideInUp.duration(500).delay(450)}>
+          O
+        </TextAnimated>
+        <TextAnimated entering={SlideInUp.duration(500).delay(600)}>
+          L
+        </TextAnimated>
+      </ContentAnimated>
+    </Content>
   ) : (
     <Container exiting={FadeOut} entering={FadeIn} hasPenalts={hasPenalts}>
       <Text style={{ textAlign: 'right' }}>{goalHome}</Text>

@@ -12,6 +12,24 @@ export const Container = styled(Animated.View)<ContainerProps>`
   gap: ${(props) => (props.hasPenalts ? 0 : 6)}px;
 `
 
+export const ContentAnimated = styled(Animated.View)`
+  flex-direction: row;
+  align-items: center;
+
+  margin-top: 25px;
+`
+
+export const ImageBall = styled.Image`
+  height: 32px;
+  width: 32px;
+`
+
+export const TextAnimated = styled(Animated.Text)`
+  font-family: ${(props) => props.theme.fonts.medium};
+  font-size: 36px;
+  color: ${({ theme }) => theme.colors.white};
+`
+
 export const Text = styled.Text`
   font-family: ${(props) => props.theme.fonts.bold};
   font-size: 42px;
@@ -42,7 +60,7 @@ export const SubText = styled.Text`
   text-align: center;
 `
 
-export const ContentAnimated = styled.View`
+export const Content = styled.View`
   align-items: center;
   overflow: hidden;
 `

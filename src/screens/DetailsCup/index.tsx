@@ -3,31 +3,34 @@ import { View } from 'react-native'
 import { useFocusEffect, useRoute } from '@react-navigation/native'
 
 import { useClubs } from '../../hook/useClubs'
+import { useMatch } from '../../hook/useMatch'
 import { getCupComplete, updateCup } from '../../lib/asyncstorage/cup'
 import { getMatchStats, getRoundsCup } from '../../lib/asyncstorage/matchs'
 
 import { CupComplete, emptyCupComplete } from '../../Model/Cup'
 import { ClubShort, emptyClub } from '../../Model/Club'
 import { ItemClassification } from '../../Model/ItemClassification'
-import { MatchComplete } from '../../Model/Match'
+import { ModeMatch } from '../../Model/ModeMatch'
+import { MatchComplete, emptyMatchStats } from '../../Model/Match'
 import { Background } from '../../components/Background'
 import { Classification } from './components/Classification'
+import { CupAwards } from './components/CupAwards'
 import { InfoCup } from './components/InfoCup'
 import { Loading } from '../../components/Loading'
 import { Matchs } from './components/Matchs'
+import { TableCup } from './components/TableCup'
 import { TitleWithTouchBack } from '../../components/TitleWithTouchBack'
 import { ViewOption } from '../../components/ViewOption'
 
 import { getClassification } from '../../utils/getClassification'
+import { getWinnerClubInMatch } from '../../utils/getClubWinnerInMatch'
 
 import { Container } from './styles'
-import { ModeMatch } from '../../Model/ModeMatch'
-import { useMatch } from '../../hook/useMatch'
 
 export interface DetailsCupRouteParams {
   idCup: string
 }
-const OPTIONS = ['Informações', 'Tabela', 'Jogos']
+const OPTIONS = ['Detalhes', 'Tabela', 'Jogos', 'Prêmios']
 
 interface RoundMatch {
   matchs: MatchComplete[]
@@ -40,7 +43,7 @@ export function DetailsCup() {
   const { idCup } = useRoute().params as DetailsCupRouteParams
 
   const [loading, setLoading] = useState(false)
-  const [option, setOption] = useState('Informações')
+  const [option, setOption] = useState('Detalhes')
   const [cup, setCup] = useState<CupComplete>(emptyCupComplete)
   const [roundSelected, setRoundSelected] = useState(1)
   const [rounds, setRounds] = useState<RoundMatch[]>([])
@@ -95,9 +98,7 @@ export function DetailsCup() {
                     ? { ...statsTrip, type: 'Ida' }
                     : undefined,
               }
-              console.log(
-                `${matchCompleted.home.name} x ${matchCompleted.away.name} -> ${typeStats}`,
-              )
+
               if (stats.status === 'finished' && !hasMatchFinished) {
                 hasMatchFinished = true
               } else if (stats.status === 'start' && allMatchsFinished) {
@@ -117,8 +118,10 @@ export function DetailsCup() {
 
       if (hasMatchFinished && cup.status === 'start') {
         await updateCup({ ...cup, status: 'progress' })
+        setCup({ ...cup, status: 'progress' })
       } else if (allMatchsFinished && cup.status === 'progress') {
         await updateCup({ ...cup, status: 'closed' })
+        setCup({ ...cup, status: 'closed' })
       }
 
       setRounds(roundsMatchs)
@@ -127,7 +130,7 @@ export function DetailsCup() {
     } finally {
       setLoading(false)
     }
-  }, [clubs, idCup])
+  }, [clubs, idCup, removeMatch])
 
   useFocusEffect(
     useCallback(() => {
@@ -174,6 +177,86 @@ export function DetailsCup() {
     }
   }, [cup.type, roundSelected, rounds])
 
+  const awardsCup = useMemo((): {
+    first: ClubShort | undefined
+    secund: ClubShort | undefined
+    third: ClubShort | undefined
+  } => {
+    if (cup.type === 'League' && cup.status === 'closed') {
+      let first: ClubShort | undefined
+      let secund: ClubShort | undefined
+      let third: ClubShort | undefined
+      if (clubsItemClass.length > 0) {
+        first = clubsItemClass[0].club
+      }
+      if (clubsItemClass.length > 1) {
+        secund = clubsItemClass[1].club
+      }
+      if (clubsItemClass.length > 2) {
+        third = clubsItemClass[2].club
+      }
+      return {
+        first,
+        secund,
+        third,
+      }
+    } else if (cup.type === 'Cup') {
+      let first: ClubShort | undefined
+      let secund: ClubShort | undefined
+      let third: ClubShort | undefined
+      const roundFinal = rounds.find((item) => item.numberRound === 1)
+      if (roundFinal) {
+        const match = roundFinal.matchs[0]
+        if (match.stats.status === 'finished') {
+          const idWinner = getWinnerClubInMatch(
+            match.stats,
+            match.statsTrip || emptyMatchStats,
+            match.home.id,
+            match.away.id,
+          )
+          if (idWinner === match.home.id) {
+            first = match.home
+            secund = match.away
+          } else {
+            first = match.away
+            secund = match.home
+          }
+        }
+      }
+      if (cup.hasThirdPlace) {
+        const roundThird = rounds.find((item) => item.numberRound === 2)
+        if (roundThird) {
+          const match = roundThird.matchs[0]
+          if (match.stats.status === 'finished') {
+            const idWinner = getWinnerClubInMatch(
+              match.stats,
+              match.statsTrip || emptyMatchStats,
+              match.home.id,
+              match.away.id,
+            )
+            if (idWinner === match.home.id) {
+              third = match.home
+            } else {
+              third = match.away
+            }
+          }
+        }
+      }
+
+      return {
+        first,
+        secund,
+        third,
+      }
+    } else {
+      return {
+        first: undefined,
+        secund: undefined,
+        third: undefined,
+      }
+    }
+  }, [clubsItemClass, cup.hasThirdPlace, cup.status, cup.type, rounds])
+
   return (
     <Background>
       <Container>
@@ -186,25 +269,30 @@ export function DetailsCup() {
         >
           {loading ? (
             <Loading />
-          ) : option === 'Informações' ? (
+          ) : option === 'Detalhes' ? (
             <InfoCup
+              idCup={cup.id}
               type={cup.type}
               hasTripRound={cup.roundTrip}
               hasThirdPlace={cup.hasThirdPlace}
               pointsToWin={cup.winPoints}
               pointsToDraw={cup.drawPoints}
               pointsToLoss={cup.lossPoints}
-              hasAwayGoal={cup.hasAwayGoal}
+              // hasAwayGoal={cup.hasAwayGoal}
               numberPromotionClubs={cup.numberClubsPromoted}
               numberRelegationClubs={cup.numberClubsRelegated}
             />
           ) : option === 'Tabela' ? (
-            <Classification
-              listItemClass={clubsItemClass}
-              numberClubsPromotion={cup.numberClubsPromoted}
-              numberClubsRelegation={cup.numberClubsRelegated}
-            />
-          ) : (
+            cup.type === 'Cup' ? (
+              <TableCup rounds={rounds} hasThirdPlace={cup.hasThirdPlace} />
+            ) : (
+              <Classification
+                listItemClass={clubsItemClass}
+                numberClubsPromotion={cup.numberClubsPromoted}
+                numberClubsRelegation={cup.numberClubsRelegated}
+              />
+            )
+          ) : option === 'Jogos' ? (
             <Matchs
               maxRound={rounds.length}
               round={roundSelected}
@@ -214,6 +302,15 @@ export function DetailsCup() {
               hasThirdPlace={cup.hasThirdPlace}
               typeCup={cup.type}
               idCup={cup.id}
+            />
+          ) : (
+            <CupAwards
+              typeCup={cup.type}
+              champions={awardsCup.first}
+              secund={awardsCup.secund}
+              hasThirdPlace={cup.hasThirdPlace}
+              third={awardsCup.third}
+              numberClubs={cup.numberClubs}
             />
           )}
         </ViewOption>

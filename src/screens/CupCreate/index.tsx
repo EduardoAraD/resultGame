@@ -30,7 +30,6 @@ export function CupCreate() {
   const [name, setName] = useState('')
   const [typeCup, setTypeCup] = useState<TypeCup | ''>('')
   const [hasTripMatch, setHasTripMatch] = useState(false)
-  const [hasAwayGoal, setHasAwayGoal] = useState(false)
   const [hasThirdPlace, setHasThirdPlace] = useState(false)
   const [pointsWin, setPointsWin] = useState(3)
   const [pointsDraw, setPointsDraw] = useState(1)
@@ -48,7 +47,6 @@ export function CupCreate() {
       name,
       type: typeCup,
       roundTrip: hasTripMatch,
-      hasAwayGoal,
       hasThirdPlace,
       winPoints: pointsWin,
       lossPoints: pointsLoss,
@@ -116,7 +114,6 @@ export function CupCreate() {
               typeCup={typeCup}
               clubPromotion={clubsPromotion}
               clubRelegation={clubsRelegation}
-              hasAwayGoal={hasAwayGoal}
               hasTripMatch={hasTripMatch}
               hasThirdPlace={hasThirdPlace}
               pointsDraw={pointsDraw}
@@ -124,7 +121,6 @@ export function CupCreate() {
               pointsWin={pointsWin}
               onClubPromotion={setClubsPromotion}
               onClubRelegation={setClubsRelegation}
-              onHasAwayGoal={setHasAwayGoal}
               onHasTripMatch={setHasTripMatch}
               onHasThirdPlace={setHasThirdPlace}
               onPointsDraw={setPointsDraw}
