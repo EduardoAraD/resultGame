@@ -7,7 +7,7 @@ export const fortaleza: Clube = {
   name: 'Fortaleza EC',
   sigla: 'FOR',
   nameComplete: 'Fortaleza Esporte Clube',
-  overall: 75,
+  overall: 87,
   stadium: 'Arena Castelão',
   // star: 3.5,
   logo,

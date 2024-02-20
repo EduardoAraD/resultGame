@@ -7,7 +7,7 @@ export const saoRaimundoAM: Clube = {
   name: 'São Raimundo AM',
   sigla: 'SRM',
   nameComplete: 'São Raimundo Esporte Clube',
-  overall: 58,
+  overall: 61.5,
   stadium: 'Estádio Ismael Benigno - Colina',
   // star: 0.5,
   logo,

@@ -7,7 +7,7 @@ export const saoBento: Clube = {
   name: 'São Bento',
   sigla: 'SBE',
   nameComplete: 'Esporte Clube São Bento',
-  overall: 59,
+  overall: 63,
   stadium: 'Estádio Walter Ribeiro',
   // star: 0.5,
   logo,

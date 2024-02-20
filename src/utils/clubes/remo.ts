@@ -7,7 +7,7 @@ export const remo: Clube = {
   name: 'Remo',
   sigla: 'REM',
   nameComplete: 'Clube do Remo',
-  overall: 64.5,
+  overall: 71,
   stadium: 'Estádio Evandro Almeida - Baenão',
   // star: 1.5,
   logo,

@@ -7,7 +7,7 @@ export const nacionalAm: Clube = {
   name: 'Nacional FC',
   sigla: 'NAM',
   nameComplete: 'Nacional Futebol Clube',
-  overall: 58.5,
+  overall: 62.5,
   stadium: 'Arena da Amazônia',
   // star: 0.5,
   logo,

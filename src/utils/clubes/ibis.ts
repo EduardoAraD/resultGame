@@ -7,7 +7,7 @@ export const ibis: Clube = {
   name: 'Íbis SC',
   sigla: 'IBI',
   nameComplete: 'Íbis Sport Club',
-  overall: 56,
+  overall: 59,
   stadium: 'Estádio Ademir Cunha',
   // star: 0.5,
   logo,

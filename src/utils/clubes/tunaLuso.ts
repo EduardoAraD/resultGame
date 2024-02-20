@@ -7,7 +7,7 @@ export const tunaLuso: Clube = {
   name: 'Tuna Luso',
   sigla: 'TLU',
   nameComplete: 'Tuna Luso Brasileira',
-  overall: 61,
+  overall: 66,
   stadium: 'Estádio Francisco Vasques',
   // star: 0.5,
   logo,

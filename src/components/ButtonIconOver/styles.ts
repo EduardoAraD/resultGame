@@ -7,7 +7,7 @@ export const Touch = styled.TouchableOpacity`
   right: 20px;
   bottom: 30px;
   border-radius: 36px;
-  background-color: ${({ theme }) => theme.colors.blue_300};
+  background-color: ${({ theme }) => theme.colors.green};
   justify-content: center;
   align-items: center;
 `

@@ -7,7 +7,7 @@ export const rioBrancoAC: Clube = {
   name: 'Rio Branco AC',
   sigla: 'RBR',
   nameComplete: 'Rio Branco Football Club',
-  overall: 57,
+  overall: 60,
   stadium: 'Estádio José de Melo',
   // star: 0.5,
   logo,

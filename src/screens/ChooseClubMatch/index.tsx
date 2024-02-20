@@ -9,7 +9,10 @@ import { ClubShort, emptyClub } from '../../Model/Club'
 import { ModeMatch } from '../../Model/ModeMatch'
 import { Background } from '../../components/Background'
 import { Button } from '../../components/Button'
-import { HomeOrAway, ModalChooseClub } from '../../components/Modal'
+import {
+  ModalChooseOneClub,
+  HomeOrAway,
+} from '../../components/ModalChooseOneClub'
 import { TitleWithTouchBack } from '../../components/TitleWithTouchBack'
 
 import {
@@ -146,15 +149,15 @@ export function ChooseClubMatch() {
           title="Iniciar"
           loading={loading}
         />
+        {homeOrAway !== '' && (
+          <ModalChooseOneClub
+            visible={showModalChooseClub}
+            onClose={handleCloseModal}
+            homeOrAway={homeOrAway}
+            onSelectedClub={handleUpdateClub}
+          />
+        )}
       </Container>
-      {homeOrAway !== '' && showModalChooseClub && (
-        <ModalChooseClub
-          visible={showModalChooseClub}
-          onClose={handleCloseModal}
-          homeOrAway={homeOrAway}
-          onSelectedClub={handleUpdateClub}
-        />
-      )}
     </Background>
   )
 }

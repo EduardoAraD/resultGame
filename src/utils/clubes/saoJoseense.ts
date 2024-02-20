@@ -7,7 +7,7 @@ export const saoJoseense: Clube = {
   name: 'São Joseense',
   sigla: 'SJS',
   nameComplete: 'Independente Futebol São Joseense',
-  overall: 61.5, // 62
+  overall: 67, // 62
   stadium: 'Estádio do Pinhão',
   // star: 0.5,
   logo,

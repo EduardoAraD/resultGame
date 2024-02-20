@@ -7,7 +7,7 @@ export const atleticoGO: Clube = {
   name: 'Atlético GO',
   sigla: 'AGO',
   nameComplete: 'Atlético Clube Goianiense',
-  overall: 72,
+  overall: 82,
   stadium: 'Estádio Antonio Accioly',
   // star: 3.0,
   logo,

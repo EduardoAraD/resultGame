@@ -7,7 +7,7 @@ export const juazeirense: Clube = {
   name: 'Juazeirense',
   sigla: 'JUA',
   nameComplete: 'Sociedade Desportiva Juazeirense',
-  overall: 57,
+  overall: 60,
   stadium: 'Estádio Adauto Moraes',
   // star: 0.5,
   logo,

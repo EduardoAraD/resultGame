@@ -7,7 +7,7 @@ export const tombense: Clube = {
   name: 'Tombense FC',
   sigla: 'TOM',
   nameComplete: 'Tombense Futebol Clube',
-  overall: 67.5, // 69
+  overall: 75.5, // 69
   stadium: 'Estádio Antônio Guimarães de Almeida',
   // star: 2,
   logo,

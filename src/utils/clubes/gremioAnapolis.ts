@@ -7,7 +7,7 @@ export const gremioAnapolis: Clube = {
   name: 'Grêmio Anápolis',
   sigla: 'GAP',
   nameComplete: 'Grêmio Esportivo Anápolis',
-  overall: 58,
+  overall: 61.5,
   stadium: 'Estádio Jonas Duarte',
   // star: 58,
   logo,

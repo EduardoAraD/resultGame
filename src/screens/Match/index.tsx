@@ -27,6 +27,9 @@ import {
   Stadium,
   Title,
 } from './styles'
+import { currentPlacarMoment } from '../../utils/functions/GoalChange/finished'
+import { getChanceGoal } from '../../utils/functions/GoalChange/contructionPlay'
+import { ProxChanceClub } from '../../utils/functions/GoalChange/interfaces'
 
 export interface MatchRouteProps {
   home: ClubComplete
@@ -116,35 +119,39 @@ export function Match() {
       domAway: DomainClube,
       goalHomeClub: number,
       goalAwayClub: number,
+      proxMoment: ProxChanceClub,
     ): {
-      domHome: DomainClube
-      domAway: DomainClube
-      moments: Moment[]
+      moments: MomentComplete[]
+      proxMoment: ProxChanceClub
     } => {
       if (min === 1) {
-        const newMoment: Moment = {
+        const newMoment: MomentComplete = {
           minute: min,
           narracao: 'Início de Jogo.',
           homeOrAway: 'game',
           stats: emptyStats,
+          domainHome: 50,
+          domainAway: 50,
+          id: -1,
         }
         return {
-          domHome: { ...domHome, domain: 50 },
-          domAway: { ...domAway, domain: 50 },
           moments: [newMoment],
+          proxMoment: 'NORMAL',
         }
       }
       if (min === 45) {
-        const newMoment: Moment = {
+        const newMoment: MomentComplete = {
           minute: min,
           narracao: 'Intervalo de jogo.',
           homeOrAway: 'game',
           stats: emptyStats,
+          domainHome: 50,
+          domainAway: 50,
+          id: -1,
         }
         return {
-          domHome: { ...domHome, domain: 50 },
-          domAway: { ...domAway, domain: 50 },
           moments: [newMoment],
+          proxMoment: 'NORMAL',
         }
       }
       if (min === 90) {
@@ -159,16 +166,18 @@ export function Match() {
           modeGame !== 'Normal' &&
           modeGame !== 'Ida' &&
           goalHomeAll === goalAwayAll
-        const newMoment: Moment = {
+        const newMoment: MomentComplete = {
           minute: min,
           narracao: notIsFinal ? 'Vamos para os Penaltis' : 'Final de Jogo.',
           homeOrAway: 'game',
           stats: emptyStats,
+          domainAway: 50,
+          domainHome: 50,
+          id: -1,
         }
         return {
-          domHome: { ...domHome, domain: 50 },
-          domAway: { ...domAway, domain: 50 },
           moments: [newMoment],
+          proxMoment: 'NORMAL',
         }
       } else {
         const { home, away } = domainGame({
@@ -176,28 +185,48 @@ export function Match() {
           away: domAway,
         })
 
-        if (home.domain >= 70 || away.domain >= 70) {
-          const howClubAttack = home.domain >= 70 ? 'home' : 'away'
-          const nameClub = home.domain >= 70 ? home.nameClube : away.nameClube
-          const resultChance = chanceDeGol(min, howClubAttack, nameClub)
+        const homeDomainChance =
+          proxMoment !== 'NORMAL' ? domHome.domain : home.domain
+        const awayDomainChance =
+          proxMoment !== 'NORMAL' ? domAway.domain : away.domain
+
+        if (homeDomainChance >= 80 || awayDomainChance >= 80) {
+          const howClubAttack = homeDomainChance >= 80 ? 'home' : 'away'
+
+          const newResultChance = getChanceGoal({
+            minute: min,
+            homeOrAway: howClubAttack,
+            domain: {
+              home: homeDomainChance,
+              away: awayDomainChance,
+            },
+            nameClubAttack:
+              howClubAttack === 'home' ? home.nameClube : away.nameClube,
+            nameClubDefense:
+              howClubAttack === 'away' ? away.nameClube : home.nameClube,
+            proxMoment,
+          })
 
           return {
-            domHome: { ...home },
-            domAway: { ...away },
-            moments: resultChance,
+            moments: newResultChance.moments,
+            proxMoment: newResultChance.proxChance,
           }
         }
 
-        const newMoment: Moment = {
+        const newMoment: MomentComplete = {
           minute: min,
           narracao: '',
           homeOrAway: 'game',
           stats: emptyStats,
+          domainHome: home.domain,
+          domainAway: away.domain,
+          id: -1,
         }
         return {
-          domHome: { ...home },
-          domAway: { ...away },
+          // domHome: { ...home },
+          // domAway: { ...away },
           moments: [newMoment],
+          proxMoment: 'NORMAL',
         }
       }
     },
@@ -346,49 +375,52 @@ export function Match() {
     const momentsToGame: MomentComplete[] = []
     let goalHomeClub = 0
     let goalAwayClub = 0
+    let proxMomentInGame: ProxChanceClub = 'NORMAL'
 
     arrayMinutes.forEach((_, indexMinute) => {
       const minuteNow = indexMinute + 1
-      const { domAway, domHome, moments } = momentsTheGame(
+      const { moments, proxMoment } = momentsTheGame(
         minuteNow,
         domainHomeClub,
         domainAwayClub,
         goalHomeClub,
         goalAwayClub,
+        proxMomentInGame,
       )
 
-      domainHomeClub.domain = domHome.domain
-      domainAwayClub.domain = domAway.domain
+      proxMomentInGame = proxMoment
+      const lenthMoments = moments.length
+      domainHomeClub.domain = moments[lenthMoments - 1].domainHome
+      domainAwayClub.domain = moments[lenthMoments - 1].domainAway
       moments.forEach((mon) =>
         momentsToGame.push({
           ...mon,
-          domainAway: domAway.domain,
-          domainHome: domHome.domain,
           id: 0,
         }),
       )
 
       const momentGoal = moments.find((i) => i.goal)
       if (momentGoal) {
+        let nameClub = ''
         if (momentGoal.homeOrAway === 'home') {
           goalHomeClub += 1
+          nameClub = home.name
         } else {
           goalAwayClub += 1
+          nameClub = away.name
         }
 
-        const newMoment: MomentComplete = {
-          domainAway: 50,
-          domainHome: 50,
-          minute: momentGoal.minute,
-          id: 0,
-          narracao: `Agora está ${goalHomeClub}x${goalAwayClub} no placar!`,
-          homeOrAway: momentGoal.homeOrAway,
-          stats: emptyStats,
-        }
+        const moment = currentPlacarMoment(
+          momentGoal.minute,
+          nameClub,
+          momentGoal.homeOrAway === 'home' ? 'home' : 'away',
+          goalHomeClub,
+          goalAwayClub,
+        )
 
         domainHomeClub.domain = 50
         domainAwayClub.domain = 50
-        momentsToGame.push(newMoment)
+        momentsToGame.push(moment)
       }
     })
 

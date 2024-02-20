@@ -6,7 +6,7 @@ export const caxias: Clube = {
   id: 46,
   name: 'Caxias do Sul',
   nameComplete: 'Sociedade Esportiva e Recreativa Caxias do Sul',
-  overall: 61.5,
+  overall: 67,
   sigla: 'CAX',
   stadium: 'Estádio Centenário',
   // star: 0.5,

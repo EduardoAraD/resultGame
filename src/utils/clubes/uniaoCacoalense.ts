@@ -7,7 +7,7 @@ export const uniaoCacoalense: Clube = {
   name: 'União Cacoalense',
   sigla: 'UCA',
   nameComplete: 'Sociedade Esportiva União Cacoalense',
-  overall: 58,
+  overall: 61.5,
   stadium: 'Estádio Aglair Tonelli',
   // star: 0.5,
   logo,

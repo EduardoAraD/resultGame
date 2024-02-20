@@ -7,7 +7,7 @@ export const floresta: Clube = {
   name: 'Floresta EC',
   sigla: 'FLO',
   nameComplete: 'Floresta Esporte Clube',
-  overall: 63, // 62.5
+  overall: 69, // 62.5
   stadium: 'Estádio Felipe Santiago',
   // star: 1,
   logo,

@@ -7,7 +7,7 @@ export const costaRicaMS: Clube = {
   name: 'Costa Rica MS',
   sigla: 'CSR',
   nameComplete: 'Costa Rica Esporte Clube',
-  overall: 57,
+  overall: 60,
   stadium: 'Estádio Laerte Paes Coelho - Laertão',
   // star: 0.5,
   logo,

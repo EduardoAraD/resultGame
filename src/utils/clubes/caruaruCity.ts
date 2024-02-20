@@ -7,7 +7,7 @@ export const caruaruCity: Clube = {
   name: 'Caruaru City',
   sigla: 'CAR',
   nameComplete: 'Caruaru City Sport Club',
-  overall: 57,
+  overall: 60,
   stadium: 'Estádio Antônio Inácio de Souza',
   // star: 0.5,
   logo,

@@ -7,7 +7,7 @@ export const nacionalDePatos: Clube = {
   name: 'Nacional de Patos',
   sigla: 'NPA',
   nameComplete: 'Nacional Atlético Clube',
-  overall: 58,
+  overall: 61.5,
   stadium: 'Estádio José Cavalcanti',
   // star: 0.5,
   logo,

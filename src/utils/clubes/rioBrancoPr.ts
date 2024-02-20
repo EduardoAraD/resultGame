@@ -7,7 +7,7 @@ export const rioBrancoPR: Clube = {
   name: 'Rio Branco PR',
   sigla: 'RPR',
   nameComplete: 'Rio Branco Sport Club',
-  overall: 56.5,
+  overall: 59.5,
   stadium: 'Estádio Nelson Medrado Dias - Estradinha',
   // star: 0.5,
   logo,

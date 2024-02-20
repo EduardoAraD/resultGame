@@ -7,7 +7,7 @@ export const lagarto: Clube = {
   name: 'Lagarto FC',
   sigla: 'LAG',
   nameComplete: 'Lagarto Futebol Clube',
-  overall: 61.5,
+  overall: 67,
   stadium: 'Estádio Paulo Barreto de Menezes - Barretão',
   // star: 0.5,
   logo,

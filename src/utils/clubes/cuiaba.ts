@@ -7,7 +7,7 @@ export const cuiaba: Clube = {
   name: 'Cuiabá EC',
   sigla: 'CUI',
   nameComplete: 'Cuiabá Esporte Clube',
-  overall: 74,
+  overall: 85,
   stadium: 'Arena Pantanal',
   // star: 3.5,
   logo,

@@ -7,7 +7,7 @@ export const retro: Clube = {
   name: 'Retrô FC',
   sigla: 'RET',
   nameComplete: 'Retrô Futebol Clube Brasil',
-  overall: 62,
+  overall: 67.5,
   stadium: 'Itaipava Arena Pernambuco',
   // star: 0.5,
   logo,

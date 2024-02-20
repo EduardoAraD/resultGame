@@ -7,7 +7,7 @@ export const afogados: Clube = {
   name: 'Afogados IFC',
   sigla: 'AFO',
   nameComplete: 'Afogados da Ingazeira Futebol Clube',
-  overall: 59, // 62
+  overall: 63, // 62
   stadium: 'Estádio Valdemar Viana de Araújo - Vianão',
   // star: 0.5,
   logo,

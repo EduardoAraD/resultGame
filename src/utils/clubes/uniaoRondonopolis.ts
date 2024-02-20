@@ -7,7 +7,7 @@ export const uniaoRondonopolis: Clube = {
   name: 'União Rondonópolis',
   sigla: 'UNI',
   nameComplete: 'União Esporte Clube',
-  overall: 60.5,
+  overall: 65.5,
   stadium: 'Estádio Luthero Lopes',
   // star: 0.5,
   logo,

@@ -7,7 +7,7 @@ export const gremio: Clube = {
   name: 'Grêmio',
   sigla: 'GRE',
   nameComplete: 'Grêmio Foot-Ball Porto Alegrense',
-  overall: 76,
+  overall: 88,
   stadium: 'Arena do Grêmio',
   // star: 76,
   logo,

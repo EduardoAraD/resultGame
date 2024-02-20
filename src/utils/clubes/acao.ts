@@ -7,7 +7,7 @@ export const acao: Clube = {
   name: 'Ação F',
   sigla: 'ACA',
   nameComplete: 'Sociedade Ação Futebol',
-  overall: 60, // 63
+  overall: 64.5, // 63
   stadium: 'Estádio Cândido Raimundo Honorato - Raimundão',
   // star: 1,
   logo,

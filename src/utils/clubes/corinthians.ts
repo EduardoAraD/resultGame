@@ -7,7 +7,7 @@ export const corinthians: Clube = {
   name: 'Corinthians',
   sigla: 'COR',
   nameComplete: 'Sport Club Corinthians Paulista',
-  overall: 77.5,
+  overall: 90.5,
   stadium: 'Neo Química Arena',
   // star: 4,
   logo,

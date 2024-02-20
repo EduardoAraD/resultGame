@@ -7,7 +7,7 @@ export const abc: Clube = {
   name: 'ABC',
   sigla: 'ABC',
   nameComplete: 'ABC Futebol Clube',
-  overall: 68,
+  overall: 76.5,
   stadium: 'Estádio Maria Lamas Farache - Frasqueirão',
   // star: 2,
   logo,

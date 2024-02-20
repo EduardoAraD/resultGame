@@ -7,7 +7,7 @@ export const nauticoRR: Clube = {
   name: 'Náutico FC RR',
   sigla: 'NRR',
   nameComplete: 'Náutico Futebol Clube',
-  overall: 56,
+  overall: 59,
   stadium: 'Estádio Flamarion Vasconcelos',
   // star: 0.5,
   logo,

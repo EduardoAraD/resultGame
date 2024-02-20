@@ -16,6 +16,8 @@ interface CupAwardsProps {
   third: ClubShort | undefined
   hasThirdPlace: boolean
   numberClubs: number
+  clubsPromotions: (ClubShort | undefined)[]
+  clubsRenegations: (ClubShort | undefined)[]
 }
 
 export function CupAwards({
@@ -25,6 +27,8 @@ export function CupAwards({
   third,
   hasThirdPlace,
   numberClubs,
+  clubsPromotions,
+  clubsRenegations,
 }: CupAwardsProps) {
   return (
     <ScrollView>
@@ -40,9 +44,15 @@ export function CupAwards({
           </InfoChampions>
           <Name>{champions === undefined ? 'A definir' : champions.name}</Name>
         </Info>
-        <CardClubAward title="Vice campeão" club={secund} />
+        <CardClubAward title="Vice campeão" clubs={[secund]} />
         {!(!hasThirdPlace && typeCup === 'Cup') && numberClubs > 2 && (
-          <CardClubAward title="Terceiro lugar" club={third} />
+          <CardClubAward title="Terceiro lugar" clubs={[third]} />
+        )}
+        {typeCup === 'League' && (
+          <>
+            <CardClubAward title="Clubes promovidos" clubs={clubsPromotions} />
+            <CardClubAward title="Clubes rebeixados" clubs={clubsRenegations} />
+          </>
         )}
       </Container>
     </ScrollView>

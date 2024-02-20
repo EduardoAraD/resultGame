@@ -7,7 +7,7 @@ export const cordino: Clube = {
   name: 'Cordino EC',
   sigla: 'CDN',
   nameComplete: 'Cordino Esporte Clube',
-  overall: 59,
+  overall: 63,
   stadium: 'Estádio Leandro Cláudio da Silva',
   // star: 0.5,
   logo,

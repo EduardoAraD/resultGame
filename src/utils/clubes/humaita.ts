@@ -7,7 +7,7 @@ export const humaita: Clube = {
   name: 'Humaitá',
   sigla: 'HUM',
   nameComplete: 'Sport Clube Humaitá',
-  overall: 58,
+  overall: 61.5,
   stadium: 'Arena da Floresta',
   // star: 0.5,
   logo,

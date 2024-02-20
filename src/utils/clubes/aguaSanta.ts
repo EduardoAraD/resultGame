@@ -7,7 +7,7 @@ export const aguaSanta: Clube = {
   name: 'Água Santa',
   sigla: 'AGS',
   nameComplete: 'Esporte Clube Água Santa',
-  overall: 60,
+  overall: 64.5,
   stadium: 'Arena Inamar - Diadema',
   // star: 0.5,
   logo,

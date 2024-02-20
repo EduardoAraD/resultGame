@@ -7,7 +7,7 @@ export const internacional: Clube = {
   name: 'Internacional',
   sigla: 'INT',
   nameComplete: 'Sport Club Internacional',
-  overall: 77,
+  overall: 89.5,
   stadium: 'Estádio Beira-Rio',
   // star: 4,
   logo,

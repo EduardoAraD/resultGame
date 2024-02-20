@@ -7,7 +7,7 @@ export const boavista: Clube = {
   name: 'Boavista',
   sigla: 'BOA',
   nameComplete: 'Boavista Sport Club',
-  overall: 60, // 61
+  overall: 64.5, // 61
   stadium: 'Estádio Elcyr Resende de Mendonça',
   // star: 0.5,
   logo,

@@ -7,7 +7,7 @@ export const potiguarDeMossoro: Clube = {
   name: 'Potiguar de Mossoró',
   sigla: 'POT',
   nameComplete: 'Associação Cultural e Desportiva Potiguar',
-  overall: 57,
+  overall: 60,
   stadium: ' Estádio Manoel Leonardo Nogueira - Nogueirão',
   // star: 0.5,
   logo,

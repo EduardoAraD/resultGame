@@ -7,7 +7,7 @@ export const saoPauloCrystal: Clube = {
   name: 'São Paulo Crystal',
   sigla: 'SPC',
   nameComplete: 'São Paulo Crystal Futebol Clube',
-  overall: 55,
+  overall: 57.5,
   stadium: 'Estádio Carneirão',
   // star: 0.5,
   logo,

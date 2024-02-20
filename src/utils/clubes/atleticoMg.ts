@@ -7,7 +7,7 @@ export const atleticoMG: Clube = {
   name: 'Atlético MG',
   sigla: 'CAM',
   nameComplete: 'Clube Atlético Mineiro',
-  overall: 77.5,
+  overall: 90.5,
   stadium: 'Arena MRV',
   // star: 4,
   logo,

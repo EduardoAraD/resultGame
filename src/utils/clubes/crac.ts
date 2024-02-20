@@ -7,7 +7,7 @@ export const crac: Clube = {
   name: 'CRAC',
   sigla: 'CRA',
   nameComplete: 'Clube Recreativo e Atlético Catalano',
-  overall: 61,
+  overall: 66,
   stadium: 'Estádio Genervino da Fonseca',
   // star: 0.5,
   logo,

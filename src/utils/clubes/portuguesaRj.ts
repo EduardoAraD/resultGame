@@ -7,7 +7,7 @@ export const portuguesaRJ: Clube = {
   name: 'Portuguesa RJ',
   sigla: 'PRJ',
   nameComplete: 'Associação Atlética Portuguesa',
-  overall: 61.5,
+  overall: 67,
   stadium: 'Estádio Luso Brasileiro',
   // star: 0.5,
   logo,

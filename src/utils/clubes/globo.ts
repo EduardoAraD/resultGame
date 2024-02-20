@@ -7,7 +7,7 @@ export const globoFc: Clube = {
   name: 'Globo FC',
   sigla: 'GLO',
   nameComplete: 'Globo Futebol Clube',
-  overall: 58,
+  overall: 61.5,
   stadium: 'Estádio Manoel Dantas Barretto - Barretão',
   // star: 0.5,
   logo,

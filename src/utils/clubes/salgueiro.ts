@@ -7,7 +7,7 @@ export const salgueiro: Clube = {
   name: 'Salgueiro AC',
   sigla: 'SAL',
   nameComplete: 'Salgueiro Atlético Clube',
-  overall: 58,
+  overall: 61.5,
   stadium: 'Estádio Cornélio de Barros Muniz e Sá',
   // star: 0.5,
   logo,

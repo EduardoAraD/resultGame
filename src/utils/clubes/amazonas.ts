@@ -7,7 +7,7 @@ export const amazonas: Clube = {
   name: 'Amazonas FC',
   sigla: 'AMA',
   nameComplete: 'Amazonas Futebol Clube',
-  overall: 64, // 62.5
+  overall: 70.5, // 62.5
   stadium: 'Estádio Carlos Zamith',
   // star: 1,
   logo,

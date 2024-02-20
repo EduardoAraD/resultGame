@@ -7,7 +7,7 @@ export const vasco: Clube = {
   name: 'Vasco da Gama',
   sigla: 'VAS',
   nameComplete: 'Club de Regatas Vasco da Gama',
-  overall: 75,
+  overall: 87,
   stadium: 'Estádio São Januário',
   // star: 3.5,
   logo,

@@ -7,7 +7,7 @@ export const vitoriaES: Clube = {
   name: 'Vitória ES',
   sigla: 'VES',
   nameComplete: 'Vitória Futebol Clube',
-  overall: 59,
+  overall: 63,
   stadium: 'Estádio Salvador Venâncio da Costa',
   // star: 0.5,
   logo,

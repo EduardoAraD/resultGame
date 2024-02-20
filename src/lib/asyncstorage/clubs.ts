@@ -8,7 +8,6 @@ import { ClubComplete, ClubShort } from '../../Model/Club'
 import { clubes } from '../../utils/clubes'
 
 async function createdClubs() {
-  // const clubs = clubes.filter((_, index) => index <= 10)
   const clubsComplete: ClubComplete[] = clubes.map((clube) => {
     const id = Crypto.randomUUID()
     const clubComplete: ClubComplete = {

@@ -7,7 +7,7 @@ export const atleticoBA: Clube = {
   name: 'Atlético de Alagoinhas',
   sigla: 'ABA',
   nameComplete: 'Alagoinhas Atlético Clube',
-  overall: 58.5,
+  overall: 62.5,
   stadium: 'Estádio Antônio Carneiro',
   // star: 0.5,
   logo,

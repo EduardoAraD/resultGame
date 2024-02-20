@@ -7,7 +7,7 @@ export const castanhal: Clube = {
   name: 'Castanhal EC',
   sigla: 'CAT',
   nameComplete: 'Castanhal Esporte Clube',
-  overall: 56,
+  overall: 59,
   stadium: 'Estádio Complexo Esportivo do Japiim - Modelão',
   // star: 0.5,
   logo,

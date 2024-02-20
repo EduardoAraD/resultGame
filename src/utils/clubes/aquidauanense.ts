@@ -7,7 +7,7 @@ export const aquidauanense: Clube = {
   name: 'Aquidauanense MS',
   sigla: 'AQU',
   nameComplete: 'Aquidauanense Futebol Clube',
-  overall: 59,
+  overall: 63,
   stadium: 'Estádio Mário Pinto de Souza',
   // star: 0.5,
   logo,

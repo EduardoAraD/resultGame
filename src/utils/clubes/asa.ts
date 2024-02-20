@@ -7,7 +7,7 @@ export const asa: Clube = {
   name: 'ASA',
   sigla: 'ASA',
   nameComplete: 'Agremiação Sportiva Arapiraquense',
-  overall: 61,
+  overall: 66,
   stadium: 'Estádio Coaracy da Mata Fonseca - Fumeirão',
   // star: 0.5,
   logo,

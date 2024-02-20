@@ -7,7 +7,7 @@ export const santoAndre: Clube = {
   name: 'Santo André',
   sigla: 'STA',
   nameComplete: 'Esporte Clube Santo André',
-  overall: 60.5,
+  overall: 65.5,
   stadium: 'Estádio Bruno José Daniel',
   // star: 0.5,
   logo,

@@ -7,7 +7,7 @@ export const aparecidense: Clube = {
   name: 'Aparecidense',
   sigla: 'APA',
   nameComplete: 'Associação Atlética Aparecidense',
-  overall: 62.5,
+  overall: 68,
   stadium: 'Estádio Anníbal Batista de Toledo',
   // star: 1,
   logo,

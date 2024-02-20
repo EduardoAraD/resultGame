@@ -7,7 +7,7 @@ export const guarani: Clube = {
   name: 'Guarani FC',
   sigla: 'GUA',
   nameComplete: 'Guarani Futebol Clube',
-  overall: 70,
+  overall: 79.5,
   stadium: 'Estádio Brinco de Ouro da Princesa',
   // star: 2.5,
   logo,

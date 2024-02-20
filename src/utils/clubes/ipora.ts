@@ -7,7 +7,7 @@ export const ipora: Clube = {
   name: 'Iporá EC',
   sigla: 'IPO',
   nameComplete: 'Iporá Esporte Clube',
-  overall: 60,
+  overall: 64.5,
   stadium: 'Estádio Francisco Ferreira - Ferreirão',
   // star: 0.5,
   logo,

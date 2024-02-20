@@ -7,7 +7,7 @@ export const chapecoense: Clube = {
   name: 'Chapecoense',
   sigla: 'CHA',
   nameComplete: 'Associação Chapecoense de Futebol',
-  overall: 70,
+  overall: 79.5,
   stadium: 'Arena Condá',
   // star: 2.5,
   logo,

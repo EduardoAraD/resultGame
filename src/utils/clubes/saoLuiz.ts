@@ -7,7 +7,7 @@ export const saoLuizRS: Clube = {
   name: 'São Luiz RS',
   sigla: 'SLU',
   nameComplete: 'Esporte Clube São Luiz',
-  overall: 57,
+  overall: 60,
   stadium: 'Estádio 19 de Outubro',
   // star: 0.5,
   logo,

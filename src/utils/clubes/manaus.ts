@@ -7,7 +7,7 @@ export const manaus: Clube = {
   name: 'Manaus FC',
   sigla: 'MAN',
   nameComplete: 'Manaus Futebol Clube',
-  overall: 62.5,
+  overall: 68,
   stadium: 'Arena da Amazônia',
   // star: 1,
   logo,

@@ -7,7 +7,7 @@ export const bahia: Clube = {
   name: 'Bahia',
   sigla: 'BAH',
   nameComplete: 'Esporte Clube Bahia',
-  overall: 74,
+  overall: 85,
   stadium: 'Itaipava Arena Fonte Nova',
   // star: 3.5,
   logo,

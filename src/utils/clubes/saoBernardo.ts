@@ -7,7 +7,7 @@ export const saoBernardo: Clube = {
   name: 'São Bernardo',
   sigla: 'SBR',
   nameComplete: 'São Bernardo Futebol Clube',
-  overall: 66,
+  overall: 73.5,
   stadium: 'Estádio 1° de Maio',
   // star: 1.5,
   logo,

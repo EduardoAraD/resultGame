@@ -7,7 +7,7 @@ export const oeste: Clube = {
   name: 'Oeste FC',
   sigla: 'OES',
   nameComplete: 'Oeste Futebol Clube',
-  overall: 60, // 61
+  overall: 64.5, // 61
   stadium: 'Arena Barueri',
   // star: 0.5,
   logo,

@@ -7,7 +7,7 @@ export const avai: Clube = {
   name: 'Avaí FC',
   sigla: 'AVA',
   nameComplete: 'Avaí Futebol Clube',
-  overall: 69.5,
+  overall: 78.5,
   stadium: 'Estádio da Ressacada',
   // star: 2.5,
   logo,

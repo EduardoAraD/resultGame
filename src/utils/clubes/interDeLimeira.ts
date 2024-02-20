@@ -7,7 +7,7 @@ export const interDeLimeira: Clube = {
   name: 'Inter de Limeira',
   sigla: 'ILI',
   nameComplete: 'Associação Atlética Internacional',
-  overall: 62.5,
+  overall: 68,
   stadium: 'Estádio Major José Levy Sobrinho',
   // star: 1,
   logo,

@@ -7,7 +7,7 @@ export const urt: Clube = {
   name: 'URT',
   sigla: 'URT',
   nameComplete: 'União Recreativa dos Trabalhadores',
-  overall: 60, // 61
+  overall: 64.5, // 61
   stadium: 'Estádio Zama Maciel - Zamão',
   // star: 0.5,
   logo,

@@ -7,7 +7,7 @@ export const parnahyba: Clube = {
   name: 'Parnahyba SC',
   sigla: 'PNB',
   nameComplete: 'Parnahyba Sport Club',
-  overall: 58,
+  overall: 61.5,
   stadium: 'Estádio Pedro Alelaf',
   // star: 0.5,
   logo,

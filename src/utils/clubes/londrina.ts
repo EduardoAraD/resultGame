@@ -7,7 +7,7 @@ export const londrina: Clube = {
   name: 'Londrina EC',
   sigla: 'LON',
   nameComplete: 'Londrina Esporte Clube',
-  overall: 67.5,
+  overall: 75.5,
   stadium: 'Estádio do Café',
   // star: 2.5,
   logo,

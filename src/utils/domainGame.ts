@@ -6,8 +6,8 @@ interface DomainGame {
 }
 
 export function domainGame({ home, away }: DomainGame): DomainGame {
-  const homeOverrallReajust = 2 * home.overrall - 50
-  const awayOverrallReajust = 2 * away.overrall - 50
+  const homeOverrallReajust = home.overrall
+  const awayOverrallReajust = away.overrall
 
   const over = homeOverrallReajust + awayOverrallReajust
   const variantDomain = 50
@@ -20,15 +20,15 @@ export function domainGame({ home, away }: DomainGame): DomainGame {
   const finalDomainHome = home.domain + changeDomainHome
   const finalDomainAway = away.domain - changeDomainHome
 
-  if (finalDomainHome < 20) {
+  if (finalDomainHome < 15) {
     return {
-      home: { ...home, domain: 20 },
-      away: { ...away, domain: 80 },
+      home: { ...home, domain: 15 },
+      away: { ...away, domain: 85 },
     }
-  } else if (finalDomainAway < 20) {
+  } else if (finalDomainAway < 15) {
     return {
-      home: { ...home, domain: 80 },
-      away: { ...away, domain: 20 },
+      home: { ...home, domain: 85 },
+      away: { ...away, domain: 15 },
     }
   }
 

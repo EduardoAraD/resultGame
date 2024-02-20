@@ -7,7 +7,7 @@ export const ferroviario: Clube = {
   name: 'Ferroviário AC',
   sigla: 'FAC',
   nameComplete: 'Ferroviário Atlético Clube',
-  overall: 63,
+  overall: 69,
   stadium: 'Estádio Presidente Vargas - PV',
   // star: 1,
   logo,

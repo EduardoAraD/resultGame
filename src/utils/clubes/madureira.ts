@@ -7,7 +7,7 @@ export const madureira: Clube = {
   name: 'Madureira EC',
   sigla: 'MAD',
   nameComplete: 'Madureira Esporte Clube',
-  overall: 58,
+  overall: 61.5,
   stadium: 'Estádio Aniceto Moscoso',
   // star: 0.5,
   logo,

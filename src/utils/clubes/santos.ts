@@ -7,7 +7,7 @@ export const santos: Clube = {
   name: 'Santos FC',
   sigla: 'SAN',
   nameComplete: 'Santos Futebol Clube',
-  overall: 73.5,
+  overall: 84.5,
   stadium: 'Estádio Urbano Caldeira - Vila Belmiro',
   // star: 3.5,
   logo,

@@ -7,7 +7,7 @@ export const saoJose: Clube = {
   name: 'São José',
   sigla: 'SJO',
   nameComplete: 'Esporte Clube São José',
-  overall: 66,
+  overall: 73.5,
   stadium: "Estádio Francisco Novelletto Neto - Passo d'Areia",
   // star: 1.5,
   logo,

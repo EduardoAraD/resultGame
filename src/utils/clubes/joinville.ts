@@ -7,7 +7,7 @@ export const joinville: Clube = {
   name: 'Joinville EC',
   sigla: 'JOI',
   nameComplete: 'Joinville Esporte Clube',
-  overall: 59.5,
+  overall: 64,
   stadium: 'Arena Joinville',
   // star: 0.5,
   logo,

@@ -7,7 +7,7 @@ export const brasilDePelotas: Clube = {
   name: 'Brasil de Pelotas',
   sigla: 'BPE',
   nameComplete: 'Grêmio Esportivo Brasil',
-  overall: 60,
+  overall: 64.5,
   stadium: 'Estádio Bento Freitas',
   // star: 0.5,
   logo,

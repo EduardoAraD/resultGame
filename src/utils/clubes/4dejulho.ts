@@ -7,7 +7,7 @@ export const quatroDeJulho: Clube = {
   name: '4 de Julho',
   sigla: '4DJ',
   nameComplete: '4 de Julho Esporte Clube',
-  overall: 57,
+  overall: 60,
   stadium: 'Arena Ytacoatiara',
   // star: 0.5,
   logo,

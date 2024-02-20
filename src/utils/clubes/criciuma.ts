@@ -7,7 +7,7 @@ export const criciuma: Clube = {
   name: 'Criciúma EC',
   sigla: 'CRI',
   nameComplete: 'Criciúma Esporte Clube',
-  overall: 71,
+  overall: 81,
   stadium: 'Estádio Heriberto Hülse - Majestoso',
   // star: 2.5,
   logo,

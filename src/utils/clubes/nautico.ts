@@ -7,7 +7,7 @@ export const nautico: Clube = {
   name: 'Náutico',
   sigla: 'NAU',
   nameComplete: 'Clube Náutico Capibaribe',
-  overall: 67,
+  overall: 75,
   stadium: 'Estádio Eládio de Barros Carvalho - Aflitos',
   // star: 2,
   logo,

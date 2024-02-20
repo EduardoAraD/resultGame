@@ -7,7 +7,7 @@ export const americaDeNatal: Clube = {
   name: 'América de Natal',
   sigla: 'ARN',
   nameComplete: 'América Futebol Clube',
-  overall: 63,
+  overall: 69,
   stadium: 'Arena das Dunas',
   // star: 1,
   logo,

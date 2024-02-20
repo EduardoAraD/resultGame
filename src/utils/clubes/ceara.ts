@@ -7,7 +7,7 @@ export const ceara: Clube = {
   name: 'Ceará SC',
   sigla: 'CEA',
   nameComplete: 'Ceará Sporting Club',
-  overall: 71.5,
+  overall: 81.5,
   stadium: 'Arena Castelão',
   // star: 3,
   logo,

@@ -7,7 +7,7 @@ export const fluminensePi: Clube = {
   name: 'Fluminense PI',
   sigla: 'FPI',
   nameComplete: 'Fluminense Esporte Clube',
-  overall: 60,
+  overall: 64.5,
   stadium: 'Estádio de Futebol Albertão',
   // star: 0.5,
   logo,

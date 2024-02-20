@@ -7,7 +7,7 @@ export const camboriu: Clube = {
   name: 'Camboriú FC',
   sigla: 'CBR',
   nameComplete: 'Camboriú Futebol Clube',
-  overall: 61,
+  overall: 66,
   stadium: 'Estádio Roberto Santos Garcia - Robertão',
   // star: 0.5,
   logo,

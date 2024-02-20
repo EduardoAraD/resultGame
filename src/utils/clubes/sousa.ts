@@ -7,7 +7,7 @@ export const sousa: Clube = {
   name: 'Sousa EC',
   sigla: 'SOU',
   nameComplete: 'Sousa Esporte Clube',
-  overall: 60, // 57
+  overall: 64.5, // 57
   stadium: 'Estádio Antonio Mariz',
   // star: 0.5,
   logo,

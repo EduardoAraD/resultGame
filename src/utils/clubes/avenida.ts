@@ -7,7 +7,7 @@ export const avenida: Clube = {
   name: 'Avenida',
   sigla: 'AVE',
   nameComplete: 'Esporte Clube Avenida',
-  overall: 57,
+  overall: 60,
   stadium: 'Estádio dos Eucaliptos',
   // star: 0.5,
   logo,

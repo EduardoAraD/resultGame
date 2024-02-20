@@ -7,7 +7,7 @@ export const imperatriz: Clube = {
   name: 'Imperatriz',
   sigla: 'IMP',
   nameComplete: 'Sociedade Imperatriz de Desportos',
-  overall: 58.5,
+  overall: 62.5,
   stadium: 'Estádio Frei Epifânio',
   // star: 0.5,
   logo,

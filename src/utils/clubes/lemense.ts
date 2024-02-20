@@ -7,7 +7,7 @@ export const lemense: Clube = {
   name: 'Lemense',
   sigla: 'LEM',
   nameComplete: 'Esporte Clube Lemense',
-  overall: 60,
+  overall: 64.5,
   stadium: 'Estádio Bruno Lazzarini',
   // star: 0.5,
   logo,

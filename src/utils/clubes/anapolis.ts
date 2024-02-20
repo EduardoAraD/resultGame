@@ -7,7 +7,7 @@ export const anapolis: Clube = {
   name: 'Anápolis FC',
   sigla: 'ANA',
   nameComplete: 'Anápolis Futebol Clube',
-  overall: 60,
+  overall: 64.5,
   stadium: 'Estádio Jonas Duarte',
   // star: 0.5,
   logo,

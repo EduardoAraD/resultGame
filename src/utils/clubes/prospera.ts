@@ -7,7 +7,7 @@ export const prospera: Clube = {
   name: 'Próspera',
   sigla: 'PRO',
   nameComplete: 'Esporte Clube Próspera',
-  overall: 59,
+  overall: 63,
   stadium: 'Estádio Mário Balsini',
   // star: 0.5,
   logo,

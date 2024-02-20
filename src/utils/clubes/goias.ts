@@ -7,7 +7,7 @@ export const goias: Clube = {
   name: 'Goiás EC',
   sigla: 'GOI',
   nameComplete: 'Goiás Esporte Clube',
-  overall: 73,
+  overall: 84,
   stadium: 'Estádio Hailé Pinheiro - Serrinha',
   // star: 73,
   logo,

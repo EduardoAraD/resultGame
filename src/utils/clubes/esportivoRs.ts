@@ -7,7 +7,7 @@ export const esportivo: Clube = {
   name: 'Esportivo BG',
   sigla: 'ESP',
   nameComplete: 'Clube Esportivo Bento Gonçalves',
-  overall: 60,
+  overall: 64.5,
   stadium: 'Estádio Montanha dos Vinhedos',
   // star: 0.5,
   logo,

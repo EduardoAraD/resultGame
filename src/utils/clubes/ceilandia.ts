@@ -7,7 +7,7 @@ export const ceilandia: Clube = {
   name: 'Ceilândia EC',
   sigla: 'CEI',
   nameComplete: 'Ceilândia Esporte Clube',
-  overall: 59,
+  overall: 63,
   stadium: 'Estádio Abadião',
   // star: 0.5,
   logo,

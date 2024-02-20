@@ -7,7 +7,7 @@ export const athleticClub: Clube = {
   name: 'Athletic Club',
   sigla: 'ATC',
   nameComplete: 'Athletic Club',
-  overall: 62, // 61
+  overall: 67.5, // 61
   stadium: 'Estádio Joaquim Portugal',
   // star: 0.5,
   logo,

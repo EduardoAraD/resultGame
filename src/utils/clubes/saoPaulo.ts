@@ -7,7 +7,7 @@ export const saoPaulo: Clube = {
   name: 'São Paulo FC',
   sigla: 'SAO',
   nameComplete: 'São Paulo Futebol Clube',
-  overall: 76,
+  overall: 88,
   stadium: 'Estádio Cícero Pompeu de Toledo - Morumbi',
   // star: 3.5,
   logo,

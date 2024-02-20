@@ -7,7 +7,7 @@ export const crato: Clube = {
   name: 'Crato EC',
   sigla: 'CRT',
   nameComplete: 'Crato Esporte Clube',
-  overall: 56,
+  overall: 59,
   stadium: 'Estádio Governador Virgílio Távora - Mirandão',
   // star: 0.5,
   logo,

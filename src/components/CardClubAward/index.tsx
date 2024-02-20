@@ -5,16 +5,18 @@ import logo from '../../assets/logos/escudo_cinza.png'
 
 interface CardClubAwardProps {
   title: string
-  club: ClubShort | undefined
+  clubs: (ClubShort | undefined)[]
 }
-export function CardClubAward({ title, club }: CardClubAwardProps) {
+export function CardClubAward({ title, clubs }: CardClubAwardProps) {
   return (
     <Card>
       <Title>{title}</Title>
-      <Info>
-        <Image source={club === undefined ? logo : club.logo} alt="" />
-        <Name>{club === undefined ? 'A definir' : club.name}</Name>
-      </Info>
+      {clubs.map((club, index) => (
+        <Info key={`${club?.id || ''}_${index}`}>
+          <Image source={club === undefined ? logo : club.logo} alt="" />
+          <Name>{club === undefined ? 'A definir' : club.name}</Name>
+        </Info>
+      ))}
     </Card>
   )
 }

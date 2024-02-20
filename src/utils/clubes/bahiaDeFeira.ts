@@ -7,7 +7,7 @@ export const bahiaDeFeira: Clube = {
   name: 'Bahia de Feira',
   sigla: 'BFE',
   nameComplete: 'Associação Desportiva Bahia de Feira',
-  overall: 60,
+  overall: 64.5,
   stadium: 'Estádio Jóia da princesa',
   // star: 0.5,
   logo,

@@ -7,7 +7,7 @@ export const concordia: Clube = {
   name: 'Concórdia AC',
   sigla: 'CON',
   nameComplete: 'Concórdia Atlético Clube',
-  overall: 60.5,
+  overall: 65.5,
   stadium: 'Estádio Domingos Machado de Lima',
   // star: 0.5,
   logo,

@@ -7,7 +7,7 @@ export const sampaioCorrea: Clube = {
   name: 'Sampaio Corrêa',
   sigla: 'SAM',
   nameComplete: 'Sampaio Corrêa Futebol Clube',
-  overall: 66,
+  overall: 73.5,
   stadium: 'Estádio Governador João Castelo - Castelão',
   // star: 1.5,
   logo,

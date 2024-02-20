@@ -7,7 +7,7 @@ export const brusque: Clube = {
   name: 'Brusque FC',
   sigla: 'BRU',
   nameComplete: 'Brusque Futebol Clube',
-  overall: 65, // 64.5
+  overall: 72, // 64.5
   stadium: 'Estádio Augusto Bauer',
   // star: 1.5,
   logo,

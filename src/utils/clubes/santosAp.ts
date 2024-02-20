@@ -7,7 +7,7 @@ export const santosAp: Clube = {
   name: 'Santos AP',
   sigla: 'SAP',
   nameComplete: 'Santos Futebol Clube',
-  overall: 58,
+  overall: 61.5,
   stadium: 'Estádio Milton de Souza Corrêa - Zerão',
   // star: 0.5,
   logo,

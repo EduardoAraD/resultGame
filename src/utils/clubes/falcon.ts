@@ -7,7 +7,7 @@ export const falcon: Clube = {
   name: 'Falcon FC',
   sigla: 'FAL',
   nameComplete: 'Falcon Futebol Clube',
-  overall: 60,
+  overall: 64.5,
   stadium: 'Estádio João Cruz',
   // star: 0.5,
   logo,

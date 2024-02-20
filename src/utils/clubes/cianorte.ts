@@ -7,7 +7,7 @@ export const cianorte: Clube = {
   name: 'Cianorte FC',
   sigla: 'CIA',
   nameComplete: 'Cianorte Futebol Clube',
-  overall: 59,
+  overall: 63,
   stadium: 'Estadio Olímpico Albino Turbay',
   // star: 0.5,
   logo,

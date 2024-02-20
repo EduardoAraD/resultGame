@@ -7,7 +7,7 @@ export const maringa: Clube = {
   name: 'Maringá FC',
   sigla: 'MRG',
   nameComplete: 'Maringá Futebol Clube',
-  overall: 63,
+  overall: 69,
   stadium: 'Estádio Willie Davids',
   // star: 1,
   logo,

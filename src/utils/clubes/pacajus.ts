@@ -7,7 +7,7 @@ export const pacajus: Clube = {
   name: 'Pacajus EC',
   sigla: 'PAC',
   nameComplete: 'Pacajus Esporte Clube',
-  overall: 62,
+  overall: 67.5,
   stadium: 'Estádio João Ronaldo',
   // star: 0.5,
   logo,

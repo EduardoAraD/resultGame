@@ -7,7 +7,7 @@ export const ferroviaria: Clube = {
   name: 'Ferroviária',
   sigla: 'FER',
   nameComplete: 'Associação Ferroviária de Esportes',
-  overall: 61,
+  overall: 66,
   stadium: 'Arena Fonte Luminosa',
   // star: 0.5,
   logo,

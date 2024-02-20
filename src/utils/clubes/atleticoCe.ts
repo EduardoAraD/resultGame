@@ -7,7 +7,7 @@ export const atleticoCE: Clube = {
   name: 'Atlético CE',
   sigla: 'ACE',
   nameComplete: 'Futebol Clube Atlético Cearense',
-  overall: 60,
+  overall: 64.5,
   stadium: 'Estádio Antônio Cruz',
   // star: 0,
   logo,

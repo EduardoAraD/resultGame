@@ -7,7 +7,7 @@ export const csa: Clube = {
   name: 'CSA',
   sigla: 'CSA',
   nameComplete: 'Centro Sportivo Alagoano',
-  overall: 65,
+  overall: 72,
   stadium: 'Estádio Rei Pelé',
   // star: 1.5,
   logo,

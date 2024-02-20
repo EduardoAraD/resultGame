@@ -7,7 +7,7 @@ export const portoVelho: Clube = {
   name: 'Porto Velho EC',
   sigla: 'PVE',
   nameComplete: 'Porto Velho Esporte Clube',
-  overall: 60,
+  overall: 64.5,
   stadium: 'Estádio Aluizão',
   // star: 0.5,
   logo,

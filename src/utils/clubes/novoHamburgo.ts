@@ -7,7 +7,7 @@ export const novoHamburgo: Clube = {
   name: 'Novo Hamburgo',
   sigla: 'NHA',
   nameComplete: 'Esporte Clube Novo Hamburgo',
-  overall: 60,
+  overall: 64.5,
   stadium: 'Estádio do Vale',
   // star: 0.5,
   logo,

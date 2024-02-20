@@ -7,7 +7,7 @@ export const itabaiana: Clube = {
   name: 'Itabaiana',
   sigla: 'ITA',
   nameComplete: 'Associação Olímpica de Itabaiana',
-  overall: 61, // 62
+  overall: 66, // 62
   stadium: 'Estádio Etelvino Mendonça - Mendoção',
   // star: 0.5,
   logo,

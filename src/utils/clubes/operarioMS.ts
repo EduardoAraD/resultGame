@@ -7,7 +7,7 @@ export const operarioMS: Clube = {
   name: 'Operário FC MS',
   sigla: 'OMS',
   nameComplete: 'Operário Futebol Clube',
-  overall: 59.5,
+  overall: 64,
   stadium: 'Estádio Universitário Pedro Pedrossian - Morenão',
   // star: 0.5,
   logo,

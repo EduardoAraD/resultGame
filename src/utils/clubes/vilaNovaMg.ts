@@ -7,7 +7,7 @@ export const vilaNovaMG: Clube = {
   name: 'Villa Nova MG',
   sigla: 'VMG',
   nameComplete: 'Villa Nova Atlético Clube',
-  overall: 57.5,
+  overall: 61,
   stadium: 'Estádio Castor Cifuentes',
   // star: 0.5,
   logo,

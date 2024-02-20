@@ -7,7 +7,7 @@ export const botafogo: Clube = {
   name: 'Botafogo',
   sigla: 'BOT',
   nameComplete: 'Botafogo de Futebol e Regatas',
-  overall: 76,
+  overall: 88,
   stadium: 'Estádio Olímpico Nilton Santos',
   // star: 3.5,
   logo,

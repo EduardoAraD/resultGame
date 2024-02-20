@@ -17,7 +17,6 @@ import { Button } from '../../components/Button'
 import { ButtonIconOver } from '../../components/ButtonIconOver'
 import { CardClub } from '../../components/CardClub'
 import { EmptyList } from '../../components/EmptyList'
-import { ModalChooseClub } from '../../components/Modal'
 import { TitleFlatlist } from '../../components/TitleFlatlist'
 import { TitleWithTouchBack } from '../../components/TitleWithTouchBack'
 
@@ -25,6 +24,7 @@ import { createRoundsLeague } from '../../utils/createRoundsLeague'
 import { Container, IconTrash, ViewRemove } from './styles'
 import { Round } from '../../Model/Round'
 import { createRoundsCup } from '../../utils/createRoundsCup'
+import { ModalChooseMultiClubs } from '../../components/ModalChooseMultiClubs'
 
 export interface ChooseClubsInCupRouteParams {
   cup: CupComplete
@@ -38,8 +38,8 @@ export function ChooseClubsInCup() {
   const [showModal, setShowModal] = useState(false)
   const [loading, setLoading] = useState(false)
 
-  function handleAddClub(club: ClubShort) {
-    setClubs((state) => [...state, club])
+  function handleAddClub(club: ClubShort[]) {
+    setClubs((state) => [...state, ...club])
   }
 
   function handleRemoveClub(clubId: string) {
@@ -198,14 +198,13 @@ export function ChooseClubsInCup() {
           disabled={disabledButton}
           onPress={handleCreateCup}
         />
+        <ModalChooseMultiClubs
+          visible={showModal}
+          onClose={() => setShowModal(false)}
+          onSelectedClub={handleAddClub}
+          clubsBlocked={clubs}
+        />
       </Container>
-      <ModalChooseClub
-        visible={showModal}
-        onClose={() => setShowModal(false)}
-        onSelectedClub={handleAddClub}
-        homeOrAway="home"
-        clubsBlocked={clubs}
-      />
     </Background>
   )
 }

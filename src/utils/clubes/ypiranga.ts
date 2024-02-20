@@ -7,7 +7,7 @@ export const ypiranga: Clube = {
   name: 'Ypiranga FC',
   sigla: 'YPI',
   nameComplete: 'Ypiranga Futebol Clube',
-  overall: 63.5,
+  overall: 70,
   stadium: 'Estádio Olímpico Colosso da Lagoa',
   // star: 1,
   logo,

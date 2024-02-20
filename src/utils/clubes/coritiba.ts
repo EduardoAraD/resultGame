@@ -7,7 +7,7 @@ export const coritiba: Clube = {
   name: 'Coritiba FC',
   sigla: 'CRT',
   nameComplete: 'Coritiba Foot Ball Club',
-  overall: 73.5,
+  overall: 84.5,
   stadium: 'Estádio Couto Pereira',
   // star: 3.5,
   logo,

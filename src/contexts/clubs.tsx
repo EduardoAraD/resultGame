@@ -8,6 +8,7 @@ import {
 
 import {
   getClubsShort,
+  removeAllClubs,
   // removeAllClubs,
   removeClub as removeClubAS,
   saveClub,

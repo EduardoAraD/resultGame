@@ -7,7 +7,7 @@ export const juventusSp: Clube = {
   name: 'Juventus SP',
   sigla: 'JSP',
   nameComplete: 'Clube Atlético Juventus',
-  overall: 58,
+  overall: 61.5,
   stadium: 'Estádio Conde Rodolfo Crespi',
   // star: 0.5,
   logo,

@@ -7,7 +7,7 @@ export const taubate: Clube = {
   name: 'Taubaté',
   sigla: 'TAU',
   nameComplete: 'Esporte Clube Taubaté',
-  overall: 57,
+  overall: 60,
   stadium: 'Estádio Joaquim de Morais Filho - Joaquinzão',
   // star: 0.5,
   logo,

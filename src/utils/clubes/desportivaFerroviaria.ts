@@ -7,7 +7,7 @@ export const desportivaFerroviaria: Clube = {
   name: 'Desportiva Ferroviária',
   sigla: 'DFE',
   nameComplete: 'Associação Desportiva Ferroviária',
-  overall: 57,
+  overall: 60,
   stadium: 'Estádio Engenheiro Alencar Araripe',
   // star: 0.5,
   logo,

@@ -7,7 +7,7 @@ export const riverPI: Clube = {
   name: 'River PI',
   sigla: 'RIV',
   nameComplete: 'River Atlético Clube',
-  overall: 59,
+  overall: 63,
   stadium: 'Estádio De Futebol Albertão',
   // star: 0.5,
   logo,

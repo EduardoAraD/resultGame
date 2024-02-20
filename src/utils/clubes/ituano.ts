@@ -7,7 +7,7 @@ export const ituano: Clube = {
   name: 'Ituano FC',
   sigla: 'ITU',
   nameComplete: 'Ituano Futebol Clube',
-  overall: 67,
+  overall: 75,
   stadium: 'Estádio Dr. Novelli Júnior',
   // star: 2,
   logo,

@@ -7,7 +7,7 @@ export const crb: Clube = {
   name: 'CRB',
   sigla: 'CRB',
   nameComplete: 'Clube de Regatas Brasil',
-  overall: 70,
+  overall: 79.5,
   stadium: 'Estádio Rei Pelé',
   // star: 2.5,
   logo,

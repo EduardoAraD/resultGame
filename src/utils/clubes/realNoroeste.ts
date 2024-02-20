@@ -7,7 +7,7 @@ export const realNoroeste: Clube = {
   name: 'Real Noroeste',
   sigla: 'RNO',
   nameComplete: 'Real Noroeste Capixaba Futebol Clube',
-  overall: 59,
+  overall: 63,
   stadium: 'Estádio José Olímpio da Rocha',
   // star: 0.5,
   logo,

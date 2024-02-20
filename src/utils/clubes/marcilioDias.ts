@@ -7,7 +7,7 @@ export const marcilioDias: Clube = {
   name: 'Marcílio Dias',
   sigla: 'MDS',
   nameComplete: 'Clube Náutico Marcílio Dias',
-  overall: 59.5,
+  overall: 64,
   stadium: 'Estádio Dr. Hercílio Luz',
   // star: 0.5,
   logo,

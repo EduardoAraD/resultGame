@@ -7,7 +7,7 @@ export const vitoria: Clube = {
   name: 'Vitória',
   sigla: 'VIT',
   nameComplete: 'Esporte Clube Vitória',
-  overall: 70, // 69
+  overall: 79.5, // 69
   stadium: 'Estádio Manoel Barradas - Barradão',
   // star: 2,
   logo,

@@ -7,7 +7,7 @@ export const maranhao: Clube = {
   name: 'Maranhão AC',
   sigla: 'MAR',
   nameComplete: 'Maranhão Atlético Clube',
-  overall: 61, // 59
+  overall: 66, // 59
   stadium: 'Estádio Governador João Castelo - Castelão',
   // star: 0.5,
   logo,

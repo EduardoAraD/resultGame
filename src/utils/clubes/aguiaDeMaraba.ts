@@ -7,7 +7,7 @@ export const aguiaDeMaraba: Clube = {
   name: 'Águia de Marabá',
   sigla: 'AGM',
   nameComplete: 'Águia de Marabá Futebol Clube',
-  overall: 57,
+  overall: 60,
   stadium: 'Estádio Zinho Oliveira',
   // star: 0.5,
   logo,

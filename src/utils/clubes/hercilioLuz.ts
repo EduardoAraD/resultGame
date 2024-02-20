@@ -7,7 +7,7 @@ export const hercilioLuz: Clube = {
   name: 'Hercílio Luz FC',
   sigla: 'HLU',
   nameComplete: 'Hercílio Luz Futebol Clube',
-  overall: 63,
+  overall: 69,
   stadium: 'Estádio Aníbal Torres Costa',
   // star: 1,
   logo,

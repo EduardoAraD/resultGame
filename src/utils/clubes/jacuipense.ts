@@ -7,7 +7,7 @@ export const jacuipense: Clube = {
   name: 'Jacuipense',
   sigla: 'JAC',
   nameComplete: 'Esporte Clube Jacuipense',
-  overall: 59.5,
+  overall: 64,
   stadium: 'Estádio Eliel Martins - Arena Valfredão',
   // star: 0.5,
   logo,

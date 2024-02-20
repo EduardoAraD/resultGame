@@ -7,7 +7,7 @@ export const cse: Clube = {
   name: 'CSE',
   sigla: 'CSE',
   nameComplete: 'Clube Sociedade Esportiva',
-  overall: 57.5,
+  overall: 61,
   stadium: 'Estádio Juca Sampaio',
   // star: 0.5,
   logo,

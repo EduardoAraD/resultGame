@@ -7,7 +7,7 @@ export const portuguesa: Clube = {
   name: 'Portuguesa',
   sigla: 'POR',
   nameComplete: 'Associação Portuguesa de Desportos',
-  overall: 63,
+  overall: 69,
   stadium: 'Estádio do Canindé',
   // star: 1,
   logo,

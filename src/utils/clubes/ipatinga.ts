@@ -7,7 +7,7 @@ export const ipatinga: Clube = {
   name: 'Ipatinga FC',
   sigla: 'IPA',
   nameComplete: 'Ipatinga Futebol Clube',
-  overall: 59,
+  overall: 63,
   stadium: 'Estádio João Lamego Netto - Ipatingão',
   // star: 0.5,
   logo,

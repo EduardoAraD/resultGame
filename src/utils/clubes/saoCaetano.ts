@@ -7,7 +7,7 @@ export const saoCaetano: Clube = {
   name: 'São Caetano',
   sigla: 'SCA',
   nameComplete: 'Associação Desportiva São Caetano',
-  overall: 60,
+  overall: 64.5,
   stadium: 'Estádio Anacleto Campanella',
   // star: 0.5,
   logo,

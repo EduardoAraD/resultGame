@@ -7,7 +7,7 @@ export const galvez: Clube = {
   name: 'Galvez EC',
   sigla: 'GAL',
   nameComplete: 'Galvez Esporte Clube',
-  overall: 56,
+  overall: 59,
   stadium: 'Arena da Floresta',
   // star: 0.5,
   logo,

@@ -7,7 +7,7 @@ export const caldense: Clube = {
   name: 'Caldense',
   sigla: 'CAL',
   nameComplete: 'Associação Atlética Caldense',
-  overall: 60, // 61
+  overall: 64.5, // 61
   stadium: 'Estádio Doutor Ronaldo Junqueira',
   // star: 0.5,
   logo,

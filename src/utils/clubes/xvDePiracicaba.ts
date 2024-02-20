@@ -7,7 +7,7 @@ export const xvDePiracicaba: Clube = {
   name: 'XV de Novembro',
   sigla: 'XVN',
   nameComplete: 'Esporte Clube XV de Novembro',
-  overall: 61, // 63
+  overall: 66, // 63
   stadium: 'Estádio Barão da Serra Negra',
   // star: 1,
   logo,

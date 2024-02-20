@@ -7,7 +7,7 @@ export const iguatu: Clube = {
   name: 'Iguatu',
   sigla: 'IGU',
   nameComplete: 'Associação Desportiva Iguatu',
-  overall: 61,
+  overall: 66,
   stadium: 'Estádio Antônio Moreno de Mello - Morenão',
   // star: 0.5,
   logo,

@@ -7,7 +7,7 @@ export const azuriz: Clube = {
   name: 'Azuriz FC',
   sigla: 'AZU',
   nameComplete: 'Azuriz Futebol Clube',
-  overall: 60,
+  overall: 64.5,
   stadium: 'Estádio Os Pioneiros',
   // star: 0.5,
   logo,

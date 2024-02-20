@@ -7,7 +7,7 @@ export const tremAp: Clube = {
   name: 'Trem AP',
   sigla: 'TRE',
   nameComplete: 'Trem Desportivo Clube',
-  overall: 59,
+  overall: 63,
   stadium: 'Estádio Milton de Souza Corrêa - Zerão',
   // star: 0.5,
   logo,

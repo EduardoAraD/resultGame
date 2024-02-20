@@ -7,7 +7,7 @@ export const resende: Clube = {
   name: 'Resende FC',
   sigla: 'RES',
   nameComplete: 'Resende Futebol Clube',
-  overall: 60,
+  overall: 64.5,
   stadium: 'Estádio do Trabalhador',
   // star: 0.5,
   logo,

@@ -7,7 +7,7 @@ export const novaVenecia: Clube = {
   name: 'Nova Venécia FC',
   sigla: 'NVE',
   nameComplete: 'Nova Venécia Futebol Clube',
-  overall: 60,
+  overall: 64.5,
   stadium: 'Estádio Zenor Pedrosa Rocha',
   // star: 0.5,
   logo,

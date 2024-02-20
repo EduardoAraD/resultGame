@@ -7,7 +7,7 @@ export const cruzeiroAl: Clube = {
   name: 'Cruzeiro AL',
   sigla: 'CRZ',
   nameComplete: 'Esporte Clube Cruzeiro',
-  overall: 58.5,
+  overall: 62.5,
   stadium: 'Estádio Coaracy da Mata Fonseca',
   // star: 0.5,
   logo,

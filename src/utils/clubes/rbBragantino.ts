@@ -7,7 +7,7 @@ export const bragantino: Clube = {
   name: 'RB Bragantino',
   sigla: 'RBB',
   nameComplete: 'Red Bull Bragantino',
-  overall: 75.5,
+  overall: 87.5,
   stadium: 'Estádio Nabi Abi Chedid',
   // star: 3.5,
   logo,

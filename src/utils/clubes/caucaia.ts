@@ -7,7 +7,7 @@ export const caucaia: Clube = {
   name: 'Caucaia EC',
   sigla: 'CAU',
   nameComplete: 'Caucaia Esporte Clube',
-  overall: 60,
+  overall: 64.5,
   stadium: 'Estádio Raimundo de Oliveira Filho - Raimundão',
   // star: 0.5,
   logo,

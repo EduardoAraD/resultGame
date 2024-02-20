@@ -7,7 +7,7 @@ export const atleticoAC: Clube = {
   name: 'Atlético AC',
   sigla: 'AAC',
   nameComplete: 'Atlético Acreano',
-  overall: 55.5,
+  overall: 58,
   stadium: 'Estádio Antônio Aquino Lopes - Florestão',
   // star: 0.5,
   logo,

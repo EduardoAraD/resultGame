@@ -33,10 +33,8 @@ export function StatsGame({
   const chutesAway =
     statsAway.chutesBloqueado + statsAway.chutesFora + statsAway.chutesNoAlvo
 
-  const efficiencyHome =
-    goalHome === 0 ? 0 : (goalHome / statsHome.chutesNoAlvo) * 100
-  const efficiencyAway =
-    goalAway === 0 ? 0 : (goalAway / statsAway.chutesNoAlvo) * 100
+  const efficiencyHome = goalHome === 0 ? 0 : (goalHome / chutesHome) * 100
+  const efficiencyAway = goalAway === 0 ? 0 : (goalAway / chutesAway) * 100
   const efficiencyPenaltHome =
     goalPenalHome === 0 ? 0 : (goalPenalHome / statsHome.qtdPenalt) * 100
   const efficiencyPenaltAway =

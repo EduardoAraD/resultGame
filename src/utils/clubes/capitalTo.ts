@@ -7,7 +7,7 @@ export const capital: Clube = {
   name: 'Capital FC',
   sigla: 'CTO',
   nameComplete: 'Capital Futebol Clube',
-  overall: 61.5,
+  overall: 67,
   stadium: 'Estádio Nilton Santos',
   // star: 0.5,
   logo,

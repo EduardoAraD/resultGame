@@ -7,7 +7,7 @@ export const botafogoPB: Clube = {
   name: 'Botafogo PB',
   sigla: 'BPB',
   nameComplete: 'Botafogo Futebol Clube',
-  overall: 64.5,
+  overall: 71,
   stadium: 'Estádio José Américo de Almeida Filho - Almeidão',
   // star: 1.5,
   logo,

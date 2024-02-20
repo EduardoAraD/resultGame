@@ -7,7 +7,7 @@ export const saoFrancisco: Clube = {
   name: 'São Francisco AC',
   sigla: 'SFR',
   nameComplete: 'São Francisco Futebol Clube',
-  overall: 61,
+  overall: 66,
   stadium: 'Estádio Carlos Alberto Simão Antônio',
   // star: 0.5,
   logo,

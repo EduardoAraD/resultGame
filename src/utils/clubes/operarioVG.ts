@@ -7,7 +7,7 @@ export const operarioVG: Clube = {
   name: 'Operário VG',
   sigla: 'OVG',
   nameComplete: 'Clube Esportivo Operário Várzea-Grandense',
-  overall: 59.5,
+  overall: 64,
   stadium: 'Estádio Dito Souza',
   // star: 0.5,
   logo,

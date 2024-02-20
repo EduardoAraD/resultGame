@@ -7,7 +7,7 @@ export const realAriquemes: Clube = {
   name: 'Real Ariquemes',
   sigla: 'RAR',
   nameComplete: 'Real Ariquemes Esporte Clube',
-  overall: 58,
+  overall: 61.5,
   stadium: 'Estádio Valerião',
   // star: 0.5,
   logo,

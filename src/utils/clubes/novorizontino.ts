@@ -7,7 +7,7 @@ export const novorizontino: Clube = {
   name: 'Novorizontino',
   sigla: 'NOV',
   nameComplete: 'Grêmio Novorizontino',
-  overall: 70,
+  overall: 79.5,
   stadium: 'Estádio Jorge Ismael de Biasi',
   // star: 2.5,
   logo,

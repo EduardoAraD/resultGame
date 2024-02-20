@@ -7,7 +7,7 @@ export const juventusDeJaragua: Clube = {
   name: 'Juventus de Jaraguá',
   sigla: 'JJA',
   nameComplete: 'Grêmio Esportivo Juventus',
-  overall: 58,
+  overall: 61.5,
   stadium: 'Estádio João Marcatto',
   // star: 0.5,
   logo,

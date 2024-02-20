@@ -7,7 +7,7 @@ export const patrocinense: Clube = {
   name: 'Patrocinense',
   sigla: 'PAT',
   nameComplete: 'Clube Atlético Patrocinense',
-  overall: 61,
+  overall: 66,
   stadium: 'Estádio Pedro Alves',
   // star: 0.5,
   logo,

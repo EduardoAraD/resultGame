@@ -7,7 +7,7 @@ export const pontePreta: Clube = {
   name: 'Ponte Preta',
   sigla: 'PON',
   nameComplete: 'Associação Atlética Ponte Preta',
-  overall: 67,
+  overall: 75,
   stadium: 'Estádio Moisés Lucarelli - Majestoso',
   // star: 2,
   logo,

@@ -7,7 +7,7 @@ export const altos: Clube = {
   name: 'Altos',
   sigla: 'ALT',
   nameComplete: 'Associação Atlética de Altos',
-  overall: 62.5,
+  overall: 68,
   stadium: 'Estádio De Futebol Albertão',
   // star: 1,
   logo,

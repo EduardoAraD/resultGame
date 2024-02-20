@@ -7,7 +7,7 @@ export const juventudeSamas: Clube = {
   name: 'Juventude Samas',
   sigla: 'JSA',
   nameComplete: 'Sociedade Esportiva Juventude',
-  overall: 57,
+  overall: 60,
   stadium: 'Estádio Marcos Pinheiro Neto - Pinheirão',
   // star: 0.5,
   logo,

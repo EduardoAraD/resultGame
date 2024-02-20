@@ -7,7 +7,7 @@ export const palmeiras: Clube = {
   name: 'Palmeiras',
   sigla: 'PAL',
   nameComplete: 'Sociedade Esportiva Palmeiras',
-  overall: 78,
+  overall: 91,
   stadium: 'Arena Allianz Parque',
   // star: 4,
   logo,

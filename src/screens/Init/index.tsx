@@ -5,8 +5,8 @@ import { AppRoutesNavigationProps } from '../../routes/app.routes'
 import { Background } from '../../components/Background'
 import { Button } from '../../components/Button'
 
-import { Container, Image, Title } from './styles'
-import LogoImg from '../../assets/logos/botaagua.png'
+import { Container, Image } from './styles'
+import LogoImg from '../../assets/logo.png'
 
 export function Init() {
   const { navigate } = useNavigation<AppRoutesNavigationProps>()
@@ -19,8 +19,11 @@ export function Init() {
     <Background>
       <Container>
         <Image source={LogoImg} alt="logo" />
-        <Title>MakerCup</Title>
-        <Button title="Continuar" onPress={handleGoHome} />
+        <Button
+          style={{ marginTop: 60 }}
+          title="Continuar"
+          onPress={handleGoHome}
+        />
       </Container>
     </Background>
   )

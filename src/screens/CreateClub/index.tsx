@@ -1,18 +1,26 @@
+import { useEffect, useState } from 'react'
 import {
   ImageSourcePropType,
   KeyboardAvoidingView,
   Platform,
   ScrollView,
 } from 'react-native'
+import { useNavigation, useRoute } from '@react-navigation/native'
 import { Controller, useForm } from 'react-hook-form'
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as ImagePicker from 'expo-image-picker'
 import * as Crypto from 'expo-crypto'
+import { Minus, Plus } from 'phosphor-react-native'
+import { useTheme } from 'styled-components/native'
 
+import { useClubs } from '../../hook/useClubs'
+
+import { ClubComplete } from '../../Model/Club'
 import { Background } from '../../components/Background'
 import { Button } from '../../components/Button'
 import { Input } from '../../components/Input'
+import { Loading } from '../../components/Loading'
 import { TitleWithTouchBack } from '../../components/TitleWithTouchBack'
 
 import {
@@ -30,13 +38,6 @@ import {
   ViewOver,
 } from './styles'
 import defaultImg from '../../assets/logos/escudo_cinza.png'
-import { useEffect, useState } from 'react'
-import { Loading } from '../../components/Loading'
-import { useClubs } from '../../hook/useClubs'
-import { ClubComplete } from '../../Model/Club'
-import { Minus, Plus } from 'phosphor-react-native'
-import { useTheme } from 'styled-components/native'
-import { useNavigation, useRoute } from '@react-navigation/native'
 
 type DataSchema = {
   name: string
@@ -220,6 +221,7 @@ export function CreateClub() {
                       onChangeText={onChange}
                       value={value}
                       placeholder="Nome"
+                      autoCapitalize="words"
                       invalid={errors.name !== undefined}
                       editable={!disabledCamps}
                     />
@@ -236,6 +238,7 @@ export function CreateClub() {
                       onChangeText={onChange}
                       value={value}
                       placeholder="Nome completo"
+                      autoCapitalize="words"
                       invalid={errors.nameCompleted !== undefined}
                       editable={!disabledCamps}
                     />
@@ -252,8 +255,10 @@ export function CreateClub() {
                   render={({ field: { onChange, value } }) => (
                     <Input
                       onChangeText={onChange}
+                      autoCapitalize="characters"
                       value={value}
                       placeholder="Sigla"
+                      maxLength={4}
                       invalid={errors.sigla !== undefined}
                       editable={!disabledCamps}
                     />
@@ -270,6 +275,7 @@ export function CreateClub() {
                       onChangeText={onChange}
                       value={value}
                       placeholder="Estádio"
+                      autoCapitalize="words"
                       invalid={errors.stadium !== undefined}
                       editable={!disabledCamps}
                     />

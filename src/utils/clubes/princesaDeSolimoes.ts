@@ -7,7 +7,7 @@ export const princesaDeSolimoes: Clube = {
   name: 'Princesa do Solimões',
   sigla: 'PRS',
   nameComplete: 'Princesa do Solimões Esporte Clube',
-  overall: 56.5,
+  overall: 59.5,
   stadium: 'Estádio Olímpico Gilberto Mestrinho - Gilbertão',
   // star: 0.5,
   logo,

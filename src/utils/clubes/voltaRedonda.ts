@@ -7,7 +7,7 @@ export const voltaRedonda: Clube = {
   name: 'Volta Redonda',
   sigla: 'VRE',
   nameComplete: 'Volta Redonda Futebol Clube',
-  overall: 65, // 64.5
+  overall: 72, // 64.5
   stadium: 'Estádio Sylvio Raulino de Oliveira',
   // star: 1.5,
   logo,

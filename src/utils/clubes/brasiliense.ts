@@ -7,7 +7,7 @@ export const brasiliense: Clube = {
   name: 'Brasiliense FC',
   sigla: 'BRA',
   nameComplete: 'Brasiliense Futebol Clube',
-  overall: 63,
+  overall: 69,
   stadium: 'Estádio Elmo Serejo Farias - Serejão',
   // star: 1,
   logo,

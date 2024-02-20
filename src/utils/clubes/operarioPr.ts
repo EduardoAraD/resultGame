@@ -7,7 +7,7 @@ export const operarioPR: Clube = {
   name: 'Operário Ferroviário',
   sigla: 'OPR',
   nameComplete: 'Operário Ferroviário Esporte Clube',
-  overall: 64.5,
+  overall: 71,
   stadium: 'Estádio Germano Krüger',
   // star: 1.5,
   logo,

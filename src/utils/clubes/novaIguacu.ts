@@ -7,7 +7,7 @@ export const novaIguacu: Clube = {
   name: 'Nova Iguaçu FC',
   sigla: 'NIG',
   nameComplete: 'Nova Iguaçu Futebol Clube',
-  overall: 61, // 62
+  overall: 66, // 62
   stadium: 'Estádio Jânio Moraes',
   // star: 0.5,
   logo,

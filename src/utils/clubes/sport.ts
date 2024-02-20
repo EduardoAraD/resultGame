@@ -7,7 +7,7 @@ export const sport: Clube = {
   name: 'Sport Recife',
   sigla: 'SPO',
   nameComplete: 'Sport Club do Recife',
-  overall: 72,
+  overall: 82,
   stadium: 'Estádio Adelmar da Costa Carvalho - Ilha do Retiro',
   // star: 3,
   logo,

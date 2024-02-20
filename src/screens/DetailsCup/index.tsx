@@ -181,6 +181,8 @@ export function DetailsCup() {
     first: ClubShort | undefined
     secund: ClubShort | undefined
     third: ClubShort | undefined
+    promotions: (ClubShort | undefined)[]
+    relegations: (ClubShort | undefined)[]
   } => {
     if (cup.type === 'League' && cup.status === 'closed') {
       let first: ClubShort | undefined
@@ -199,6 +201,12 @@ export function DetailsCup() {
         first,
         secund,
         third,
+        promotions: clubsItemClass
+          .slice(0, cup.numberClubsPromoted)
+          .map((i) => i.club),
+        relegations: clubsItemClass
+          .slice(-cup.numberClubsRelegated)
+          .map((i) => i.club),
       }
     } else if (cup.type === 'Cup') {
       let first: ClubShort | undefined
@@ -247,15 +255,27 @@ export function DetailsCup() {
         first,
         secund,
         third,
+        promotions: [],
+        relegations: [],
       }
     } else {
       return {
         first: undefined,
         secund: undefined,
         third: undefined,
+        promotions: [],
+        relegations: [],
       }
     }
-  }, [clubsItemClass, cup.hasThirdPlace, cup.status, cup.type, rounds])
+  }, [
+    clubsItemClass,
+    cup.hasThirdPlace,
+    cup.numberClubsPromoted,
+    cup.numberClubsRelegated,
+    cup.status,
+    cup.type,
+    rounds,
+  ])
 
   return (
     <Background>
@@ -311,6 +331,8 @@ export function DetailsCup() {
               hasThirdPlace={cup.hasThirdPlace}
               third={awardsCup.third}
               numberClubs={cup.numberClubs}
+              clubsRenegations={awardsCup.relegations}
+              clubsPromotions={awardsCup.promotions}
             />
           )}
         </ViewOption>

@@ -7,7 +7,7 @@ export const flamengo: Clube = {
   name: 'Flamengo',
   sigla: 'FLA',
   nameComplete: 'Clube de Regatas do Flamengo',
-  overall: 78.5,
+  overall: 92,
   stadium: 'Estádio do Maracanã',
   // star: 4,
   logo,

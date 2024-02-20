@@ -7,7 +7,7 @@ export const democrata: Clube = {
   name: 'Democrata',
   sigla: 'DEM',
   nameComplete: 'Esporte Clube Democrata',
-  overall: 61,
+  overall: 66,
   stadium: 'Estádio José Mammoud Abbas - Mamudão',
   // star: 0.5,
   logo,

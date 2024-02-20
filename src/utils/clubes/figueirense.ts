@@ -7,7 +7,7 @@ export const figueirense: Clube = {
   name: 'Figueirense FC',
   sigla: 'FIG',
   nameComplete: 'Figueirense Futebol Clube',
-  overall: 65,
+  overall: 72,
   stadium: 'Estádio Orlando Scarpelli',
   // star: 1.5,
   logo,

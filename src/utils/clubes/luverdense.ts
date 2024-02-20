@@ -7,7 +7,7 @@ export const luverdense: Clube = {
   name: 'Luverdense EC',
   sigla: 'LUV',
   nameComplete: 'Luverdense Esporte Clube',
-  overall: 56,
+  overall: 59,
   stadium: 'Estádio Passo das Emas',
   // star: 0.5,
   logo,

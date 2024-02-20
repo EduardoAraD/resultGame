@@ -7,7 +7,7 @@ export const mirassol: Clube = {
   name: 'Mirassol FC',
   sigla: 'MIR',
   nameComplete: 'Mirassol Futebol Clube',
-  overall: 70.5,
+  overall: 80,
   stadium: 'Estádio José Maria de Campos Maia',
   // star: 2.5,
   logo,

@@ -7,7 +7,7 @@ export const marica: Clube = {
   name: 'Maricá FC',
   sigla: 'MRC',
   nameComplete: 'Maricá Futebol Clube',
-  overall: 56,
+  overall: 59,
   stadium: 'Estádio João Saldanha',
   // star: 0.5,
   logo,

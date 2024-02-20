@@ -7,7 +7,7 @@ export const paysandu: Clube = {
   name: 'Paysandu SC',
   sigla: 'PAY',
   nameComplete: 'Paysandu Sport Club',
-  overall: 66,
+  overall: 73.5,
   stadium: 'Estádio Banpará Curuzu',
   // star: 1.5,
   logo,

@@ -7,7 +7,7 @@ export const cascavel: Clube = {
   name: 'Cascavel',
   sigla: 'CAS',
   nameComplete: 'Futebol Clube Cascavel',
-  overall: 59,
+  overall: 63,
   stadium: 'Estádio Olímpico Regional',
   // star: 0.5,
   logo,

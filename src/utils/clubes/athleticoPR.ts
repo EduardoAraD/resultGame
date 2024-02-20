@@ -7,7 +7,7 @@ export const athleticoParanaense: Clube = {
   name: 'Athletico Paranaense',
   sigla: 'CAP',
   nameComplete: 'Club Athletico Paranaense',
-  overall: 76.5,
+  overall: 89,
   stadium: 'Arena da Baixada',
   // star: 3.5,
   logo,

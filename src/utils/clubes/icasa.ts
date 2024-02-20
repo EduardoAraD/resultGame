@@ -7,7 +7,7 @@ export const icasa: Clube = {
   name: 'Icasa',
   sigla: 'ICA',
   nameComplete: 'Associação Desportiva Recreativa Cultural Icasa',
-  overall: 59,
+  overall: 63,
   stadium: 'Arena Romeirão',
   // star: 0.5,
   logo,

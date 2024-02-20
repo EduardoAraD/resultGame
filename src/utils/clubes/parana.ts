@@ -7,7 +7,7 @@ export const parana: Clube = {
   name: 'Paraná Clube',
   sigla: 'PAR',
   nameComplete: 'Paraná Clube',
-  overall: 59,
+  overall: 63,
   stadium: 'Estádio Durival Britto e Silva - Vila Capanema',
   // star: 0.5,
   logo,

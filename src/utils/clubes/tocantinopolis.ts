@@ -7,7 +7,7 @@ export const tocantinopolis: Clube = {
   name: 'Tocantinópolis EC',
   sigla: 'TOC',
   nameComplete: 'Tocantinópolis Esporte Clube',
-  overall: 58.5,
+  overall: 62.5,
   stadium: 'Estádio João Ribeiro',
   // star: 0.5,
   logo,

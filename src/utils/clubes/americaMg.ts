@@ -7,7 +7,7 @@ export const americaMG: Clube = {
   name: 'América MG',
   sigla: 'AMG',
   nameComplete: 'América Futebol Clube',
-  overall: 74,
+  overall: 85,
   stadium: 'Arena Independência',
   // star: 3.5,
   logo,

@@ -7,7 +7,7 @@ export const pousoAlegre: Clube = {
   name: 'Pouso Alegre FC',
   sigla: 'POU',
   nameComplete: 'Pouso Alegre Futebol Clube',
-  overall: 62.5,
+  overall: 68,
   stadium: 'Estádio Irmão Gino Maria Rossi - Manduzão',
   // star: 1,
   logo,

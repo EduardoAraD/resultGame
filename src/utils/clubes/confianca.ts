@@ -7,7 +7,7 @@ export const confianca: Clube = {
   name: 'Confiança',
   sigla: 'CFN',
   nameComplete: 'Associação Desportiva Confiança',
-  overall: 63,
+  overall: 69,
   stadium: 'Estádio Estadual Lourival Baptista - Arena Batistão',
   // star: 1,
   logo,

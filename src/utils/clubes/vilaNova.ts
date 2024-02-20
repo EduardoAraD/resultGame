@@ -7,7 +7,7 @@ export const vilaNova: Clube = {
   name: 'Vila Nova',
   sigla: 'VIL',
   nameComplete: 'Vila Nova Futebol Clube',
-  overall: 69, // 67.5
+  overall: 78, // 67.5
   stadium: 'Estádio Onésio Brasileiro Alvarenga - OBA',
   // star: 2,
   logo,

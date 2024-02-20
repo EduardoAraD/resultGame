@@ -7,7 +7,7 @@ export const fluminense: Clube = {
   name: 'Fluminense',
   sigla: 'FLU',
   nameComplete: 'Fluminense Football Club',
-  overall: 77,
+  overall: 89.5,
   stadium: 'Estádio do Maracanã',
   // star: 4,
   logo,

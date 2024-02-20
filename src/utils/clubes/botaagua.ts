@@ -7,7 +7,7 @@ export const botaagua: Clube = {
   name: 'Botaagua FC',
   sigla: 'BTA',
   nameComplete: 'Botaagua Futebol Clube',
-  overall: 62, // 60
+  overall: 67.5, // 60
   stadium: 'Arena Pabussú',
   // star: 0.5,
   logo,

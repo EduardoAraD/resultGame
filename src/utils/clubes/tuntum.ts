@@ -7,7 +7,7 @@ export const tuntum: Clube = {
   name: 'Tuntum EC',
   sigla: 'TUN',
   nameComplete: 'Tuntum Esporte Clube',
-  overall: 57,
+  overall: 60,
   stadium: 'Estádio Rafael Seabra',
   // star: 0.5,
   logo,

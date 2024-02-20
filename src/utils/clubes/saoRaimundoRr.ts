@@ -7,7 +7,7 @@ export const saoRaimundoRr: Clube = {
   name: 'São Raimundo RR',
   sigla: 'SRR',
   nameComplete: 'São Raimundo Esporte Clube',
-  overall: 58.5,
+  overall: 62.5,
   stadium: 'Estádio Flamarion Vasconcelos',
   // star: 0.5,
   logo,

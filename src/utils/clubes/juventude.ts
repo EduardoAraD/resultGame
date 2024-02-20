@@ -7,7 +7,7 @@ export const juventude: Clube = {
   name: 'Juventude',
   sigla: 'JUV',
   nameComplete: 'Esporte Clube Juventude',
-  overall: 70,
+  overall: 79.5,
   stadium: 'Estádio Alfredo Jaconi',
   // star: 2.5,
   logo,

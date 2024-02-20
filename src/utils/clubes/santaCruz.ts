@@ -7,7 +7,7 @@ export const santaCruz: Clube = {
   name: 'Santa Cruz',
   sigla: 'SCZ',
   nameComplete: 'Santa Cruz Futebol Clube',
-  overall: 63,
+  overall: 69,
   stadium: 'Estádio José do Rego Maciel - Arruda',
   // star: 1,
   logo,

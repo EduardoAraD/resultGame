@@ -7,7 +7,7 @@ export const interporto: Clube = {
   name: 'Interporto FC',
   sigla: 'ITP',
   nameComplete: 'Interporto Futebol Clube',
-  overall: 59,
+  overall: 63,
   stadium: 'Estádio General Sampaio',
   // star: 0.5,
   logo,

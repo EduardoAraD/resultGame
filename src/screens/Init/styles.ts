@@ -9,14 +9,6 @@ export const Container = styled.View`
 `
 
 export const Image = styled.Image`
-  height: 300px;
-  width: 300px;
+  height: 350px;
   object-fit: contain;
-`
-
-export const Title = styled.Text`
-  font-size: 24px;
-  margin-bottom: 100px;
-  color: ${(props) => props.theme.colors.white};
-  font-family: ${(props) => props.theme.fonts.bold};
 `
