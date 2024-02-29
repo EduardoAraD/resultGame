@@ -42,10 +42,14 @@ export const Penal = styled.Text`
   color: ${({ theme }) => theme.colors.white};
 `
 
-export const Goal = styled.Text`
+interface GoalProps {
+  matchCompleted: boolean
+}
+export const Goal = styled.Text<GoalProps>`
   font-size: 24px;
   font-family: ${({ theme }) => theme.fonts.bold};
-  color: ${({ theme }) => theme.colors.white};
+  color: ${({ theme, matchCompleted }) =>
+    matchCompleted ? theme.colors.white : theme.colors.gray_400};
   width: 26px;
 `
 

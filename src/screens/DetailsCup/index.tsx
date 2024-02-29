@@ -66,12 +66,20 @@ export function DetailsCup() {
       )
       let hasMatchFinished = cup.status !== 'start'
       let allMatchsFinished = true
+      let roundCurrent = rounds.length
 
       const roundsMatchs: RoundMatch[] = await Promise.all(
-        rounds.map(async (rd) => {
+        rounds.map(async (rd, indexRound) => {
+          const roundIndexToCurrent = indexRound + 1
           const matchs: MatchComplete[] = await Promise.all(
             rd.matchs.map(async (match) => {
               const stats = await getMatchStats(match.idStats)
+              if (
+                stats.status === 'start' &&
+                roundCurrent > roundIndexToCurrent
+              ) {
+                roundCurrent = roundIndexToCurrent
+              }
               const statsTrip = match.idStatsTrip
                 ? await getMatchStats(match.idStatsTrip)
                 : undefined
@@ -115,6 +123,8 @@ export function DetailsCup() {
           return roundMatch
         }),
       )
+
+      setRoundSelected(roundCurrent)
 
       if (hasMatchFinished && cup.status === 'start') {
         await updateCup({ ...cup, status: 'progress' })
@@ -298,7 +308,6 @@ export function DetailsCup() {
               pointsToWin={cup.winPoints}
               pointsToDraw={cup.drawPoints}
               pointsToLoss={cup.lossPoints}
-              // hasAwayGoal={cup.hasAwayGoal}
               numberPromotionClubs={cup.numberClubsPromoted}
               numberRelegationClubs={cup.numberClubsRelegated}
             />

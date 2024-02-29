@@ -8,7 +8,6 @@ import {
 
 import {
   getClubsShort,
-  removeAllClubs,
   // removeAllClubs,
   removeClub as removeClubAS,
   saveClub,
@@ -57,7 +56,6 @@ export function ClubsProvider({ children }: ClubsProviderProps) {
   }
 
   const loadClubs = useCallback(async () => {
-    // await removeAllClubs()
     const listClubs = await getClubsShort()
     setClubs(listClubs)
   }, [])

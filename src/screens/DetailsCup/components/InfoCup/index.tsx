@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { ScrollView } from 'react-native'
+import { Alert, ScrollView } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 
 import { removeCup } from '../../../../lib/asyncstorage/cup'
@@ -48,9 +48,23 @@ export function InfoCup({
   async function handleRemoveCup() {
     try {
       setLoading(true)
-
-      await removeCup(idCup)
-      goBack()
+      Alert.alert(
+        'Deletar campeonato',
+        'Você deseja remover esse campeonato?',
+        [
+          {
+            text: 'Não',
+            style: 'cancel',
+          },
+          {
+            text: 'Sim',
+            onPress: async () => {
+              await removeCup(idCup)
+              goBack()
+            },
+          },
+        ],
+      )
     } catch (error) {
       console.log(error)
     } finally {

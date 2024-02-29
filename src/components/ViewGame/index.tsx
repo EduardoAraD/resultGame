@@ -6,16 +6,10 @@ import { Stats } from '../../Model/Stats'
 import { MomentGame } from '../MomentGame'
 import { MomentsGame } from '../MomentsGame'
 import { StatsGame } from '../StatsGame'
+import { ViewOption } from '../ViewOption'
 
-import {
-  Content,
-  DivActionGame,
-  OptionGame,
-  Scroll,
-  TextOptionGame,
-} from './styles'
+import { Scroll } from './styles'
 
-type OptionGameType = 'narration' | 'highlight' | 'stats'
 interface ViewGameProps {
   listNarration: MomentComplete[]
   listMomentsHighlight: MomentComplete[]
@@ -43,46 +37,21 @@ export function ViewGame({
   goalPenalAway,
   goalPenalHome,
 }: ViewGameProps) {
-  const [optionViewGame, setOptionViewGame] =
-    useState<OptionGameType>('highlight')
+  const [optionViewGame, setOptionViewGame] = useState('Destaques')
 
-  function handleUpdateOptionViewGame(value: OptionGameType) {
-    setOptionViewGame(value)
-  }
+  const narrationOPTION = 'Narração'
+  const highlightOPTION = 'Destaques'
+  const statsOPTION = 'Estatísticas'
+  const OPTIONS = [narrationOPTION, highlightOPTION, statsOPTION]
 
   return (
-    <Content>
-      <DivActionGame>
-        <OptionGame
-          selected={optionViewGame === 'narration'}
-          activeOpacity={0.8}
-          onPress={() => handleUpdateOptionViewGame('narration')}
-        >
-          <TextOptionGame selected={optionViewGame === 'narration'}>
-            Narração
-          </TextOptionGame>
-        </OptionGame>
-        <OptionGame
-          selected={optionViewGame === 'highlight'}
-          activeOpacity={0.8}
-          onPress={() => handleUpdateOptionViewGame('highlight')}
-        >
-          <TextOptionGame selected={optionViewGame === 'highlight'}>
-            Destaques
-          </TextOptionGame>
-        </OptionGame>
-        <OptionGame
-          selected={optionViewGame === 'stats'}
-          activeOpacity={0.8}
-          onPress={() => handleUpdateOptionViewGame('stats')}
-        >
-          <TextOptionGame selected={optionViewGame === 'stats'}>
-            Estatísticas
-          </TextOptionGame>
-        </OptionGame>
-      </DivActionGame>
+    <ViewOption
+      onOptionSelected={setOptionViewGame}
+      optionSelected={optionViewGame}
+      options={OPTIONS}
+    >
       <Scroll showsVerticalScrollIndicator={false}>
-        {optionViewGame === 'narration' &&
+        {optionViewGame === narrationOPTION &&
           listNarration.map((item) => (
             <MomentGame
               key={`${item.minute}-${item.id}`}
@@ -92,10 +61,10 @@ export function ViewGame({
               logo={item.homeOrAway === 'home' ? logoHome : logoAway}
             />
           ))}
-        {optionViewGame === 'highlight' && (
+        {optionViewGame === highlightOPTION && (
           <MomentsGame moments={listMomentsHighlight} />
         )}
-        {optionViewGame === 'stats' && (
+        {optionViewGame === statsOPTION && (
           <StatsGame
             logoHome={logoHome}
             logoAway={logoAway}
@@ -109,6 +78,6 @@ export function ViewGame({
           />
         )}
       </Scroll>
-    </Content>
+    </ViewOption>
   )
 }

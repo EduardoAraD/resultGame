@@ -31,19 +31,26 @@ export function getHeadKick({
   //     1.1 FORA 0.5
   //     1.2 DEFESA 0.2
   //     1.3 GOL 0.3
+  const chanceGoalKick = 0.3 // 0.2
   const numberRandom = Math.floor(Math.random() * 100)
-  if (numberRandom < 20) {
+  if (numberRandom < 25) {
     const responseDefense = defenseChangePosse({
       minute,
       domain,
       homeOrAway,
       type: 'HOLD GOALKEEPER',
-      stats: { ...emptyStats, chutesNoAlvo: 1, golEsperado: 0.3 },
+      stats: { ...emptyStats, chutesNoAlvo: 1, golEsperado: chanceGoalKick },
     })
     moments = moments.concat(responseDefense.moments)
     proxChance = responseDefense.proxChance
-  } else if (numberRandom < 50) {
-    const moment = goalMoment(minute, nameClub, homeOrAway, 0.3, domain)
+  } else if (numberRandom < 45) {
+    const moment = goalMoment(
+      minute,
+      nameClub,
+      homeOrAway,
+      chanceGoalKick,
+      domain,
+    )
     moments.push(moment)
   } else {
     const responseKickOut = defenseChangePosse({
@@ -51,7 +58,7 @@ export function getHeadKick({
       domain,
       homeOrAway,
       type: 'KICK OUT',
-      stats: { ...emptyStats, chutesFora: 1, golEsperado: 0.3 },
+      stats: { ...emptyStats, chutesFora: 1, golEsperado: chanceGoalKick },
     })
     moments = moments.concat(responseKickOut.moments)
     proxChance = responseKickOut.proxChance
@@ -84,15 +91,22 @@ export function getShortKick({
   }
   moments.push(momentIni)
   const numberRandom = Math.floor(Math.random() * 100)
+  const chanceGoalKick = 0.5 // 0.40
   // 2. CHUTE DE CARA
   //   5.1 GOL 0.6
   //   5.2 DEFESA 0.2
   //   5.4 FORA 0.2
   //   5.5 PENAL 0.1
-  if (numberRandom < 60) {
-    const moment = goalMoment(minute, nameClub, homeOrAway, 0.6, domain)
+  if (numberRandom < 40) {
+    const moment = goalMoment(
+      minute,
+      nameClub,
+      homeOrAway,
+      chanceGoalKick,
+      domain,
+    )
     moments.push(moment)
-  } else if (numberRandom < 70) {
+  } else if (numberRandom < 60) {
     const moment: MomentComplete = {
       minute,
       narracao: 'Penalti! O jogador foi derrubado na hora do chute',
@@ -104,23 +118,34 @@ export function getShortKick({
     }
     moments.push(moment)
     proxChance = 'PENALT'
-  } else if (numberRandom < 80) {
+  } else if (numberRandom < 85) {
     const responseDefense = defenseChangePosse({
       minute,
       domain,
       homeOrAway,
-      type: 'HOLD GOALKEEPER',
-      stats: { ...emptyStats, chutesNoAlvo: 1, golEsperado: 0.6 },
+      type: 'DEFENSE GOALKEEPER',
+      stats: { ...emptyStats, chutesNoAlvo: 1, golEsperado: chanceGoalKick },
     })
     moments = moments.concat(responseDefense.moments)
     proxChance = responseDefense.proxChance
+    const momentCorner: MomentComplete = {
+      minute,
+      narracao: `É escanteio para o ${nameClub}!`,
+      homeOrAway,
+      stats: emptyStats,
+      domainAway: domain.away,
+      domainHome: domain.home,
+      id: 0,
+    }
+    moments.push(momentCorner)
+    proxChance = 'CORNER KICK'
   } else {
     const responseKickOut = defenseChangePosse({
       minute,
       domain,
       homeOrAway,
       type: 'KICK OUT',
-      stats: { ...emptyStats, chutesFora: 1, golEsperado: 0.6 },
+      stats: { ...emptyStats, chutesFora: 1, golEsperado: chanceGoalKick },
     })
     moments = moments.concat(responseKickOut.moments)
     proxChance = responseKickOut.proxChance
@@ -151,13 +176,14 @@ export function getKick({
   //     2.6 FALTA 0.1
 
   const numberRandom = Math.floor(Math.random() * 100)
+  const chanceGoalKick = 0.3 // 0.25
   if (numberRandom < 10) {
     // rebote
     const moment: MomentComplete = {
       minute,
       narracao: 'Espalma o goleiro a bola.',
       homeOrAway,
-      stats: { ...emptyStats, chutesNoAlvo: 1, golEsperado: 0.3 },
+      stats: { ...emptyStats, chutesNoAlvo: 1, golEsperado: chanceGoalKick },
       domainAway: domain.away,
       domainHome: domain.home,
       id: 0,
@@ -178,7 +204,7 @@ export function getKick({
       domain,
       homeOrAway,
       type: 'KICK OUT',
-      stats: { ...emptyStats, chutesFora: 1, golEsperado: 0.3 },
+      stats: { ...emptyStats, chutesFora: 1, golEsperado: chanceGoalKick },
     })
     moments = moments.concat(responseKickOut.moments)
     proxChance = responseKickOut.proxChance
@@ -189,11 +215,11 @@ export function getKick({
       domain,
       homeOrAway,
       type: 'KICK BLOCKED',
-      stats: { ...emptyStats, chutesBloqueado: 1, golEsperado: 0.3 },
+      stats: { ...emptyStats, chutesBloqueado: 1, golEsperado: chanceGoalKick },
     })
     moments = moments.concat(responseKickOut.moments)
     proxChance = responseKickOut.proxChance
-  } else if (numberRandom < 40) {
+  } else if (numberRandom < 45) {
     const moment: MomentComplete = {
       minute,
       narracao: 'Falta marcada! O jogador foi derrubado na hora de chutar',
@@ -205,20 +231,47 @@ export function getKick({
     }
     moments.push(moment)
     proxChance = 'SHORT FREE'
-  } else if (numberRandom < 70) {
+  } else if (numberRandom < 60) {
+    const responseDefense = defenseChangePosse({
+      minute,
+      domain,
+      homeOrAway,
+      type: 'DEFENSE GOALKEEPER',
+      stats: { ...emptyStats, chutesNoAlvo: 1, golEsperado: chanceGoalKick },
+    })
+    moments = moments.concat(responseDefense.moments)
+    proxChance = responseDefense.proxChance
+    const momentCorner: MomentComplete = {
+      minute,
+      narracao: `É escanteio para o ${nameClub}!`,
+      homeOrAway,
+      stats: emptyStats,
+      domainAway: domain.away,
+      domainHome: domain.home,
+      id: 0,
+    }
+    moments.push(momentCorner)
+    proxChance = 'CORNER KICK'
+  } else if (numberRandom < 80) {
     // defesa goleiro
     const responseKickOut = defenseChangePosse({
       minute,
       domain,
       homeOrAway,
       type: 'HOLD GOALKEEPER',
-      stats: { ...emptyStats, chutesFora: 1, golEsperado: 0.3 },
+      stats: { ...emptyStats, chutesNoAlvo: 1, golEsperado: chanceGoalKick },
     })
     moments = moments.concat(responseKickOut.moments)
     proxChance = responseKickOut.proxChance
   } else {
     // goal
-    const moment = goalMoment(minute, nameClub, homeOrAway, 0.3, domain)
+    const moment = goalMoment(
+      minute,
+      nameClub,
+      homeOrAway,
+      chanceGoalKick,
+      domain,
+    )
     moments.push(moment)
   }
 
@@ -243,9 +296,16 @@ export function getLongKick({
   //     3.3 BLOQUEADO 0.1
   //     3.1 FORA 0.5
   const numberRandom = Math.floor(Math.random() * 100)
+  const chanceGoalKick = 0.2 // 0.1
   if (numberRandom < 10) {
     // goal
-    const moment = golacoMoment(minute, nameClub, homeOrAway, 0.1, domain)
+    const moment = golacoMoment(
+      minute,
+      nameClub,
+      homeOrAway,
+      chanceGoalKick,
+      domain,
+    )
     moments.push(moment)
   } else if (numberRandom < 20) {
     // bloqueado
@@ -254,7 +314,7 @@ export function getLongKick({
       domain,
       homeOrAway,
       type: 'KICK BLOCKED',
-      stats: { ...emptyStats, chutesBloqueado: 1, golEsperado: 0.1 },
+      stats: { ...emptyStats, chutesBloqueado: 1, golEsperado: chanceGoalKick },
     })
     moments = moments.concat(responseKickOut.moments)
     proxChance = responseKickOut.proxChance
@@ -265,7 +325,7 @@ export function getLongKick({
       domain,
       homeOrAway,
       type: 'HOLD GOALKEEPER',
-      stats: { ...emptyStats, chutesNoAlvo: 1, golEsperado: 0.1 },
+      stats: { ...emptyStats, chutesNoAlvo: 1, golEsperado: chanceGoalKick },
     })
     moments = moments.concat(response.moments)
     proxChance = response.proxChance
@@ -276,7 +336,7 @@ export function getLongKick({
       domain,
       homeOrAway,
       type: 'KICK OUT',
-      stats: { ...emptyStats, chutesFora: 1, golEsperado: 0.1 },
+      stats: { ...emptyStats, chutesFora: 1, golEsperado: chanceGoalKick },
     })
     moments = moments.concat(responseKickOut.moments)
     proxChance = responseKickOut.proxChance
@@ -328,21 +388,32 @@ export function getLongFreeKick({
     moments.push(moment2)
 
     const numberRandom2 = Math.floor(Math.random() * 100)
+    const chanceGoalKick = 0.1
     if (numberRandom2 < 10) {
       // barreira
       const moment3: MomentComplete = {
         minute,
         homeOrAway,
         narracao: 'A bola bate na barreira e sai.',
-        stats: { ...emptyStats, chutesBloqueado: 1, golEsperado: 0.15 },
+        stats: {
+          ...emptyStats,
+          chutesBloqueado: 1,
+          golEsperado: chanceGoalKick,
+        },
         domainAway: domain.away + (homeOrAway === 'home' ? 15 : -15),
         domainHome: domain.home + (homeOrAway === 'home' ? -15 : 15),
         id: 0,
       }
       moments.push(moment3)
-    } else if (numberRandom2 < 25) {
+    } else if (numberRandom2 < 20) {
       // golaço
-      const moment = golacoMoment(minute, nameClub, homeOrAway, 0.15, domain)
+      const moment = golacoMoment(
+        minute,
+        nameClub,
+        homeOrAway,
+        chanceGoalKick,
+        domain,
+      )
       moments.push(moment)
     } else {
       // fora
@@ -351,7 +422,7 @@ export function getLongFreeKick({
         domain,
         homeOrAway,
         type: 'KICK OUT',
-        stats: { ...emptyStats, chutesFora: 1, golEsperado: 0.15 },
+        stats: { ...emptyStats, chutesFora: 1, golEsperado: chanceGoalKick },
       })
       moments = moments.concat(responseKickOut.moments)
       proxChance = responseKickOut.proxChance
@@ -406,6 +477,7 @@ export function getShortFreeKick({
   moments.push(moment)
 
   const numberRandom = Math.floor(Math.random() * 100)
+  const chanceGoalKick = 0.3 // 0.2
   if (numberRandom >= 70) {
     // barreira
     const moment3: MomentComplete = {
@@ -415,7 +487,7 @@ export function getShortFreeKick({
         numberRandom < 15
           ? 'Bate na barreira e sai para linha de fundo'
           : 'A bola ficou na barreira.',
-      stats: { ...emptyStats, chutesBloqueado: 1, golEsperado: 0.2 },
+      stats: { ...emptyStats, chutesBloqueado: 1, golEsperado: chanceGoalKick },
       domainAway: domain.away + (homeOrAway === 'home' ? 20 : -20),
       domainHome: domain.home + (homeOrAway === 'home' ? -20 : 20),
       id: 0,
@@ -449,7 +521,13 @@ export function getShortFreeKick({
 
   if (numberRandom < 20) {
     // goal
-    const moment = goalMoment(minute, nameClub, homeOrAway, 0.2, domain)
+    const moment = goalMoment(
+      minute,
+      nameClub,
+      homeOrAway,
+      chanceGoalKick,
+      domain,
+    )
     moments.push(moment)
   } else if (numberRandom < 40) {
     // defesa
@@ -458,7 +536,7 @@ export function getShortFreeKick({
       domain,
       homeOrAway,
       type: 'DEFENSE GOALKEEPER',
-      stats: { ...emptyStats, chutesNoAlvo: 1, golEsperado: 0.2 },
+      stats: { ...emptyStats, chutesNoAlvo: 1, golEsperado: chanceGoalKick },
     })
     moments = moments.concat(response.moments)
     proxChance = response.proxChance
@@ -482,7 +560,7 @@ export function getShortFreeKick({
       domain,
       homeOrAway,
       type: 'KICK OUT',
-      stats: { ...emptyStats, chutesFora: 1, golEsperado: 0.2 },
+      stats: { ...emptyStats, chutesFora: 1, golEsperado: chanceGoalKick },
     })
     moments = moments.concat(response.moments)
     proxChance = response.proxChance
@@ -521,6 +599,7 @@ export function getReboundKick({
   moments.push(moment)
 
   const numberRandom = Math.floor(Math.random() * 100)
+  const chanceGoalKick = 0.8
   if (numberRandom < 10) {
     // fora
     const response = defenseChangePosse({
@@ -528,7 +607,7 @@ export function getReboundKick({
       domain,
       homeOrAway,
       type: 'KICK OUT',
-      stats: { ...emptyStats, chutesFora: 1, golEsperado: 0.7 },
+      stats: { ...emptyStats, chutesFora: 1, golEsperado: chanceGoalKick },
     })
     moments = moments.concat(response.moments)
     proxChance = response.proxChance
@@ -539,7 +618,7 @@ export function getReboundKick({
       domain,
       homeOrAway,
       type: 'KICK BLOCKED',
-      stats: { ...emptyStats, chutesBloqueado: 1, golEsperado: 0.7 },
+      stats: { ...emptyStats, chutesBloqueado: 1, golEsperado: chanceGoalKick },
     })
     moments = moments.concat(response.moments)
     proxChance = response.proxChance
@@ -550,13 +629,19 @@ export function getReboundKick({
       domain,
       homeOrAway,
       type: 'HOLD GOALKEEPER',
-      stats: { ...emptyStats, chutesNoAlvo: 1, golEsperado: 0.7 },
+      stats: { ...emptyStats, chutesNoAlvo: 1, golEsperado: chanceGoalKick },
     })
     moments = moments.concat(response.moments)
     proxChance = response.proxChance
   } else {
     // goal
-    const moment = goalMoment(minute, nameClub, homeOrAway, 0.1, domain)
+    const moment = goalMoment(
+      minute,
+      nameClub,
+      homeOrAway,
+      chanceGoalKick,
+      domain,
+    )
     moments.push(moment)
   }
 
@@ -593,13 +678,14 @@ export function getPenaltKick({
   moments.push(moment)
 
   const numberRandom = Math.floor(Math.random() * 100)
+  const chanceGoalKick = 0.8
   if (numberRandom < 10) {
     // rebote
     const moment2: MomentComplete = {
       minute,
       narracao: 'Espalma errado o goleiro.',
       homeOrAway,
-      stats: { ...emptyStats, chutesNoAlvo: 1, golEsperado: 0.7 },
+      stats: { ...emptyStats, chutesNoAlvo: 1, golEsperado: chanceGoalKick },
       domainAway: domain.away,
       domainHome: domain.home,
       id: 0,
@@ -620,7 +706,7 @@ export function getPenaltKick({
       domain,
       homeOrAway,
       type: 'KICK OUT',
-      stats: { ...emptyStats, chutesFora: 1, golEsperado: 0.7 },
+      stats: { ...emptyStats, chutesFora: 1, golEsperado: chanceGoalKick },
     })
     moments = moments.concat(response.moments)
     proxChance = response.proxChance
@@ -631,13 +717,13 @@ export function getPenaltKick({
       domain,
       homeOrAway,
       type: 'DEFENSE GOALKEEPER',
-      stats: { ...emptyStats, chutesNoAlvo: 1, golEsperado: 0.7 },
+      stats: { ...emptyStats, chutesNoAlvo: 1, golEsperado: chanceGoalKick },
     })
     moments = moments.concat(response.moments)
     proxChance = response.proxChance
   } else {
     // goal
-    const moment = goalMoment(minute, nameClub, homeOrAway, 0.7, {
+    const moment = goalMoment(minute, nameClub, homeOrAway, chanceGoalKick, {
       home: domain.home,
       away: domain.away,
     })
@@ -687,7 +773,7 @@ export function momentShortCross({
       })
       moments = moments.concat(respShortKick.moments)
       proxChance = respShortKick.proxChance
-    } else if (numberRandom2 < 85) {
+    } else if (numberRandom2 < 80) {
       const respDefendeGoalpeeker = defenseChangePosse({
         minute,
         domain,
@@ -696,7 +782,7 @@ export function momentShortCross({
       })
       moments = moments.concat(respDefendeGoalpeeker.moments)
       proxChance = respDefendeGoalpeeker.proxChance
-    } else if (numberRandom2 < 95) {
+    } else if (numberRandom2 < 90) {
       const momentCorner: MomentComplete = {
         minute,
         narracao: 'A defesa corta para linha de fundo. É escanteio',
@@ -731,7 +817,7 @@ export function momentShortCross({
     moments.push(moment)
 
     const numberRandom2 = Math.floor(Math.random() * 100)
-    if (numberRandom2 < 60) {
+    if (numberRandom2 < 30) {
       const respShortKick = getShortKick({
         minute,
         homeOrAway,
@@ -740,7 +826,16 @@ export function momentShortCross({
       })
       moments = moments.concat(respShortKick.moments)
       proxChance = respShortKick.proxChance
-    } else if (numberRandom2 < 75) {
+    } else if (numberRandom2 < 40) {
+      const respShortKick = getKick({
+        minute,
+        homeOrAway,
+        nameClub,
+        domain,
+      })
+      moments = moments.concat(respShortKick.moments)
+      proxChance = respShortKick.proxChance
+    } else if (numberRandom2 < 80) {
       const respDefendeGoalpeeker = defenseChangePosse({
         minute,
         domain,
@@ -813,7 +908,7 @@ export function momentLongCross({
     })
     moments = moments.concat(respDefense.moments)
     proxChance = respDefense.proxChance
-  } else if (numberRandom < 60) {
+  } else if (numberRandom < 70) {
     const respHeadKick = getHeadKick({ minute, homeOrAway, nameClub, domain })
     moments = moments.concat(respHeadKick.moments)
     proxChance = respHeadKick.proxChance

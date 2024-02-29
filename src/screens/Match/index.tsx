@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { useNavigation, useRoute } from '@react-navigation/native'
+import { useKeepAwake } from 'expo-keep-awake'
 
 import { MatchRoutesNavigationProps } from '../../routes/routes/match.routes'
 import { useMatch } from '../../hook/useMatch'
@@ -15,8 +16,11 @@ import { Domination } from '../../components/Domination'
 import { Placar } from '../../components/Placar'
 import { ViewGame } from '../../components/ViewGame'
 
-import { chanceDeGol, chanceDeGolPenalt } from '../../utils/chanceDeGol'
+import { chanceDeGolPenalt } from '../../utils/chanceDeGol'
 import { domainGame } from '../../utils/domainGame'
+import { currentPlacarMoment } from '../../utils/functions/GoalChange/finished'
+import { getChanceGoal } from '../../utils/functions/GoalChange/contructionPlay'
+import { ProxChanceClub } from '../../utils/functions/GoalChange/interfaces'
 
 import {
   Container,
@@ -27,9 +31,6 @@ import {
   Stadium,
   Title,
 } from './styles'
-import { currentPlacarMoment } from '../../utils/functions/GoalChange/finished'
-import { getChanceGoal } from '../../utils/functions/GoalChange/contructionPlay'
-import { ProxChanceClub } from '../../utils/functions/GoalChange/interfaces'
 
 export interface MatchRouteProps {
   home: ClubComplete
@@ -46,6 +47,7 @@ export function Match() {
   const { navigate, goBack } = useNavigation<MatchRoutesNavigationProps>()
   const params = useRoute().params as MatchRouteProps
   const { updateStatsMatch } = useMatch()
+  useKeepAwake()
 
   const durationMomentGame = 900 // 900 milisegundos
 
@@ -96,6 +98,8 @@ export function Match() {
         goalAwayPenal: awayPenalt,
         type: modeGame,
         status: 'finished',
+        homeStats: statsHome,
+        awayStats: statsAway,
       })
 
       goBack()

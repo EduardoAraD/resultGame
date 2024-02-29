@@ -4,6 +4,7 @@ import { KEY_MATCH, KEY_ROUND } from './dataStorage'
 
 import { MatchStats, emptyMatchStats } from '../../Model/Match'
 import { Round } from '../../Model/Round'
+import { emptyStats } from '../../Model/Stats'
 
 export async function saveRoundsInCup(rounds: Round[], idCup: string) {
   await AsyncStorage.setItem(`${KEY_ROUND}/${idCup}`, JSON.stringify(rounds))
@@ -45,7 +46,11 @@ export async function getMatchStats(idMatch: string): Promise<MatchStats> {
   const matchDB = await AsyncStorage.getItem(`${KEY_MATCH}/${idMatch}`)
   if (matchDB) {
     const match: MatchStats = JSON.parse(matchDB)
-    return match
+    return {
+      ...match,
+      homeStats: match.homeStats ? match.homeStats : emptyStats,
+      awayStats: match.awayStats ? match.awayStats : emptyStats,
+    }
   }
   return { ...emptyMatchStats, id: idMatch }
 }

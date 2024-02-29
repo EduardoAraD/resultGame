@@ -46,7 +46,7 @@ function momentLaunch({
     //     2. CORTA A DEFESA 0.3
     //     3. DOMINOU E FICOU NA CARA DO GOL 0.1
     //       -> CHUTE DE CARA PRO GOL
-    if (numberRandom2 < 50) {
+    if (numberRandom2 < 40) {
       const moment: MomentComplete = {
         minute,
         narracao: `O lançamento foi forte demais e a bola fica com o goleiro.`,
@@ -57,7 +57,7 @@ function momentLaunch({
         id: 0,
       }
       moments.push(moment)
-    } else if (numberRandom2 < 85) {
+    } else if (numberRandom2 < 75) {
       const moment: MomentComplete = {
         minute,
         narracao: `Corta a defesa, mas o ${nameClubAttack} mantém a posse de bola.`,
@@ -117,7 +117,7 @@ function momentLaunch({
         id: 0,
       }
       moments.push(moment)
-    } else if (numberRandom2 < 25) {
+    } else if (numberRandom2 < 20) {
       const moment: MomentComplete = {
         minute,
         narracao: `A defesa intercepta e a posse muda de lado`,
@@ -181,7 +181,7 @@ function momentSidePlay({
   }
   moments.push(moment)
 
-  if (numberRandom < 20) {
+  if (numberRandom < 25) {
     const moment2: MomentComplete = {
       minute,
       narracao: `O jogador faz o dribe e parte para a grande área.`,
@@ -201,7 +201,7 @@ function momentSidePlay({
     })
     moments = moments.concat(responseShortCross.moments)
     proxChance = responseShortCross.proxChance
-  } else if (numberRandom < 80) {
+  } else if (numberRandom < 85) {
     const moment2: MomentComplete = {
       minute,
       narracao: `Acha o espaço e cruza a bola na área.`,
@@ -281,7 +281,7 @@ function momentCentralPlay({
     }
     moments.push(moment2)
     const numberRandom2 = Math.floor(Math.random() * 100)
-    if (numberRandom2 < 30) {
+    if (numberRandom2 < 35) {
       const moment3: MomentComplete = {
         minute,
         narracao: `Fez o passe nas costas da defesa. O ${nameClub} parte para o gol`,
@@ -300,7 +300,7 @@ function momentCentralPlay({
       })
       moments = moments.concat(resultChance.moments)
       proxChance = resultChance.proxChance
-    } else if (numberRandom2 < 40) {
+    } else if (numberRandom2 < 50) {
       const moment3: MomentComplete = {
         minute,
         narracao: 'Isso é falta! Derrubaram o jogador na hora do passe.',
@@ -335,7 +335,7 @@ function momentCentralPlay({
     }
     moments.push(moment2)
     const numberRandom2 = Math.floor(Math.random() * 100)
-    if (numberRandom2 < 20) {
+    if (numberRandom2 < 15) {
       const responseDefense = defenseChangePosse({
         minute,
         domain,
@@ -426,7 +426,7 @@ function momentBallPossetion({
 
   const numberRandom = Math.floor(Math.random() * 100)
 
-  if (numberRandom < 40) {
+  if (numberRandom < 50) {
     const responseSide = momentSidePlay({
       minute,
       domain,
@@ -474,7 +474,7 @@ function momentCornerKick({
   }
   moments.push(moment)
   const numberRandom = Math.floor(Math.random() * 100)
-  if (numberRandom < 35) {
+  if (numberRandom < 30) {
     const moment: MomentComplete = {
       minute,
       narracao: 'Faz o passe curto',

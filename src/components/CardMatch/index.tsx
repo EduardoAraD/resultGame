@@ -21,6 +21,7 @@ interface CardMatchProps extends TouchableOpacityProps {
 
 export function CardMatch({ match, ...rest }: CardMatchProps) {
   const isTripMatch = match.statsTrip !== undefined
+  const matchIsComplated = match.stats.status === 'finished'
   const sumPlacar: MatchStats = useMemo(() => {
     const statsTrip = match.statsTrip ? match.statsTrip : emptyMatchStats
     const status =
@@ -51,7 +52,9 @@ export function CardMatch({ match, ...rest }: CardMatchProps) {
   ])
 
   const showPenal =
-    sumPlacar.type !== 'Normal' && sumPlacar.goalAway === sumPlacar.goalHome
+    sumPlacar.type !== 'Normal' &&
+    sumPlacar.goalAway === sumPlacar.goalHome &&
+    match.stats.status === 'finished'
 
   const goalHomeFirstMatch =
     match.statsTrip !== undefined && match.statsTrip.status === 'finished'
@@ -84,11 +87,21 @@ export function CardMatch({ match, ...rest }: CardMatchProps) {
                 <TextGoalMult>{goalHomeSecundsMatch}</TextGoalMult>
               </View>
             )}
-            <Goal style={{ textAlign: 'right' }}>{sumPlacar.goalHome}</Goal>
+            <Goal
+              matchCompleted={matchIsComplated}
+              style={{ textAlign: 'right' }}
+            >
+              {sumPlacar.goalHome}
+            </Goal>
             {showPenal && <Penal>{sumPlacar.goalHomePenal}</Penal>}
             <Line />
             {showPenal && <Penal>{sumPlacar.goalAwayPenal}</Penal>}
-            <Goal style={{ textAlign: 'left' }}>{sumPlacar.goalAway}</Goal>
+            <Goal
+              matchCompleted={matchIsComplated}
+              style={{ textAlign: 'left' }}
+            >
+              {sumPlacar.goalAway}
+            </Goal>
             {isTripMatch && (
               <View>
                 <TextGoalMult>{goalAwayFirstMatch}</TextGoalMult>

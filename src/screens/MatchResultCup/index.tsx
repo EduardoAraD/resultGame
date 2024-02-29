@@ -10,25 +10,10 @@ import { ClubComplete, emptyClubComplete } from '../../Model/Club'
 import { MatchStats, emptyMatchStats } from '../../Model/Match'
 import { Background } from '../../components/Background'
 import { Button } from '../../components/Button'
+import { CardMatchResult } from '../../components/CardMatchResult'
 import { TitleWithTouchBack } from '../../components/TitleWithTouchBack'
 
-import {
-  CardMatch,
-  Container,
-  Content,
-  Game,
-  Goal,
-  InfoClub,
-  InfoMatch,
-  LogoMatch,
-  Name,
-  Opacity,
-  Penal,
-  Placar,
-  Stadium,
-  VS,
-  ViewClube,
-} from './styles'
+import { Container, Content, InfoClub, Name } from './styles'
 
 export function MatchResultCup() {
   const { navigate, goBack } = useNavigation<CupRoutesNavigationProps>()
@@ -118,8 +103,6 @@ export function MatchResultCup() {
     }
   }, [stats.status, statsTrip])
 
-  const hasPenal = stats.goalAwayPenal > 0 || stats.goalHomePenal > 0
-
   return (
     <Background>
       <Container>
@@ -131,64 +114,13 @@ export function MatchResultCup() {
               <Name>{match ? match.round.name : ''}</Name>
             </InfoClub>
             {statsTrip !== undefined && (
-              <CardMatch>
-                <Stadium>{awayClub.stadium}</Stadium>
-                <Game>
-                  <Opacity>
-                    <LogoMatch source={awayClub.logo} alt="" />
-                    <LogoMatch source={homeClub.logo} alt="" />
-                  </Opacity>
-                  <InfoMatch
-                    style={{ gap: statsTrip.status === 'start' ? 10 : 0 }}
-                  >
-                    <ViewClube position="flex-start">
-                      <Name>{awayClub.name}</Name>
-                    </ViewClube>
-                    <Placar>
-                      {statsTrip.status === 'finished' && (
-                        <Goal>{statsTrip.goalHome}</Goal>
-                      )}
-                      <VS>vs</VS>
-                      {statsTrip.status === 'finished' && (
-                        <Goal>{statsTrip.goalAway}</Goal>
-                      )}
-                    </Placar>
-                    <ViewClube position="flex-end">
-                      <Name>{homeClub.name}</Name>
-                    </ViewClube>
-                  </InfoMatch>
-                </Game>
-              </CardMatch>
+              <CardMatchResult
+                home={awayClub}
+                away={homeClub}
+                stats={statsTrip}
+              />
             )}
-
-            <CardMatch>
-              <Stadium>{homeClub.stadium}</Stadium>
-              <Game>
-                <Opacity>
-                  <LogoMatch source={homeClub.logo} alt="" />
-                  <LogoMatch source={awayClub.logo} alt="" />
-                </Opacity>
-                <InfoMatch style={{ gap: stats.status === 'start' ? 10 : 0 }}>
-                  <ViewClube position="flex-start">
-                    <Name>{homeClub.name}</Name>
-                  </ViewClube>
-                  <Placar>
-                    {stats.status === 'finished' && (
-                      <Goal>{stats.goalHome}</Goal>
-                    )}
-                    {hasPenal && <Penal>{stats.goalHomePenal}</Penal>}
-                    <VS>vs</VS>
-                    {hasPenal && <Penal>{stats.goalAwayPenal}</Penal>}
-                    {stats.status === 'finished' && (
-                      <Goal>{stats.goalAway}</Goal>
-                    )}
-                  </Placar>
-                  <ViewClube position="flex-end">
-                    <Name>{awayClub.name}</Name>
-                  </ViewClube>
-                </InfoMatch>
-              </Game>
-            </CardMatch>
+            <CardMatchResult home={homeClub} away={awayClub} stats={stats} />
           </Content>
         </ScrollView>
         <Button

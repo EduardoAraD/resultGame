@@ -15,6 +15,8 @@ interface StatsGameProps {
   hasPenalt: boolean
   goalPenalHome: number
   goalPenalAway: number
+  showGoal?: boolean
+  showLogos?: boolean
 }
 
 export function StatsGame({
@@ -27,6 +29,8 @@ export function StatsGame({
   goalPenalAway,
   goalPenalHome,
   hasPenalt,
+  showGoal = true,
+  showLogos = true,
 }: StatsGameProps) {
   const chutesHome =
     statsHome.chutesBloqueado + statsHome.chutesFora + statsHome.chutesNoAlvo
@@ -47,33 +51,35 @@ export function StatsGame({
   return (
     <Container>
       <Content>
-        <ItemStats
-          title="Gols"
-          valueHome={String(goalHome)}
-          valueAway={String(goalAway)}
-        />
+        {showGoal && (
+          <ItemStats
+            title="Gols"
+            valueHome={String(goalHome)}
+            valueAway={String(goalAway)}
+          />
+        )}
         <ItemStats
           title="Posse de Bola"
           valueHome={`${posseHome}%`}
           valueAway={`${posseAway}%`}
         />
         <ItemStats
-          title="Chutes"
+          title="Finalizações"
           valueHome={String(chutesHome)}
           valueAway={String(chutesAway)}
         />
         <ItemStats
-          title="Chutes para Fora"
+          title="Finalizações para Fora"
           valueHome={String(statsHome.chutesFora)}
           valueAway={String(statsAway.chutesFora)}
         />
         <ItemStats
-          title="Chutes Bloqueados"
+          title="Finalizações Bloqueadas"
           valueHome={String(statsHome.chutesBloqueado)}
           valueAway={String(statsAway.chutesBloqueado)}
         />
         <ItemStats
-          title="Chutes no Gol"
+          title="Finalizações no Gol"
           valueHome={String(statsHome.chutesNoAlvo)}
           valueAway={String(statsAway.chutesNoAlvo)}
         />
@@ -103,10 +109,12 @@ export function StatsGame({
         )}
       </Content>
 
-      <DivLogos>
-        <LogoHome source={logoHome} />
-        <LogoAway source={logoAway} />
-      </DivLogos>
+      {showLogos && (
+        <DivLogos>
+          <LogoHome source={logoHome} />
+          <LogoAway source={logoAway} />
+        </DivLogos>
+      )}
     </Container>
   )
 }
