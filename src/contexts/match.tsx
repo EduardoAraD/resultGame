@@ -1,8 +1,8 @@
 import { ReactNode, createContext, useState } from 'react'
 
 import { saveMatchStats } from '../lib/asyncstorage/matchs'
+import { useCup } from '../hook/useCup'
 
-import { TypeCup } from '../Model/Cup'
 import { MatchComplete, MatchStats } from '../Model/Match'
 
 import { classificationClubToProxRound } from '../utils/classificationClubToProxRound'
@@ -17,24 +17,13 @@ interface RoundMatch {
   maxRound: number
 }
 
-interface InfoCupMatch {
-  id: string
-  typeCup: TypeCup
-  name: string
-}
-
 interface MatchCurrent extends MatchComplete {
-  cup: InfoCupMatch
   round: RoundMatch
 }
 
 type MatchContextDataProps = {
   match: MatchCurrent | undefined
-  saveMatch: (
-    match: MatchComplete,
-    cup: InfoCupMatch,
-    round: RoundMatch,
-  ) => void
+  saveMatch: (match: MatchComplete, round: RoundMatch) => void
   updateStatsMatch: (stats: MatchStats) => Promise<void>
   removeMatch: () => void
 }
@@ -44,14 +33,12 @@ export const MatchContext = createContext<MatchContextDataProps>(
 )
 
 export function MatchProvider({ children }: MatchProviderProps) {
+  const { cup } = useCup()
+
   const [match, setMatch] = useState<MatchCurrent | undefined>(undefined)
 
-  function saveMatch(
-    matchComplete: MatchComplete,
-    cup: InfoCupMatch,
-    round: RoundMatch,
-  ) {
-    setMatch({ ...matchComplete, cup, round })
+  function saveMatch(matchComplete: MatchComplete, round: RoundMatch) {
+    setMatch({ ...matchComplete, round })
   }
 
   async function updateStatsMatch(stats: MatchStats) {
@@ -78,7 +65,7 @@ export function MatchProvider({ children }: MatchProviderProps) {
             statsTrip: match.statsTrip,
             stats,
           },
-          match.cup.id,
+          cup.id,
           {
             numberRound: match.round.numberRound,
             maxRound: match.round.maxRound,

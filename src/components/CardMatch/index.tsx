@@ -22,6 +22,7 @@ interface CardMatchProps extends TouchableOpacityProps {
 export function CardMatch({ match, ...rest }: CardMatchProps) {
   const isTripMatch = match.statsTrip !== undefined
   const matchIsComplated = match.stats.status === 'finished'
+
   const sumPlacar: MatchStats = useMemo(() => {
     const statsTrip = match.statsTrip ? match.statsTrip : emptyMatchStats
     const status =
@@ -38,14 +39,18 @@ export function CardMatch({ match, ...rest }: CardMatchProps) {
       goalHomePenal: match.stats.goalHomePenal + statsTrip.goalAwayPenal,
       type: match.stats.type,
       status,
+      homeStats: match.stats.homeStats,
+      awayStats: match.stats.awayStats,
     }
 
     return stats
   }, [
+    match.stats.awayStats,
     match.stats.goalAway,
     match.stats.goalAwayPenal,
     match.stats.goalHome,
     match.stats.goalHomePenal,
+    match.stats.homeStats,
     match.stats.status,
     match.stats.type,
     match.statsTrip,

@@ -50,6 +50,12 @@ export function StatsGame({
 
   return (
     <Container>
+      {showLogos && (
+        <DivLogos>
+          <LogoHome source={logoHome} />
+          <LogoAway source={logoAway} />
+        </DivLogos>
+      )}
       <Content>
         {showGoal && (
           <ItemStats
@@ -108,13 +114,6 @@ export function StatsGame({
           </>
         )}
       </Content>
-
-      {showLogos && (
-        <DivLogos>
-          <LogoHome source={logoHome} />
-          <LogoAway source={logoAway} />
-        </DivLogos>
-      )}
     </Container>
   )
 }

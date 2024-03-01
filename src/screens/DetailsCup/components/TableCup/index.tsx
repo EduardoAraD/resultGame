@@ -1,22 +1,18 @@
 import { useMemo, useState } from 'react'
 import { ScrollView } from 'react-native'
 
-import { MatchComplete } from '../../../../Model/Match'
+import { useCup } from '../../../../hook/useCup'
+
 import { PlacarTable } from './PlacarTable'
 
 import { getNameRoundCup } from '../../../../utils/functions/getNameRoundCup'
 
 import { Container, Content, Matchs, Title, Touch } from './styles'
 
-interface TableCupProps {
-  rounds: {
-    numberRound: number
-    matchs: MatchComplete[]
-  }[]
-  hasThirdPlace: boolean
-}
+export function TableCup() {
+  const { rounds, cup } = useCup()
+  const hasThirdPlace = cup.hasThirdPlace
 
-export function TableCup({ rounds, hasThirdPlace }: TableCupProps) {
   const [roundSelected, setRoundSelected] = useState(-1)
 
   function handleRoundSelected(roundNumber: number) {

@@ -1,27 +1,44 @@
 import { useEffect, useState } from 'react'
 import { ImageSourcePropType } from 'react-native'
-import { FadeIn, FadeOut, SlideInUp, PinwheelIn } from 'react-native-reanimated'
+import {
+  FadeIn,
+  FadeOut,
+  useAnimatedStyle,
+  useSharedValue,
+  withTiming,
+} from 'react-native-reanimated'
+
+import { useCup } from '../../hook/useCup'
+
+import { GoalAnimated } from './animatedGoal'
 
 import {
   Container,
-  ContainerPenalts,
   Content,
-  ContentAnimated,
-  DivMatchTrip,
-  ImageBack,
-  ImageBall,
+  ContentMatchTrip,
+  ContentNameCup,
+  ContentPlacar,
+  Goal,
+  Image,
   Line,
-  SubText,
+  Name,
   Text,
-  TextAnimated,
+  TextName,
+  TextPlacarTrip,
+  ViewName,
 } from './styles'
-import ballPng from '../../assets/ball.png'
 
 interface PlacarProps {
+  home: {
+    name: string
+    logo: ImageSourcePropType
+  }
+  away: {
+    name: string
+    logo: ImageSourcePropType
+  }
   goalHome: number
   goalAway: number
-  logoHome: ImageSourcePropType
-  logoAway: ImageSourcePropType
   hasPenalts: boolean
   penaltHome: number
   penaltAway: number
@@ -29,25 +46,41 @@ interface PlacarProps {
     goalHome: number
     goalAway: number
   }
+  nameCup: string
 }
 
 export function Placar({
+  nameCup,
   goalAway,
   goalHome,
   penaltAway,
   penaltHome,
   hasPenalts,
-  logoAway,
-  logoHome,
   placarMatchTrip = undefined,
+  home,
+  away,
 }: PlacarProps) {
-  const [isGoal, setIsGoal] = useState<'' | 'home' | 'away'>('')
+  const { cup } = useCup()
+  const [isGoalHome, setIsGoalHome] = useState(false)
+  const [isGoalAway, setIsGoalAway] = useState(false)
+
+  const sharedProgress = useSharedValue(0)
+
+  const styledAnimated = useAnimatedStyle(() => {
+    return {
+      height: sharedProgress.value,
+    }
+  })
+
+  useEffect(() => {
+    sharedProgress.value = withTiming(hasPenalts ? 42 : 0)
+  }, [hasPenalts, sharedProgress])
 
   useEffect(() => {
     if (goalAway !== 0) {
-      setIsGoal('away')
+      setIsGoalAway(true)
       const intervalAway = setInterval(() => {
-        setIsGoal('')
+        setIsGoalAway(false)
       }, 2500)
       return () => clearInterval(intervalAway)
     }
@@ -55,61 +88,64 @@ export function Placar({
 
   useEffect(() => {
     if (goalHome !== 0) {
-      setIsGoal('home')
+      setIsGoalHome(true)
       const intervalHome = setInterval(() => {
-        setIsGoal('')
+        setIsGoalHome(false)
       }, 2500)
       return () => clearInterval(intervalHome)
     }
   }, [goalHome])
 
-  return isGoal !== '' ? (
-    <Content>
-      <ImageBack source={isGoal === 'home' ? logoHome : logoAway} />
-      <ContentAnimated entering={PinwheelIn.duration(500)}>
-        <TextAnimated entering={SlideInUp.duration(500).delay(150)}>
-          G
-        </TextAnimated>
-        <ImageBall source={ballPng} alt="" />
-        <TextAnimated entering={SlideInUp.duration(500).delay(150)}>
-          O
-        </TextAnimated>
-        <TextAnimated entering={SlideInUp.duration(500).delay(300)}>
-          O
-        </TextAnimated>
-        <TextAnimated entering={SlideInUp.duration(500).delay(450)}>
-          O
-        </TextAnimated>
-        <TextAnimated entering={SlideInUp.duration(500).delay(600)}>
-          L
-        </TextAnimated>
-      </ContentAnimated>
-    </Content>
-  ) : (
-    <Container exiting={FadeOut} entering={FadeIn} hasPenalts={hasPenalts}>
-      <Text style={{ textAlign: 'right' }}>{goalHome}</Text>
-      {hasPenalts && (
-        <SubText style={{ textAlign: 'right' }}>{penaltHome}</SubText>
-      )}
-      {hasPenalts ? (
-        <ContainerPenalts>
-          <SubText>P</SubText>
+  return (
+    <Container>
+      <ContentNameCup>
+        <Name>{nameCup === '' ? cup.name : nameCup}</Name>
+        {placarMatchTrip && (
+          <TextName>
+            Placar de ida -{' '}
+            <Text>
+              {` ${placarMatchTrip.goalHome}-${placarMatchTrip.goalAway} `}{' '}
+            </Text>
+          </TextName>
+        )}
+      </ContentNameCup>
+
+      <Content>
+        <ViewName>
+          <Image source={home.logo} alt="" style={{ left: 0 }} />
+          {isGoalHome ? (
+            <GoalAnimated />
+          ) : (
+            <Name exiting={FadeOut} entering={FadeIn} numberOfLines={2}>
+              {home.name}
+            </Name>
+          )}
+        </ViewName>
+        <ContentPlacar>
+          <Goal style={{ textAlign: 'right' }}>{goalHome}</Goal>
           <Line />
-        </ContainerPenalts>
-      ) : (
-        <Line />
-      )}
-      {hasPenalts && (
-        <SubText style={{ textAlign: 'left' }}>{penaltAway}</SubText>
-      )}
-      <Text style={{ textAlign: 'left' }}>{goalAway}</Text>
-      {placarMatchTrip !== undefined && (
-        <DivMatchTrip>
-          <SubText>{placarMatchTrip.goalHome}</SubText>
-          <SubText>-</SubText>
-          <SubText>{placarMatchTrip.goalAway}</SubText>
-        </DivMatchTrip>
-      )}
+          <Goal style={{ textAlign: 'left' }}>{goalAway}</Goal>
+        </ContentPlacar>
+        <ViewName>
+          <Image source={away.logo} alt="" style={{ right: 0 }} />
+          {isGoalAway ? (
+            <GoalAnimated />
+          ) : (
+            <Name exiting={FadeOut} entering={FadeIn} numberOfLines={2}>
+              {away.name}
+            </Name>
+          )}
+        </ViewName>
+      </Content>
+      <ContentMatchTrip style={styledAnimated}>
+        <TextPlacarTrip style={{ textAlign: 'right' }}>
+          {penaltHome}
+        </TextPlacarTrip>
+        <Line style={{ backgroundColor: 'white' }} />
+        <TextPlacarTrip style={{ textAlign: 'left' }}>
+          {penaltAway}
+        </TextPlacarTrip>
+      </ContentMatchTrip>
     </Container>
   )
 }

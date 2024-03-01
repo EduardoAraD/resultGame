@@ -1,13 +1,13 @@
-import { useMemo } from 'react'
+import { useMemo, useState } from 'react'
 import { FlatList, View } from 'react-native'
 import { CaretLeft, CaretRight } from 'phosphor-react-native'
 import { useTheme } from 'styled-components/native'
 import { useNavigation } from '@react-navigation/native'
 
+import { useCup } from '../../../../hook/useCup'
 import { useMatch } from '../../../../hook/useMatch'
 import { CupRoutesNavigationProps } from '../../../../routes/routes/cup.routes'
 
-import { TypeCup } from '../../../../Model/Cup'
 import { MatchComplete } from '../../../../Model/Match'
 import { CardMatch } from '../../../../components/CardMatch'
 
@@ -15,95 +15,82 @@ import { getNameRoundCup } from '../../../../utils/functions/getNameRoundCup'
 
 import { Actions, Container, Round, Touch } from './styles'
 
-interface MatchsProps {
-  onRound: (round: number) => void
-  maxRound: number
-  round: number
-  matchs: MatchComplete[]
-  nameCup: string
-  typeCup: TypeCup
-  hasThirdPlace: boolean
-  idCup: string
-}
-
-export function Matchs({
-  onRound,
-  maxRound,
-  round,
-  matchs,
-  nameCup,
-  typeCup,
-  hasThirdPlace,
-  idCup,
-}: MatchsProps) {
+export function Matchs() {
   const { navigate } = useNavigation<CupRoutesNavigationProps>()
   const {
     colors: { white, gray_400 },
   } = useTheme()
   const { saveMatch } = useMatch()
+  const { cup, rounds, roundCurrent } = useCup()
+  const maxRound = rounds.length
+
+  const [roundSelected, setRoundSelected] = useState(roundCurrent)
 
   function handleUpdateRound(value: number) {
-    const newRound = round + value
+    const newRound = roundSelected + value
     if (newRound >= 1 && newRound <= maxRound) {
-      onRound(newRound)
+      setRoundSelected(newRound)
     }
   }
 
   async function handleGoStartMatch(match: MatchComplete) {
-    saveMatch(
-      match,
-      {
-        id: idCup,
-        typeCup,
-        name: nameCup,
-      },
-      {
-        name: roundText,
-        numberRound: round,
-        maxRound,
-      },
-    )
+    saveMatch(match, {
+      name: roundText,
+      numberRound: roundSelected,
+      maxRound,
+    })
 
     navigate('matchCup')
   }
 
   const roundText = useMemo(() => {
-    if (typeCup === 'Cup') {
-      return getNameRoundCup(round, maxRound, hasThirdPlace)
+    if (cup.type === 'Cup') {
+      return getNameRoundCup(roundSelected, maxRound, cup.hasThirdPlace)
     }
-    return `${round}° Rodada`
-  }, [hasThirdPlace, maxRound, round, typeCup])
+    return `${roundSelected}° Rodada`
+  }, [cup.hasThirdPlace, cup.type, maxRound, roundSelected])
+
+  const matchsInRound = useMemo(() => {
+    const roundSelec =
+      cup.type === 'Cup' ? rounds.length - roundSelected + 1 : roundSelected
+    const roundFind = rounds.find((round) => round.numberRound === roundSelec)
+    if (roundFind) {
+      return roundFind.matchs
+    } else {
+      return []
+    }
+  }, [cup.type, roundSelected, rounds])
 
   return (
     <Container>
       <Actions>
         <Touch
           activeOpacity={0.7}
-          disabled={round <= 1}
+          disabled={roundSelected <= 1}
           onPress={() => handleUpdateRound(-1)}
         >
           <CaretLeft
             size={20}
-            color={round <= 1 ? gray_400 : white}
+            color={roundSelected <= 1 ? gray_400 : white}
             weight="bold"
           />
         </Touch>
         <Round>{roundText}</Round>
         <Touch
           activeOpacity={0.7}
-          disabled={round >= maxRound}
+          disabled={roundSelected >= maxRound}
           onPress={() => handleUpdateRound(1)}
         >
           <CaretRight
             size={20}
-            color={round >= maxRound ? gray_400 : white}
+            color={roundSelected >= maxRound ? gray_400 : white}
             weight="bold"
           />
         </Touch>
       </Actions>
 
       <FlatList
-        data={matchs}
+        data={matchsInRound}
         keyExtractor={(item) => item.stats.id}
         renderItem={({ item }) => (
           <CardMatch match={item} onPress={() => handleGoStartMatch(item)} />

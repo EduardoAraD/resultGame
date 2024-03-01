@@ -1,10 +1,10 @@
+import { useMemo } from 'react'
 import { ScrollView } from 'react-native'
 
-import {
-  ItemClassification,
-  TypeItemClassification,
-} from '../../../../Model/ItemClassification'
-import { ItemClass } from '../../../../components/ItemClassification'
+import { useCup } from '../../hook/useCup'
+
+import { TypeItemClassification } from '../../Model/ItemClassification'
+import { ItemClass } from '../ItemClassification'
 
 import {
   Border,
@@ -17,19 +17,22 @@ import {
 } from './styles'
 
 interface ClassificationProps {
-  listItemClass: ItemClassification[]
-  numberClubsPromotion: number
-  numberClubsRelegation: number
+  idsClubInMatchLive?: string[]
+  hasMatchStatsProgressInClassification?: boolean
 }
 
 export function Classification({
-  listItemClass,
-  numberClubsPromotion,
-  numberClubsRelegation,
+  idsClubInMatchLive = [],
+  hasMatchStatsProgressInClassification = false,
 }: ClassificationProps) {
+  const {
+    getClassificationInLeague,
+    cup: { numberClubsPromoted, numberClubsRelegated },
+  } = useCup()
+
   function onTypeItemClass(pos: number): TypeItemClassification {
-    const posClubsRelegation = listItemClass.length - numberClubsRelegation
-    if (pos < numberClubsPromotion) {
+    const posClubsRelegation = classification.length - numberClubsRelegated
+    if (pos < numberClubsPromoted) {
       return 'Promotion'
     } else if (pos >= posClubsRelegation) {
       return 'Relegation'
@@ -37,6 +40,10 @@ export function Classification({
       return 'Normal'
     }
   }
+
+  const classification = useMemo(() => {
+    return getClassificationInLeague(hasMatchStatsProgressInClassification)
+  }, [getClassificationInLeague, hasMatchStatsProgressInClassification])
 
   return (
     <Container>
@@ -51,10 +58,13 @@ export function Classification({
             <Text>SG</Text>
             <Text>GF</Text>
           </Content>
-          {listItemClass.map((itemClass, index) => (
+          {classification.map((itemClass, index) => (
             <ItemClass
               key={itemClass.club.id}
               item={itemClass}
+              actived={
+                !!idsClubInMatchLive.find((id) => itemClass.club.id === id)
+              }
               pos={index + 1}
               typeItem={onTypeItemClass(index)}
             />

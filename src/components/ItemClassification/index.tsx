@@ -9,11 +9,17 @@ interface ItemClassProps {
   item: ItemClassification
   pos: number
   typeItem: TypeItemClassification
+  actived?: boolean
 }
 
-export function ItemClass({ item, pos, typeItem }: ItemClassProps) {
+export function ItemClass({
+  item,
+  pos,
+  typeItem,
+  actived = false,
+}: ItemClassProps) {
   return (
-    <Content>
+    <Content actived={actived}>
       <Line type={typeItem} />
       <Pos>{pos}</Pos>
       <Image source={item.club.logo} alt="" />

@@ -1,6 +1,7 @@
 import { ReactNode } from 'react'
 
 import { ClubsProvider } from '../contexts/clubs'
+import { CupProvider } from '../contexts/cup'
 import { MatchProvider } from '../contexts/match'
 
 interface HooksProviderProps {
@@ -10,7 +11,9 @@ interface HooksProviderProps {
 export function HooksProvider({ children }: HooksProviderProps) {
   return (
     <ClubsProvider>
-      <MatchProvider>{children}</MatchProvider>
+      <CupProvider>
+        <MatchProvider>{children}</MatchProvider>
+      </CupProvider>
     </ClubsProvider>
   )
 }

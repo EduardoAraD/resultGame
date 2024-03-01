@@ -2,6 +2,7 @@ import { useCallback, useEffect, useMemo, useState } from 'react'
 import { useNavigation } from '@react-navigation/native'
 import { ScrollView } from 'react-native'
 
+import { useCup } from '../../hook/useCup'
 import { useMatch } from '../../hook/useMatch'
 import { getClubComplete } from '../../lib/asyncstorage/clubs'
 import { CupRoutesNavigationProps } from '../../routes/routes/cup.routes'
@@ -18,6 +19,7 @@ import { Container, Content, InfoClub, Name } from './styles'
 export function MatchResultCup() {
   const { navigate, goBack } = useNavigation<CupRoutesNavigationProps>()
   const { match } = useMatch()
+  const { cup } = useCup()
 
   const [homeClub, setHomeClub] = useState<ClubComplete>(emptyClubComplete)
   const [awayClub, setAwayClub] = useState<ClubComplete>(emptyClubComplete)
@@ -106,7 +108,7 @@ export function MatchResultCup() {
   return (
     <Background>
       <Container>
-        <TitleWithTouchBack title={match ? match.cup.name : 'Confronto'} />
+        <TitleWithTouchBack title={cup.name !== '' ? cup.name : 'Confronto'} />
 
         <ScrollView>
           <Content>

@@ -3,10 +3,12 @@ import { useNavigation, useRoute } from '@react-navigation/native'
 import { useKeepAwake } from 'expo-keep-awake'
 
 import { MatchRoutesNavigationProps } from '../../routes/routes/match.routes'
+import { useCup } from '../../hook/useCup'
 import { useMatch } from '../../hook/useMatch'
 
 import { ClubComplete } from '../../Model/Club'
 import { DomainClube } from '../../Model/DomainClub'
+import { MatchStats } from '../../Model/Match'
 import { ModeMatch } from '../../Model/ModeMatch'
 import { Moment, MomentComplete } from '../../Model/Moment'
 import { Stats, emptyStats } from '../../Model/Stats'
@@ -22,15 +24,7 @@ import { currentPlacarMoment } from '../../utils/functions/GoalChange/finished'
 import { getChanceGoal } from '../../utils/functions/GoalChange/contructionPlay'
 import { ProxChanceClub } from '../../utils/functions/GoalChange/interfaces'
 
-import {
-  Container,
-  ContentImage,
-  ContentInfo,
-  DivAction,
-  LogoClube,
-  Stadium,
-  Title,
-} from './styles'
+import { Container, ContentInfo, DivAction, Stadium } from './styles'
 
 export interface MatchRouteProps {
   home: ClubComplete
@@ -47,6 +41,7 @@ export function Match() {
   const { navigate, goBack } = useNavigation<MatchRoutesNavigationProps>()
   const params = useRoute().params as MatchRouteProps
   const { updateStatsMatch } = useMatch()
+  const { updateMatchCompleted, updateMatchLive } = useCup()
   useKeepAwake()
 
   const durationMomentGame = 900 // 900 milisegundos
@@ -90,7 +85,7 @@ export function Match() {
   async function handleFinishedMatch() {
     if (params.idMatch) {
       const { idMatch, modeGame } = params
-      await updateStatsMatch({
+      const statsMatchCompleted: MatchStats = {
         id: idMatch,
         goalHome,
         goalAway,
@@ -100,7 +95,9 @@ export function Match() {
         status: 'finished',
         homeStats: statsHome,
         awayStats: statsAway,
-      })
+      }
+      updateMatchCompleted(idMatch, statsMatchCompleted)
+      await updateStatsMatch(statsMatchCompleted)
 
       goBack()
     } else {
@@ -466,7 +463,9 @@ export function Match() {
     }
     let posseHome = 0
     let posseAway = 0
-    // const statsAwayMinute: Stats = emptyStats;
+    if (indexMomentCurrent === 0 && params.idMatch) {
+      updateMatchLive(params.idMatch, goalHome, goalAway)
+    }
     setDomainHome((state) => ({ ...state, domain: objMoment.domainHome }))
     setDomainAway((state) => ({ ...state, domain: objMoment.domainAway }))
     if (objMoment.minute !== minuteGame) {
@@ -499,8 +498,14 @@ export function Match() {
           setMomentsHighlight((state) => [...state, objMoment])
           if (objMoment.homeOrAway === 'home') {
             setGoalHome((state) => state + 1)
+            if (params.idMatch) {
+              updateMatchLive(params.idMatch, goalHome + 1, goalAway)
+            }
           } else {
             setGoalAway((state) => state + 1)
+            if (params.idMatch) {
+              updateMatchLive(params.idMatch, goalHome, goalAway + 1)
+            }
           }
         }
       }
@@ -547,7 +552,15 @@ export function Match() {
     }
 
     setIndexMomentCurrent((state) => state + 1)
-  }, [allMoments, indexMomentCurrent, minuteGame])
+  }, [
+    allMoments,
+    goalAway,
+    goalHome,
+    indexMomentCurrent,
+    minuteGame,
+    params.idMatch,
+    updateMatchLive,
+  ])
 
   useEffect(() => {
     const { home, away } = params
@@ -598,23 +611,23 @@ export function Match() {
   return (
     <Background>
       <Container>
-        <Title>
-          {domainHome.nameClube} x {domainAway.nameClube}
-        </Title>
-        <ContentImage>
-          <LogoClube source={logoHome} />
-          <Placar
-            goalHome={goalHome}
-            goalAway={goalAway}
-            hasPenalts={hasPenalts}
-            penaltHome={homePenalt}
-            penaltAway={awayPenalt}
-            logoAway={logoAway}
-            logoHome={logoHome}
-            placarMatchTrip={placarMatchTrip}
-          />
-          <LogoClube source={logoAway} />
-        </ContentImage>
+        <Placar
+          nameCup={
+            params.idMatch
+              ? ''
+              : params.modeGame === 'Normal'
+                ? 'Amistoso'
+                : 'Eliminatória'
+          }
+          goalHome={goalHome}
+          goalAway={goalAway}
+          hasPenalts={hasPenalts}
+          penaltHome={homePenalt}
+          penaltAway={awayPenalt}
+          home={params.home}
+          away={params.away}
+          placarMatchTrip={placarMatchTrip}
+        />
 
         <ContentInfo>
           <Domination
@@ -626,6 +639,8 @@ export function Match() {
           />
           <Stadium>{params.home.stadium}</Stadium>
           <ViewGame
+            isMatchInCup={!!params.idMatch}
+            idsClubsInMatch={[params.home.id, params.away.id]}
             listNarration={listNarration}
             listMomentsHighlight={listMomentsHighlight}
             logoAway={logoAway}

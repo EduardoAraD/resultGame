@@ -17,7 +17,7 @@ export interface MatchStats {
   goalHomePenal: number
   goalAwayPenal: number
   type: ModeMatch
-  status: 'start' | 'finished'
+  status: 'start' | 'progress' | 'finished'
   homeStats: Stats
   awayStats: Stats
 }

@@ -3,8 +3,8 @@ import { Alert, ScrollView } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 
 import { removeCup } from '../../../../lib/asyncstorage/cup'
+import { useCup } from '../../../../hook/useCup'
 
-import { TypeCup } from '../../../../Model/Cup'
 import { Button } from '../../../../components/Button'
 
 import {
@@ -19,29 +19,20 @@ import {
   ValueView,
 } from './styles'
 
-interface InfoCupProps {
-  idCup: string
-  type: TypeCup
-  hasTripRound: boolean
-  hasThirdPlace: boolean
-  pointsToWin: number
-  pointsToDraw: number
-  pointsToLoss: number
-  numberPromotionClubs: number
-  numberRelegationClubs: number
-}
-
-export function InfoCup({
-  type,
-  hasTripRound,
-  hasThirdPlace,
-  pointsToDraw,
-  pointsToLoss,
-  pointsToWin,
-  numberPromotionClubs,
-  numberRelegationClubs,
-  idCup,
-}: InfoCupProps) {
+export function InfoCup() {
+  const {
+    cup: {
+      id,
+      type,
+      roundTrip,
+      hasThirdPlace,
+      winPoints,
+      lossPoints,
+      drawPoints,
+      numberClubsPromoted,
+      numberClubsRelegated,
+    },
+  } = useCup()
   const { goBack } = useNavigation()
   const [loading, setLoading] = useState(false)
 
@@ -59,7 +50,7 @@ export function InfoCup({
           {
             text: 'Sim',
             onPress: async () => {
-              await removeCup(idCup)
+              await removeCup(id)
               goBack()
             },
           },
@@ -79,9 +70,7 @@ export function InfoCup({
           <SubTitle>Jogos</SubTitle>
           <ContentLine>
             <Text>Partidas</Text>
-            <ValueText>
-              {hasTripRound ? 'Ida e volta' : 'Somente ida'}
-            </ValueText>
+            <ValueText>{roundTrip ? 'Ida e volta' : 'Somente ida'}</ValueText>
           </ContentLine>
           {type === 'Cup' && (
             <ContentLine>
@@ -97,19 +86,19 @@ export function InfoCup({
               <ContentLine>
                 <Text>Pontos por vitória</Text>
                 <ValueView>
-                  <ValueText>{pointsToWin}</ValueText>
+                  <ValueText>{winPoints}</ValueText>
                 </ValueView>
               </ContentLine>
               <ContentLine>
                 <Text>Pontos por empate</Text>
                 <ValueView>
-                  <ValueText>{pointsToDraw}</ValueText>
+                  <ValueText>{drawPoints}</ValueText>
                 </ValueView>
               </ContentLine>
               <ContentLine>
                 <Text>Pontos por derrota</Text>
                 <ValueView>
-                  <ValueText>{pointsToLoss}</ValueText>
+                  <ValueText>{lossPoints}</ValueText>
                 </ValueView>
               </ContentLine>
             </>
@@ -122,13 +111,13 @@ export function InfoCup({
               <ContentLine>
                 <Text>Clubes promovidos</Text>
                 <ValueView>
-                  <ValueText>{numberPromotionClubs}</ValueText>
+                  <ValueText>{numberClubsPromoted}</ValueText>
                 </ValueView>
               </ContentLine>
               <ContentLine>
                 <Text>Clubes rebaixados</Text>
                 <ValueView>
-                  <ValueText>{numberRelegationClubs}</ValueText>
+                  <ValueText>{numberClubsRelegated}</ValueText>
                 </ValueView>
               </ContentLine>
             </>

@@ -2,10 +2,16 @@ import styled from 'styled-components/native'
 
 import { TypeItemClassification } from '../../Model/ItemClassification'
 
-export const Content = styled.View`
+interface ContentProps {
+  actived: boolean
+}
+
+export const Content = styled.View<ContentProps>`
   flex-direction: row;
   align-items: center;
   gap: 6px;
+  background-color: ${({ theme, actived }) =>
+    actived ? theme.colors.blue_300 : 'none'};
 `
 
 interface LineProps {

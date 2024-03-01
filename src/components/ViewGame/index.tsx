@@ -1,8 +1,11 @@
 import { useState } from 'react'
 import { ImageSourcePropType } from 'react-native'
 
+import { useCup } from '../../hook/useCup'
+
 import { MomentComplete } from '../../Model/Moment'
 import { Stats } from '../../Model/Stats'
+import { Classification } from '../Classification'
 import { MomentGame } from '../MomentGame'
 import { MomentsGame } from '../MomentsGame'
 import { StatsGame } from '../StatsGame'
@@ -11,6 +14,8 @@ import { ViewOption } from '../ViewOption'
 import { Scroll } from './styles'
 
 interface ViewGameProps {
+  idsClubsInMatch: string[]
+  isMatchInCup: boolean
   listNarration: MomentComplete[]
   listMomentsHighlight: MomentComplete[]
   logoHome: ImageSourcePropType
@@ -25,6 +30,8 @@ interface ViewGameProps {
 }
 
 export function ViewGame({
+  idsClubsInMatch,
+  isMatchInCup,
   listNarration,
   listMomentsHighlight,
   logoAway,
@@ -37,12 +44,20 @@ export function ViewGame({
   goalPenalAway,
   goalPenalHome,
 }: ViewGameProps) {
+  const {
+    cup: { type },
+  } = useCup()
+
   const [optionViewGame, setOptionViewGame] = useState('Destaques')
 
   const narrationOPTION = 'Narração'
   const highlightOPTION = 'Destaques'
   const statsOPTION = 'Estatísticas'
+  const classOPTION = 'Tabela'
   const OPTIONS = [narrationOPTION, highlightOPTION, statsOPTION]
+  if (isMatchInCup && type === 'League') {
+    OPTIONS.push(classOPTION)
+  }
 
   return (
     <ViewOption
@@ -75,6 +90,12 @@ export function ViewGame({
             goalPenalAway={goalPenalAway}
             goalPenalHome={goalPenalHome}
             hasPenalt={hasPenalt}
+          />
+        )}
+        {isMatchInCup && optionViewGame === classOPTION && (
+          <Classification
+            idsClubInMatchLive={idsClubsInMatch}
+            hasMatchStatsProgressInClassification
           />
         )}
       </Scroll>

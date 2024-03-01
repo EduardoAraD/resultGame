@@ -1,6 +1,6 @@
 import styled from 'styled-components/native'
 
-import { TypeItemClassification } from '../../../../Model/ItemClassification'
+import { TypeItemClassification } from '../../Model/ItemClassification'
 
 export const Container = styled.View`
   padding: 10px;
