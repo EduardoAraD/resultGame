@@ -1,8 +1,13 @@
 import { ClubShort } from './Club'
-import { ModeMatch } from './ModeMatch'
 import { Stats, emptyStats } from './Stats'
 
-export interface Match {
+export type TypeMatch =
+  | 'standard'
+  | 'knockout stage'
+  | 'one-way game'
+  | 'return game'
+
+export interface MatchShort {
   homeIdClub: string
   awayIdClub: string
   idStats: string
@@ -12,11 +17,7 @@ export interface Match {
 
 export interface MatchStats {
   id: string
-  goalHome: number
-  goalAway: number
-  goalHomePenal: number
-  goalAwayPenal: number
-  type: ModeMatch
+  type: TypeMatch
   status: 'start' | 'progress' | 'finished'
   homeStats: Stats
   awayStats: Stats
@@ -31,11 +32,7 @@ export interface MatchComplete {
 
 export const emptyMatchStats: MatchStats = {
   id: '',
-  goalHome: 0,
-  goalAway: 0,
-  goalAwayPenal: 0,
-  goalHomePenal: 0,
-  type: 'Normal',
+  type: 'standard',
   status: 'start',
   homeStats: emptyStats,
   awayStats: emptyStats,

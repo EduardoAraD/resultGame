@@ -1,17 +1,21 @@
 export interface Stats {
-  posse: number
-  chutesNoAlvo: number
-  chutesBloqueado: number
-  chutesFora: number
-  golEsperado: number
-  qtdPenalt: number
+  goal: number
+  goalPenalty: number
+  possession: number
+  shotsOnGoal: number
+  shotsBlocked: number
+  shotsOut: number
+  expectedGoal: number
+  numberPenalties: number
 }
 
 export const emptyStats: Stats = {
-  posse: 50,
-  chutesFora: 0,
-  chutesBloqueado: 0,
-  chutesNoAlvo: 0,
-  golEsperado: 0,
-  qtdPenalt: 0,
+  goal: 0,
+  goalPenalty: 0,
+  possession: 0,
+  shotsBlocked: 0,
+  shotsOnGoal: 0,
+  shotsOut: 0,
+  expectedGoal: 0,
+  numberPenalties: 0,
 }

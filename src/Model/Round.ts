@@ -1,9 +1,16 @@
-import { Match } from './Match'
+import { MatchShort } from './Match'
 
-export type CodRound = 'F' | 'T' | 'SF' | 'QF' | 'OF' | string
+export type CodRound =
+  | 'final'
+  | 'third'
+  | 'semi'
+  | 'quarter'
+  | 'round of 16'
+  | 'knockout stage'
+  | 'stantard'
 
 export interface Round {
   numberRound: number
   cod: CodRound
-  matchs: Match[]
+  matchs: MatchShort[]
 }

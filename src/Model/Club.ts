@@ -11,26 +11,22 @@ export interface ClubShort {
 }
 
 export interface ClubComplete extends ClubShort {
-  sigla: string
+  acronym: string
   nameComplete: string
   overall: number
-  // star: number;
-  // state: string
   stadium: string
-  // colors: string[]
 }
 
-export interface Clube {
-  id: number
+export interface ClubPreCreated {
+  cod: number
   name: string
-  sigla: string
+  acronym: string
   nameComplete: string
   overall: number
-  // star: number;
-  state: string
+  // state: string
   stadium: string
   logo: ImageSourcePropType
-  colors: string[]
+  // colors: string[]
 }
 
 export const emptyClub: ClubShort = {
@@ -44,13 +40,11 @@ export const emptyClub: ClubShort = {
 export const emptyClubComplete: ClubComplete = {
   id: '0',
   name: '',
-  sigla: '',
+  acronym: '',
   nameComplete: '',
   overall: 0,
-  // state: '',
   stadium: '',
   logo,
-  // colors: [],
   disabled: false,
   createdForUser: false,
 }

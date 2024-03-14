@@ -1,5 +1,7 @@
 import { ClubShort } from './Club'
 
+export type TypeItemClassification = 'standard' | 'promotion' | 'relegation'
+
 export interface ItemClassification {
   club: ClubShort
   points: number
@@ -7,6 +9,5 @@ export interface ItemClassification {
   games: number
   goalsScored: number
   goalsConceded: number
+  type: TypeItemClassification
 }
-
-export type TypeItemClassification = 'Normal' | 'Promotion' | 'Relegation'

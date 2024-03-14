@@ -1,40 +1,39 @@
-import { StatusCup } from './Status'
-
-export type TypeCup = 'League' | 'Cup'
+export type TypeCup = 'league' | 'cup'
+export type StatusCup = 'start' | 'progress' | 'closed'
 
 export interface CupShort {
+  id: string
   name: string
   numberClubs: number
   type: TypeCup
   status: StatusCup
-  id: string
 }
 
 export interface CupComplete extends CupShort {
-  roundTrip: boolean // ida e volta
+  isRoundTrip: boolean // é ida e volta?
   // hasAwayGoal: boolean // gol fora
   hasThirdPlace: boolean
-  winPoints: number
-  drawPoints: number
-  lossPoints: number
+  pointsForWin: number
+  pointsForDraw: number
+  pointsForLoss: number
   numberClubsPromoted: number
   numberClubsRelegated: number
-  idsClubs: string[]
+  idsClubsParticipating: string[]
 }
 
 export const emptyCupComplete: CupComplete = {
   name: '',
   numberClubs: 0,
-  type: 'League',
+  type: 'league',
   status: 'start',
   id: '',
-  roundTrip: false,
+  isRoundTrip: false,
   // hasAwayGoal: false,
   hasThirdPlace: false,
-  winPoints: 0,
-  drawPoints: 0,
-  lossPoints: 0,
+  pointsForWin: 3,
+  pointsForDraw: 1,
+  pointsForLoss: 0,
   numberClubsPromoted: 0,
   numberClubsRelegated: 0,
-  idsClubs: [],
+  idsClubsParticipating: [],
 }
