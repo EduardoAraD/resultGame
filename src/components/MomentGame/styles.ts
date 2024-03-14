@@ -30,7 +30,6 @@ export const Text = styled.Text`
   padding: 8px;
   flex: 1;
   font-family: ${({ theme }) => theme.fonts.regular};
-  font-size: 14px;
   color: ${(props) => props.theme.colors.white};
 `
 

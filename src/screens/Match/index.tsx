@@ -224,8 +224,6 @@ export function Match() {
           id: -1,
         }
         return {
-          // domHome: { ...home },
-          // domAway: { ...away },
           moments: [newMoment],
           proxMoment: 'NORMAL',
         }

@@ -26,7 +26,6 @@ export const OptionGame = styled.TouchableOpacity<OptionGameProps>`
 `
 
 export const TextOptionGame = styled.Text<OptionGameProps>`
-  font-size: 16px;
   font-family: ${({ theme, selected }) =>
     selected ? theme.fonts.bold : theme.fonts.regular};
   color: ${(props) => props.theme.colors.white};

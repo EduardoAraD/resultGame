@@ -8,7 +8,6 @@ export const Container = styled.View`
 `
 
 export const Stadium = styled.Text`
-  font-size: 16px;
   font-family: ${(props) => props.theme.fonts.regular};
   color: ${(props) => props.theme.colors.white};
   text-align: center;
