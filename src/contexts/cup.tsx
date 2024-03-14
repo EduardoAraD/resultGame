@@ -51,35 +51,28 @@ export function CupProvider({ children }: CupProviderProps) {
 
   const loadInfoCupById = useCallback(
     async (idCup: string) => {
-      const cup = await getCupComplete(idCup)
-      if (!cup) {
+      const cupCompleted = await getCupComplete(idCup)
+      if (!cupCompleted) {
         console.log('Not Cup')
         return
       }
-      setCup(cup)
+      setCup(cupCompleted)
 
       const rounds = await getRoundsCup(idCup)
 
       const clubsCup = clubs.filter((club) =>
-        cup.idsClubs.find((id) => id === club.id),
+        cupCompleted.idsClubs.find((id) => id === club.id),
       )
       setClubsShort(clubsCup)
-      let hasMatchFinished = cup.status !== 'start'
+      let hasMatchFinished = cupCompleted.status !== 'start'
       let allMatchsFinished = true
-      let roundCurrentCup = rounds.length
 
       const roundsMatchs: RoundMatch[] = await Promise.all(
-        rounds.map(async (rd, indexRound) => {
-          const roundIndexToCurrent = indexRound + 1
+        rounds.map(async (rd) => {
           const matchs: MatchComplete[] = await Promise.all(
             rd.matchs.map(async (match) => {
               const stats = await getMatchStats(match.idStats)
-              if (
-                stats.status === 'start' &&
-                roundCurrentCup > roundIndexToCurrent
-              ) {
-                roundCurrentCup = roundIndexToCurrent
-              }
+
               const statsTrip = match.idStatsTrip
                 ? await getMatchStats(match.idStatsTrip)
                 : undefined
@@ -91,8 +84,8 @@ export function CupProvider({ children }: CupProviderProps) {
               )
 
               const typeStats: ModeMatch =
-                cup.type === 'Cup'
-                  ? cup.roundTrip
+                cupCompleted.type === 'Cup'
+                  ? cupCompleted.roundTrip
                     ? 'Volta'
                     : 'Mata-Mata'
                   : 'Normal'
@@ -124,14 +117,39 @@ export function CupProvider({ children }: CupProviderProps) {
         }),
       )
 
-      setRoundCurrent(roundCurrentCup)
+      let roundCurrentCup = cupCompleted.type === 'Cup' ? 1 : rounds.length
+      roundsMatchs.forEach((round, indexRound) => {
+        const roundIndexToCurrent = indexRound + 1
+        round.matchs.forEach((match) => {
+          if (cupCompleted.type === 'Cup') {
+            if (
+              match.stats.status === 'start' &&
+              roundCurrentCup < roundIndexToCurrent
+            ) {
+              roundCurrentCup = roundIndexToCurrent
+            }
+          }
+          if (
+            match.stats.status === 'start' &&
+            roundCurrentCup > roundIndexToCurrent
+          ) {
+            roundCurrentCup = roundIndexToCurrent
+          }
+        })
+      })
 
-      if (hasMatchFinished && cup.status === 'start') {
-        await updateCup({ ...cup, status: 'progress' })
-        setCup({ ...cup, status: 'progress' })
-      } else if (allMatchsFinished && cup.status === 'progress') {
-        await updateCup({ ...cup, status: 'closed' })
-        setCup({ ...cup, status: 'closed' })
+      const roundCurrentDefinited =
+        cupCompleted.type === 'Cup'
+          ? rounds.length - roundCurrentCup + 1
+          : roundCurrentCup
+      setRoundCurrent(roundCurrentDefinited)
+
+      if (hasMatchFinished && cupCompleted.status === 'start') {
+        await updateCup({ ...cupCompleted, status: 'progress' })
+        setCup({ ...cupCompleted, status: 'progress' })
+      } else if (allMatchsFinished && cupCompleted.status === 'progress') {
+        await updateCup({ ...cupCompleted, status: 'closed' })
+        setCup({ ...cupCompleted, status: 'closed' })
       }
 
       setRounds(roundsMatchs)

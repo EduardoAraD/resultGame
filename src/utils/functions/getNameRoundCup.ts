@@ -13,10 +13,8 @@ export function getNameRoundCup(
     case maxRound - 3:
       return hasThirdPlace ? 'Quartas de Final' : 'Oitavas de Final'
     case maxRound - 4:
-      return hasThirdPlace
-        ? 'Oitavas de Final'
-        : `Eliminatória ${maxRound - round + 1}`
+      return hasThirdPlace ? 'Oitavas de Final' : `Eliminatória ${round}`
     default:
-      return `Eliminatória ${maxRound - round + 1}`
+      return `Eliminatória ${round}`
   }
 }

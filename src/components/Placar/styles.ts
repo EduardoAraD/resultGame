@@ -61,7 +61,7 @@ export const Image = styled.Image`
   height: 110px;
   width: 110px;
   position: absolute;
-  opacity: 0.2;
+  opacity: 0.3;
   top: -25px;
 `
 

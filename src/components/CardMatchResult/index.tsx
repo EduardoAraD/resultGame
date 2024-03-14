@@ -78,7 +78,7 @@ export function CardMatchResult({ home, away, stats }: CardMatchResultProps) {
             <Name>{away.name}</Name>
           </ViewClub>
         </InfoMatch>
-        {matchIsFinished && (
+        {matchIsFinished && openStats && (
           <StatsGame
             logoHome={home.logo}
             logoAway={away.logo}
