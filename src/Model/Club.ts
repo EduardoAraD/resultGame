@@ -1,13 +1,13 @@
 import { ImageSourcePropType } from 'react-native'
 
-import logo from '../assets/logos/escudo_cinza.png'
+import { logoDefault } from '../utils/getDefaultLogoClub'
 
 export interface ClubShort {
   id: string
   name: string
   logo: ImageSourcePropType
-  disabled: boolean
-  createdForUser: boolean
+  isDisabled: boolean
+  isCreatedOnUser: boolean
 }
 
 export interface ClubComplete extends ClubShort {
@@ -30,21 +30,17 @@ export interface ClubPreCreated {
 }
 
 export const emptyClub: ClubShort = {
-  id: '0',
+  id: '',
   name: '',
-  logo,
-  disabled: false,
-  createdForUser: false,
+  logo: logoDefault,
+  isDisabled: false,
+  isCreatedOnUser: false,
 }
 
 export const emptyClubComplete: ClubComplete = {
-  id: '0',
-  name: '',
-  acronym: '',
+  ...emptyClub,
   nameComplete: '',
+  acronym: '',
   overall: 0,
   stadium: '',
-  logo,
-  disabled: false,
-  createdForUser: false,
 }
