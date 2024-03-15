@@ -3,8 +3,7 @@ import { Stats } from './Stats'
 export interface Moment {
   minute: number
   narration: string
-  isGoal?: boolean
-  isGoalPenalty?: boolean
+  isPenaltyShots?: boolean
   homeOrAway: 'home' | 'away' | 'game'
   stats: Stats
 }

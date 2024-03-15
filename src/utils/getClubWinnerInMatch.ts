@@ -1,29 +1,45 @@
-import { MatchStats } from '../Model/Match'
+import { MatchStats, emptyMatchStats } from '../Model/Match'
 
-export function getWinnerClubInMatch(
-  stats: MatchStats,
-  statsTrip: MatchStats,
-  homeId: string,
-  awayId: string,
-) {
-  const sumStats: MatchStats = {
-    goalHome: stats.goalHome + statsTrip.goalAway,
-    goalAway: stats.goalAway + statsTrip.goalHome,
-    goalHomePenal: stats.goalHomePenal + statsTrip.goalAwayPenal,
-    goalAwayPenal: stats.goalAwayPenal + statsTrip.goalHomePenal,
-    id: '',
-    type: 'Mata-Mata',
-    status: 'finished',
+interface WinnerClubInMatchProps {
+  matchStatsHomeVsAway: MatchStats
+  matchStatsTripAwayVsHome?: MatchStats
+  homeClubId: string
+  awayClubId: string
+}
+
+export function getWinnerClubInTwoMatch({
+  matchStatsHomeVsAway,
+  matchStatsTripAwayVsHome = emptyMatchStats,
+  homeClubId,
+  awayClubId,
+}: WinnerClubInMatchProps) {
+  const sumMatchStats = {
+    home: {
+      goal:
+        matchStatsHomeVsAway.homeStats.goal +
+        matchStatsTripAwayVsHome.awayStats.goal,
+      goalPenalty:
+        matchStatsHomeVsAway.homeStats.goalPenalty +
+        matchStatsTripAwayVsHome.awayStats.goalPenalty,
+    },
+    away: {
+      goal:
+        matchStatsHomeVsAway.awayStats.goal +
+        matchStatsTripAwayVsHome.homeStats.goal,
+      goalPenalty:
+        matchStatsHomeVsAway.awayStats.goalPenalty +
+        matchStatsTripAwayVsHome.homeStats.goalPenalty,
+    },
   }
-  if (sumStats.goalHome > sumStats.goalAway) {
-    return homeId
-  } else if (sumStats.goalHome < sumStats.goalAway) {
-    return awayId
-  } else {
-    if (sumStats.goalHomePenal > sumStats.goalAwayPenal) {
-      return homeId
-    } else {
-      return awayId
-    }
+  if (sumMatchStats.home.goal > sumMatchStats.away.goal) {
+    return homeClubId
   }
+  if (sumMatchStats.home.goal < sumMatchStats.away.goal) {
+    return awayClubId
+  }
+
+  if (sumMatchStats.home.goalPenalty > sumMatchStats.away.goalPenalty) {
+    return homeClubId
+  }
+  return awayClubId
 }

@@ -2,82 +2,97 @@ import { ClubShort } from '../Model/Club'
 import { ItemClassification } from '../Model/ItemClassification'
 import { MatchComplete } from '../Model/Match'
 
-export function getClassification(
-  gamesTemporada: MatchComplete[],
-  listClubs: ClubShort[],
+interface ClassificationProps {
+  matchsOfSeason: MatchComplete[]
+  clubs: ClubShort[]
   points: {
     win: number
     draw: number
     loss: number
-  },
-) {
-  const itemClassClubs: ItemClassification[] = listClubs.map((club) => {
-    const itemClass: ItemClassification = {
+  }
+}
+
+export function getClassification({
+  matchsOfSeason,
+  clubs,
+  points,
+}: ClassificationProps) {
+  const listItemClassification: ItemClassification[] = clubs.map((club) => {
+    const itemClassification: ItemClassification = {
       club,
+      type: 'standard',
       goalsScored: 0,
       goalsConceded: 0,
       points: 0,
       games: 0,
       win: 0,
     }
-    return itemClass
+    return itemClassification
   })
 
-  gamesTemporada.forEach((gameDB) => {
-    const findIndexHome = itemClassClubs.findIndex(
-      (itemC) => itemC.club.id === gameDB.home.id,
+  matchsOfSeason.forEach((match) => {
+    const findIndexListInClubHome = listItemClassification.findIndex(
+      (itemC) => itemC.club.id === match.home.id,
     )
-    const findIndexAway = itemClassClubs.findIndex(
-      (itemC) => itemC.club.id === gameDB.away.id,
+    const findIndexListInClubAway = listItemClassification.findIndex(
+      (itemC) => itemC.club.id === match.away.id,
     )
-    if (findIndexAway !== -1 && findIndexHome !== -1) {
-      itemClassClubs[findIndexHome].goalsScored += gameDB.stats.goalHome
-      itemClassClubs[findIndexHome].goalsConceded += gameDB.stats.goalAway
-      itemClassClubs[findIndexHome].games += 1
-      itemClassClubs[findIndexAway].goalsScored += gameDB.stats.goalAway
-      itemClassClubs[findIndexAway].goalsConceded += gameDB.stats.goalHome
-      itemClassClubs[findIndexAway].games += 1
+    if (findIndexListInClubAway !== -1 && findIndexListInClubHome !== -1) {
+      listItemClassification[findIndexListInClubHome].goalsScored +=
+        match.stats.homeStats.goal
+      listItemClassification[findIndexListInClubHome].goalsConceded +=
+        match.stats.awayStats.goal
+      listItemClassification[findIndexListInClubHome].games += 1
+      listItemClassification[findIndexListInClubAway].goalsScored +=
+        match.stats.awayStats.goal
+      listItemClassification[findIndexListInClubAway].goalsConceded +=
+        match.stats.homeStats.goal
+      listItemClassification[findIndexListInClubAway].games += 1
 
-      if (gameDB.stats.goalHome > gameDB.stats.goalAway) {
-        itemClassClubs[findIndexHome].points += points.win
-        itemClassClubs[findIndexHome].win += 1
-        itemClassClubs[findIndexAway].points += points.loss
-      } else if (gameDB.stats.goalHome === gameDB.stats.goalAway) {
-        itemClassClubs[findIndexHome].points += points.draw
-        itemClassClubs[findIndexAway].points += points.draw
+      if (match.stats.homeStats.goal > match.stats.awayStats.goal) {
+        listItemClassification[findIndexListInClubHome].points += points.win
+        listItemClassification[findIndexListInClubHome].win += 1
+        listItemClassification[findIndexListInClubAway].points += points.loss
+      } else if (match.stats.homeStats.goal === match.stats.awayStats.goal) {
+        listItemClassification[findIndexListInClubHome].points += points.draw
+        listItemClassification[findIndexListInClubAway].points += points.draw
       } else {
-        itemClassClubs[findIndexAway].points += points.win
-        itemClassClubs[findIndexAway].win += 1
-        itemClassClubs[findIndexHome].points += points.loss
+        listItemClassification[findIndexListInClubAway].points += points.win
+        listItemClassification[findIndexListInClubAway].win += 1
+        listItemClassification[findIndexListInClubHome].points += points.loss
       }
     }
   })
 
-  return itemClassClubs.sort((a, b) => {
-    if (a.points > b.points) {
+  return listItemClassification.sort((club1, club2) => {
+    if (club1.points > club2.points) {
       return -1
-    } else if (a.points < b.points) {
-      return 1
-    } else {
-      if (a.win > b.win) {
-        return -1
-      } else if (a.win < b.win) {
-        return 1
-      } else {
-        const saldoGoalA = a.goalsScored - a.goalsConceded
-        const saldoGoalB = b.goalsScored - b.goalsConceded
-        if (saldoGoalA > saldoGoalB) {
-          return -1
-        } else if (saldoGoalA < saldoGoalB) {
-          return 1
-        } else {
-          if (a.goalsScored > b.goalsScored) {
-            return -1
-          } else {
-            return a.goalsScored < b.goalsScored ? 1 : 0
-          }
-        }
-      }
     }
+    if (club1.points < club2.points) {
+      return 1
+    }
+
+    if (club1.win > club2.win) {
+      return -1
+    }
+    if (club1.win < club2.win) {
+      return 1
+    }
+
+    const club1DiffGoalsScoredGoalConceded =
+      club1.goalsScored - club1.goalsConceded
+    const club2DiffGoalsScoredGoalConceded =
+      club2.goalsScored - club2.goalsConceded
+    if (club1DiffGoalsScoredGoalConceded > club2DiffGoalsScoredGoalConceded) {
+      return -1
+    }
+    if (club1DiffGoalsScoredGoalConceded < club2DiffGoalsScoredGoalConceded) {
+      return 1
+    }
+
+    if (club1.goalsScored > club2.goalsScored) {
+      return -1
+    }
+    return club1.goalsScored < club2.goalsScored ? 1 : 0
   })
 }

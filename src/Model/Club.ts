@@ -1,6 +1,6 @@
 import { ImageSourcePropType } from 'react-native'
 
-import { logoDefault } from '../utils/getDefaultLogoClub'
+import { logoClubDefault } from '../utils/getDefaultLogoClub'
 
 export interface ClubShort {
   id: string
@@ -32,7 +32,7 @@ export interface ClubPreCreated {
 export const emptyClub: ClubShort = {
   id: '',
   name: '',
-  logo: logoDefault,
+  logo: logoClubDefault,
   isDisabled: false,
   isCreatedOnUser: false,
 }
