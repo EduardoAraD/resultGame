@@ -1,6 +1,7 @@
 import { ImageSourcePropType } from 'react-native'
 
 import { logoClubDefault } from '../utils/getDefaultLogoClub'
+import { Stadium } from './Stadium'
 
 export interface ClubShort {
   id: string
@@ -14,7 +15,7 @@ export interface ClubComplete extends ClubShort {
   acronym: string
   nameComplete: string
   overall: number
-  stadium: string
+  stadium: Stadium
 }
 
 export interface ClubPreCreated {
@@ -23,9 +24,9 @@ export interface ClubPreCreated {
   acronym: string
   nameComplete: string
   overall: number
-  // state: string
-  stadium: string
+  stadium: Stadium
   logo: ImageSourcePropType
+  // state: string
   // colors: string[]
 }
 
@@ -42,5 +43,21 @@ export const emptyClubComplete: ClubComplete = {
   nameComplete: '',
   acronym: '',
   overall: 0,
-  stadium: '',
+  stadium: {
+    nameComplete: '',
+  },
+}
+
+export function isClubPreCreated(
+  object: ClubPreCreated,
+): object is ClubPreCreated {
+  return (
+    'cod' in object &&
+    'name' in object &&
+    'acronym' in object &&
+    'nameComplete' in object &&
+    'overall' in object &&
+    'stadium' in object &&
+    'logo' in object
+  )
 }

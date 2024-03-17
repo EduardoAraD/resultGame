@@ -14,6 +14,8 @@ describe('Model Club', () => {
     expect(emptyClubComplete.acronym).toEqual('')
     expect(emptyClubComplete.nameComplete).toEqual('')
     expect(emptyClubComplete.overall).toEqual(0)
-    expect(emptyClubComplete.stadium).toEqual('')
+    expect(emptyClubComplete.stadium).toEqual({
+      nameComplete: '',
+    })
   })
 })
