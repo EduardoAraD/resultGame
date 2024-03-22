@@ -1,34 +1,34 @@
 import { emptyStats } from '../Model/Stats'
 import { getClassification } from './getClassification'
-import { logoDefault } from './getDefaultLogoClub'
+import { logoClubDefault } from './getDefaultLogoClub'
 
 describe('Function getClassification', () => {
   it('should be one list order of clubs by number points', () => {
     const club1 = {
       id: '0',
       name: 'Club test 1',
-      logo: logoDefault,
+      logo: logoClubDefault,
       isCreatedOnUser: false,
       isDisabled: false,
     }
     const club2 = {
       id: '1',
       name: 'Club test 2',
-      logo: logoDefault,
+      logo: logoClubDefault,
       isCreatedOnUser: false,
       isDisabled: false,
     }
     const club3 = {
       id: '2',
       name: 'Club test 3',
-      logo: logoDefault,
+      logo: logoClubDefault,
       isCreatedOnUser: false,
       isDisabled: false,
     }
     const club4 = {
       id: '3',
       name: 'Club test 4',
-      logo: logoDefault,
+      logo: logoClubDefault,
       isCreatedOnUser: false,
       isDisabled: false,
     }

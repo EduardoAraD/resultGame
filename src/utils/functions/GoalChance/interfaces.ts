@@ -4,8 +4,8 @@ export type ProxChanceClub =
   | 'SHORT FREE'
   | 'LONG FREE'
   | 'CORNER KICK'
-  | 'PENALT'
-  | 'NORMAL'
+  | 'PENALTY'
+  | 'STANTARD'
 
 export interface ChanceGoalMomentProps {
   minute: number
