@@ -8,7 +8,7 @@ interface ActiveColor {
 
 export function Loading({ colorActive = 'white' }: ActiveColor) {
   return (
-    <Container>
+    <Container testID="loading">
       <ActiveStyle colorActive={colorActive} />
     </Container>
   )

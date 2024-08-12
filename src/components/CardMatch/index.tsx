@@ -1,7 +1,7 @@
 import { useMemo } from 'react'
 import { TouchableOpacityProps, View } from 'react-native'
 
-import { MatchComplete, MatchStats, emptyMatchStats } from '../../Model/Match'
+import { MatchComplete, MatchStats } from '../../Model/Match'
 
 import {
   Card,
@@ -14,6 +14,7 @@ import {
   TextGoalMult,
   ViewName,
 } from './styles'
+import { getSumScoreMatch } from '../../utils/SumStatsMatch/getSumScoreMatch'
 
 interface CardMatchProps extends TouchableOpacityProps {
   match: MatchComplete
@@ -23,57 +24,36 @@ export function CardMatch({ match, ...rest }: CardMatchProps) {
   const isTripMatch = match.statsTrip !== undefined
   const matchIsComplated = match.stats.status === 'finished'
 
-  const sumPlacar: MatchStats = useMemo(() => {
-    const statsTrip = match.statsTrip ? match.statsTrip : emptyMatchStats
-    const status =
-      match.stats.status === 'finished' ||
-      (match.statsTrip !== undefined && match.statsTrip.status === 'finished')
-        ? 'finished'
-        : 'start'
-
-    const stats: MatchStats = {
-      id: '',
-      goalHome: match.stats.goalHome + statsTrip.goalAway,
-      goalAway: match.stats.goalAway + statsTrip.goalHome,
-      goalAwayPenal: match.stats.goalAwayPenal + statsTrip.goalHomePenal,
-      goalHomePenal: match.stats.goalHomePenal + statsTrip.goalAwayPenal,
-      type: match.stats.type,
-      status,
-      homeStats: match.stats.homeStats,
-      awayStats: match.stats.awayStats,
-    }
+  const sumScoredMatch: MatchStats = useMemo(() => {
+    const { stats } = getSumScoreMatch({
+      match,
+    })
 
     return stats
-  }, [
-    match.stats.awayStats,
-    match.stats.goalAway,
-    match.stats.goalAwayPenal,
-    match.stats.goalHome,
-    match.stats.goalHomePenal,
-    match.stats.homeStats,
-    match.stats.status,
-    match.stats.type,
-    match.statsTrip,
-  ])
+  }, [match])
 
   const showPenal =
-    sumPlacar.type !== 'Normal' &&
-    sumPlacar.goalAway === sumPlacar.goalHome &&
-    match.stats.status === 'finished'
+    sumScoredMatch.homeStats.goalPenalty > 0 ||
+    sumScoredMatch.awayStats.goalPenalty > 0
 
-  const goalHomeFirstMatch =
+  const isFirstMatchFinished =
     match.statsTrip !== undefined && match.statsTrip.status === 'finished'
-      ? match.statsTrip.goalAway
-      : ''
-  const goalHomeSecundsMatch =
-    match.stats.status === 'finished' ? match.stats.goalHome : ''
+  const isSecundMatchFinished = match.stats.status === 'finished'
 
-  const goalAwayFirstMatch =
-    match.statsTrip !== undefined && match.statsTrip.status === 'finished'
-      ? match.statsTrip.goalHome
-      : ''
-  const goalAwaySecundsMatch =
-    match.stats.status === 'finished' ? match.stats.goalAway : ''
+  const goalHomeFirstMatch = isFirstMatchFinished
+    ? match.statsTrip?.awayStats.goal
+    : ''
+  const goalHomeSecundMatch = isSecundMatchFinished
+    ? match.stats.homeStats.goal
+    : ''
+  const goalAwayFirstMatch = isFirstMatchFinished
+    ? match.statsTrip?.homeStats.goal
+    : ''
+  const goalAwaySecundMatch = isSecundMatchFinished
+    ? match.stats.awayStats.goal
+    : ''
+
+  const isMatchNotFinished = sumScoredMatch.status !== 'finished'
 
   return (
     <Card activeOpacity={0.7} {...rest}>
@@ -82,35 +62,35 @@ export function CardMatch({ match, ...rest }: CardMatchProps) {
         <Name numberOfLines={2}>{match.home.name}</Name>
       </ViewName>
       <Placar>
-        {sumPlacar.status === 'start' ? (
+        {isMatchNotFinished ? (
           <Line />
         ) : (
           <>
             {isTripMatch && (
               <View>
                 <TextGoalMult>{goalHomeFirstMatch}</TextGoalMult>
-                <TextGoalMult>{goalHomeSecundsMatch}</TextGoalMult>
+                <TextGoalMult>{goalHomeSecundMatch}</TextGoalMult>
               </View>
             )}
             <Goal
               matchCompleted={matchIsComplated}
               style={{ textAlign: 'right' }}
             >
-              {sumPlacar.goalHome}
+              {sumScoredMatch.homeStats.goal}
             </Goal>
-            {showPenal && <Penal>{sumPlacar.goalHomePenal}</Penal>}
+            {showPenal && <Penal>{sumScoredMatch.homeStats.goalPenalty}</Penal>}
             <Line />
-            {showPenal && <Penal>{sumPlacar.goalAwayPenal}</Penal>}
+            {showPenal && <Penal>{sumScoredMatch.awayStats.goalPenalty}</Penal>}
             <Goal
               matchCompleted={matchIsComplated}
               style={{ textAlign: 'left' }}
             >
-              {sumPlacar.goalAway}
+              {sumScoredMatch.awayStats.goal}
             </Goal>
             {isTripMatch && (
               <View>
                 <TextGoalMult>{goalAwayFirstMatch}</TextGoalMult>
-                <TextGoalMult>{goalAwaySecundsMatch}</TextGoalMult>
+                <TextGoalMult>{goalAwaySecundMatch}</TextGoalMult>
               </View>
             )}
           </>

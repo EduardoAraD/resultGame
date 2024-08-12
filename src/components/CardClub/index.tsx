@@ -35,7 +35,7 @@ export function CardClub({
     <Animated.View entering={SlideInRight} exiting={SlideOutLeft}>
       <Card activeOpacity={0.7} isSelected={isSelected} {...rest}>
         {showCheck && (
-          <Circle isSelected={isSelected}>
+          <Circle testID="check" isSelected={isSelected}>
             {isSelected && (
               <Animated.View entering={BounceIn} exiting={FlipOutEasyY}>
                 <CircleSlow />
@@ -47,12 +47,14 @@ export function CardClub({
         <Name isSelected={isSelected} style={{ flex: 1 }}>
           {club.name}
         </Name>
-        {club.createdForUser && (
-          <ViewCreated>
+        {club.isCreatedOnUser && (
+          <ViewCreated testID="created">
             <TextCreated>C</TextCreated>
           </ViewCreated>
         )}
-        {club.disabled && <TextDesabled>Desabilitado</TextDesabled>}
+        {club.isDisabled && (
+          <TextDesabled testID="disabled">Desabilitado</TextDesabled>
+        )}
       </Card>
     </Animated.View>
   )

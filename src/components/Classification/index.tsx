@@ -1,10 +1,10 @@
 import { useMemo } from 'react'
 import { ScrollView } from 'react-native'
+import { useTheme } from 'styled-components/native'
 
 import { useCup } from '../../hook/useCup'
 
-import { TypeItemClassification } from '../../Model/ItemClassification'
-import { ItemClass } from '../ItemClassification'
+import { ItemClassificationComponent } from '../ItemClassification'
 
 import {
   Border,
@@ -25,21 +25,9 @@ export function Classification({
   idsClubInMatchLive = [],
   hasMatchStatsProgressInClassification = false,
 }: ClassificationProps) {
-  const {
-    getClassificationInLeague,
-    cup: { numberClubsPromoted, numberClubsRelegated },
-  } = useCup()
+  const { colors } = useTheme()
 
-  function onTypeItemClass(pos: number): TypeItemClassification {
-    const posClubsRelegation = classification.length - numberClubsRelegated
-    if (pos < numberClubsPromoted) {
-      return 'Promotion'
-    } else if (pos >= posClubsRelegation) {
-      return 'Relegation'
-    } else {
-      return 'Normal'
-    }
-  }
+  const { getClassificationInLeague } = useCup()
 
   const classification = useMemo(() => {
     return getClassificationInLeague(hasMatchStatsProgressInClassification)
@@ -51,7 +39,7 @@ export function Classification({
         <Border>
           <Content>
             <Text>POS</Text>
-            <Text style={{ flex: 1 }}>Name</Text>
+            <Text style={{ flex: 1 }}>Nome</Text>
             <Text>P</Text>
             <Text>J</Text>
             <Text>V</Text>
@@ -59,27 +47,26 @@ export function Classification({
             <Text>GF</Text>
           </Content>
           {classification.map((itemClass, index) => (
-            <ItemClass
+            <ItemClassificationComponent
               key={itemClass.club.id}
-              item={itemClass}
+              itemClassification={itemClass}
               actived={
                 !!idsClubInMatchLive.find((id) => itemClass.club.id === id)
               }
-              pos={index + 1}
-              typeItem={onTypeItemClass(index)}
+              position={index + 1}
             />
           ))}
           <Content style={{ justifyContent: 'center' }}>
             <ViewPoint>
-              <Point type="Promotion" />
+              <Point colorTypeClass={colors.green} />
               <TextPoint>Promoção</TextPoint>
             </ViewPoint>
             <ViewPoint>
-              <Point type="Normal" />
+              <Point colorTypeClass={colors.gray_300} />
               <TextPoint>Sem acesso</TextPoint>
             </ViewPoint>
             <ViewPoint>
-              <Point type="Relegation" />
+              <Point colorTypeClass={colors.red} />
               <TextPoint>Rebaixado</TextPoint>
             </ViewPoint>
           </Content>

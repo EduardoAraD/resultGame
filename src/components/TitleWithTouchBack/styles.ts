@@ -25,8 +25,8 @@ export const TouchBack = styled.TouchableOpacity`
   align-items: center;
 `
 
-export const IconBack = styled(CaretLeft).attrs(({ theme }) => ({
-  size: 32,
-  color: theme.colors.white,
-  weight: 'bold',
-}))``
+export const IconBack = styled.Image`
+  height: 32px;
+  width: 32px;
+  fill: ${({ theme }) => theme.colors.white};
+`

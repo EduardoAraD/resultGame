@@ -1,7 +1,7 @@
 import { ClubShort } from '../../Model/Club'
+import { logoClubDefault } from '../../utils/getDefaultLogoClub'
 
 import { Card, Image, Info, Name, Title } from './styles'
-import logo from '../../assets/logos/escudo_cinza.png'
 
 interface CardClubAwardProps {
   title: string
@@ -9,11 +9,14 @@ interface CardClubAwardProps {
 }
 export function CardClubAward({ title, clubs }: CardClubAwardProps) {
   return (
-    <Card>
+    <Card testID="card">
       <Title>{title}</Title>
       {clubs.map((club, index) => (
         <Info key={`${club?.id || ''}_${index}`}>
-          <Image source={club === undefined ? logo : club.logo} alt="" />
+          <Image
+            source={club === undefined ? logoClubDefault : club.logo}
+            alt=""
+          />
           <Name>{club === undefined ? 'A definir' : club.name}</Name>
         </Info>
       ))}

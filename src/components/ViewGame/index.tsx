@@ -6,12 +6,12 @@ import { useCup } from '../../hook/useCup'
 import { MomentComplete } from '../../Model/Moment'
 import { Stats } from '../../Model/Stats'
 import { Classification } from '../Classification'
-import { MomentGame } from '../MomentGame'
-import { MomentsGame } from '../MomentsGame'
-import { StatsGame } from '../StatsGame'
 import { ViewOption } from '../ViewOption'
 
 import { Scroll } from './styles'
+import { MomentMatch } from '../MomentMatch'
+import { MomentsMatch } from '../MomentsMatch'
+import { StatsMatch } from '../StatsMatch'
 
 interface ViewGameProps {
   idsClubsInMatch: string[]
@@ -53,10 +53,12 @@ export function ViewGame({
   const narrationOPTION = 'Narração'
   const highlightOPTION = 'Destaques'
   const statsOPTION = 'Estatísticas'
-  const classOPTION = 'Tabela'
+  const classificationOPTION = 'Tabela'
   const OPTIONS = [narrationOPTION, highlightOPTION, statsOPTION]
-  if (isMatchInCup && type === 'League') {
-    OPTIONS.push(classOPTION)
+
+  const isAddClassificationOption = isMatchInCup && type === 'league'
+  if (isAddClassificationOption) {
+    OPTIONS.push(classificationOPTION)
   }
 
   return (
@@ -68,31 +70,39 @@ export function ViewGame({
       <Scroll showsVerticalScrollIndicator={false}>
         {optionViewGame === narrationOPTION &&
           listNarration.map((item) => (
-            <MomentGame
+            <MomentMatch
               key={`${item.minute}-${item.id}`}
-              min={item.minute}
-              text={item.narracao}
-              isPrimary={item.goal}
+              minute={item.minute}
+              narration={item.narration}
+              isGoal={item.stats.goal === 1}
               logo={item.homeOrAway === 'home' ? logoHome : logoAway}
             />
           ))}
         {optionViewGame === highlightOPTION && (
-          <MomentsGame moments={listMomentsHighlight} />
+          <MomentsMatch moments={listMomentsHighlight} />
         )}
         {optionViewGame === statsOPTION && (
-          <StatsGame
-            logoHome={logoHome}
-            logoAway={logoAway}
-            statsAway={statsAway}
-            statsHome={statsHome}
-            goalAway={goalAway}
-            goalHome={goalHome}
-            goalPenalAway={goalPenalAway}
-            goalPenalHome={goalPenalHome}
+          <StatsMatch
+            homeInfo={{
+              logo: logoHome,
+              stats: {
+                ...statsHome,
+                goal: goalHome,
+                goalPenalty: goalPenalHome,
+              },
+            }}
+            awayInfo={{
+              logo: logoAway,
+              stats: {
+                ...statsAway,
+                goal: goalAway,
+                goalPenalty: goalPenalAway,
+              },
+            }}
             hasPenalt={hasPenalt}
           />
         )}
-        {isMatchInCup && optionViewGame === classOPTION && (
+        {isMatchInCup && optionViewGame === classificationOPTION && (
           <Classification
             idsClubInMatchLive={idsClubsInMatch}
             hasMatchStatsProgressInClassification

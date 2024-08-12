@@ -11,7 +11,11 @@ export function ButtonRadio({ selected, ...rest }: ButtonRadioProps) {
   return (
     <Touch activeOpacity={0.7} {...rest}>
       {selected && (
-        <Animated.View entering={BounceIn} exiting={BounceOut}>
+        <Animated.View
+          testID="selected"
+          entering={BounceIn}
+          exiting={BounceOut}
+        >
           <Circle />
         </Animated.View>
       )}

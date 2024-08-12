@@ -8,7 +8,6 @@ import { ClubShort, emptyClub } from '../Model/Club'
 import { CupComplete, emptyCupComplete } from '../Model/Cup'
 import { MatchComplete, MatchStats, emptyMatchStats } from '../Model/Match'
 import { ItemClassification } from '../Model/ItemClassification'
-import { ModeMatch } from '../Model/ModeMatch'
 
 import { getClassification } from '../utils/getClassification'
 
@@ -53,7 +52,6 @@ export function CupProvider({ children }: CupProviderProps) {
     async (idCup: string) => {
       const cupCompleted = await getCupComplete(idCup)
       if (!cupCompleted) {
-        console.log('Not Cup')
         return
       }
       setCup(cupCompleted)
@@ -159,26 +157,40 @@ export function CupProvider({ children }: CupProviderProps) {
 
   const getClassificationInLeague = useCallback(
     (hasMatchIsStatusProgress?: boolean) => {
-      if (cup) {
-        const matchsFinished: MatchComplete[] = []
-        rounds.forEach((round) => {
-          round.matchs.forEach((match) => {
-            if (hasMatchIsStatusProgress && match.stats.status !== 'start') {
-              matchsFinished.push(match)
-            } else if (match.stats.status === 'finished') {
-              matchsFinished.push(match)
-            }
-          })
+      const matchsForClassification: MatchComplete[] = []
+      rounds.forEach((round) => {
+        round.matchs.forEach((match) => {
+          const isMatchForClassification =
+            match.stats.status === 'finished' ||
+            (hasMatchIsStatusProgress && match.stats.status === 'progress')
+
+          if (isMatchForClassification) {
+            matchsForClassification.push(match)
+          }
         })
-        return getClassification(matchsFinished, clubsShort, {
-          win: cup.winPoints,
-          draw: cup.drawPoints,
-          loss: cup.lossPoints,
-        })
-      }
-      return []
+      })
+
+      return getClassification({
+        matchsOfSeason: matchsForClassification,
+        clubs: clubsShort,
+        points: {
+          win: cup.pointsForWin,
+          loss: cup.pointsForLoss,
+          draw: cup.pointsForDraw,
+        },
+        numberClubsPromoted: cup.numberClubsPromoted,
+        numberClubsRelegated: cup.numberClubsRelegated,
+      })
     },
-    [clubsShort, cup, rounds],
+    [
+      clubsShort,
+      cup.numberClubsPromoted,
+      cup.numberClubsRelegated,
+      cup.pointsForDraw,
+      cup.pointsForLoss,
+      cup.pointsForWin,
+      rounds,
+    ],
   )
 
   const updateMatchLive = useCallback(

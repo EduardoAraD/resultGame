@@ -1,4 +1,3 @@
-import { CaretRight } from 'phosphor-react-native'
 import Animated from 'react-native-reanimated'
 import styled from 'styled-components/native'
 
@@ -53,10 +52,9 @@ interface IconProps {
   disable?: boolean
 }
 
-export const Icon = styled(CaretRight).attrs<IconProps>(
-  ({ theme, disable }) => ({
-    size: 16,
-    weight: 'bold',
-    color: disable ? theme.colors.gray_200 : theme.colors.gray_700,
-  }),
-)``
+export const Icon = styled.Image<IconProps>`
+  height: 16px;
+  width: 16px;
+  tint-color: ${({ theme, disable }) =>
+    disable ? theme.colors.gray_200 : theme.colors.gray_700};
+`

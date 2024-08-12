@@ -25,6 +25,7 @@ export function ViewOption({
       <DivActionGame>
         {options.map((option) => (
           <OptionGame
+            testID={`touch-${option}`}
             key={option}
             selected={option === optionSelected}
             activeOpacity={0.7}

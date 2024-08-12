@@ -5,13 +5,11 @@ import Animated, { SlideInRight, SlideOutRight } from 'react-native-reanimated'
 import { useClubs } from '../../hook/useClubs'
 
 import { ClubShort } from '../../Model/Club'
-import { ModalBase } from '../ModalBase'
 import { CardClub } from '../CardClub'
+import { Button } from '../Button'
+import { ModalBase } from '../ModalBase'
 
 import { CloseButton, Input, Line, ModalView, Title } from './styles'
-import { Button } from '../Button'
-
-export type HomeOrAway = 'home' | 'away'
 
 interface ModalChooseMultiClubProps {
   visible: boolean
@@ -20,7 +18,7 @@ interface ModalChooseMultiClubProps {
   clubsBlocked?: ClubShort[]
 }
 
-interface ClubShortWithSelected extends ClubShort {
+interface ClubShortSelected extends ClubShort {
   selected: boolean
 }
 
@@ -31,13 +29,12 @@ export function ModalChooseMultiClubs({
   clubsBlocked = [],
 }: ModalChooseMultiClubProps) {
   const { clubs } = useClubs()
+
   const [search, setSearch] = useState('')
-  const [clubsWithSelected, setClubsWithSelected] = useState<
-    ClubShortWithSelected[]
-  >([])
+  const [clubsSelected, setClubsSelected] = useState<ClubShortSelected[]>([])
 
   function handleSelectedClub(idClub: string) {
-    setClubsWithSelected((state) =>
+    setClubsSelected((state) =>
       state.map((item) =>
         item.id === idClub ? { ...item, selected: !item.selected } : item,
       ),
@@ -45,14 +42,14 @@ export function ModalChooseMultiClubs({
   }
 
   function handleSubmitClubs() {
-    onSelectedClub(clubsWithSelected.filter((item) => item.selected))
+    onSelectedClub(clubsSelected.filter((item) => item.selected))
     setSearch('')
     onClose()
   }
 
   useEffect(() => {
-    const list: ClubShortWithSelected[] = clubs
-      .filter((i) => !i.disabled)
+    const listClubsAvailable: ClubShortSelected[] = clubs
+      .filter((i) => !i.isDisabled)
       .filter(
         (club) =>
           !clubsBlocked.find((clubBlocked) => club.id === clubBlocked.id),
@@ -62,15 +59,15 @@ export function ModalChooseMultiClubs({
         selected: false,
       }))
 
-    setClubsWithSelected(list)
+    setClubsSelected(listClubsAvailable)
   }, [clubs, clubsBlocked])
 
   const listClubs = useMemo(() => {
-    const searchLow = search.toLowerCase()
-    return clubsWithSelected.filter((club) =>
-      club.name.toLocaleLowerCase().includes(searchLow),
+    const searchLowerCase = search.toLowerCase()
+    return clubsSelected.filter((club) =>
+      club.name.toLocaleLowerCase().includes(searchLowerCase),
     )
-  }, [clubsWithSelected, search])
+  }, [clubsSelected, search])
 
   return (
     <ModalBase visible={visible} onClose={onClose}>

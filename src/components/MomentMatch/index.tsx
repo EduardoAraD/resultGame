@@ -4,24 +4,24 @@ import Animated, { SlideInRight, SlideOutRight } from 'react-native-reanimated'
 import { Container, Logo, Minute, Text } from './styles'
 
 interface MomentGameProps {
-  min: number
-  text: string
-  isPrimary?: boolean
+  minute: number
+  narration: string
+  isGoal?: boolean
   logo: ImageSourcePropType
 }
 
-export function MomentGame({
-  min,
-  text,
-  isPrimary = false,
+export function MomentMatch({
+  minute,
+  narration,
+  isGoal = false,
   logo,
 }: MomentGameProps) {
   return (
     <Animated.View entering={SlideInRight} exiting={SlideOutRight}>
-      <Container isPrimary={isPrimary}>
-        <Minute>{min}</Minute>
-        <Text>{text}</Text>
-        {isPrimary && <Logo source={logo} />}
+      <Container isGoal={isGoal}>
+        <Minute>{minute}</Minute>
+        <Text>{narration}</Text>
+        {isGoal && <Logo testID="logo" source={logo} />}
       </Container>
     </Animated.View>
   )

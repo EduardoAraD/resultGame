@@ -1,11 +1,11 @@
 import { TouchableOpacityProps } from 'react-native'
-import { IconProps } from 'phosphor-react-native'
 import { useTheme } from 'styled-components/native'
+import { SvgProps } from 'react-native-svg'
 
 import { Touch } from './styles'
 
 interface ButtonIconOverProps extends TouchableOpacityProps {
-  icon: React.FC<IconProps>
+  icon: React.FC<SvgProps>
 }
 
 export function ButtonIconOver({
@@ -27,7 +27,7 @@ export function ButtonIconOver({
       }}
       {...rest}
     >
-      <Icon size={40} color={white} />
+      <Icon testID="icon" width={40} height={40} color={white} />
     </Touch>
   )
 }

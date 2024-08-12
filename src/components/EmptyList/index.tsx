@@ -1,13 +1,13 @@
 import { Text, View } from './styles'
 
 interface EmptyListProps {
-  text: string
+  message: string
 }
 
-export function EmptyList({ text }: EmptyListProps) {
+export function EmptyList({ message }: EmptyListProps) {
   return (
     <View>
-      <Text>{text}</Text>
+      <Text>{message}</Text>
     </View>
   )
 }

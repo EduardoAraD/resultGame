@@ -5,12 +5,11 @@ import Animated, { SlideInRight, SlideOutRight } from 'react-native-reanimated'
 import { useClubs } from '../../hook/useClubs'
 
 import { ClubShort } from '../../Model/Club'
+import { HomeOrAway } from '../../Model/HomeOrAway'
 import { ModalBase } from '../ModalBase'
 import { CardClub } from '../CardClub'
 
 import { CloseButton, Input, Line, ModalView, Title } from './styles'
-
-export type HomeOrAway = 'home' | 'away'
 
 interface ModalChooseClubProps {
   visible: boolean
@@ -28,6 +27,7 @@ export function ModalChooseOneClub({
   clubsBlocked = [],
 }: ModalChooseClubProps) {
   const { clubs } = useClubs()
+
   const [search, setSearch] = useState('')
 
   function selectedCard(club: ClubShort) {
@@ -43,7 +43,7 @@ export function ModalChooseOneClub({
         (club) =>
           !clubsBlocked.find((clubBlocked) => club.id === clubBlocked.id),
       )
-      .filter((i) => !i.disabled)
+      .filter((i) => !i.isDisabled)
       .filter((club) => club.name.toLocaleLowerCase().includes(searchLow))
   }, [clubs, clubsBlocked, search])
 

@@ -1,7 +1,5 @@
 import styled from 'styled-components/native'
 
-import { TypeItemClassification } from '../../Model/ItemClassification'
-
 interface ContentProps {
   actived: boolean
 }
@@ -15,18 +13,13 @@ export const Content = styled.View<ContentProps>`
 `
 
 interface LineProps {
-  type: TypeItemClassification
+  colorLine: string
 }
 
 export const Line = styled.View<LineProps>`
   height: 100%;
   width: 4px;
-  background-color: ${({ theme, type }) =>
-    type === 'Promotion'
-      ? theme.colors.green
-      : type === 'Relegation'
-        ? theme.colors.red
-        : theme.colors.gray_300};
+  background-color: ${({ colorLine }) => colorLine};
 `
 
 export const Image = styled.Image`

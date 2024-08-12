@@ -20,9 +20,9 @@ import { ViewGame } from '../../components/ViewGame'
 
 import { chanceDeGolPenalt } from '../../utils/chanceDeGol'
 import { domainGame } from '../../utils/domainGame'
-import { currentPlacarMoment } from '../../utils/functions/GoalChange/finished'
-import { getChanceGoal } from '../../utils/functions/GoalChange/contructionPlay'
-import { ProxChanceClub } from '../../utils/functions/GoalChange/interfaces'
+import { currentPlacarMoment } from '../../utils/GoalChance/finished'
+import { getChanceGoal } from '../../utils/GoalChance/contructionPlay'
+import { ProxChanceClub } from '../../utils/GoalChance/interfaces'
 
 import { Container, ContentInfo, DivAction, Stadium } from './styles'
 

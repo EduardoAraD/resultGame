@@ -5,7 +5,7 @@ import { KEY_CLUB } from './dataStorage'
 
 import { ClubComplete, ClubShort } from '../../Model/Club'
 
-import { clubes } from '../../utils/clubes'
+import { clubsPreCreated } from '../../utils/clubs'
 
 async function createdClubs() {
   const clubsComplete: ClubComplete[] = clubes.map((clube) => {

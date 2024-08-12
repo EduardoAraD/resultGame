@@ -1,7 +1,5 @@
 import styled from 'styled-components/native'
 
-import { StatusCup } from '../../Model/Status'
-
 export const Card = styled.TouchableOpacity`
   flex-direction: row;
   border-radius: 10px;
@@ -9,17 +7,12 @@ export const Card = styled.TouchableOpacity`
   background-color: ${({ theme }) => theme.colors.blue_200};
 `
 interface LineProps {
-  status: StatusCup
+  color: string
 }
 export const Line = styled.View<LineProps>`
   height: 100%;
   width: 10px;
-  background-color: ${({ theme, status }) =>
-    status === 'start'
-      ? theme.colors.green
-      : status === 'progress'
-        ? theme.colors.white
-        : theme.colors.red};
+  background-color: ${({ color }) => color};
 `
 
 export const Content = styled.View`

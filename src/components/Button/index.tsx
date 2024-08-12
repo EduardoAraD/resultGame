@@ -1,4 +1,5 @@
 import { TouchableOpacityProps } from 'react-native'
+import { useTheme } from 'styled-components/native'
 
 import { Loading } from '../Loading'
 
@@ -13,11 +14,38 @@ interface ButtonProps extends TouchableOpacityProps {
 export function Button({
   title,
   type = 'Primary',
+  disabled,
   loading,
   ...rest
 }: ButtonProps) {
+  const {
+    colors: { gray_300, green, white, red },
+  } = useTheme()
+
+  function getBackgroundColorTouch() {
+    if (disabled) {
+      return gray_300
+    }
+
+    switch (type) {
+      case 'Primary':
+        return green
+      case 'Secundary':
+        return white
+      case 'Cancel':
+        return red
+    }
+  }
+
   return (
-    <Touch activeOpacity={0.8} type={type} {...rest}>
+    <Touch
+      testID="touch"
+      activeOpacity={0.8}
+      style={{ backgroundColor: getBackgroundColorTouch() }}
+      disabled={disabled}
+      type={type}
+      {...rest}
+    >
       {loading ? (
         <Loading colorActive={type === 'Secundary' ? 'gray_700' : 'white'} />
       ) : (

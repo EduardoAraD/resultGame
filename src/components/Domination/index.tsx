@@ -15,34 +15,33 @@ import {
   Text,
   Touch,
 } from './styles'
+import caretRight from '../../assets/icons/caret-right.svg'
 
 interface DominationProps {
-  domainHome: number
-  domainAway: number
+  domainClubHome: number
+  domainClubAway: number
   minute: number
-  velocityGame: number
-  updateVelocityGame(): void
+  velocityOfMatch: number
+  updateVelocityOfMatch(): void
 }
 
 export function Domination({
-  domainAway,
-  domainHome,
+  domainClubAway,
+  domainClubHome,
   minute,
-  velocityGame,
-  updateVelocityGame,
+  velocityOfMatch,
+  updateVelocityOfMatch,
 }: DominationProps) {
   const {
     colors: { white },
   } = useTheme()
-  const domainTotal = domainHome + domainAway
-  // const widthHome = domainHome / (domainTotal) * 100
-  // const widthAway = domainAway / (domainTotal) * 100
+  const domainAll = domainClubHome + domainClubAway
 
-  // const half = minute > 45 ? 2 : 1
-  const porcentageHome = Math.round((domainHome / domainTotal) * 100)
+  const porcentageDomainCLubHome = Math.round(
+    (domainClubHome / domainAll) * 100,
+  )
 
-  const sharedProgress = useSharedValue(porcentageHome)
-
+  const sharedProgress = useSharedValue(porcentageDomainCLubHome)
   const styledAnimated = useAnimatedStyle(() => {
     return {
       width: `${sharedProgress.value}%`,
@@ -50,18 +49,18 @@ export function Domination({
   })
 
   useEffect(() => {
-    sharedProgress.value = withTiming(porcentageHome)
-  }, [domainHome, porcentageHome, sharedProgress])
+    sharedProgress.value = withTiming(porcentageDomainCLubHome)
+  }, [porcentageDomainCLubHome, sharedProgress])
 
   return (
     <>
       <Text style={{ color: white }}>{minute}&apos;</Text>
-      <Touch activeOpacity={0.7} onPress={updateVelocityGame}>
-        <Text>{velocityGame}x</Text>
+      <Touch testID="touch" activeOpacity={0.7} onPress={updateVelocityOfMatch}>
+        <Text>{velocityOfMatch}x</Text>
         <ContentIcon>
-          <Icon />
-          <Icon disable={velocityGame <= 1} />
-          <Icon disable={velocityGame <= 2} />
+          <Icon source={caretRight} />
+          <Icon source={caretRight} disable={velocityOfMatch <= 1} />
+          <Icon source={caretRight} disable={velocityOfMatch <= 2} />
         </ContentIcon>
       </Touch>
       <Container>

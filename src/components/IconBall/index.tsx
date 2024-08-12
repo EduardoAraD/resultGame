@@ -1,8 +1,10 @@
-import { CheckFat, X } from 'phosphor-react-native'
 import { useTheme } from 'styled-components/native'
 
-import { Container, ImageBall } from './styles'
+import { Container, Icon, ImageBall } from './styles'
+
 import logoBall from '../../assets/ball.png'
+import checkFat from '../../assets/icons/check-fat.svg'
+import x from '../../assets/icons/x.svg'
 
 interface IconBallProps {
   checked: boolean
@@ -15,19 +17,13 @@ export function IconBall({ checked }: IconBallProps) {
     <Container>
       <ImageBall source={logoBall} />
       {checked ? (
-        <CheckFat
-          color={colors.green}
-          weight="fill"
-          size={16}
-          style={{ position: 'absolute', bottom: -5, right: -5 }}
+        <Icon
+          testID="check"
+          source={checkFat}
+          style={{ tintColor: colors.green }}
         />
       ) : (
-        <X
-          color={colors.red}
-          weight="bold"
-          size={16}
-          style={{ position: 'absolute', bottom: -5, right: -5 }}
-        />
+        <Icon testID="x" source={x} style={{ tintColor: colors.red }} />
       )}
     </Container>
   )

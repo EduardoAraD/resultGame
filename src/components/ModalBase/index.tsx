@@ -22,7 +22,7 @@ export function ModalBase({ children, visible, onClose }: ModalBaseProps) {
         entering={SlideInDown}
         exiting={SlideOutDown}
       >
-        <TouchableWithoutFeedback onPress={onClose}>
+        <TouchableWithoutFeedback testID="touchFeedback" onPress={onClose}>
           <Content />
         </TouchableWithoutFeedback>
         <ViewContent>{children}</ViewContent>

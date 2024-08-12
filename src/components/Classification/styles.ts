@@ -1,7 +1,5 @@
 import styled from 'styled-components/native'
 
-import { TypeItemClassification } from '../../Model/ItemClassification'
-
 export const Container = styled.View`
   padding: 10px;
   flex: 1;
@@ -36,18 +34,13 @@ export const ViewPoint = styled.View`
 `
 
 interface PointProps {
-  type: TypeItemClassification
+  colorTypeClass: string
 }
 export const Point = styled.View<PointProps>`
   height: 6px;
   width: 6px;
   border-radius: 3px;
-  background-color: ${({ theme, type }) =>
-    type === 'Promotion'
-      ? theme.colors.green
-      : type === 'Relegation'
-        ? theme.colors.red
-        : theme.colors.gray_300};
+  background-color: ${({ colorTypeClass }) => colorTypeClass};
 `
 
 export const TextPoint = styled.Text`

@@ -8,18 +8,6 @@ interface TouchProps {
 export const Touch = styled.TouchableOpacity<TouchProps>`
   height: 50px;
   width: 100%;
-  background-color: ${(props) =>
-    props.type === 'Primary'
-      ? props.disabled
-        ? props.theme.colors.gray_300
-        : props.theme.colors.green
-      : props.type === 'Secundary'
-        ? props.disabled
-          ? props.theme.colors.gray_300
-          : props.theme.colors.white
-        : props.disabled
-          ? props.theme.colors.gray_300
-          : props.theme.colors.red};
   border-radius: 10px;
   align-items: center;
   justify-content: center;

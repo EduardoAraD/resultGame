@@ -1,14 +1,12 @@
 import styled from 'styled-components/native'
 
 interface ContainerProps {
-  isPrimary: boolean
+  isGoal: boolean
 }
 
 export const Container = styled.View<ContainerProps>`
   background-color: ${(props) =>
-    props.isPrimary
-      ? props.theme.colors.blue_300
-      : props.theme.colors.blue_200};
+    props.isGoal ? props.theme.colors.blue_300 : props.theme.colors.blue_200};
   margin-bottom: 4px;
   border-radius: 6px;
   flex-direction: row;

@@ -32,14 +32,14 @@ export const Minute = styled.Text`
   font-family: ${(props) => props.theme.fonts.regular};
 `
 
-export const Line = styled.View`
+export const LineVertical = styled.View`
   width: 2px;
   height: 20px;
   background-color: ${(props) => props.theme.colors.gray_300};
   align-self: center;
 `
 
-export const LineHor = styled.View`
+export const LineHorizontal = styled.View`
   width: 70px;
   height: 2px;
   background-color: ${(props) => props.theme.colors.gray_100};
@@ -56,23 +56,23 @@ export const MomentInfo = styled.View`
   flex: 1;
 `
 
-export const ViewPlacar = styled.View`
+export const ViewScore = styled.View`
   flex-direction: row;
   gap: 10px;
   margin-top: 14px;
 `
 
-export const TextPlacar = styled.Text`
+export const TextScore = styled.Text`
   font-size: 16px;
   color: ${(props) => props.theme.colors.white};
   font-family: ${(props) => props.theme.fonts.regular};
 `
 
-export const Bold = styled(TextPlacar)`
+export const Bold = styled(TextScore)`
   font-family: ${(props) => props.theme.fonts.bold};
 `
 
-export const TextGol = styled.Text`
+export const TextGoal = styled.Text`
   font-size: 12px;
   color: ${(props) => props.theme.colors.gray_100};
   text-align: center;
@@ -81,7 +81,7 @@ export const TextGol = styled.Text`
   margin-top: -6px;
 `
 
-export const ContentIntervalo = styled.View`
+export const ContentInterval = styled.View`
   width: 210px;
   align-self: center;
   border: ${(props) => props.theme.colors.white};
