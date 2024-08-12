@@ -2,6 +2,8 @@ import { ClubShort } from '../Model/Club'
 import { ItemClassification } from '../Model/ItemClassification'
 import { MatchComplete } from '../Model/Match'
 
+import { getTypeItemClassification } from './getTypeItemClassification'
+
 interface ClassificationProps {
   matchsOfSeason: MatchComplete[]
   clubs: ClubShort[]
@@ -10,12 +12,16 @@ interface ClassificationProps {
     draw: number
     loss: number
   }
+  numberClubsPromoted: number
+  numberClubsRelegated: number
 }
 
 export function getClassification({
   matchsOfSeason,
   clubs,
   points,
+  numberClubsPromoted,
+  numberClubsRelegated,
 }: ClassificationProps) {
   const listItemClassification: ItemClassification[] = clubs.map((club) => {
     const itemClassification: ItemClassification = {
@@ -64,7 +70,7 @@ export function getClassification({
     }
   })
 
-  return listItemClassification.sort((club1, club2) => {
+  const classification = listItemClassification.sort((club1, club2) => {
     if (club1.points > club2.points) {
       return -1
     }
@@ -95,4 +101,15 @@ export function getClassification({
     }
     return club1.goalsScored < club2.goalsScored ? 1 : 0
   })
+
+  const numberClubsInClassification = classification.length
+  return classification.map((item, index) => ({
+    ...item,
+    type: getTypeItemClassification({
+      numberClubsPromoted,
+      numberClubsInClassification,
+      numberClubsRelegated,
+      position: index + 1,
+    }),
+  }))
 }

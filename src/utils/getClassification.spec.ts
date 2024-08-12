@@ -119,14 +119,16 @@ describe('Function getClassification', () => {
         draw: 1,
         loss: 0,
       },
+      numberClubsPromoted: 1,
+      numberClubsRelegated: 1,
     })
 
     expect(classification.length).toBe(4)
     expect(classification).toEqual([
-      expect.objectContaining({ points: 8, club: club1 }),
-      expect.objectContaining({ points: 3, club: club4 }),
-      expect.objectContaining({ points: 3, club: club3 }),
-      expect.objectContaining({ points: 3, club: club2 }),
+      expect.objectContaining({ points: 8, club: club1, type: 'promotion' }),
+      expect.objectContaining({ points: 3, club: club4, type: 'standard' }),
+      expect.objectContaining({ points: 3, club: club3, type: 'standard' }),
+      expect.objectContaining({ points: 3, club: club2, type: 'relegation' }),
     ])
   })
 })
